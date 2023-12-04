@@ -70,7 +70,7 @@
     <module>modules/common</module>
 
     <!-- >>> List each service's module here -->
-    <module>modules/watsonx-data</module>
+    <module>modules/watsonx-data-v2</module>
 
     <!-- This module should be listed after all the service-related modules above -->
     <!-- <module>modules/coverage-reports</module> -->
