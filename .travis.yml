@@ -1,6 +1,6 @@
 ---
 language: java
-dist: bionic
+dist: Ubuntu 18.04 LTS
 
 jdk:
 - openjdk11
