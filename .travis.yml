@@ -32,7 +32,8 @@ stages:
 before_install:
   - sudo apt-get update
   - env | grep TRAVIS
-  - pyenv global 3.8
+  - pyenv install 3.8.12  # Install Python 3.8
+  - pyenv global 3.8.12   # Set the installed Python version as global
 
 jobs:
   include:
