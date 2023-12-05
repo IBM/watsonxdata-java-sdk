@@ -13,15 +13,18 @@
     <name>Watsonxdata</name>
     <packaging>jar</packaging>
 
+    <properties>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+    </properties>
+
     <dependencies>
+        <!-- There should be a dependency for each module whose request example class exists in this "examples" module. Add 
+            new "dependency" entries here as needed when you add a request examples class for a new service. Note: the "artifactId" values 
+            below should reflect the "artifactId" value specified in each module's pom.xml file (i.e. not the module's directory name). -->
         <dependency>
             <groupId>com.ibm.cloud</groupId>
-            <artifactId>sdk-core</artifactId>
-        </dependency>
-        <dependency>
-            <!-- >>> Replace this with the "common" module's artifactId (e.g. my-services-common) -->
             <artifactId>watsonx-data-common</artifactId>
-            <groupId>com.ibm.cloud</groupId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <artifactId>watsonx-data-common</artifactId>
@@ -42,10 +45,34 @@
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jdk14</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.ibm.cloud.my_services.example_service.v1.ExampleServiceExamples</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <developers>
         <developer>
