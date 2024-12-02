@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.ArrayList;
@@ -30,13 +31,16 @@ public class CreateSparkEngineOptions extends GenericModel {
     String EXTERNAL = "external";
     /** discover. */
     String DISCOVER = "discover";
+    /** native. */
+    String X_NATIVE = "native";
   }
 
   protected String origin;
-  protected String type;
+  protected List<String> associatedCatalogs;
   protected String description;
   protected SparkEngineDetailsPrototype engineDetails;
   protected String engineDisplayName;
+  protected String status;
   protected List<String> tags;
   protected String authInstanceId;
 
@@ -45,10 +49,11 @@ public class CreateSparkEngineOptions extends GenericModel {
    */
   public static class Builder {
     private String origin;
-    private String type;
+    private List<String> associatedCatalogs;
     private String description;
     private SparkEngineDetailsPrototype engineDetails;
     private String engineDisplayName;
+    private String status;
     private List<String> tags;
     private String authInstanceId;
 
@@ -59,10 +64,11 @@ public class CreateSparkEngineOptions extends GenericModel {
      */
     private Builder(CreateSparkEngineOptions createSparkEngineOptions) {
       this.origin = createSparkEngineOptions.origin;
-      this.type = createSparkEngineOptions.type;
+      this.associatedCatalogs = createSparkEngineOptions.associatedCatalogs;
       this.description = createSparkEngineOptions.description;
       this.engineDetails = createSparkEngineOptions.engineDetails;
       this.engineDisplayName = createSparkEngineOptions.engineDisplayName;
+      this.status = createSparkEngineOptions.status;
       this.tags = createSparkEngineOptions.tags;
       this.authInstanceId = createSparkEngineOptions.authInstanceId;
     }
@@ -77,11 +83,9 @@ public class CreateSparkEngineOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param origin the origin
-     * @param type the type
      */
-    public Builder(String origin, String type) {
+    public Builder(String origin) {
       this.origin = origin;
-      this.type = type;
     }
 
     /**
@@ -91,6 +95,22 @@ public class CreateSparkEngineOptions extends GenericModel {
      */
     public CreateSparkEngineOptions build() {
       return new CreateSparkEngineOptions(this);
+    }
+
+    /**
+     * Adds a new element to associatedCatalogs.
+     *
+     * @param associatedCatalogs the new element to be added
+     * @return the CreateSparkEngineOptions builder
+     */
+    public Builder addAssociatedCatalogs(String associatedCatalogs) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(associatedCatalogs,
+        "associatedCatalogs cannot be null");
+      if (this.associatedCatalogs == null) {
+        this.associatedCatalogs = new ArrayList<String>();
+      }
+      this.associatedCatalogs.add(associatedCatalogs);
+      return this;
     }
 
     /**
@@ -121,13 +141,14 @@ public class CreateSparkEngineOptions extends GenericModel {
     }
 
     /**
-     * Set the type.
+     * Set the associatedCatalogs.
+     * Existing associatedCatalogs will be replaced.
      *
-     * @param type the type
+     * @param associatedCatalogs the associatedCatalogs
      * @return the CreateSparkEngineOptions builder
      */
-    public Builder type(String type) {
-      this.type = type;
+    public Builder associatedCatalogs(List<String> associatedCatalogs) {
+      this.associatedCatalogs = associatedCatalogs;
       return this;
     }
 
@@ -165,6 +186,17 @@ public class CreateSparkEngineOptions extends GenericModel {
     }
 
     /**
+     * Set the status.
+     *
+     * @param status the status
+     * @return the CreateSparkEngineOptions builder
+     */
+    public Builder status(String status) {
+      this.status = status;
+      return this;
+    }
+
+    /**
      * Set the tags.
      * Existing tags will be replaced.
      *
@@ -193,13 +225,12 @@ public class CreateSparkEngineOptions extends GenericModel {
   protected CreateSparkEngineOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.origin,
       "origin cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
-      "type cannot be null");
     origin = builder.origin;
-    type = builder.type;
+    associatedCatalogs = builder.associatedCatalogs;
     description = builder.description;
     engineDetails = builder.engineDetails;
     engineDisplayName = builder.engineDisplayName;
+    status = builder.status;
     tags = builder.tags;
     authInstanceId = builder.authInstanceId;
   }
@@ -225,14 +256,14 @@ public class CreateSparkEngineOptions extends GenericModel {
   }
 
   /**
-   * Gets the type.
+   * Gets the associatedCatalogs.
    *
-   * Engine type spark, others like netezza.
+   * Associated catalogs.
    *
-   * @return the type
+   * @return the associatedCatalogs
    */
-  public String type() {
-    return type;
+  public List<String> associatedCatalogs() {
+    return associatedCatalogs;
   }
 
   /**
@@ -269,6 +300,17 @@ public class CreateSparkEngineOptions extends GenericModel {
   }
 
   /**
+   * Gets the status.
+   *
+   * Engine status.
+   *
+   * @return the status
+   */
+  public String status() {
+    return status;
+  }
+
+  /**
    * Gets the tags.
    *
    * Tags.
@@ -282,7 +324,7 @@ public class CreateSparkEngineOptions extends GenericModel {
   /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * CRN.
    *
    * @return the authInstanceId
    */

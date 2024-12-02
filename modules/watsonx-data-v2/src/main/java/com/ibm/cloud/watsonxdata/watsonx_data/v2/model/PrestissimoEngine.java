@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.List;
@@ -21,6 +22,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * EngineDetail.
  */
 public class PrestissimoEngine extends GenericModel {
+
+  /**
+   * Triggers engine restart if value is force.
+   */
+  public interface EngineRestart {
+    /** force. */
+    String FORCE = "force";
+    /** false. */
+    String X_FALSE = "false";
+  }
 
   /**
    * Origin - place holder.
@@ -63,6 +74,10 @@ public class PrestissimoEngine extends GenericModel {
   protected String engineDisplayName;
   @SerializedName("engine_id")
   protected String engineId;
+  @SerializedName("engine_properties")
+  protected PrestissimoEngineEngineProperties engineProperties;
+  @SerializedName("engine_restart")
+  protected String engineRestart;
   @SerializedName("external_host_name")
   protected String externalHostName;
   @SerializedName("group_id")
@@ -72,6 +87,8 @@ public class PrestissimoEngine extends GenericModel {
   protected String origin;
   protected Long port;
   protected String region;
+  @SerializedName("remove_engine_properties")
+  protected RemoveEngineProperties removeEngineProperties;
   @SerializedName("size_config")
   protected String sizeConfig;
   protected String status;
@@ -120,7 +137,7 @@ public class PrestissimoEngine extends GenericModel {
   /**
    * Gets the coordinator.
    *
-   * Node details.
+   * coordinator/worker property settings.
    *
    * @return the coordinator
    */
@@ -195,6 +212,28 @@ public class PrestissimoEngine extends GenericModel {
   }
 
   /**
+   * Gets the engineProperties.
+   *
+   * Engine properties.
+   *
+   * @return the engineProperties
+   */
+  public PrestissimoEngineEngineProperties getEngineProperties() {
+    return engineProperties;
+  }
+
+  /**
+   * Gets the engineRestart.
+   *
+   * Triggers engine restart if value is force.
+   *
+   * @return the engineRestart
+   */
+  public String getEngineRestart() {
+    return engineRestart;
+  }
+
+  /**
    * Gets the externalHostName.
    *
    * Applicable only for OCP based clusters.  This is typically  servicename+route.
@@ -258,6 +297,17 @@ public class PrestissimoEngine extends GenericModel {
    */
   public String getRegion() {
     return region;
+  }
+
+  /**
+   * Gets the removeEngineProperties.
+   *
+   * RemoveEngine properties.
+   *
+   * @return the removeEngineProperties
+   */
+  public RemoveEngineProperties getRemoveEngineProperties() {
+    return removeEngineProperties;
   }
 
   /**
@@ -329,13 +379,12 @@ public class PrestissimoEngine extends GenericModel {
   /**
    * Gets the worker.
    *
-   * Node details.
+   * coordinator/worker property settings.
    *
    * @return the worker
    */
   public PrestissimoNodeDescriptionBody getWorker() {
     return worker;
   }
-
 }
 

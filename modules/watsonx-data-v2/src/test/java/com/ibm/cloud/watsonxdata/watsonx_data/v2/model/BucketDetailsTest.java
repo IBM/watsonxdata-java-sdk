@@ -32,24 +32,33 @@ public class BucketDetailsTest {
   @Test
   public void testBucketDetails() throws Throwable {
     BucketDetails bucketDetailsModel = new BucketDetails.Builder()
-      .accessKey("<access_key>")
+      .accessKey("b9cbf248ea5c4c96947e64407108559j")
       .bucketName("sample-bucket")
       .endpoint("https://s3.<region>.cloud-object-storage.appdomain.cloud/")
-      .secretKey("secret_key")
+      .keyFile("key_file")
+      .provider("ibm_cos")
+      .region("us-south")
+      .secretKey("13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87")
       .build();
-    assertEquals(bucketDetailsModel.accessKey(), "<access_key>");
+    assertEquals(bucketDetailsModel.accessKey(), "b9cbf248ea5c4c96947e64407108559j");
     assertEquals(bucketDetailsModel.bucketName(), "sample-bucket");
     assertEquals(bucketDetailsModel.endpoint(), "https://s3.<region>.cloud-object-storage.appdomain.cloud/");
-    assertEquals(bucketDetailsModel.secretKey(), "secret_key");
+    assertEquals(bucketDetailsModel.keyFile(), "key_file");
+    assertEquals(bucketDetailsModel.provider(), "ibm_cos");
+    assertEquals(bucketDetailsModel.region(), "us-south");
+    assertEquals(bucketDetailsModel.secretKey(), "13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87");
 
     String json = TestUtilities.serialize(bucketDetailsModel);
 
     BucketDetails bucketDetailsModelNew = TestUtilities.deserialize(json, BucketDetails.class);
     assertTrue(bucketDetailsModelNew instanceof BucketDetails);
-    assertEquals(bucketDetailsModelNew.accessKey(), "<access_key>");
+    assertEquals(bucketDetailsModelNew.accessKey(), "b9cbf248ea5c4c96947e64407108559j");
     assertEquals(bucketDetailsModelNew.bucketName(), "sample-bucket");
     assertEquals(bucketDetailsModelNew.endpoint(), "https://s3.<region>.cloud-object-storage.appdomain.cloud/");
-    assertEquals(bucketDetailsModelNew.secretKey(), "secret_key");
+    assertEquals(bucketDetailsModelNew.keyFile(), "key_file");
+    assertEquals(bucketDetailsModelNew.provider(), "ibm_cos");
+    assertEquals(bucketDetailsModelNew.region(), "us-south");
+    assertEquals(bucketDetailsModelNew.secretKey(), "13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -23,6 +24,7 @@ public class DeleteTableOptions extends GenericModel {
   protected String schemaId;
   protected String tableId;
   protected String engineId;
+  protected String type;
   protected String authInstanceId;
 
   /**
@@ -33,6 +35,7 @@ public class DeleteTableOptions extends GenericModel {
     private String schemaId;
     private String tableId;
     private String engineId;
+    private String type;
     private String authInstanceId;
 
     /**
@@ -45,6 +48,7 @@ public class DeleteTableOptions extends GenericModel {
       this.schemaId = deleteTableOptions.schemaId;
       this.tableId = deleteTableOptions.tableId;
       this.engineId = deleteTableOptions.engineId;
+      this.type = deleteTableOptions.type;
       this.authInstanceId = deleteTableOptions.authInstanceId;
     }
 
@@ -123,6 +127,17 @@ public class DeleteTableOptions extends GenericModel {
     }
 
     /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the DeleteTableOptions builder
+     */
+    public Builder type(String type) {
+      this.type = type;
+      return this;
+    }
+
+    /**
      * Set the authInstanceId.
      *
      * @param authInstanceId the authInstanceId
@@ -149,6 +164,7 @@ public class DeleteTableOptions extends GenericModel {
     schemaId = builder.schemaId;
     tableId = builder.tableId;
     engineId = builder.engineId;
+    type = builder.type;
     authInstanceId = builder.authInstanceId;
   }
 
@@ -206,9 +222,20 @@ public class DeleteTableOptions extends GenericModel {
   }
 
   /**
+   * Gets the type.
+   *
+   * URL encoded table type.
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
+  }
+
+  /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * CRN.
    *
    * @return the authInstanceId
    */

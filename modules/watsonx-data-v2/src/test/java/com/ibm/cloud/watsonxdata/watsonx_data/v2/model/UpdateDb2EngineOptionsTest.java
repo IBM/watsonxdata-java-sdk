@@ -14,7 +14,6 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.JsonPatchOperation;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateDb2EngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
@@ -32,24 +31,13 @@ public class UpdateDb2EngineOptionsTest {
 
   @Test
   public void testUpdateDb2EngineOptions() throws Throwable {
-    JsonPatchOperation jsonPatchOperationModel = new JsonPatchOperation.Builder()
-      .op("add")
-      .path("testString")
-      .from("testString")
-      .value("testString")
-      .build();
-    assertEquals(jsonPatchOperationModel.op(), "add");
-    assertEquals(jsonPatchOperationModel.path(), "testString");
-    assertEquals(jsonPatchOperationModel.from(), "testString");
-    assertEquals(jsonPatchOperationModel.value(), "testString");
-
     UpdateDb2EngineOptions updateDb2EngineOptionsModel = new UpdateDb2EngineOptions.Builder()
       .engineId("testString")
-      .body(java.util.Arrays.asList(jsonPatchOperationModel))
+      .body(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .authInstanceId("testString")
       .build();
     assertEquals(updateDb2EngineOptionsModel.engineId(), "testString");
-    assertEquals(updateDb2EngineOptionsModel.body(), java.util.Arrays.asList(jsonPatchOperationModel));
+    assertEquals(updateDb2EngineOptionsModel.body(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateDb2EngineOptionsModel.authInstanceId(), "testString");
   }
 

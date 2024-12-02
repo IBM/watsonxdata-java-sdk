@@ -34,9 +34,11 @@ public class ListBucketObjectsOptionsTest {
     ListBucketObjectsOptions listBucketObjectsOptionsModel = new ListBucketObjectsOptions.Builder()
       .bucketId("testString")
       .authInstanceId("testString")
+      .path("testString")
       .build();
     assertEquals(listBucketObjectsOptionsModel.bucketId(), "testString");
     assertEquals(listBucketObjectsOptionsModel.authInstanceId(), "testString");
+    assertEquals(listBucketObjectsOptionsModel.path(), "testString");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

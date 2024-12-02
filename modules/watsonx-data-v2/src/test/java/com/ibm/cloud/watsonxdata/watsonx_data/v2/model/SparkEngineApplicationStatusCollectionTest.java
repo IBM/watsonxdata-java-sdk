@@ -14,12 +14,15 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkApplicationConfig;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkApplicationDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkApplicationDetailsRuntime;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkApplicationEnv;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineApplicationStatus;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineApplicationStatusApplicationDetails;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineApplicationStatusApplicationDetailsConf;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineApplicationStatusCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineApplicationStatusRuntime;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineApplicationStatusStateDetailsItems;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkVolumeDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;

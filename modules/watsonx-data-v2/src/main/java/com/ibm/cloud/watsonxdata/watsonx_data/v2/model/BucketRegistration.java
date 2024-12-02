@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.List;
@@ -36,6 +37,12 @@ public class BucketRegistration extends GenericModel {
     String IBM_COS = "ibm_cos";
     /** ibm_ceph. */
     String IBM_CEPH = "ibm_ceph";
+    /** adls_gen1. */
+    String ADLS_GEN1 = "adls_gen1";
+    /** adls_gen2. */
+    String ADLS_GEN2 = "adls_gen2";
+    /** google_cs. */
+    String GOOGLE_CS = "google_cs";
   }
 
   /**
@@ -78,6 +85,8 @@ public class BucketRegistration extends GenericModel {
   protected String managedBy;
   protected String region;
   protected String state;
+  @SerializedName("storage_details")
+  protected StorageDetails storageDetails;
   protected List<String> tags;
 
   protected BucketRegistration() { }
@@ -215,6 +224,17 @@ public class BucketRegistration extends GenericModel {
   }
 
   /**
+   * Gets the storageDetails.
+   *
+   * storage details.
+   *
+   * @return the storageDetails
+   */
+  public StorageDetails getStorageDetails() {
+    return storageDetails;
+  }
+
+  /**
    * Gets the tags.
    *
    * tags.
@@ -224,6 +244,5 @@ public class BucketRegistration extends GenericModel {
   public List<String> getTags() {
     return tags;
   }
-
 }
 

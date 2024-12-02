@@ -14,7 +14,6 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.JsonPatchOperation;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateTableOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
@@ -32,30 +31,21 @@ public class UpdateTableOptionsTest {
 
   @Test
   public void testUpdateTableOptions() throws Throwable {
-    JsonPatchOperation jsonPatchOperationModel = new JsonPatchOperation.Builder()
-      .op("add")
-      .path("testString")
-      .from("testString")
-      .value("testString")
-      .build();
-    assertEquals(jsonPatchOperationModel.op(), "add");
-    assertEquals(jsonPatchOperationModel.path(), "testString");
-    assertEquals(jsonPatchOperationModel.from(), "testString");
-    assertEquals(jsonPatchOperationModel.value(), "testString");
-
     UpdateTableOptions updateTableOptionsModel = new UpdateTableOptions.Builder()
       .catalogId("testString")
       .schemaId("testString")
       .tableId("testString")
       .engineId("testString")
-      .body(java.util.Arrays.asList(jsonPatchOperationModel))
+      .body(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .type("testString")
       .authInstanceId("testString")
       .build();
     assertEquals(updateTableOptionsModel.catalogId(), "testString");
     assertEquals(updateTableOptionsModel.schemaId(), "testString");
     assertEquals(updateTableOptionsModel.tableId(), "testString");
     assertEquals(updateTableOptionsModel.engineId(), "testString");
-    assertEquals(updateTableOptionsModel.body(), java.util.Arrays.asList(jsonPatchOperationModel));
+    assertEquals(updateTableOptionsModel.body(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(updateTableOptionsModel.type(), "testString");
     assertEquals(updateTableOptionsModel.authInstanceId(), "testString");
   }
 

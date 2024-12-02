@@ -14,7 +14,6 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.JsonPatchOperation;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateNetezzaEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
@@ -32,24 +31,13 @@ public class UpdateNetezzaEngineOptionsTest {
 
   @Test
   public void testUpdateNetezzaEngineOptions() throws Throwable {
-    JsonPatchOperation jsonPatchOperationModel = new JsonPatchOperation.Builder()
-      .op("add")
-      .path("testString")
-      .from("testString")
-      .value("testString")
-      .build();
-    assertEquals(jsonPatchOperationModel.op(), "add");
-    assertEquals(jsonPatchOperationModel.path(), "testString");
-    assertEquals(jsonPatchOperationModel.from(), "testString");
-    assertEquals(jsonPatchOperationModel.value(), "testString");
-
     UpdateNetezzaEngineOptions updateNetezzaEngineOptionsModel = new UpdateNetezzaEngineOptions.Builder()
       .engineId("testString")
-      .body(java.util.Arrays.asList(jsonPatchOperationModel))
+      .body(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .authInstanceId("testString")
       .build();
     assertEquals(updateNetezzaEngineOptionsModel.engineId(), "testString");
-    assertEquals(updateNetezzaEngineOptionsModel.body(), java.util.Arrays.asList(jsonPatchOperationModel));
+    assertEquals(updateNetezzaEngineOptionsModel.body(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateNetezzaEngineOptionsModel.authInstanceId(), "testString");
   }
 

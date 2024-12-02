@@ -14,11 +14,22 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.Driver;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EngineDetailsBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesLogConfiguration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Configuration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Jvm;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.NodeDescription;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.NodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngineCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngineEngineProperties;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePatchRemoveEngineProperties;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePropertiesCatalog;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePropertiesEventListener;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePropertiesGlobal;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesOaiGenConfiguration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesOaiGenJvm;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;

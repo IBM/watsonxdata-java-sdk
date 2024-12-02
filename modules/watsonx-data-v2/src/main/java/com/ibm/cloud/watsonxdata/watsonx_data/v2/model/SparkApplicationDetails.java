@@ -10,12 +10,13 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -25,9 +26,18 @@ public class SparkApplicationDetails extends GenericModel {
 
   protected String application;
   protected List<String> arguments;
-  protected SparkApplicationDetailsConf conf;
-  protected Map<String, Object> env;
+  @SerializedName("class")
+  protected String xClass;
+  protected SparkApplicationConfig conf;
+  protected SparkApplicationEnv env;
+  protected String files;
+  protected String jars;
   protected String name;
+  protected String packages;
+  protected String repositories;
+  @SerializedName("spark_version")
+  protected String sparkVersion;
+  protected SparkApplicationDetailsRuntime runtime;
 
   /**
    * Builder.
@@ -35,9 +45,16 @@ public class SparkApplicationDetails extends GenericModel {
   public static class Builder {
     private String application;
     private List<String> arguments;
-    private SparkApplicationDetailsConf conf;
-    private Map<String, Object> env;
+    private String xClass;
+    private SparkApplicationConfig conf;
+    private SparkApplicationEnv env;
+    private String files;
+    private String jars;
     private String name;
+    private String packages;
+    private String repositories;
+    private String sparkVersion;
+    private SparkApplicationDetailsRuntime runtime;
 
     /**
      * Instantiates a new Builder from an existing SparkApplicationDetails instance.
@@ -47,30 +64,22 @@ public class SparkApplicationDetails extends GenericModel {
     private Builder(SparkApplicationDetails sparkApplicationDetails) {
       this.application = sparkApplicationDetails.application;
       this.arguments = sparkApplicationDetails.arguments;
+      this.xClass = sparkApplicationDetails.xClass;
       this.conf = sparkApplicationDetails.conf;
       this.env = sparkApplicationDetails.env;
+      this.files = sparkApplicationDetails.files;
+      this.jars = sparkApplicationDetails.jars;
       this.name = sparkApplicationDetails.name;
+      this.packages = sparkApplicationDetails.packages;
+      this.repositories = sparkApplicationDetails.repositories;
+      this.sparkVersion = sparkApplicationDetails.sparkVersion;
+      this.runtime = sparkApplicationDetails.runtime;
     }
 
     /**
      * Instantiates a new builder.
      */
     public Builder() {
-    }
-
-    /**
-     * Instantiates a new builder with required properties.
-     *
-     * @param application the application
-     * @param arguments the arguments
-     * @param conf the conf
-     * @param env the env
-     */
-    public Builder(String application, List<String> arguments, SparkApplicationDetailsConf conf, Map<String, Object> env) {
-      this.application = application;
-      this.arguments = arguments;
-      this.conf = conf;
-      this.env = env;
     }
 
     /**
@@ -122,12 +131,23 @@ public class SparkApplicationDetails extends GenericModel {
     }
 
     /**
+     * Set the xClass.
+     *
+     * @param xClass the xClass
+     * @return the SparkApplicationDetails builder
+     */
+    public Builder xClass(String xClass) {
+      this.xClass = xClass;
+      return this;
+    }
+
+    /**
      * Set the conf.
      *
      * @param conf the conf
      * @return the SparkApplicationDetails builder
      */
-    public Builder conf(SparkApplicationDetailsConf conf) {
+    public Builder conf(SparkApplicationConfig conf) {
       this.conf = conf;
       return this;
     }
@@ -138,8 +158,30 @@ public class SparkApplicationDetails extends GenericModel {
      * @param env the env
      * @return the SparkApplicationDetails builder
      */
-    public Builder env(Map<String, Object> env) {
+    public Builder env(SparkApplicationEnv env) {
       this.env = env;
+      return this;
+    }
+
+    /**
+     * Set the files.
+     *
+     * @param files the files
+     * @return the SparkApplicationDetails builder
+     */
+    public Builder files(String files) {
+      this.files = files;
+      return this;
+    }
+
+    /**
+     * Set the jars.
+     *
+     * @param jars the jars
+     * @return the SparkApplicationDetails builder
+     */
+    public Builder jars(String jars) {
+      this.jars = jars;
       return this;
     }
 
@@ -153,24 +195,67 @@ public class SparkApplicationDetails extends GenericModel {
       this.name = name;
       return this;
     }
+
+    /**
+     * Set the packages.
+     *
+     * @param packages the packages
+     * @return the SparkApplicationDetails builder
+     */
+    public Builder packages(String packages) {
+      this.packages = packages;
+      return this;
+    }
+
+    /**
+     * Set the repositories.
+     *
+     * @param repositories the repositories
+     * @return the SparkApplicationDetails builder
+     */
+    public Builder repositories(String repositories) {
+      this.repositories = repositories;
+      return this;
+    }
+
+    /**
+     * Set the sparkVersion.
+     *
+     * @param sparkVersion the sparkVersion
+     * @return the SparkApplicationDetails builder
+     */
+    public Builder sparkVersion(String sparkVersion) {
+      this.sparkVersion = sparkVersion;
+      return this;
+    }
+
+    /**
+     * Set the runtime.
+     *
+     * @param runtime the runtime
+     * @return the SparkApplicationDetails builder
+     */
+    public Builder runtime(SparkApplicationDetailsRuntime runtime) {
+      this.runtime = runtime;
+      return this;
+    }
   }
 
   protected SparkApplicationDetails() { }
 
   protected SparkApplicationDetails(Builder builder) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.application,
-      "application cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.arguments,
-      "arguments cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.conf,
-      "conf cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.env,
-      "env cannot be null");
     application = builder.application;
     arguments = builder.arguments;
+    xClass = builder.xClass;
     conf = builder.conf;
     env = builder.env;
+    files = builder.files;
+    jars = builder.jars;
     name = builder.name;
+    packages = builder.packages;
+    repositories = builder.repositories;
+    sparkVersion = builder.sparkVersion;
+    runtime = builder.runtime;
   }
 
   /**
@@ -205,25 +290,58 @@ public class SparkApplicationDetails extends GenericModel {
   }
 
   /**
+   * Gets the xClass.
+   *
+   * Class.
+   *
+   * @return the xClass
+   */
+  public String xClass() {
+    return xClass;
+  }
+
+  /**
    * Gets the conf.
    *
-   * Application.
+   * Spark applications details configuration.
    *
    * @return the conf
    */
-  public SparkApplicationDetailsConf conf() {
+  public SparkApplicationConfig conf() {
     return conf;
   }
 
   /**
    * Gets the env.
    *
-   * Application.
+   * Spark applications details env samples.
    *
    * @return the env
    */
-  public Map<String, Object> env() {
+  public SparkApplicationEnv env() {
     return env;
+  }
+
+  /**
+   * Gets the files.
+   *
+   * Files.
+   *
+   * @return the files
+   */
+  public String files() {
+    return files;
+  }
+
+  /**
+   * Gets the jars.
+   *
+   * Jars.
+   *
+   * @return the jars
+   */
+  public String jars() {
+    return jars;
   }
 
   /**
@@ -235,6 +353,50 @@ public class SparkApplicationDetails extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the packages.
+   *
+   * Packages.
+   *
+   * @return the packages
+   */
+  public String packages() {
+    return packages;
+  }
+
+  /**
+   * Gets the repositories.
+   *
+   * Repositories.
+   *
+   * @return the repositories
+   */
+  public String repositories() {
+    return repositories;
+  }
+
+  /**
+   * Gets the sparkVersion.
+   *
+   * Spark Version.
+   *
+   * @return the sparkVersion
+   */
+  public String sparkVersion() {
+    return sparkVersion;
+  }
+
+  /**
+   * Gets the runtime.
+   *
+   * application run time.
+   *
+   * @return the runtime
+   */
+  public SparkApplicationDetailsRuntime runtime() {
+    return runtime;
   }
 }
 

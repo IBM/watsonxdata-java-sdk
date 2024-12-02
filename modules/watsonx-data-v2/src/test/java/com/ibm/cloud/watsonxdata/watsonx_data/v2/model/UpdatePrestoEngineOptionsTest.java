@@ -14,7 +14,6 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.JsonPatchOperation;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdatePrestoEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
@@ -32,24 +31,13 @@ public class UpdatePrestoEngineOptionsTest {
 
   @Test
   public void testUpdatePrestoEngineOptions() throws Throwable {
-    JsonPatchOperation jsonPatchOperationModel = new JsonPatchOperation.Builder()
-      .op("add")
-      .path("testString")
-      .from("testString")
-      .value("testString")
-      .build();
-    assertEquals(jsonPatchOperationModel.op(), "add");
-    assertEquals(jsonPatchOperationModel.path(), "testString");
-    assertEquals(jsonPatchOperationModel.from(), "testString");
-    assertEquals(jsonPatchOperationModel.value(), "testString");
-
     UpdatePrestoEngineOptions updatePrestoEngineOptionsModel = new UpdatePrestoEngineOptions.Builder()
       .engineId("testString")
-      .body(java.util.Arrays.asList(jsonPatchOperationModel))
+      .body(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .authInstanceId("testString")
       .build();
     assertEquals(updatePrestoEngineOptionsModel.engineId(), "testString");
-    assertEquals(updatePrestoEngineOptionsModel.body(), java.util.Arrays.asList(jsonPatchOperationModel));
+    assertEquals(updatePrestoEngineOptionsModel.body(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updatePrestoEngineOptionsModel.authInstanceId(), "testString");
   }
 

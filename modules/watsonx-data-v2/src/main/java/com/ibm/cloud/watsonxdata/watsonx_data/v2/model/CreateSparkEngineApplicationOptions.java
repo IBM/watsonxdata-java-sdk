@@ -10,7 +10,11 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -34,7 +38,9 @@ public class CreateSparkEngineApplicationOptions extends GenericModel {
   protected String jobEndpoint;
   protected String serviceInstanceId;
   protected String type;
+  protected List<SparkVolumeDetails> volumes;
   protected String authInstanceId;
+  protected List<String> state;
 
   /**
    * Builder.
@@ -45,7 +51,9 @@ public class CreateSparkEngineApplicationOptions extends GenericModel {
     private String jobEndpoint;
     private String serviceInstanceId;
     private String type;
+    private List<SparkVolumeDetails> volumes;
     private String authInstanceId;
+    private List<String> state;
 
     /**
      * Instantiates a new Builder from an existing CreateSparkEngineApplicationOptions instance.
@@ -58,7 +66,9 @@ public class CreateSparkEngineApplicationOptions extends GenericModel {
       this.jobEndpoint = createSparkEngineApplicationOptions.jobEndpoint;
       this.serviceInstanceId = createSparkEngineApplicationOptions.serviceInstanceId;
       this.type = createSparkEngineApplicationOptions.type;
+      this.volumes = createSparkEngineApplicationOptions.volumes;
       this.authInstanceId = createSparkEngineApplicationOptions.authInstanceId;
+      this.state = createSparkEngineApplicationOptions.state;
     }
 
     /**
@@ -85,6 +95,38 @@ public class CreateSparkEngineApplicationOptions extends GenericModel {
      */
     public CreateSparkEngineApplicationOptions build() {
       return new CreateSparkEngineApplicationOptions(this);
+    }
+
+    /**
+     * Adds a new element to volumes.
+     *
+     * @param volumes the new element to be added
+     * @return the CreateSparkEngineApplicationOptions builder
+     */
+    public Builder addVolumes(SparkVolumeDetails volumes) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(volumes,
+        "volumes cannot be null");
+      if (this.volumes == null) {
+        this.volumes = new ArrayList<SparkVolumeDetails>();
+      }
+      this.volumes.add(volumes);
+      return this;
+    }
+
+    /**
+     * Adds a new element to state.
+     *
+     * @param state the new element to be added
+     * @return the CreateSparkEngineApplicationOptions builder
+     */
+    public Builder addState(String state) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(state,
+        "state cannot be null");
+      if (this.state == null) {
+        this.state = new ArrayList<String>();
+      }
+      this.state.add(state);
+      return this;
     }
 
     /**
@@ -143,6 +185,18 @@ public class CreateSparkEngineApplicationOptions extends GenericModel {
     }
 
     /**
+     * Set the volumes.
+     * Existing volumes will be replaced.
+     *
+     * @param volumes the volumes
+     * @return the CreateSparkEngineApplicationOptions builder
+     */
+    public Builder volumes(List<SparkVolumeDetails> volumes) {
+      this.volumes = volumes;
+      return this;
+    }
+
+    /**
      * Set the authInstanceId.
      *
      * @param authInstanceId the authInstanceId
@@ -150,6 +204,18 @@ public class CreateSparkEngineApplicationOptions extends GenericModel {
      */
     public Builder authInstanceId(String authInstanceId) {
       this.authInstanceId = authInstanceId;
+      return this;
+    }
+
+    /**
+     * Set the state.
+     * Existing state will be replaced.
+     *
+     * @param state the state
+     * @return the CreateSparkEngineApplicationOptions builder
+     */
+    public Builder state(List<String> state) {
+      this.state = state;
       return this;
     }
   }
@@ -166,7 +232,9 @@ public class CreateSparkEngineApplicationOptions extends GenericModel {
     jobEndpoint = builder.jobEndpoint;
     serviceInstanceId = builder.serviceInstanceId;
     type = builder.type;
+    volumes = builder.volumes;
     authInstanceId = builder.authInstanceId;
+    state = builder.state;
   }
 
   /**
@@ -234,14 +302,36 @@ public class CreateSparkEngineApplicationOptions extends GenericModel {
   }
 
   /**
+   * Gets the volumes.
+   *
+   * Spark application volumes to mount.
+   *
+   * @return the volumes
+   */
+  public List<SparkVolumeDetails> volumes() {
+    return volumes;
+  }
+
+  /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * CRN.
    *
    * @return the authInstanceId
    */
   public String authInstanceId() {
     return authInstanceId;
+  }
+
+  /**
+   * Gets the state.
+   *
+   * state.
+   *
+   * @return the state
+   */
+  public List<String> state() {
+    return state;
   }
 }
 

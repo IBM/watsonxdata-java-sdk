@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.List;
@@ -22,7 +23,29 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SparkEngine extends GenericModel {
 
+  /**
+   * Origin - created or registered.
+   */
+  public interface Origin {
+    /** external. */
+    String EXTERNAL = "external";
+    /** discover. */
+    String DISCOVER = "discover";
+    /** native. */
+    String X_NATIVE = "native";
+  }
+
+  /**
+   * Type like spark, netezza,..
+   */
+  public interface Type {
+    /** spark. */
+    String SPARK = "spark";
+  }
+
   protected List<String> actions;
+  @SerializedName("associated_catalogs")
+  protected List<String> associatedCatalogs;
   @SerializedName("build_version")
   protected String buildVersion;
   @SerializedName("created_by")
@@ -52,6 +75,17 @@ public class SparkEngine extends GenericModel {
    */
   public List<String> getActions() {
     return actions;
+  }
+
+  /**
+   * Gets the associatedCatalogs.
+   *
+   * Associated catalogs.
+   *
+   * @return the associatedCatalogs
+   */
+  public List<String> getAssociatedCatalogs() {
+    return associatedCatalogs;
   }
 
   /**
@@ -134,7 +168,7 @@ public class SparkEngine extends GenericModel {
   /**
    * Gets the origin.
    *
-   * Origin - place holder.
+   * Origin - created or registered.
    *
    * @return the origin
    */
@@ -174,6 +208,5 @@ public class SparkEngine extends GenericModel {
   public String getType() {
     return type;
   }
-
 }
 

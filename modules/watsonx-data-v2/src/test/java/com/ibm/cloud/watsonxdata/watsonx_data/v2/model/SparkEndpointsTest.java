@@ -39,5 +39,8 @@ public class SparkEndpointsTest {
     assertNull(sparkEndpointsModel.getSparkKernelEndpoint());
     assertNull(sparkEndpointsModel.getViewHistoryServer());
     assertNull(sparkEndpointsModel.getWxdApplicationEndpoint());
+    assertNull(sparkEndpointsModel.getWxdEngineEndpoint());
+    assertNull(sparkEndpointsModel.getWxdHistoryServerEndpoint());
+    assertNull(sparkEndpointsModel.getWxdHistoryServerUiEndpoint());
   }
 }

@@ -14,7 +14,6 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.JsonPatchOperation;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateBucketRegistrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
@@ -32,24 +31,13 @@ public class UpdateBucketRegistrationOptionsTest {
 
   @Test
   public void testUpdateBucketRegistrationOptions() throws Throwable {
-    JsonPatchOperation jsonPatchOperationModel = new JsonPatchOperation.Builder()
-      .op("add")
-      .path("testString")
-      .from("testString")
-      .value("testString")
-      .build();
-    assertEquals(jsonPatchOperationModel.op(), "add");
-    assertEquals(jsonPatchOperationModel.path(), "testString");
-    assertEquals(jsonPatchOperationModel.from(), "testString");
-    assertEquals(jsonPatchOperationModel.value(), "testString");
-
     UpdateBucketRegistrationOptions updateBucketRegistrationOptionsModel = new UpdateBucketRegistrationOptions.Builder()
       .bucketId("testString")
-      .body(java.util.Arrays.asList(jsonPatchOperationModel))
+      .body(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .authInstanceId("testString")
       .build();
     assertEquals(updateBucketRegistrationOptionsModel.bucketId(), "testString");
-    assertEquals(updateBucketRegistrationOptionsModel.body(), java.util.Arrays.asList(jsonPatchOperationModel));
+    assertEquals(updateBucketRegistrationOptionsModel.body(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateBucketRegistrationOptionsModel.authInstanceId(), "testString");
   }
 

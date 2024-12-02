@@ -10,7 +10,11 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -21,6 +25,7 @@ public class ListSparkEngineApplicationsOptions extends GenericModel {
 
   protected String engineId;
   protected String authInstanceId;
+  protected List<String> state;
 
   /**
    * Builder.
@@ -28,6 +33,7 @@ public class ListSparkEngineApplicationsOptions extends GenericModel {
   public static class Builder {
     private String engineId;
     private String authInstanceId;
+    private List<String> state;
 
     /**
      * Instantiates a new Builder from an existing ListSparkEngineApplicationsOptions instance.
@@ -37,6 +43,7 @@ public class ListSparkEngineApplicationsOptions extends GenericModel {
     private Builder(ListSparkEngineApplicationsOptions listSparkEngineApplicationsOptions) {
       this.engineId = listSparkEngineApplicationsOptions.engineId;
       this.authInstanceId = listSparkEngineApplicationsOptions.authInstanceId;
+      this.state = listSparkEngineApplicationsOptions.state;
     }
 
     /**
@@ -64,6 +71,22 @@ public class ListSparkEngineApplicationsOptions extends GenericModel {
     }
 
     /**
+     * Adds a new element to state.
+     *
+     * @param state the new element to be added
+     * @return the ListSparkEngineApplicationsOptions builder
+     */
+    public Builder addState(String state) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(state,
+        "state cannot be null");
+      if (this.state == null) {
+        this.state = new ArrayList<String>();
+      }
+      this.state.add(state);
+      return this;
+    }
+
+    /**
      * Set the engineId.
      *
      * @param engineId the engineId
@@ -84,6 +107,18 @@ public class ListSparkEngineApplicationsOptions extends GenericModel {
       this.authInstanceId = authInstanceId;
       return this;
     }
+
+    /**
+     * Set the state.
+     * Existing state will be replaced.
+     *
+     * @param state the state
+     * @return the ListSparkEngineApplicationsOptions builder
+     */
+    public Builder state(List<String> state) {
+      this.state = state;
+      return this;
+    }
   }
 
   protected ListSparkEngineApplicationsOptions() { }
@@ -93,6 +128,7 @@ public class ListSparkEngineApplicationsOptions extends GenericModel {
       "engineId cannot be empty");
     engineId = builder.engineId;
     authInstanceId = builder.authInstanceId;
+    state = builder.state;
   }
 
   /**
@@ -118,12 +154,23 @@ public class ListSparkEngineApplicationsOptions extends GenericModel {
   /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * CRN.
    *
    * @return the authInstanceId
    */
   public String authInstanceId() {
     return authInstanceId;
+  }
+
+  /**
+   * Gets the state.
+   *
+   * state.
+   *
+   * @return the state
+   */
+  public List<String> state() {
+    return state;
   }
 }
 

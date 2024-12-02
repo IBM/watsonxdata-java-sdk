@@ -32,18 +32,24 @@ public class CreateMilvusServiceOptionsTest {
   @Test
   public void testCreateMilvusServiceOptions() throws Throwable {
     CreateMilvusServiceOptions createMilvusServiceOptionsModel = new CreateMilvusServiceOptions.Builder()
+      .bucketName("Sample bucket name")
       .origin("native")
-      .type("milvus")
-      .description("milvus service for running sql queries")
+      .rootPath("Sample path")
       .serviceDisplayName("sampleService")
+      .bucketType("Sample bucket type")
+      .description("milvus service for running sql queries")
       .tags(java.util.Arrays.asList("tag1", "tag2"))
+      .tshirtSize("small")
       .authInstanceId("testString")
       .build();
+    assertEquals(createMilvusServiceOptionsModel.bucketName(), "Sample bucket name");
     assertEquals(createMilvusServiceOptionsModel.origin(), "native");
-    assertEquals(createMilvusServiceOptionsModel.type(), "milvus");
-    assertEquals(createMilvusServiceOptionsModel.description(), "milvus service for running sql queries");
+    assertEquals(createMilvusServiceOptionsModel.rootPath(), "Sample path");
     assertEquals(createMilvusServiceOptionsModel.serviceDisplayName(), "sampleService");
+    assertEquals(createMilvusServiceOptionsModel.bucketType(), "Sample bucket type");
+    assertEquals(createMilvusServiceOptionsModel.description(), "milvus service for running sql queries");
     assertEquals(createMilvusServiceOptionsModel.tags(), java.util.Arrays.asList("tag1", "tag2"));
+    assertEquals(createMilvusServiceOptionsModel.tshirtSize(), "small");
     assertEquals(createMilvusServiceOptionsModel.authInstanceId(), "testString");
   }
 

@@ -36,12 +36,14 @@ public class DeleteTableOptionsTest {
       .schemaId("testString")
       .tableId("testString")
       .engineId("testString")
+      .type("testString")
       .authInstanceId("testString")
       .build();
     assertEquals(deleteTableOptionsModel.catalogId(), "testString");
     assertEquals(deleteTableOptionsModel.schemaId(), "testString");
     assertEquals(deleteTableOptionsModel.tableId(), "testString");
     assertEquals(deleteTableOptionsModel.engineId(), "testString");
+    assertEquals(deleteTableOptionsModel.type(), "testString");
     assertEquals(deleteTableOptionsModel.authInstanceId(), "testString");
   }
 

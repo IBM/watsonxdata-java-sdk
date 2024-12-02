@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.ArrayList;
@@ -39,7 +40,6 @@ public class CreateOtherEngineOptions extends GenericModel {
   protected String description;
   protected String origin;
   protected List<String> tags;
-  protected String type;
   protected String authInstanceId;
 
   /**
@@ -51,7 +51,6 @@ public class CreateOtherEngineOptions extends GenericModel {
     private String description;
     private String origin;
     private List<String> tags;
-    private String type;
     private String authInstanceId;
 
     /**
@@ -65,7 +64,6 @@ public class CreateOtherEngineOptions extends GenericModel {
       this.description = createOtherEngineOptions.description;
       this.origin = createOtherEngineOptions.origin;
       this.tags = createOtherEngineOptions.tags;
-      this.type = createOtherEngineOptions.type;
       this.authInstanceId = createOtherEngineOptions.authInstanceId;
     }
 
@@ -168,17 +166,6 @@ public class CreateOtherEngineOptions extends GenericModel {
     }
 
     /**
-     * Set the type.
-     *
-     * @param type the type
-     * @return the CreateOtherEngineOptions builder
-     */
-    public Builder type(String type) {
-      this.type = type;
-      return this;
-    }
-
-    /**
      * Set the authInstanceId.
      *
      * @param authInstanceId the authInstanceId
@@ -202,7 +189,6 @@ public class CreateOtherEngineOptions extends GenericModel {
     description = builder.description;
     origin = builder.origin;
     tags = builder.tags;
-    type = builder.type;
     authInstanceId = builder.authInstanceId;
   }
 
@@ -271,20 +257,9 @@ public class CreateOtherEngineOptions extends GenericModel {
   }
 
   /**
-   * Gets the type.
-   *
-   * Engine type.
-   *
-   * @return the type
-   */
-  public String type() {
-    return type;
-  }
-
-  /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * CRN.
    *
    * @return the authInstanceId
    */

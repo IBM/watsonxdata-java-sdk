@@ -35,10 +35,12 @@ public class DeleteSparkEngineApplicationsOptionsTest {
       .engineId("testString")
       .applicationId("testString")
       .authInstanceId("testString")
+      .state(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(deleteSparkEngineApplicationsOptionsModel.engineId(), "testString");
     assertEquals(deleteSparkEngineApplicationsOptionsModel.applicationId(), "testString");
     assertEquals(deleteSparkEngineApplicationsOptionsModel.authInstanceId(), "testString");
+    assertEquals(deleteSparkEngineApplicationsOptionsModel.state(), java.util.Arrays.asList("testString"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

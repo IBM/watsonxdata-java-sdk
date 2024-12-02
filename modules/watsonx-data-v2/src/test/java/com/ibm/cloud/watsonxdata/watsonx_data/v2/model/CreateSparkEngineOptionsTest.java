@@ -15,7 +15,9 @@ package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSparkEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkDefaultConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineDetailsPrototype;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkScaleConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -32,31 +34,77 @@ public class CreateSparkEngineOptionsTest {
 
   @Test
   public void testCreateSparkEngineOptions() throws Throwable {
+    SparkDefaultConfig sparkDefaultConfigModel = new SparkDefaultConfig.Builder()
+      .config1("testString")
+      .config2("testString")
+      .build();
+    assertEquals(sparkDefaultConfigModel.config1(), "testString");
+    assertEquals(sparkDefaultConfigModel.config2(), "testString");
+
+    SparkScaleConfig sparkScaleConfigModel = new SparkScaleConfig.Builder()
+      .autoScaleEnabled(true)
+      .currentNumberOfNodes(Long.valueOf("2"))
+      .maximumNumberOfNodes(Long.valueOf("5"))
+      .minimumNumberOfNodes(Long.valueOf("1"))
+      .nodeType("medium")
+      .numberOfNodes(Long.valueOf("2"))
+      .build();
+    assertEquals(sparkScaleConfigModel.autoScaleEnabled(), Boolean.valueOf(true));
+    assertEquals(sparkScaleConfigModel.currentNumberOfNodes(), Long.valueOf("2"));
+    assertEquals(sparkScaleConfigModel.maximumNumberOfNodes(), Long.valueOf("5"));
+    assertEquals(sparkScaleConfigModel.minimumNumberOfNodes(), Long.valueOf("1"));
+    assertEquals(sparkScaleConfigModel.nodeType(), "medium");
+    assertEquals(sparkScaleConfigModel.numberOfNodes(), Long.valueOf("2"));
+
     SparkEngineDetailsPrototype sparkEngineDetailsPrototypeModel = new SparkEngineDetailsPrototype.Builder()
       .apiKey("apikey")
       .connectionString("1.2.3.4")
+      .defaultConfig(sparkDefaultConfigModel)
+      .defaultVersion("4.8.3")
+      .engineHomeBucketDisplayName("test-spark-bucket")
+      .engineHomeBucketName("test-spark-bucket")
+      .engineHomePath("spark/spark1234")
+      .engineHomeVolumeId("1704979825978585")
+      .engineHomeVolumeName("my-volume")
+      .engineHomeVolumeStorageClass("nfs-client")
+      .engineHomeVolumeStorageSize("5Gi")
       .instanceId("spark-id")
+      .engineSubType("java/cpp")
       .managedBy("fully/self")
+      .scaleConfig(sparkScaleConfigModel)
       .build();
     assertEquals(sparkEngineDetailsPrototypeModel.apiKey(), "apikey");
     assertEquals(sparkEngineDetailsPrototypeModel.connectionString(), "1.2.3.4");
+    assertEquals(sparkEngineDetailsPrototypeModel.defaultConfig(), sparkDefaultConfigModel);
+    assertEquals(sparkEngineDetailsPrototypeModel.defaultVersion(), "4.8.3");
+    assertEquals(sparkEngineDetailsPrototypeModel.engineHomeBucketDisplayName(), "test-spark-bucket");
+    assertEquals(sparkEngineDetailsPrototypeModel.engineHomeBucketName(), "test-spark-bucket");
+    assertEquals(sparkEngineDetailsPrototypeModel.engineHomePath(), "spark/spark1234");
+    assertEquals(sparkEngineDetailsPrototypeModel.engineHomeVolumeId(), "1704979825978585");
+    assertEquals(sparkEngineDetailsPrototypeModel.engineHomeVolumeName(), "my-volume");
+    assertEquals(sparkEngineDetailsPrototypeModel.engineHomeVolumeStorageClass(), "nfs-client");
+    assertEquals(sparkEngineDetailsPrototypeModel.engineHomeVolumeStorageSize(), "5Gi");
     assertEquals(sparkEngineDetailsPrototypeModel.instanceId(), "spark-id");
+    assertEquals(sparkEngineDetailsPrototypeModel.engineSubType(), "java/cpp");
     assertEquals(sparkEngineDetailsPrototypeModel.managedBy(), "fully/self");
+    assertEquals(sparkEngineDetailsPrototypeModel.scaleConfig(), sparkScaleConfigModel);
 
     CreateSparkEngineOptions createSparkEngineOptionsModel = new CreateSparkEngineOptions.Builder()
       .origin("external")
-      .type("spark")
+      .associatedCatalogs(java.util.Arrays.asList("iceberg_data", "hive_data"))
       .description("spark engine description")
       .engineDetails(sparkEngineDetailsPrototypeModel)
       .engineDisplayName("sampleEngine")
+      .status("provisioning")
       .tags(java.util.Arrays.asList("tag1", "tag2"))
       .authInstanceId("testString")
       .build();
     assertEquals(createSparkEngineOptionsModel.origin(), "external");
-    assertEquals(createSparkEngineOptionsModel.type(), "spark");
+    assertEquals(createSparkEngineOptionsModel.associatedCatalogs(), java.util.Arrays.asList("iceberg_data", "hive_data"));
     assertEquals(createSparkEngineOptionsModel.description(), "spark engine description");
     assertEquals(createSparkEngineOptionsModel.engineDetails(), sparkEngineDetailsPrototypeModel);
     assertEquals(createSparkEngineOptionsModel.engineDisplayName(), "sampleEngine");
+    assertEquals(createSparkEngineOptionsModel.status(), "provisioning");
     assertEquals(createSparkEngineOptionsModel.tags(), java.util.Arrays.asList("tag1", "tag2"));
     assertEquals(createSparkEngineOptionsModel.authInstanceId(), "testString");
   }

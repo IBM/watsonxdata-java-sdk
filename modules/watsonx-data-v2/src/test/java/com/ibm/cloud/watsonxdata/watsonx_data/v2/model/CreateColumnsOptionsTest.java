@@ -38,6 +38,7 @@ public class CreateColumnsOptionsTest {
       .extra("varchar")
       .length("30")
       .scale("2")
+      .precision("10")
       .type("varchar")
       .build();
     assertEquals(columnModel.columnName(), "expenses");
@@ -45,6 +46,7 @@ public class CreateColumnsOptionsTest {
     assertEquals(columnModel.extra(), "varchar");
     assertEquals(columnModel.length(), "30");
     assertEquals(columnModel.scale(), "2");
+    assertEquals(columnModel.precision(), "10");
     assertEquals(columnModel.type(), "varchar");
 
     CreateColumnsOptions createColumnsOptionsModel = new CreateColumnsOptions.Builder()

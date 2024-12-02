@@ -10,10 +10,10 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -23,7 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class UpdateDb2EngineOptions extends GenericModel {
 
   protected String engineId;
-  protected List<JsonPatchOperation> body;
+  protected Map<String, Object> body;
   protected String authInstanceId;
 
   /**
@@ -31,7 +31,7 @@ public class UpdateDb2EngineOptions extends GenericModel {
    */
   public static class Builder {
     private String engineId;
-    private List<JsonPatchOperation> body;
+    private Map<String, Object> body;
     private String authInstanceId;
 
     /**
@@ -57,7 +57,7 @@ public class UpdateDb2EngineOptions extends GenericModel {
      * @param engineId the engineId
      * @param body the body
      */
-    public Builder(String engineId, List<JsonPatchOperation> body) {
+    public Builder(String engineId, Map<String, Object> body) {
       this.engineId = engineId;
       this.body = body;
     }
@@ -69,22 +69,6 @@ public class UpdateDb2EngineOptions extends GenericModel {
      */
     public UpdateDb2EngineOptions build() {
       return new UpdateDb2EngineOptions(this);
-    }
-
-    /**
-     * Adds a new element to body.
-     *
-     * @param body the new element to be added
-     * @return the UpdateDb2EngineOptions builder
-     */
-    public Builder addBody(JsonPatchOperation body) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(body,
-        "body cannot be null");
-      if (this.body == null) {
-        this.body = new ArrayList<JsonPatchOperation>();
-      }
-      this.body.add(body);
-      return this;
     }
 
     /**
@@ -100,12 +84,11 @@ public class UpdateDb2EngineOptions extends GenericModel {
 
     /**
      * Set the body.
-     * Existing body will be replaced.
      *
      * @param body the body
      * @return the UpdateDb2EngineOptions builder
      */
-    public Builder body(List<JsonPatchOperation> body) {
+    public Builder body(Map<String, Object> body) {
       this.body = body;
       return this;
     }
@@ -161,14 +144,14 @@ public class UpdateDb2EngineOptions extends GenericModel {
    *
    * @return the body
    */
-  public List<JsonPatchOperation> body() {
+  public Map<String, Object> body() {
     return body;
   }
 
   /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * CRN.
    *
    * @return the authInstanceId
    */

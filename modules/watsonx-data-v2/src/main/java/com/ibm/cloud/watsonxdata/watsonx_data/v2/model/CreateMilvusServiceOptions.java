@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.ArrayList;
@@ -22,22 +23,28 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateMilvusServiceOptions extends GenericModel {
 
+  protected String bucketName;
   protected String origin;
-  protected String type;
-  protected String description;
+  protected String rootPath;
   protected String serviceDisplayName;
+  protected String bucketType;
+  protected String description;
   protected List<String> tags;
+  protected String tshirtSize;
   protected String authInstanceId;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String bucketName;
     private String origin;
-    private String type;
-    private String description;
+    private String rootPath;
     private String serviceDisplayName;
+    private String bucketType;
+    private String description;
     private List<String> tags;
+    private String tshirtSize;
     private String authInstanceId;
 
     /**
@@ -46,11 +53,14 @@ public class CreateMilvusServiceOptions extends GenericModel {
      * @param createMilvusServiceOptions the instance to initialize the Builder with
      */
     private Builder(CreateMilvusServiceOptions createMilvusServiceOptions) {
+      this.bucketName = createMilvusServiceOptions.bucketName;
       this.origin = createMilvusServiceOptions.origin;
-      this.type = createMilvusServiceOptions.type;
-      this.description = createMilvusServiceOptions.description;
+      this.rootPath = createMilvusServiceOptions.rootPath;
       this.serviceDisplayName = createMilvusServiceOptions.serviceDisplayName;
+      this.bucketType = createMilvusServiceOptions.bucketType;
+      this.description = createMilvusServiceOptions.description;
       this.tags = createMilvusServiceOptions.tags;
+      this.tshirtSize = createMilvusServiceOptions.tshirtSize;
       this.authInstanceId = createMilvusServiceOptions.authInstanceId;
     }
 
@@ -63,12 +73,16 @@ public class CreateMilvusServiceOptions extends GenericModel {
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param bucketName the bucketName
      * @param origin the origin
-     * @param type the type
+     * @param rootPath the rootPath
+     * @param serviceDisplayName the serviceDisplayName
      */
-    public Builder(String origin, String type) {
+    public Builder(String bucketName, String origin, String rootPath, String serviceDisplayName) {
+      this.bucketName = bucketName;
       this.origin = origin;
-      this.type = type;
+      this.rootPath = rootPath;
+      this.serviceDisplayName = serviceDisplayName;
     }
 
     /**
@@ -97,6 +111,17 @@ public class CreateMilvusServiceOptions extends GenericModel {
     }
 
     /**
+     * Set the bucketName.
+     *
+     * @param bucketName the bucketName
+     * @return the CreateMilvusServiceOptions builder
+     */
+    public Builder bucketName(String bucketName) {
+      this.bucketName = bucketName;
+      return this;
+    }
+
+    /**
      * Set the origin.
      *
      * @param origin the origin
@@ -108,24 +133,13 @@ public class CreateMilvusServiceOptions extends GenericModel {
     }
 
     /**
-     * Set the type.
+     * Set the rootPath.
      *
-     * @param type the type
+     * @param rootPath the rootPath
      * @return the CreateMilvusServiceOptions builder
      */
-    public Builder type(String type) {
-      this.type = type;
-      return this;
-    }
-
-    /**
-     * Set the description.
-     *
-     * @param description the description
-     * @return the CreateMilvusServiceOptions builder
-     */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder rootPath(String rootPath) {
+      this.rootPath = rootPath;
       return this;
     }
 
@@ -141,6 +155,28 @@ public class CreateMilvusServiceOptions extends GenericModel {
     }
 
     /**
+     * Set the bucketType.
+     *
+     * @param bucketType the bucketType
+     * @return the CreateMilvusServiceOptions builder
+     */
+    public Builder bucketType(String bucketType) {
+      this.bucketType = bucketType;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the CreateMilvusServiceOptions builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    /**
      * Set the tags.
      * Existing tags will be replaced.
      *
@@ -149,6 +185,17 @@ public class CreateMilvusServiceOptions extends GenericModel {
      */
     public Builder tags(List<String> tags) {
       this.tags = tags;
+      return this;
+    }
+
+    /**
+     * Set the tshirtSize.
+     *
+     * @param tshirtSize the tshirtSize
+     * @return the CreateMilvusServiceOptions builder
+     */
+    public Builder tshirtSize(String tshirtSize) {
+      this.tshirtSize = tshirtSize;
       return this;
     }
 
@@ -167,15 +214,22 @@ public class CreateMilvusServiceOptions extends GenericModel {
   protected CreateMilvusServiceOptions() { }
 
   protected CreateMilvusServiceOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.bucketName,
+      "bucketName cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.origin,
       "origin cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
-      "type cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rootPath,
+      "rootPath cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.serviceDisplayName,
+      "serviceDisplayName cannot be null");
+    bucketName = builder.bucketName;
     origin = builder.origin;
-    type = builder.type;
-    description = builder.description;
+    rootPath = builder.rootPath;
     serviceDisplayName = builder.serviceDisplayName;
+    bucketType = builder.bucketType;
+    description = builder.description;
     tags = builder.tags;
+    tshirtSize = builder.tshirtSize;
     authInstanceId = builder.authInstanceId;
   }
 
@@ -186,6 +240,17 @@ public class CreateMilvusServiceOptions extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the bucketName.
+   *
+   * bucket name.
+   *
+   * @return the bucketName
+   */
+  public String bucketName() {
+    return bucketName;
   }
 
   /**
@@ -200,25 +265,14 @@ public class CreateMilvusServiceOptions extends GenericModel {
   }
 
   /**
-   * Gets the type.
+   * Gets the rootPath.
    *
-   * service type.
+   * root path.
    *
-   * @return the type
+   * @return the rootPath
    */
-  public String type() {
-    return type;
-  }
-
-  /**
-   * Gets the description.
-   *
-   * Service description.
-   *
-   * @return the description
-   */
-  public String description() {
-    return description;
+  public String rootPath() {
+    return rootPath;
   }
 
   /**
@@ -233,6 +287,28 @@ public class CreateMilvusServiceOptions extends GenericModel {
   }
 
   /**
+   * Gets the bucketType.
+   *
+   * bucket type.
+   *
+   * @return the bucketType
+   */
+  public String bucketType() {
+    return bucketType;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * Service description.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
+  }
+
+  /**
    * Gets the tags.
    *
    * Tags.
@@ -244,9 +320,20 @@ public class CreateMilvusServiceOptions extends GenericModel {
   }
 
   /**
+   * Gets the tshirtSize.
+   *
+   * tshirt size.
+   *
+   * @return the tshirtSize
+   */
+  public String tshirtSize() {
+    return tshirtSize;
+  }
+
+  /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * watsonx.data instance ID.
    *
    * @return the authInstanceId
    */

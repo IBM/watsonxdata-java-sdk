@@ -32,9 +32,17 @@ public class TableSnapshotTest {
   @Test
   public void testTableSnapshot() throws Throwable {
     TableSnapshot tableSnapshotModel = new TableSnapshot();
+    assertNull(tableSnapshotModel.getAddedDataFiles());
+    assertNull(tableSnapshotModel.getAddedFilesSize());
+    assertNull(tableSnapshotModel.getAddedRecords());
+    assertNull(tableSnapshotModel.getChangedPartitionCount());
     assertNull(tableSnapshotModel.getCommittedAt());
     assertNull(tableSnapshotModel.getOperation());
     assertNull(tableSnapshotModel.getSnapshotId());
-    assertNull(tableSnapshotModel.getSummary());
+    assertNull(tableSnapshotModel.getTotalDataFiles());
+    assertNull(tableSnapshotModel.getTotalDeleteFiles());
+    assertNull(tableSnapshotModel.getTotalEqualityDeletes());
+    assertNull(tableSnapshotModel.getTotalPositionDeletes());
+    assertNull(tableSnapshotModel.getTotalRecords());
   }
 }

@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.84.2-a032c73d-20240125-175315
+ * IBM OpenAPI SDK Code Generator Version: 3.92.1-44330004-20240620-143510
  */
 
 package com.ibm.cloud.watsonxdata.watsonx_data.v2;
@@ -27,6 +27,7 @@ import com.ibm.cloud.sdk.core.service.BaseService;
 import com.ibm.cloud.sdk.core.util.RequestUtils;
 import com.ibm.cloud.sdk.core.util.ResponseConverterUtils;
 import com.ibm.cloud.watsonx_data.common.SdkCommon;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketObjectProperties;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketRegistration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketRegistrationCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketRegistrationObjectCollection;
@@ -34,33 +35,42 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.Catalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CatalogCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.Column;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ColumnCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ColumnsResponse;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateActivateBucketCreatedBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateActivateBucketOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateBucketRegistrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateColumnsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateDatabaseRegistrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateDb2EngineOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateDriverDatabaseCatalogOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateEnginePauseCreatedBody;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateEnginePauseOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateEngineRestartCreatedBody;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateEngineRestartOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateEngineResumeCreatedBody;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateEngineResumeOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateEngineScaleCreatedBody;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateEngineScaleOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateExecuteQueryOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateHdfsStorageOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateIngestionJobsLocalFilesOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateIngestionJobsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateIntegrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateMilvusServiceOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateMilvusServicePauseOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateMilvusServiceResumeOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateMilvusServiceScaleOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateNetezzaEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateOtherEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreatePrestissimoEngineCatalogsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreatePrestissimoEngineOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreatePrestissimoEnginePauseOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreatePrestissimoEngineRestartOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreatePrestissimoEngineResumeOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreatePrestissimoEngineScaleOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreatePrestoEngineCatalogsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreatePrestoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreatePreviewIngestionFileOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSalIntegrationEnrichmentGlobalSettingsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSalIntegrationEnrichmentOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSalIntegrationEnrichmentSettingsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSalIntegrationOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSalIntegrationUploadGlossaryOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSchemaCreatedBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSchemaOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSparkEngineApplicationOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSparkEngineCatalogsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.CreateSparkEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DatabaseRegistration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DatabaseRegistrationCollection;
@@ -72,36 +82,71 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteDatabaseCatalogOpti
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteDb2EngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteDeactivateBucketOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteIngestionJobsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteIntegrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteMilvusServiceOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteNetezzaEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteOtherEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeletePrestissimoEngineCatalogsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeletePrestissimoEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeletePrestoEngineCatalogsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteSalIntegrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteSchemaOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteSparkEngineApplicationsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteSparkEngineCatalogsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteSparkEngineHistoryServerOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteSparkEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DeleteTableOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.Engines;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EndpointCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ExecuteQueryCreatedBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetAllColumnsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetBucketObjectPropertiesOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetBucketRegistrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetCatalogOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetDatabaseOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetDeploymentsOKBody;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetDeploymentsOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetEnginesOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetEndpointsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetIngestionJobOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetIntegrationsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetMilvusServiceOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetPrestissimoEngineCatalogOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetPrestissimoEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetPrestoEngineCatalogOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetPrestoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationEnrichmentAssetsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationEnrichmentDataAssetOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationEnrichmentGlobalSettingsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationEnrichmentJobRunLogsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationEnrichmentJobRunsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationEnrichmentJobsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationEnrichmentSettingsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationGlossaryTermsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationMappingsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSalIntegrationUploadGlossaryStatusOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSchemaDetailsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSparkEngineApplicationStatusOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSparkEngineCatalogOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSparkEngineHistoryServerOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetSparkEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetTableDetailsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.GetTableOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.HdfsStorageRegistration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.IngestionJob;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.IngestionJobCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.Integration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.IntegrationCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListAllIntegrationsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListAllSchemasOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListAllTablesOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListBucketObjectsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListBucketRegistrationsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListCatalogsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListColumnsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListDatabaseRegistrationsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListDb2EnginesOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListIngestionJobsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListMilvusDatabaseCollectionsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListMilvusServiceDatabasesOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListMilvusServicesOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListNetezzaEnginesOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListOtherEnginesOptions;
@@ -112,56 +157,85 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListPrestoEnginesOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSchemasOKBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSchemasOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkEngineApplicationsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkEngineCatalogsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkEnginesOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkVersionsOKBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkVersionsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListTableSnapshotsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListTablesOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusDatabaseCollections;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusService;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusServiceCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusServiceDatabases;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.NetezzaEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.NetezzaEngineCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.OtherEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.OtherEngineCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PausePrestissimoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PausePrestoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PauseSparkEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEngineCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngineCollection;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ReplacePrestissimoEngineCatalogsOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ReplacePrestoEngineCatalogsOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PreviewIngestionFile;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ReplaceSnapshotCreatedBody;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ReplaceSnapshotOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RestartPrestissimoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RestartPrestoEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ResultPrestissimoExplainStatement;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ResultRunPrestissimoExplainAnalyzeStatement;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ResumePrestissimoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ResumePrestoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ResumeSparkEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RollbackTableOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RunExplainAnalyzeStatementOKBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RunExplainAnalyzeStatementOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RunExplainStatementOKBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RunExplainStatementOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RunPrestissimoExplainAnalyzeStatementOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RunPrestissimoExplainStatementOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationEnrichmentAssets;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationEnrichmentDataAsset;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationEnrichmentJobRun;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationEnrichmentJobRunLogs;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationEnrichmentJobs;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationEnrichmentSettings;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationGlossaryTerms;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationMappings;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationUploadGlossary;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SalIntegrationUploadGlossaryStatus;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ScalePrestissimoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ScalePrestoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ScaleSparkEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SchemaResponse;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SchemaResponseCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineApplicationStatus;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineApplicationStatusCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkHistoryServer;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.StartSparkEngineHistoryServerOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SuccessResponse;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.Table;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.TableCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.TableResponse;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.TableResponseCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.TableSnapshotCollection;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.TestBucketConnectionOKBody;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.TestBucketConnectionOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.TestDatabaseConnectionResponse;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.TestLHConsoleOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateBucketRegistrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateColumnOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateDatabaseOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateDb2EngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateIntegrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateMilvusServiceOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateNetezzaEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdatePrestissimoEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdatePrestoEngineOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateSalIntegrationOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateSparkEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateSyncCatalogOKBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateSyncCatalogOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateTableOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ValidateDatabaseConnectionOptions;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -278,18 +352,23 @@ public class WatsonxData extends BaseService {
       builder.header("AuthInstanceId", createBucketRegistrationOptions.authInstanceId());
     }
     final JsonObject contentJson = new JsonObject();
-    contentJson.add("bucket_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBucketRegistrationOptions.bucketDetails()));
     contentJson.addProperty("bucket_type", createBucketRegistrationOptions.bucketType());
     contentJson.addProperty("description", createBucketRegistrationOptions.description());
     contentJson.addProperty("managed_by", createBucketRegistrationOptions.managedBy());
     if (createBucketRegistrationOptions.associatedCatalog() != null) {
       contentJson.add("associated_catalog", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBucketRegistrationOptions.associatedCatalog()));
     }
+    if (createBucketRegistrationOptions.bucketDetails() != null) {
+      contentJson.add("bucket_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBucketRegistrationOptions.bucketDetails()));
+    }
     if (createBucketRegistrationOptions.bucketDisplayName() != null) {
       contentJson.addProperty("bucket_display_name", createBucketRegistrationOptions.bucketDisplayName());
     }
     if (createBucketRegistrationOptions.region() != null) {
       contentJson.addProperty("region", createBucketRegistrationOptions.region());
+    }
+    if (createBucketRegistrationOptions.storageDetails() != null) {
+      contentJson.add("storage_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBucketRegistrationOptions.storageDetails()));
     }
     if (createBucketRegistrationOptions.tags() != null) {
       contentJson.add("tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createBucketRegistrationOptions.tags()));
@@ -328,9 +407,9 @@ public class WatsonxData extends BaseService {
   }
 
   /**
-   * Unregister Bucket.
+   * Deregister Bucket.
    *
-   * Unregister a bucket.
+   * Deregister a bucket.
    *
    * @param deleteBucketRegistrationOptions the {@link DeleteBucketRegistrationOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -374,7 +453,7 @@ public class WatsonxData extends BaseService {
     if (updateBucketRegistrationOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", updateBucketRegistrationOptions.authInstanceId());
     }
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBucketRegistrationOptions.body()), "application/json-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateBucketRegistrationOptions.body()), "application/merge-patch+json");
     ResponseConverter<BucketRegistration> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BucketRegistration>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -454,95 +533,106 @@ public class WatsonxData extends BaseService {
     if (listBucketObjectsOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", listBucketObjectsOptions.authInstanceId());
     }
+    if (listBucketObjectsOptions.path() != null) {
+      builder.query("path", String.valueOf(listBucketObjectsOptions.path()));
+    }
     ResponseConverter<BucketRegistrationObjectCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BucketRegistrationObjectCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * Check bucket credentials to be valid.
+   * Get bucket object properties.
    *
-   * Check whether provided bucket credentials are valid or not.
+   * Get bucket object properties.
    *
-   * @param testBucketConnectionOptions the {@link TestBucketConnectionOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link TestBucketConnectionOKBody}
+   * @param getBucketObjectPropertiesOptions the {@link GetBucketObjectPropertiesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BucketObjectProperties}
    */
-  public ServiceCall<TestBucketConnectionOKBody> testBucketConnection(TestBucketConnectionOptions testBucketConnectionOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(testBucketConnectionOptions,
-      "testBucketConnectionOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/test_bucket_connection"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "testBucketConnection");
+  public ServiceCall<BucketObjectProperties> getBucketObjectProperties(GetBucketObjectPropertiesOptions getBucketObjectPropertiesOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getBucketObjectPropertiesOptions,
+      "getBucketObjectPropertiesOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("bucket_id", getBucketObjectPropertiesOptions.bucketId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/bucket_registrations/{bucket_id}/object_properties", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getBucketObjectProperties");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (testBucketConnectionOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", testBucketConnectionOptions.authInstanceId());
+    if (getBucketObjectPropertiesOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getBucketObjectPropertiesOptions.authInstanceId());
     }
     final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("access_key", testBucketConnectionOptions.accessKey());
-    contentJson.addProperty("bucket_name", testBucketConnectionOptions.bucketName());
-    contentJson.addProperty("bucket_type", testBucketConnectionOptions.bucketType());
-    contentJson.addProperty("endpoint", testBucketConnectionOptions.endpoint());
-    contentJson.addProperty("region", testBucketConnectionOptions.region());
-    contentJson.addProperty("secret_key", testBucketConnectionOptions.secretKey());
+    if (getBucketObjectPropertiesOptions.paths() != null) {
+      contentJson.add("paths", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(getBucketObjectPropertiesOptions.paths()));
+    }
     builder.bodyJson(contentJson);
-    ResponseConverter<TestBucketConnectionOKBody> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<TestBucketConnectionOKBody>() { }.getType());
+    ResponseConverter<BucketObjectProperties> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BucketObjectProperties>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * Add/Create database with driver.
+   * Add/Create HDFS storage.
    *
-   * Add or create a new database with driver.
+   * Add or create a new HDFS database.
    *
-   * @param createDriverDatabaseCatalogOptions the {@link CreateDriverDatabaseCatalogOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link DatabaseRegistration}
+   * @param createHdfsStorageOptions the {@link CreateHdfsStorageOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link HdfsStorageRegistration}
    */
-  public ServiceCall<DatabaseRegistration> createDriverDatabaseCatalog(CreateDriverDatabaseCatalogOptions createDriverDatabaseCatalogOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createDriverDatabaseCatalogOptions,
-      "createDriverDatabaseCatalogOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/database_driver_registrations"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createDriverDatabaseCatalog");
+  public ServiceCall<HdfsStorageRegistration> createHdfsStorage(CreateHdfsStorageOptions createHdfsStorageOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createHdfsStorageOptions,
+      "createHdfsStorageOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/storage_hdfs_registrations"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createHdfsStorage");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (createDriverDatabaseCatalogOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createDriverDatabaseCatalogOptions.authInstanceId());
+    if (createHdfsStorageOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createHdfsStorageOptions.authInstanceId());
     }
     MultipartBody.Builder multipartBuilder = new MultipartBody.Builder();
     multipartBuilder.setType(MultipartBody.FORM);
-    okhttp3.RequestBody driverBody = RequestUtils.inputStreamBody(createDriverDatabaseCatalogOptions.driver(), createDriverDatabaseCatalogOptions.driverContentType());
-    multipartBuilder.addFormDataPart("driver", "filename", driverBody);
-    multipartBuilder.addFormDataPart("driver_file_name", createDriverDatabaseCatalogOptions.driverFileName());
-    multipartBuilder.addFormDataPart("database_display_name", createDriverDatabaseCatalogOptions.databaseDisplayName());
-    multipartBuilder.addFormDataPart("database_type", createDriverDatabaseCatalogOptions.databaseType());
-    multipartBuilder.addFormDataPart("catalog_name", createDriverDatabaseCatalogOptions.catalogName());
-    multipartBuilder.addFormDataPart("hostname", createDriverDatabaseCatalogOptions.hostname());
-    multipartBuilder.addFormDataPart("port", createDriverDatabaseCatalogOptions.port());
-    multipartBuilder.addFormDataPart("username", createDriverDatabaseCatalogOptions.username());
-    multipartBuilder.addFormDataPart("password", createDriverDatabaseCatalogOptions.password());
-    multipartBuilder.addFormDataPart("database_name", createDriverDatabaseCatalogOptions.databaseName());
-    if (createDriverDatabaseCatalogOptions.certificate() != null) {
-      multipartBuilder.addFormDataPart("certificate", createDriverDatabaseCatalogOptions.certificate());
+    multipartBuilder.addFormDataPart("bucket_display_name", createHdfsStorageOptions.bucketDisplayName());
+    multipartBuilder.addFormDataPart("bucket_type", createHdfsStorageOptions.bucketType());
+    multipartBuilder.addFormDataPart("hms_thrift_uri", createHdfsStorageOptions.hmsThriftUri());
+    multipartBuilder.addFormDataPart("hms_thrift_port", String.valueOf(createHdfsStorageOptions.hmsThriftPort()));
+    multipartBuilder.addFormDataPart("core_site", createHdfsStorageOptions.coreSite());
+    multipartBuilder.addFormDataPart("hdfs_site", createHdfsStorageOptions.hdfsSite());
+    multipartBuilder.addFormDataPart("kerberos", createHdfsStorageOptions.kerberos());
+    multipartBuilder.addFormDataPart("catalog_name", createHdfsStorageOptions.catalogName());
+    multipartBuilder.addFormDataPart("catalog_type", createHdfsStorageOptions.catalogType());
+    if (createHdfsStorageOptions.krb5Config() != null) {
+      multipartBuilder.addFormDataPart("krb5_config", createHdfsStorageOptions.krb5Config());
     }
-    if (createDriverDatabaseCatalogOptions.certificateExtension() != null) {
-      multipartBuilder.addFormDataPart("certificate_extension", createDriverDatabaseCatalogOptions.certificateExtension());
+    if (createHdfsStorageOptions.hiveKeytab() != null) {
+      okhttp3.RequestBody hiveKeytabBody = RequestUtils.inputStreamBody(createHdfsStorageOptions.hiveKeytab(), createHdfsStorageOptions.hiveKeytabContentType());
+      multipartBuilder.addFormDataPart("hive_keytab", "filename", hiveKeytabBody);
     }
-    if (createDriverDatabaseCatalogOptions.ssl() != null) {
-      multipartBuilder.addFormDataPart("ssl", createDriverDatabaseCatalogOptions.ssl());
+    if (createHdfsStorageOptions.hdfsKeytab() != null) {
+      okhttp3.RequestBody hdfsKeytabBody = RequestUtils.inputStreamBody(createHdfsStorageOptions.hdfsKeytab(), createHdfsStorageOptions.hdfsKeytabContentType());
+      multipartBuilder.addFormDataPart("hdfs_keytab", "filename", hdfsKeytabBody);
     }
-    if (createDriverDatabaseCatalogOptions.description() != null) {
-      multipartBuilder.addFormDataPart("description", createDriverDatabaseCatalogOptions.description());
+    if (createHdfsStorageOptions.hiveServerPrincipal() != null) {
+      multipartBuilder.addFormDataPart("hive_server_principal", createHdfsStorageOptions.hiveServerPrincipal());
     }
-    if (createDriverDatabaseCatalogOptions.createdOn() != null) {
-      multipartBuilder.addFormDataPart("created_on", createDriverDatabaseCatalogOptions.createdOn());
+    if (createHdfsStorageOptions.hiveClientPrincipal() != null) {
+      multipartBuilder.addFormDataPart("hive_client_principal", createHdfsStorageOptions.hiveClientPrincipal());
+    }
+    if (createHdfsStorageOptions.hdfsPrincipal() != null) {
+      multipartBuilder.addFormDataPart("hdfs_principal", createHdfsStorageOptions.hdfsPrincipal());
+    }
+    if (createHdfsStorageOptions.description() != null) {
+      multipartBuilder.addFormDataPart("description", createHdfsStorageOptions.description());
+    }
+    if (createHdfsStorageOptions.createdOn() != null) {
+      multipartBuilder.addFormDataPart("created_on", createHdfsStorageOptions.createdOn());
     }
     builder.body(multipartBuilder.build());
-    ResponseConverter<DatabaseRegistration> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DatabaseRegistration>() { }.getType());
+    ResponseConverter<HdfsStorageRegistration> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<HdfsStorageRegistration>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -704,377 +794,9 @@ public class WatsonxData extends BaseService {
     if (updateDatabaseOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", updateDatabaseOptions.authInstanceId());
     }
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDatabaseOptions.body()), "application/json-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDatabaseOptions.body()), "application/merge-patch+json");
     ResponseConverter<DatabaseRegistration> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<DatabaseRegistration>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Validate database connection.
-   *
-   * API to validate the database connection.
-   *
-   * @param validateDatabaseConnectionOptions the {@link ValidateDatabaseConnectionOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link TestDatabaseConnectionResponse}
-   */
-  public ServiceCall<TestDatabaseConnectionResponse> validateDatabaseConnection(ValidateDatabaseConnectionOptions validateDatabaseConnectionOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(validateDatabaseConnectionOptions,
-      "validateDatabaseConnectionOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/test_database_connection"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "validateDatabaseConnection");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    if (validateDatabaseConnectionOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", validateDatabaseConnectionOptions.authInstanceId());
-    }
-    final JsonObject contentJson = new JsonObject();
-    contentJson.add("database_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(validateDatabaseConnectionOptions.databaseDetails()));
-    contentJson.addProperty("database_type", validateDatabaseConnectionOptions.databaseType());
-    if (validateDatabaseConnectionOptions.certificate() != null) {
-      contentJson.addProperty("certificate", validateDatabaseConnectionOptions.certificate());
-    }
-    builder.bodyJson(contentJson);
-    ResponseConverter<TestDatabaseConnectionResponse> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<TestDatabaseConnectionResponse>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Get list of db2 engines.
-   *
-   * Get list of all db2 engines.
-   *
-   * @param listDb2EnginesOptions the {@link ListDb2EnginesOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link Db2EngineCollection}
-   */
-  public ServiceCall<Db2EngineCollection> listDb2Engines(ListDb2EnginesOptions listDb2EnginesOptions) {
-    if (listDb2EnginesOptions == null) {
-      listDb2EnginesOptions = new ListDb2EnginesOptions.Builder().build();
-    }
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/db2_engines"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listDb2Engines");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    if (listDb2EnginesOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", listDb2EnginesOptions.authInstanceId());
-    }
-    ResponseConverter<Db2EngineCollection> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Db2EngineCollection>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Get list of db2 engines.
-   *
-   * Get list of all db2 engines.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link Db2EngineCollection}
-   */
-  public ServiceCall<Db2EngineCollection> listDb2Engines() {
-    return listDb2Engines(null);
-  }
-
-  /**
-   * Create db2 engine.
-   *
-   * Create a new db2 engine.
-   *
-   * @param createDb2EngineOptions the {@link CreateDb2EngineOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link Db2Engine}
-   */
-  public ServiceCall<Db2Engine> createDb2Engine(CreateDb2EngineOptions createDb2EngineOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createDb2EngineOptions,
-      "createDb2EngineOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/db2_engines"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createDb2Engine");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    if (createDb2EngineOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createDb2EngineOptions.authInstanceId());
-    }
-    final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("origin", createDb2EngineOptions.origin());
-    contentJson.addProperty("type", createDb2EngineOptions.type());
-    if (createDb2EngineOptions.description() != null) {
-      contentJson.addProperty("description", createDb2EngineOptions.description());
-    }
-    if (createDb2EngineOptions.engineDetails() != null) {
-      contentJson.add("engine_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDb2EngineOptions.engineDetails()));
-    }
-    if (createDb2EngineOptions.engineDisplayName() != null) {
-      contentJson.addProperty("engine_display_name", createDb2EngineOptions.engineDisplayName());
-    }
-    if (createDb2EngineOptions.tags() != null) {
-      contentJson.add("tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDb2EngineOptions.tags()));
-    }
-    builder.bodyJson(contentJson);
-    ResponseConverter<Db2Engine> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Db2Engine>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Delete db2 engine.
-   *
-   * Delete a db2 engine.
-   *
-   * @param deleteDb2EngineOptions the {@link DeleteDb2EngineOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a void result
-   */
-  public ServiceCall<Void> deleteDb2Engine(DeleteDb2EngineOptions deleteDb2EngineOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteDb2EngineOptions,
-      "deleteDb2EngineOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", deleteDb2EngineOptions.engineId());
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/db2_engines/{engine_id}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "deleteDb2Engine");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    if (deleteDb2EngineOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", deleteDb2EngineOptions.authInstanceId());
-    }
-    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Update db2 engine.
-   *
-   * Update details of db2 engine.
-   *
-   * @param updateDb2EngineOptions the {@link UpdateDb2EngineOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link Db2Engine}
-   */
-  public ServiceCall<Db2Engine> updateDb2Engine(UpdateDb2EngineOptions updateDb2EngineOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(updateDb2EngineOptions,
-      "updateDb2EngineOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", updateDb2EngineOptions.engineId());
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/db2_engines/{engine_id}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "updateDb2Engine");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    if (updateDb2EngineOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", updateDb2EngineOptions.authInstanceId());
-    }
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDb2EngineOptions.body()), "application/json-patch+json");
-    ResponseConverter<Db2Engine> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Db2Engine>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Get all engines.
-   *
-   * Get all engine details.
-   *
-   * @param getEnginesOptions the {@link GetEnginesOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link Engines}
-   */
-  public ServiceCall<Engines> getEngines(GetEnginesOptions getEnginesOptions) {
-    if (getEnginesOptions == null) {
-      getEnginesOptions = new GetEnginesOptions.Builder().build();
-    }
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/engines"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getEngines");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    if (getEnginesOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", getEnginesOptions.authInstanceId());
-    }
-    ResponseConverter<Engines> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Engines>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Get all engines.
-   *
-   * Get all engine details.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link Engines}
-   */
-  public ServiceCall<Engines> getEngines() {
-    return getEngines(null);
-  }
-
-  /**
-   * Get deployments.
-   *
-   * Get list of all deployments.
-   *
-   * @param getDeploymentsOptions the {@link GetDeploymentsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link GetDeploymentsOKBody}
-   */
-  public ServiceCall<GetDeploymentsOKBody> getDeployments(GetDeploymentsOptions getDeploymentsOptions) {
-    if (getDeploymentsOptions == null) {
-      getDeploymentsOptions = new GetDeploymentsOptions.Builder().build();
-    }
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getDeployments");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    if (getDeploymentsOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", getDeploymentsOptions.authInstanceId());
-    }
-    ResponseConverter<GetDeploymentsOKBody> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<GetDeploymentsOKBody>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Get deployments.
-   *
-   * Get list of all deployments.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link GetDeploymentsOKBody}
-   */
-  public ServiceCall<GetDeploymentsOKBody> getDeployments() {
-    return getDeployments(null);
-  }
-
-  /**
-   * Get list of netezza engines.
-   *
-   * Get list of all netezza engines.
-   *
-   * @param listNetezzaEnginesOptions the {@link ListNetezzaEnginesOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link NetezzaEngineCollection}
-   */
-  public ServiceCall<NetezzaEngineCollection> listNetezzaEngines(ListNetezzaEnginesOptions listNetezzaEnginesOptions) {
-    if (listNetezzaEnginesOptions == null) {
-      listNetezzaEnginesOptions = new ListNetezzaEnginesOptions.Builder().build();
-    }
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/netezza_engines"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listNetezzaEngines");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    if (listNetezzaEnginesOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", listNetezzaEnginesOptions.authInstanceId());
-    }
-    ResponseConverter<NetezzaEngineCollection> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetezzaEngineCollection>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Get list of netezza engines.
-   *
-   * Get list of all netezza engines.
-   *
-   * @return a {@link ServiceCall} with a result of type {@link NetezzaEngineCollection}
-   */
-  public ServiceCall<NetezzaEngineCollection> listNetezzaEngines() {
-    return listNetezzaEngines(null);
-  }
-
-  /**
-   * Create netezza engine.
-   *
-   * Create a new netezza engine.
-   *
-   * @param createNetezzaEngineOptions the {@link CreateNetezzaEngineOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link NetezzaEngine}
-   */
-  public ServiceCall<NetezzaEngine> createNetezzaEngine(CreateNetezzaEngineOptions createNetezzaEngineOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createNetezzaEngineOptions,
-      "createNetezzaEngineOptions cannot be null");
-    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/netezza_engines"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createNetezzaEngine");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    if (createNetezzaEngineOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createNetezzaEngineOptions.authInstanceId());
-    }
-    final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("origin", createNetezzaEngineOptions.origin());
-    contentJson.addProperty("type", createNetezzaEngineOptions.type());
-    if (createNetezzaEngineOptions.description() != null) {
-      contentJson.addProperty("description", createNetezzaEngineOptions.description());
-    }
-    if (createNetezzaEngineOptions.engineDetails() != null) {
-      contentJson.add("engine_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createNetezzaEngineOptions.engineDetails()));
-    }
-    if (createNetezzaEngineOptions.engineDisplayName() != null) {
-      contentJson.addProperty("engine_display_name", createNetezzaEngineOptions.engineDisplayName());
-    }
-    if (createNetezzaEngineOptions.tags() != null) {
-      contentJson.add("tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createNetezzaEngineOptions.tags()));
-    }
-    builder.bodyJson(contentJson);
-    ResponseConverter<NetezzaEngine> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetezzaEngine>() { }.getType());
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Delete netezza engine.
-   *
-   * Delete a netezza engine.
-   *
-   * @param deleteNetezzaEngineOptions the {@link DeleteNetezzaEngineOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a void result
-   */
-  public ServiceCall<Void> deleteNetezzaEngine(DeleteNetezzaEngineOptions deleteNetezzaEngineOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteNetezzaEngineOptions,
-      "deleteNetezzaEngineOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", deleteNetezzaEngineOptions.engineId());
-    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/netezza_engines/{engine_id}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "deleteNetezzaEngine");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    if (deleteNetezzaEngineOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", deleteNetezzaEngineOptions.authInstanceId());
-    }
-    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
-    return createServiceCall(builder.build(), responseConverter);
-  }
-
-  /**
-   * Update netezza engine.
-   *
-   * Update details of netezza engine.
-   *
-   * @param updateNetezzaEngineOptions the {@link UpdateNetezzaEngineOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link NetezzaEngine}
-   */
-  public ServiceCall<NetezzaEngine> updateNetezzaEngine(UpdateNetezzaEngineOptions updateNetezzaEngineOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(updateNetezzaEngineOptions,
-      "updateNetezzaEngineOptions cannot be null");
-    Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", updateNetezzaEngineOptions.engineId());
-    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/netezza_engines/{engine_id}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "updateNetezzaEngine");
-    for (Entry<String, String> header : sdkHeaders.entrySet()) {
-      builder.header(header.getKey(), header.getValue());
-    }
-    builder.header("Accept", "application/json");
-    if (updateNetezzaEngineOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", updateNetezzaEngineOptions.authInstanceId());
-    }
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateNetezzaEngineOptions.body()), "application/json-patch+json");
-    ResponseConverter<NetezzaEngine> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetezzaEngine>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1147,9 +869,6 @@ public class WatsonxData extends BaseService {
     if (createOtherEngineOptions.tags() != null) {
       contentJson.add("tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createOtherEngineOptions.tags()));
     }
-    if (createOtherEngineOptions.type() != null) {
-      contentJson.addProperty("type", createOtherEngineOptions.type());
-    }
     builder.bodyJson(contentJson);
     ResponseConverter<OtherEngine> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<OtherEngine>() { }.getType());
@@ -1178,6 +897,493 @@ public class WatsonxData extends BaseService {
       builder.header("AuthInstanceId", deleteOtherEngineOptions.authInstanceId());
     }
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get all existing Integrations.
+   *
+   * Get all existing Integrations.
+   *
+   * @param listAllIntegrationsOptions the {@link ListAllIntegrationsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link IntegrationCollection}
+   */
+  public ServiceCall<IntegrationCollection> listAllIntegrations(ListAllIntegrationsOptions listAllIntegrationsOptions) {
+    if (listAllIntegrationsOptions == null) {
+      listAllIntegrationsOptions = new ListAllIntegrationsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/integrations"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listAllIntegrations");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (listAllIntegrationsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", listAllIntegrationsOptions.authInstanceId());
+    }
+    if (listAllIntegrationsOptions.secret() != null) {
+      builder.header("Secret", listAllIntegrationsOptions.secret());
+    }
+    if (listAllIntegrationsOptions.serviceType() != null) {
+      builder.query("service_type", String.valueOf(listAllIntegrationsOptions.serviceType()));
+    }
+    if (listAllIntegrationsOptions.state() != null) {
+      builder.query("state", RequestUtils.join(listAllIntegrationsOptions.state(), ","));
+    }
+    ResponseConverter<IntegrationCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IntegrationCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get all existing Integrations.
+   *
+   * Get all existing Integrations.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link IntegrationCollection}
+   */
+  public ServiceCall<IntegrationCollection> listAllIntegrations() {
+    return listAllIntegrations(null);
+  }
+
+  /**
+   * To register an integration.
+   *
+   * To register an integration.
+   *
+   * @param createIntegrationOptions the {@link CreateIntegrationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Integration}
+   */
+  public ServiceCall<Integration> createIntegration(CreateIntegrationOptions createIntegrationOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createIntegrationOptions,
+      "createIntegrationOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/integrations"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createIntegration");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createIntegrationOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createIntegrationOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (createIntegrationOptions.apikey() != null) {
+      contentJson.addProperty("apikey", createIntegrationOptions.apikey());
+    }
+    if (createIntegrationOptions.enableDataPolicyWithinWxd() != null) {
+      contentJson.addProperty("enable_data_policy_within_wxd", createIntegrationOptions.enableDataPolicyWithinWxd());
+    }
+    if (createIntegrationOptions.password() != null) {
+      contentJson.addProperty("password", createIntegrationOptions.password());
+    }
+    if (createIntegrationOptions.resource() != null) {
+      contentJson.addProperty("resource", createIntegrationOptions.resource());
+    }
+    if (createIntegrationOptions.serviceType() != null) {
+      contentJson.addProperty("service_type", createIntegrationOptions.serviceType());
+    }
+    if (createIntegrationOptions.storageCatalogs() != null) {
+      contentJson.add("storage_catalogs", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIntegrationOptions.storageCatalogs()));
+    }
+    if (createIntegrationOptions.url() != null) {
+      contentJson.addProperty("url", createIntegrationOptions.url());
+    }
+    if (createIntegrationOptions.username() != null) {
+      contentJson.addProperty("username", createIntegrationOptions.username());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Integration> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Integration>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * To register an integration.
+   *
+   * To register an integration.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link Integration}
+   */
+  public ServiceCall<Integration> createIntegration() {
+    return createIntegration(null);
+  }
+
+  /**
+   * Get an Integration.
+   *
+   * Get an Integration.
+   *
+   * @param getIntegrationsOptions the {@link GetIntegrationsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Integration}
+   */
+  public ServiceCall<Integration> getIntegrations(GetIntegrationsOptions getIntegrationsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getIntegrationsOptions,
+      "getIntegrationsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("integration_id", getIntegrationsOptions.integrationId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/integrations/{integration_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getIntegrations");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getIntegrationsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getIntegrationsOptions.authInstanceId());
+    }
+    if (getIntegrationsOptions.secret() != null) {
+      builder.header("Secret", getIntegrationsOptions.secret());
+    }
+    ResponseConverter<Integration> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Integration>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Remove an Integration.
+   *
+   * Remove an Integration.
+   *
+   * @param deleteIntegrationOptions the {@link DeleteIntegrationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteIntegration(DeleteIntegrationOptions deleteIntegrationOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteIntegrationOptions,
+      "deleteIntegrationOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("integration_id", deleteIntegrationOptions.integrationId());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/integrations/{integration_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "deleteIntegration");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    if (deleteIntegrationOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", deleteIntegrationOptions.authInstanceId());
+    }
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update an existing Integration.
+   *
+   * Update an existing Integration.
+   *
+   * @param updateIntegrationOptions the {@link UpdateIntegrationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Integration}
+   */
+  public ServiceCall<Integration> updateIntegration(UpdateIntegrationOptions updateIntegrationOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateIntegrationOptions,
+      "updateIntegrationOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("integration_id", updateIntegrationOptions.integrationId());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/integrations/{integration_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "updateIntegration");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateIntegrationOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", updateIntegrationOptions.authInstanceId());
+    }
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateIntegrationOptions.integrationPatch()), "application/merge-patch+json");
+    ResponseConverter<Integration> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Integration>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get list of db2 engines.
+   *
+   * Get list of all db2 engines.
+   *
+   * @param listDb2EnginesOptions the {@link ListDb2EnginesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Db2EngineCollection}
+   */
+  public ServiceCall<Db2EngineCollection> listDb2Engines(ListDb2EnginesOptions listDb2EnginesOptions) {
+    if (listDb2EnginesOptions == null) {
+      listDb2EnginesOptions = new ListDb2EnginesOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/db2_engines"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listDb2Engines");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (listDb2EnginesOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", listDb2EnginesOptions.authInstanceId());
+    }
+    ResponseConverter<Db2EngineCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Db2EngineCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get list of db2 engines.
+   *
+   * Get list of all db2 engines.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link Db2EngineCollection}
+   */
+  public ServiceCall<Db2EngineCollection> listDb2Engines() {
+    return listDb2Engines(null);
+  }
+
+  /**
+   * Create db2 engine.
+   *
+   * Create a new db2 engine.
+   *
+   * @param createDb2EngineOptions the {@link CreateDb2EngineOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Db2Engine}
+   */
+  public ServiceCall<Db2Engine> createDb2Engine(CreateDb2EngineOptions createDb2EngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createDb2EngineOptions,
+      "createDb2EngineOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/db2_engines"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createDb2Engine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createDb2EngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createDb2EngineOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("origin", createDb2EngineOptions.origin());
+    if (createDb2EngineOptions.description() != null) {
+      contentJson.addProperty("description", createDb2EngineOptions.description());
+    }
+    if (createDb2EngineOptions.engineDetails() != null) {
+      contentJson.add("engine_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDb2EngineOptions.engineDetails()));
+    }
+    if (createDb2EngineOptions.engineDisplayName() != null) {
+      contentJson.addProperty("engine_display_name", createDb2EngineOptions.engineDisplayName());
+    }
+    if (createDb2EngineOptions.tags() != null) {
+      contentJson.add("tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createDb2EngineOptions.tags()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Db2Engine> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Db2Engine>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete db2 engine.
+   *
+   * Delete a db2 engine.
+   *
+   * @param deleteDb2EngineOptions the {@link DeleteDb2EngineOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteDb2Engine(DeleteDb2EngineOptions deleteDb2EngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteDb2EngineOptions,
+      "deleteDb2EngineOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", deleteDb2EngineOptions.engineId());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/db2_engines/{engine_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "deleteDb2Engine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    if (deleteDb2EngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", deleteDb2EngineOptions.authInstanceId());
+    }
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update db2 engine.
+   *
+   * Update details of db2 engine.
+   *
+   * @param updateDb2EngineOptions the {@link UpdateDb2EngineOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Db2Engine}
+   */
+  public ServiceCall<Db2Engine> updateDb2Engine(UpdateDb2EngineOptions updateDb2EngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateDb2EngineOptions,
+      "updateDb2EngineOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", updateDb2EngineOptions.engineId());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/db2_engines/{engine_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "updateDb2Engine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateDb2EngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", updateDb2EngineOptions.authInstanceId());
+    }
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateDb2EngineOptions.body()), "application/merge-patch+json");
+    ResponseConverter<Db2Engine> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Db2Engine>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get list of netezza engines.
+   *
+   * Get list of all netezza engines.
+   *
+   * @param listNetezzaEnginesOptions the {@link ListNetezzaEnginesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link NetezzaEngineCollection}
+   */
+  public ServiceCall<NetezzaEngineCollection> listNetezzaEngines(ListNetezzaEnginesOptions listNetezzaEnginesOptions) {
+    if (listNetezzaEnginesOptions == null) {
+      listNetezzaEnginesOptions = new ListNetezzaEnginesOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/netezza_engines"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listNetezzaEngines");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (listNetezzaEnginesOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", listNetezzaEnginesOptions.authInstanceId());
+    }
+    ResponseConverter<NetezzaEngineCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetezzaEngineCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get list of netezza engines.
+   *
+   * Get list of all netezza engines.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link NetezzaEngineCollection}
+   */
+  public ServiceCall<NetezzaEngineCollection> listNetezzaEngines() {
+    return listNetezzaEngines(null);
+  }
+
+  /**
+   * Create netezza engine.
+   *
+   * Create a new netezza engine.
+   *
+   * @param createNetezzaEngineOptions the {@link CreateNetezzaEngineOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link NetezzaEngine}
+   */
+  public ServiceCall<NetezzaEngine> createNetezzaEngine(CreateNetezzaEngineOptions createNetezzaEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createNetezzaEngineOptions,
+      "createNetezzaEngineOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/netezza_engines"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createNetezzaEngine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createNetezzaEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createNetezzaEngineOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("origin", createNetezzaEngineOptions.origin());
+    if (createNetezzaEngineOptions.description() != null) {
+      contentJson.addProperty("description", createNetezzaEngineOptions.description());
+    }
+    if (createNetezzaEngineOptions.engineDetails() != null) {
+      contentJson.add("engine_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createNetezzaEngineOptions.engineDetails()));
+    }
+    if (createNetezzaEngineOptions.engineDisplayName() != null) {
+      contentJson.addProperty("engine_display_name", createNetezzaEngineOptions.engineDisplayName());
+    }
+    if (createNetezzaEngineOptions.tags() != null) {
+      contentJson.add("tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createNetezzaEngineOptions.tags()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<NetezzaEngine> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetezzaEngine>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete netezza engine.
+   *
+   * Delete a netezza engine.
+   *
+   * @param deleteNetezzaEngineOptions the {@link DeleteNetezzaEngineOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteNetezzaEngine(DeleteNetezzaEngineOptions deleteNetezzaEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteNetezzaEngineOptions,
+      "deleteNetezzaEngineOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", deleteNetezzaEngineOptions.engineId());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/netezza_engines/{engine_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "deleteNetezzaEngine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    if (deleteNetezzaEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", deleteNetezzaEngineOptions.authInstanceId());
+    }
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update netezza engine.
+   *
+   * Update details of netezza engine.
+   *
+   * @param updateNetezzaEngineOptions the {@link UpdateNetezzaEngineOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link NetezzaEngine}
+   */
+  public ServiceCall<NetezzaEngine> updateNetezzaEngine(UpdateNetezzaEngineOptions updateNetezzaEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateNetezzaEngineOptions,
+      "updateNetezzaEngineOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", updateNetezzaEngineOptions.engineId());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/netezza_engines/{engine_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "updateNetezzaEngine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateNetezzaEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", updateNetezzaEngineOptions.authInstanceId());
+    }
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateNetezzaEngineOptions.body()), "application/merge-patch+json");
+    ResponseConverter<NetezzaEngine> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<NetezzaEngine>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Execute a query.
+   *
+   * Execute a query.
+   *
+   * @param createExecuteQueryOptions the {@link CreateExecuteQueryOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ExecuteQueryCreatedBody}
+   */
+  public ServiceCall<ExecuteQueryCreatedBody> createExecuteQuery(CreateExecuteQueryOptions createExecuteQueryOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createExecuteQueryOptions,
+      "createExecuteQueryOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", createExecuteQueryOptions.engineId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/queries/execute/{engine_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createExecuteQuery");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createExecuteQueryOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createExecuteQueryOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("sql_string", createExecuteQueryOptions.sqlString());
+    if (createExecuteQueryOptions.catalogName() != null) {
+      contentJson.addProperty("catalog_name", createExecuteQueryOptions.catalogName());
+    }
+    if (createExecuteQueryOptions.schemaName() != null) {
+      contentJson.addProperty("schema_name", createExecuteQueryOptions.schemaName());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<ExecuteQueryCreatedBody> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ExecuteQueryCreatedBody>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1240,7 +1446,6 @@ public class WatsonxData extends BaseService {
     }
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("origin", createPrestissimoEngineOptions.origin());
-    contentJson.addProperty("type", createPrestissimoEngineOptions.type());
     if (createPrestissimoEngineOptions.associatedCatalogs() != null) {
       contentJson.add("associated_catalogs", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPrestissimoEngineOptions.associatedCatalogs()));
     }
@@ -1342,7 +1547,7 @@ public class WatsonxData extends BaseService {
     if (updatePrestissimoEngineOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", updatePrestissimoEngineOptions.authInstanceId());
     }
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updatePrestissimoEngineOptions.body()), "application/json-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updatePrestissimoEngineOptions.body()), "application/merge-patch+json");
     ResponseConverter<PrestissimoEngine> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrestissimoEngine>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1380,26 +1585,30 @@ public class WatsonxData extends BaseService {
    *
    * Associate one or more catalogs to a prestissimo engine.
    *
-   * @param replacePrestissimoEngineCatalogsOptions the {@link ReplacePrestissimoEngineCatalogsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link CatalogCollection}
+   * @param createPrestissimoEngineCatalogsOptions the {@link CreatePrestissimoEngineCatalogsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Catalog}
    */
-  public ServiceCall<CatalogCollection> replacePrestissimoEngineCatalogs(ReplacePrestissimoEngineCatalogsOptions replacePrestissimoEngineCatalogsOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(replacePrestissimoEngineCatalogsOptions,
-      "replacePrestissimoEngineCatalogsOptions cannot be null");
+  public ServiceCall<Catalog> createPrestissimoEngineCatalogs(CreatePrestissimoEngineCatalogsOptions createPrestissimoEngineCatalogsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createPrestissimoEngineCatalogsOptions,
+      "createPrestissimoEngineCatalogsOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", replacePrestissimoEngineCatalogsOptions.engineId());
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/prestissimo_engines/{engine_id}/catalogs", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "replacePrestissimoEngineCatalogs");
+    pathParamsMap.put("engine_id", createPrestissimoEngineCatalogsOptions.engineId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/prestissimo_engines/{engine_id}/catalogs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createPrestissimoEngineCatalogs");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (replacePrestissimoEngineCatalogsOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", replacePrestissimoEngineCatalogsOptions.authInstanceId());
+    if (createPrestissimoEngineCatalogsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createPrestissimoEngineCatalogsOptions.authInstanceId());
     }
-    builder.query("catalog_names", String.valueOf(replacePrestissimoEngineCatalogsOptions.catalogNames()));
-    ResponseConverter<CatalogCollection> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CatalogCollection>() { }.getType());
+    final JsonObject contentJson = new JsonObject();
+    if (createPrestissimoEngineCatalogsOptions.catalogNames() != null) {
+      contentJson.addProperty("catalog_names", createPrestissimoEngineCatalogsOptions.catalogNames());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Catalog> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Catalog>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1462,22 +1671,22 @@ public class WatsonxData extends BaseService {
    *
    * Pause a running prestissimo engine.
    *
-   * @param createPrestissimoEnginePauseOptions the {@link CreatePrestissimoEnginePauseOptions} containing the options for the call
+   * @param pausePrestissimoEngineOptions the {@link PausePrestissimoEngineOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
    */
-  public ServiceCall<SuccessResponse> createPrestissimoEnginePause(CreatePrestissimoEnginePauseOptions createPrestissimoEnginePauseOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createPrestissimoEnginePauseOptions,
-      "createPrestissimoEnginePauseOptions cannot be null");
+  public ServiceCall<SuccessResponse> pausePrestissimoEngine(PausePrestissimoEngineOptions pausePrestissimoEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(pausePrestissimoEngineOptions,
+      "pausePrestissimoEngineOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", createPrestissimoEnginePauseOptions.engineId());
+    pathParamsMap.put("engine_id", pausePrestissimoEngineOptions.engineId());
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/prestissimo_engines/{engine_id}/pause", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createPrestissimoEnginePause");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "pausePrestissimoEngine");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (createPrestissimoEnginePauseOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createPrestissimoEnginePauseOptions.authInstanceId());
+    if (pausePrestissimoEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", pausePrestissimoEngineOptions.authInstanceId());
     }
     ResponseConverter<SuccessResponse> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
@@ -1558,22 +1767,22 @@ public class WatsonxData extends BaseService {
    *
    * Restart an existing prestissimo engine.
    *
-   * @param createPrestissimoEngineRestartOptions the {@link CreatePrestissimoEngineRestartOptions} containing the options for the call
+   * @param restartPrestissimoEngineOptions the {@link RestartPrestissimoEngineOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
    */
-  public ServiceCall<SuccessResponse> createPrestissimoEngineRestart(CreatePrestissimoEngineRestartOptions createPrestissimoEngineRestartOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createPrestissimoEngineRestartOptions,
-      "createPrestissimoEngineRestartOptions cannot be null");
+  public ServiceCall<SuccessResponse> restartPrestissimoEngine(RestartPrestissimoEngineOptions restartPrestissimoEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(restartPrestissimoEngineOptions,
+      "restartPrestissimoEngineOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", createPrestissimoEngineRestartOptions.engineId());
+    pathParamsMap.put("engine_id", restartPrestissimoEngineOptions.engineId());
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/prestissimo_engines/{engine_id}/restart", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createPrestissimoEngineRestart");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "restartPrestissimoEngine");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (createPrestissimoEngineRestartOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createPrestissimoEngineRestartOptions.authInstanceId());
+    if (restartPrestissimoEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", restartPrestissimoEngineOptions.authInstanceId());
     }
     ResponseConverter<SuccessResponse> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
@@ -1585,22 +1794,22 @@ public class WatsonxData extends BaseService {
    *
    * Resume a paused prestissimo engine.
    *
-   * @param createPrestissimoEngineResumeOptions the {@link CreatePrestissimoEngineResumeOptions} containing the options for the call
+   * @param resumePrestissimoEngineOptions the {@link ResumePrestissimoEngineOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
    */
-  public ServiceCall<SuccessResponse> createPrestissimoEngineResume(CreatePrestissimoEngineResumeOptions createPrestissimoEngineResumeOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createPrestissimoEngineResumeOptions,
-      "createPrestissimoEngineResumeOptions cannot be null");
+  public ServiceCall<SuccessResponse> resumePrestissimoEngine(ResumePrestissimoEngineOptions resumePrestissimoEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(resumePrestissimoEngineOptions,
+      "resumePrestissimoEngineOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", createPrestissimoEngineResumeOptions.engineId());
+    pathParamsMap.put("engine_id", resumePrestissimoEngineOptions.engineId());
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/prestissimo_engines/{engine_id}/resume", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createPrestissimoEngineResume");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "resumePrestissimoEngine");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (createPrestissimoEngineResumeOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createPrestissimoEngineResumeOptions.authInstanceId());
+    if (resumePrestissimoEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", resumePrestissimoEngineOptions.authInstanceId());
     }
     ResponseConverter<SuccessResponse> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
@@ -1612,29 +1821,29 @@ public class WatsonxData extends BaseService {
    *
    * Scale an existing prestissimo engine.
    *
-   * @param createPrestissimoEngineScaleOptions the {@link CreatePrestissimoEngineScaleOptions} containing the options for the call
+   * @param scalePrestissimoEngineOptions the {@link ScalePrestissimoEngineOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
    */
-  public ServiceCall<SuccessResponse> createPrestissimoEngineScale(CreatePrestissimoEngineScaleOptions createPrestissimoEngineScaleOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createPrestissimoEngineScaleOptions,
-      "createPrestissimoEngineScaleOptions cannot be null");
+  public ServiceCall<SuccessResponse> scalePrestissimoEngine(ScalePrestissimoEngineOptions scalePrestissimoEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(scalePrestissimoEngineOptions,
+      "scalePrestissimoEngineOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", createPrestissimoEngineScaleOptions.engineId());
+    pathParamsMap.put("engine_id", scalePrestissimoEngineOptions.engineId());
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/prestissimo_engines/{engine_id}/scale", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createPrestissimoEngineScale");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "scalePrestissimoEngine");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (createPrestissimoEngineScaleOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createPrestissimoEngineScaleOptions.authInstanceId());
+    if (scalePrestissimoEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", scalePrestissimoEngineOptions.authInstanceId());
     }
     final JsonObject contentJson = new JsonObject();
-    if (createPrestissimoEngineScaleOptions.coordinator() != null) {
-      contentJson.add("coordinator", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPrestissimoEngineScaleOptions.coordinator()));
+    if (scalePrestissimoEngineOptions.coordinator() != null) {
+      contentJson.add("coordinator", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(scalePrestissimoEngineOptions.coordinator()));
     }
-    if (createPrestissimoEngineScaleOptions.worker() != null) {
-      contentJson.add("worker", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPrestissimoEngineScaleOptions.worker()));
+    if (scalePrestissimoEngineOptions.worker() != null) {
+      contentJson.add("worker", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(scalePrestissimoEngineOptions.worker()));
     }
     builder.bodyJson(contentJson);
     ResponseConverter<SuccessResponse> responseConverter =
@@ -1701,7 +1910,6 @@ public class WatsonxData extends BaseService {
     }
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("origin", createPrestoEngineOptions.origin());
-    contentJson.addProperty("type", createPrestoEngineOptions.type());
     if (createPrestoEngineOptions.associatedCatalogs() != null) {
       contentJson.add("associated_catalogs", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPrestoEngineOptions.associatedCatalogs()));
     }
@@ -1803,7 +2011,7 @@ public class WatsonxData extends BaseService {
     if (updatePrestoEngineOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", updatePrestoEngineOptions.authInstanceId());
     }
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updatePrestoEngineOptions.body()), "application/json-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updatePrestoEngineOptions.body()), "application/merge-patch+json");
     ResponseConverter<PrestoEngine> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PrestoEngine>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -1841,26 +2049,30 @@ public class WatsonxData extends BaseService {
    *
    * Associate one or more catalogs to a presto engine.
    *
-   * @param replacePrestoEngineCatalogsOptions the {@link ReplacePrestoEngineCatalogsOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link CatalogCollection}
+   * @param createPrestoEngineCatalogsOptions the {@link CreatePrestoEngineCatalogsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Catalog}
    */
-  public ServiceCall<CatalogCollection> replacePrestoEngineCatalogs(ReplacePrestoEngineCatalogsOptions replacePrestoEngineCatalogsOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(replacePrestoEngineCatalogsOptions,
-      "replacePrestoEngineCatalogsOptions cannot be null");
+  public ServiceCall<Catalog> createPrestoEngineCatalogs(CreatePrestoEngineCatalogsOptions createPrestoEngineCatalogsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createPrestoEngineCatalogsOptions,
+      "createPrestoEngineCatalogsOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", replacePrestoEngineCatalogsOptions.engineId());
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/presto_engines/{engine_id}/catalogs", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "replacePrestoEngineCatalogs");
+    pathParamsMap.put("engine_id", createPrestoEngineCatalogsOptions.engineId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/presto_engines/{engine_id}/catalogs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createPrestoEngineCatalogs");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (replacePrestoEngineCatalogsOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", replacePrestoEngineCatalogsOptions.authInstanceId());
+    if (createPrestoEngineCatalogsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createPrestoEngineCatalogsOptions.authInstanceId());
     }
-    builder.query("catalog_names", String.valueOf(replacePrestoEngineCatalogsOptions.catalogNames()));
-    ResponseConverter<CatalogCollection> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CatalogCollection>() { }.getType());
+    final JsonObject contentJson = new JsonObject();
+    if (createPrestoEngineCatalogsOptions.catalogNames() != null) {
+      contentJson.addProperty("catalog_names", createPrestoEngineCatalogsOptions.catalogNames());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Catalog> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Catalog>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -1923,22 +2135,22 @@ public class WatsonxData extends BaseService {
    *
    * Pause a running presto engine.
    *
-   * @param createEnginePauseOptions the {@link CreateEnginePauseOptions} containing the options for the call
+   * @param pausePrestoEngineOptions the {@link PausePrestoEngineOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link CreateEnginePauseCreatedBody}
    */
-  public ServiceCall<CreateEnginePauseCreatedBody> createEnginePause(CreateEnginePauseOptions createEnginePauseOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createEnginePauseOptions,
-      "createEnginePauseOptions cannot be null");
+  public ServiceCall<CreateEnginePauseCreatedBody> pausePrestoEngine(PausePrestoEngineOptions pausePrestoEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(pausePrestoEngineOptions,
+      "pausePrestoEngineOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", createEnginePauseOptions.engineId());
+    pathParamsMap.put("engine_id", pausePrestoEngineOptions.engineId());
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/presto_engines/{engine_id}/pause", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createEnginePause");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "pausePrestoEngine");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (createEnginePauseOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createEnginePauseOptions.authInstanceId());
+    if (pausePrestoEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", pausePrestoEngineOptions.authInstanceId());
     }
     ResponseConverter<CreateEnginePauseCreatedBody> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CreateEnginePauseCreatedBody>() { }.getType());
@@ -2019,22 +2231,22 @@ public class WatsonxData extends BaseService {
    *
    * Restart an existing presto engine.
    *
-   * @param createEngineRestartOptions the {@link CreateEngineRestartOptions} containing the options for the call
+   * @param restartPrestoEngineOptions the {@link RestartPrestoEngineOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link CreateEngineRestartCreatedBody}
    */
-  public ServiceCall<CreateEngineRestartCreatedBody> createEngineRestart(CreateEngineRestartOptions createEngineRestartOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createEngineRestartOptions,
-      "createEngineRestartOptions cannot be null");
+  public ServiceCall<CreateEngineRestartCreatedBody> restartPrestoEngine(RestartPrestoEngineOptions restartPrestoEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(restartPrestoEngineOptions,
+      "restartPrestoEngineOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", createEngineRestartOptions.engineId());
+    pathParamsMap.put("engine_id", restartPrestoEngineOptions.engineId());
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/presto_engines/{engine_id}/restart", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createEngineRestart");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "restartPrestoEngine");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (createEngineRestartOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createEngineRestartOptions.authInstanceId());
+    if (restartPrestoEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", restartPrestoEngineOptions.authInstanceId());
     }
     ResponseConverter<CreateEngineRestartCreatedBody> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CreateEngineRestartCreatedBody>() { }.getType());
@@ -2046,22 +2258,22 @@ public class WatsonxData extends BaseService {
    *
    * Resume a paused presto engine.
    *
-   * @param createEngineResumeOptions the {@link CreateEngineResumeOptions} containing the options for the call
+   * @param resumePrestoEngineOptions the {@link ResumePrestoEngineOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link CreateEngineResumeCreatedBody}
    */
-  public ServiceCall<CreateEngineResumeCreatedBody> createEngineResume(CreateEngineResumeOptions createEngineResumeOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createEngineResumeOptions,
-      "createEngineResumeOptions cannot be null");
+  public ServiceCall<CreateEngineResumeCreatedBody> resumePrestoEngine(ResumePrestoEngineOptions resumePrestoEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(resumePrestoEngineOptions,
+      "resumePrestoEngineOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", createEngineResumeOptions.engineId());
+    pathParamsMap.put("engine_id", resumePrestoEngineOptions.engineId());
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/presto_engines/{engine_id}/resume", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createEngineResume");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "resumePrestoEngine");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (createEngineResumeOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createEngineResumeOptions.authInstanceId());
+    if (resumePrestoEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", resumePrestoEngineOptions.authInstanceId());
     }
     ResponseConverter<CreateEngineResumeCreatedBody> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CreateEngineResumeCreatedBody>() { }.getType());
@@ -2073,34 +2285,718 @@ public class WatsonxData extends BaseService {
    *
    * Scale an existing presto engine.
    *
-   * @param createEngineScaleOptions the {@link CreateEngineScaleOptions} containing the options for the call
+   * @param scalePrestoEngineOptions the {@link ScalePrestoEngineOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link CreateEngineScaleCreatedBody}
    */
-  public ServiceCall<CreateEngineScaleCreatedBody> createEngineScale(CreateEngineScaleOptions createEngineScaleOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(createEngineScaleOptions,
-      "createEngineScaleOptions cannot be null");
+  public ServiceCall<CreateEngineScaleCreatedBody> scalePrestoEngine(ScalePrestoEngineOptions scalePrestoEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(scalePrestoEngineOptions,
+      "scalePrestoEngineOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("engine_id", createEngineScaleOptions.engineId());
+    pathParamsMap.put("engine_id", scalePrestoEngineOptions.engineId());
     RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/presto_engines/{engine_id}/scale", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createEngineScale");
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "scalePrestoEngine");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (createEngineScaleOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", createEngineScaleOptions.authInstanceId());
+    if (scalePrestoEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", scalePrestoEngineOptions.authInstanceId());
     }
     final JsonObject contentJson = new JsonObject();
-    if (createEngineScaleOptions.coordinator() != null) {
-      contentJson.add("coordinator", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createEngineScaleOptions.coordinator()));
+    if (scalePrestoEngineOptions.coordinator() != null) {
+      contentJson.add("coordinator", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(scalePrestoEngineOptions.coordinator()));
     }
-    if (createEngineScaleOptions.worker() != null) {
-      contentJson.add("worker", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createEngineScaleOptions.worker()));
+    if (scalePrestoEngineOptions.worker() != null) {
+      contentJson.add("worker", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(scalePrestoEngineOptions.worker()));
     }
     builder.bodyJson(contentJson);
     ResponseConverter<CreateEngineScaleCreatedBody> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CreateEngineScaleCreatedBody>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get SAL Integrations.
+   *
+   * Get SAL Integration.
+   *
+   * @param getSalIntegrationOptions the {@link GetSalIntegrationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegration}
+   */
+  public ServiceCall<SalIntegration> getSalIntegration(GetSalIntegrationOptions getSalIntegrationOptions) {
+    if (getSalIntegrationOptions == null) {
+      getSalIntegrationOptions = new GetSalIntegrationOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegration");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationOptions.authInstanceId());
+    }
+    ResponseConverter<SalIntegration> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegration>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get SAL Integrations.
+   *
+   * Get SAL Integration.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegration}
+   */
+  public ServiceCall<SalIntegration> getSalIntegration() {
+    return getSalIntegration(null);
+  }
+
+  /**
+   * Create sal integration with wxd.
+   *
+   * Add or create a new sal integration.
+   *
+   * @param createSalIntegrationOptions the {@link CreateSalIntegrationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegration}
+   */
+  public ServiceCall<SalIntegration> createSalIntegration(CreateSalIntegrationOptions createSalIntegrationOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSalIntegrationOptions,
+      "createSalIntegrationOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createSalIntegration");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createSalIntegrationOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createSalIntegrationOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("apikey", createSalIntegrationOptions.apikey());
+    contentJson.addProperty("engine_id", createSalIntegrationOptions.engineId());
+    if (createSalIntegrationOptions.storageResourceCrn() != null) {
+      contentJson.addProperty("storage_resource_crn", createSalIntegrationOptions.storageResourceCrn());
+    }
+    if (createSalIntegrationOptions.storageType() != null) {
+      contentJson.addProperty("storage_type", createSalIntegrationOptions.storageType());
+    }
+    if (createSalIntegrationOptions.trialPlan() != null) {
+      contentJson.addProperty("trial_plan", createSalIntegrationOptions.trialPlan());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<SalIntegration> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegration>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete sal-wxd integration.
+   *
+   * Delete a sal-wxd integration.
+   *
+   * @param deleteSalIntegrationOptions the {@link DeleteSalIntegrationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteSalIntegration(DeleteSalIntegrationOptions deleteSalIntegrationOptions) {
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "deleteSalIntegration");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete sal-wxd integration.
+   *
+   * Delete a sal-wxd integration.
+   *
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteSalIntegration() {
+    return deleteSalIntegration(null);
+  }
+
+  /**
+   * Update sal-wxd integration.
+   *
+   * Update sal-wxd integration details.
+   *
+   * @param updateSalIntegrationOptions the {@link UpdateSalIntegrationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegration}
+   */
+  public ServiceCall<SalIntegration> updateSalIntegration(UpdateSalIntegrationOptions updateSalIntegrationOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateSalIntegrationOptions,
+      "updateSalIntegrationOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "updateSalIntegration");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (updateSalIntegrationOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", updateSalIntegrationOptions.authInstanceId());
+    }
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSalIntegrationOptions.body()), "application/merge-patch+json");
+    ResponseConverter<SalIntegration> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegration>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Trigger enrichment jobs on schemas and tables.
+   *
+   * Trigger enrichment jobs on schemas and tables.
+   *
+   * @param createSalIntegrationEnrichmentOptions the {@link CreateSalIntegrationEnrichmentOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> createSalIntegrationEnrichment(CreateSalIntegrationEnrichmentOptions createSalIntegrationEnrichmentOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSalIntegrationEnrichmentOptions,
+      "createSalIntegrationEnrichmentOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/enrichment"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createSalIntegrationEnrichment");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    if (createSalIntegrationEnrichmentOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createSalIntegrationEnrichmentOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (createSalIntegrationEnrichmentOptions.changes() != null) {
+      contentJson.add("changes", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSalIntegrationEnrichmentOptions.changes()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Trigger enrichment jobs on schemas and tables.
+   *
+   * Trigger enrichment jobs on schemas and tables.
+   *
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> createSalIntegrationEnrichment() {
+    return createSalIntegrationEnrichment(null);
+  }
+
+  /**
+   * Get semantic enrichment assets associated with the schema.
+   *
+   * Get semantic enrichment job runs associated with the schema.
+   *
+   * @param getSalIntegrationEnrichmentAssetsOptions the {@link GetSalIntegrationEnrichmentAssetsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentAssets}
+   */
+  public ServiceCall<SalIntegrationEnrichmentAssets> getSalIntegrationEnrichmentAssets(GetSalIntegrationEnrichmentAssetsOptions getSalIntegrationEnrichmentAssetsOptions) {
+    if (getSalIntegrationEnrichmentAssetsOptions == null) {
+      getSalIntegrationEnrichmentAssetsOptions = new GetSalIntegrationEnrichmentAssetsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/enrichment_assets"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationEnrichmentAssets");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationEnrichmentAssetsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationEnrichmentAssetsOptions.authInstanceId());
+    }
+    if (getSalIntegrationEnrichmentAssetsOptions.projectId() != null) {
+      builder.query("project_id", String.valueOf(getSalIntegrationEnrichmentAssetsOptions.projectId()));
+    }
+    ResponseConverter<SalIntegrationEnrichmentAssets> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationEnrichmentAssets>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get semantic enrichment assets associated with the schema.
+   *
+   * Get semantic enrichment job runs associated with the schema.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentAssets}
+   */
+  public ServiceCall<SalIntegrationEnrichmentAssets> getSalIntegrationEnrichmentAssets() {
+    return getSalIntegrationEnrichmentAssets(null);
+  }
+
+  /**
+   * Get semantic enrichment data asset associated with the table.
+   *
+   * Get semantic enrichment data asset associated with the table.
+   *
+   * @param getSalIntegrationEnrichmentDataAssetOptions the {@link GetSalIntegrationEnrichmentDataAssetOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentDataAsset}
+   */
+  public ServiceCall<SalIntegrationEnrichmentDataAsset> getSalIntegrationEnrichmentDataAsset(GetSalIntegrationEnrichmentDataAssetOptions getSalIntegrationEnrichmentDataAssetOptions) {
+    if (getSalIntegrationEnrichmentDataAssetOptions == null) {
+      getSalIntegrationEnrichmentDataAssetOptions = new GetSalIntegrationEnrichmentDataAssetOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/enrichment_data_asset"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationEnrichmentDataAsset");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationEnrichmentDataAssetOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationEnrichmentDataAssetOptions.authInstanceId());
+    }
+    if (getSalIntegrationEnrichmentDataAssetOptions.projectId() != null) {
+      builder.query("project_id", String.valueOf(getSalIntegrationEnrichmentDataAssetOptions.projectId()));
+    }
+    if (getSalIntegrationEnrichmentDataAssetOptions.assetId() != null) {
+      builder.query("asset_id", String.valueOf(getSalIntegrationEnrichmentDataAssetOptions.assetId()));
+    }
+    ResponseConverter<SalIntegrationEnrichmentDataAsset> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationEnrichmentDataAsset>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get semantic enrichment data asset associated with the table.
+   *
+   * Get semantic enrichment data asset associated with the table.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentDataAsset}
+   */
+  public ServiceCall<SalIntegrationEnrichmentDataAsset> getSalIntegrationEnrichmentDataAsset() {
+    return getSalIntegrationEnrichmentDataAsset(null);
+  }
+
+  /**
+   * Get semantic enrichment job run logs associated with the job run.
+   *
+   * Get semantic enrichment job run logs associated with the job run.
+   *
+   * @param getSalIntegrationEnrichmentJobRunLogsOptions the {@link GetSalIntegrationEnrichmentJobRunLogsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentJobRunLogs}
+   */
+  public ServiceCall<SalIntegrationEnrichmentJobRunLogs> getSalIntegrationEnrichmentJobRunLogs(GetSalIntegrationEnrichmentJobRunLogsOptions getSalIntegrationEnrichmentJobRunLogsOptions) {
+    if (getSalIntegrationEnrichmentJobRunLogsOptions == null) {
+      getSalIntegrationEnrichmentJobRunLogsOptions = new GetSalIntegrationEnrichmentJobRunLogsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/enrichment_job_run_logs"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationEnrichmentJobRunLogs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationEnrichmentJobRunLogsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationEnrichmentJobRunLogsOptions.authInstanceId());
+    }
+    if (getSalIntegrationEnrichmentJobRunLogsOptions.jobId() != null) {
+      builder.query("job_id", String.valueOf(getSalIntegrationEnrichmentJobRunLogsOptions.jobId()));
+    }
+    if (getSalIntegrationEnrichmentJobRunLogsOptions.jobRunId() != null) {
+      builder.query("job_run_id", String.valueOf(getSalIntegrationEnrichmentJobRunLogsOptions.jobRunId()));
+    }
+    if (getSalIntegrationEnrichmentJobRunLogsOptions.projectId() != null) {
+      builder.query("project_id", String.valueOf(getSalIntegrationEnrichmentJobRunLogsOptions.projectId()));
+    }
+    ResponseConverter<SalIntegrationEnrichmentJobRunLogs> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationEnrichmentJobRunLogs>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get semantic enrichment job run logs associated with the job run.
+   *
+   * Get semantic enrichment job run logs associated with the job run.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentJobRunLogs}
+   */
+  public ServiceCall<SalIntegrationEnrichmentJobRunLogs> getSalIntegrationEnrichmentJobRunLogs() {
+    return getSalIntegrationEnrichmentJobRunLogs(null);
+  }
+
+  /**
+   * Get semantic enrichment job runs associated with the schema.
+   *
+   * Get semantic enrichment job runs associated with the schema.
+   *
+   * @param getSalIntegrationEnrichmentJobRunsOptions the {@link GetSalIntegrationEnrichmentJobRunsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentJobRun}
+   */
+  public ServiceCall<SalIntegrationEnrichmentJobRun> getSalIntegrationEnrichmentJobRuns(GetSalIntegrationEnrichmentJobRunsOptions getSalIntegrationEnrichmentJobRunsOptions) {
+    if (getSalIntegrationEnrichmentJobRunsOptions == null) {
+      getSalIntegrationEnrichmentJobRunsOptions = new GetSalIntegrationEnrichmentJobRunsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/enrichment_job_runs"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationEnrichmentJobRuns");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationEnrichmentJobRunsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationEnrichmentJobRunsOptions.authInstanceId());
+    }
+    if (getSalIntegrationEnrichmentJobRunsOptions.jobId() != null) {
+      builder.query("job_id", String.valueOf(getSalIntegrationEnrichmentJobRunsOptions.jobId()));
+    }
+    if (getSalIntegrationEnrichmentJobRunsOptions.projectId() != null) {
+      builder.query("project_id", String.valueOf(getSalIntegrationEnrichmentJobRunsOptions.projectId()));
+    }
+    ResponseConverter<SalIntegrationEnrichmentJobRun> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationEnrichmentJobRun>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get semantic enrichment job runs associated with the schema.
+   *
+   * Get semantic enrichment job runs associated with the schema.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentJobRun}
+   */
+  public ServiceCall<SalIntegrationEnrichmentJobRun> getSalIntegrationEnrichmentJobRuns() {
+    return getSalIntegrationEnrichmentJobRuns(null);
+  }
+
+  /**
+   * Get semantic enrichment jobs associated with the schema.
+   *
+   * Get semantic enrichment jobs associated with the schema.
+   *
+   * @param getSalIntegrationEnrichmentJobsOptions the {@link GetSalIntegrationEnrichmentJobsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentJobs}
+   */
+  public ServiceCall<SalIntegrationEnrichmentJobs> getSalIntegrationEnrichmentJobs(GetSalIntegrationEnrichmentJobsOptions getSalIntegrationEnrichmentJobsOptions) {
+    if (getSalIntegrationEnrichmentJobsOptions == null) {
+      getSalIntegrationEnrichmentJobsOptions = new GetSalIntegrationEnrichmentJobsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/enrichment_jobs"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationEnrichmentJobs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationEnrichmentJobsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationEnrichmentJobsOptions.authInstanceId());
+    }
+    if (getSalIntegrationEnrichmentJobsOptions.wkcProjectId() != null) {
+      builder.query("wkc_project_id", String.valueOf(getSalIntegrationEnrichmentJobsOptions.wkcProjectId()));
+    }
+    ResponseConverter<SalIntegrationEnrichmentJobs> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationEnrichmentJobs>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get semantic enrichment jobs associated with the schema.
+   *
+   * Get semantic enrichment jobs associated with the schema.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentJobs}
+   */
+  public ServiceCall<SalIntegrationEnrichmentJobs> getSalIntegrationEnrichmentJobs() {
+    return getSalIntegrationEnrichmentJobs(null);
+  }
+
+  /**
+   * Get list of uploaded glossary terms.
+   *
+   * Get list of uploaded glossary terms.
+   *
+   * @param getSalIntegrationGlossaryTermsOptions the {@link GetSalIntegrationGlossaryTermsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationGlossaryTerms}
+   */
+  public ServiceCall<SalIntegrationGlossaryTerms> getSalIntegrationGlossaryTerms(GetSalIntegrationGlossaryTermsOptions getSalIntegrationGlossaryTermsOptions) {
+    if (getSalIntegrationGlossaryTermsOptions == null) {
+      getSalIntegrationGlossaryTermsOptions = new GetSalIntegrationGlossaryTermsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/glossary_terms"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationGlossaryTerms");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationGlossaryTermsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationGlossaryTermsOptions.authInstanceId());
+    }
+    ResponseConverter<SalIntegrationGlossaryTerms> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationGlossaryTerms>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get list of uploaded glossary terms.
+   *
+   * Get list of uploaded glossary terms.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationGlossaryTerms}
+   */
+  public ServiceCall<SalIntegrationGlossaryTerms> getSalIntegrationGlossaryTerms() {
+    return getSalIntegrationGlossaryTerms(null);
+  }
+
+  /**
+   * Get wkc catalog and project mapped to the schema.
+   *
+   * Get wkc catalog and project mapped to the schema.
+   *
+   * @param getSalIntegrationMappingsOptions the {@link GetSalIntegrationMappingsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationMappings}
+   */
+  public ServiceCall<SalIntegrationMappings> getSalIntegrationMappings(GetSalIntegrationMappingsOptions getSalIntegrationMappingsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSalIntegrationMappingsOptions,
+      "getSalIntegrationMappingsOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/mappings"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationMappings");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationMappingsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationMappingsOptions.authInstanceId());
+    }
+    builder.query("catalog_name", String.valueOf(getSalIntegrationMappingsOptions.catalogName()));
+    builder.query("schema_name", String.valueOf(getSalIntegrationMappingsOptions.schemaName()));
+    ResponseConverter<SalIntegrationMappings> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationMappings>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get metadata enrichment global settings.
+   *
+   * Get metadata enrichment global settings.
+   *
+   * @param getSalIntegrationEnrichmentGlobalSettingsOptions the {@link GetSalIntegrationEnrichmentGlobalSettingsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentSettings}
+   */
+  public ServiceCall<SalIntegrationEnrichmentSettings> getSalIntegrationEnrichmentGlobalSettings(GetSalIntegrationEnrichmentGlobalSettingsOptions getSalIntegrationEnrichmentGlobalSettingsOptions) {
+    if (getSalIntegrationEnrichmentGlobalSettingsOptions == null) {
+      getSalIntegrationEnrichmentGlobalSettingsOptions = new GetSalIntegrationEnrichmentGlobalSettingsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/metadata_enrichment_global_settings"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationEnrichmentGlobalSettings");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationEnrichmentGlobalSettingsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationEnrichmentGlobalSettingsOptions.authInstanceId());
+    }
+    ResponseConverter<SalIntegrationEnrichmentSettings> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationEnrichmentSettings>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get metadata enrichment global settings.
+   *
+   * Get metadata enrichment global settings.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentSettings}
+   */
+  public ServiceCall<SalIntegrationEnrichmentSettings> getSalIntegrationEnrichmentGlobalSettings() {
+    return getSalIntegrationEnrichmentGlobalSettings(null);
+  }
+
+  /**
+   * Add metadata enrichment global settings.
+   *
+   * Add metadata enrichment global settings.
+   *
+   * @param createSalIntegrationEnrichmentGlobalSettingsOptions the {@link CreateSalIntegrationEnrichmentGlobalSettingsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentSettings}
+   */
+  public ServiceCall<SalIntegrationEnrichmentSettings> createSalIntegrationEnrichmentGlobalSettings(CreateSalIntegrationEnrichmentGlobalSettingsOptions createSalIntegrationEnrichmentGlobalSettingsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSalIntegrationEnrichmentGlobalSettingsOptions,
+      "createSalIntegrationEnrichmentGlobalSettingsOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/metadata_enrichment_global_settings"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createSalIntegrationEnrichmentGlobalSettings");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createSalIntegrationEnrichmentGlobalSettingsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createSalIntegrationEnrichmentGlobalSettingsOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (createSalIntegrationEnrichmentGlobalSettingsOptions.semanticExpansion() != null) {
+      contentJson.add("semantic_expansion", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSalIntegrationEnrichmentGlobalSettingsOptions.semanticExpansion()));
+    }
+    if (createSalIntegrationEnrichmentGlobalSettingsOptions.termAssignment() != null) {
+      contentJson.add("term_assignment", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSalIntegrationEnrichmentGlobalSettingsOptions.termAssignment()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<SalIntegrationEnrichmentSettings> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationEnrichmentSettings>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Add metadata enrichment global settings.
+   *
+   * Add metadata enrichment global settings.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentSettings}
+   */
+  public ServiceCall<SalIntegrationEnrichmentSettings> createSalIntegrationEnrichmentGlobalSettings() {
+    return createSalIntegrationEnrichmentGlobalSettings(null);
+  }
+
+  /**
+   * get metadata enrichment settings for a project.
+   *
+   * get metadata enrichment settings for a project.
+   *
+   * @param getSalIntegrationEnrichmentSettingsOptions the {@link GetSalIntegrationEnrichmentSettingsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentSettings}
+   */
+  public ServiceCall<SalIntegrationEnrichmentSettings> getSalIntegrationEnrichmentSettings(GetSalIntegrationEnrichmentSettingsOptions getSalIntegrationEnrichmentSettingsOptions) {
+    if (getSalIntegrationEnrichmentSettingsOptions == null) {
+      getSalIntegrationEnrichmentSettingsOptions = new GetSalIntegrationEnrichmentSettingsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/metadata_enrichment_settings"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationEnrichmentSettings");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationEnrichmentSettingsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationEnrichmentSettingsOptions.authInstanceId());
+    }
+    if (getSalIntegrationEnrichmentSettingsOptions.projectId() != null) {
+      builder.query("project_id", String.valueOf(getSalIntegrationEnrichmentSettingsOptions.projectId()));
+    }
+    ResponseConverter<SalIntegrationEnrichmentSettings> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationEnrichmentSettings>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * get metadata enrichment settings for a project.
+   *
+   * get metadata enrichment settings for a project.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationEnrichmentSettings}
+   */
+  public ServiceCall<SalIntegrationEnrichmentSettings> getSalIntegrationEnrichmentSettings() {
+    return getSalIntegrationEnrichmentSettings(null);
+  }
+
+  /**
+   * Add metadata enrichment settings for a project.
+   *
+   * Add metadata enrichment settings for a project.
+   *
+   * @param createSalIntegrationEnrichmentSettingsOptions the {@link CreateSalIntegrationEnrichmentSettingsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> createSalIntegrationEnrichmentSettings(CreateSalIntegrationEnrichmentSettingsOptions createSalIntegrationEnrichmentSettingsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSalIntegrationEnrichmentSettingsOptions,
+      "createSalIntegrationEnrichmentSettingsOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/metadata_enrichment_settings"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createSalIntegrationEnrichmentSettings");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    if (createSalIntegrationEnrichmentSettingsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createSalIntegrationEnrichmentSettingsOptions.authInstanceId());
+    }
+    if (createSalIntegrationEnrichmentSettingsOptions.projectId() != null) {
+      builder.query("project_id", String.valueOf(createSalIntegrationEnrichmentSettingsOptions.projectId()));
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (createSalIntegrationEnrichmentSettingsOptions.semanticExpansion() != null) {
+      contentJson.add("semantic_expansion", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSalIntegrationEnrichmentSettingsOptions.semanticExpansion()));
+    }
+    if (createSalIntegrationEnrichmentSettingsOptions.termAssignment() != null) {
+      contentJson.add("term_assignment", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSalIntegrationEnrichmentSettingsOptions.termAssignment()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Add metadata enrichment settings for a project.
+   *
+   * Add metadata enrichment settings for a project.
+   *
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> createSalIntegrationEnrichmentSettings() {
+    return createSalIntegrationEnrichmentSettings(null);
+  }
+
+  /**
+   * Upload semantic enrichment business terms glossary.
+   *
+   * Upload semantic enrichment business terms glossary.
+   *
+   * @param createSalIntegrationUploadGlossaryOptions the {@link CreateSalIntegrationUploadGlossaryOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationUploadGlossary}
+   */
+  public ServiceCall<SalIntegrationUploadGlossary> createSalIntegrationUploadGlossary(CreateSalIntegrationUploadGlossaryOptions createSalIntegrationUploadGlossaryOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSalIntegrationUploadGlossaryOptions,
+      "createSalIntegrationUploadGlossaryOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/upload_glossary"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createSalIntegrationUploadGlossary");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createSalIntegrationUploadGlossaryOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createSalIntegrationUploadGlossaryOptions.authInstanceId());
+    }
+    MultipartBody.Builder multipartBuilder = new MultipartBody.Builder();
+    multipartBuilder.setType(MultipartBody.FORM);
+    multipartBuilder.addFormDataPart("replace_option", createSalIntegrationUploadGlossaryOptions.replaceOption());
+    if (createSalIntegrationUploadGlossaryOptions.glossaryCsv() != null) {
+      okhttp3.RequestBody glossaryCsvBody = RequestUtils.inputStreamBody(createSalIntegrationUploadGlossaryOptions.glossaryCsv(), createSalIntegrationUploadGlossaryOptions.glossaryCsvContentType());
+      multipartBuilder.addFormDataPart("glossary_csv", "filename", glossaryCsvBody);
+    }
+    builder.body(multipartBuilder.build());
+    ResponseConverter<SalIntegrationUploadGlossary> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationUploadGlossary>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get status of upload glossary job.
+   *
+   * Get status of upload glossary job.
+   *
+   * @param getSalIntegrationUploadGlossaryStatusOptions the {@link GetSalIntegrationUploadGlossaryStatusOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationUploadGlossaryStatus}
+   */
+  public ServiceCall<SalIntegrationUploadGlossaryStatus> getSalIntegrationUploadGlossaryStatus(GetSalIntegrationUploadGlossaryStatusOptions getSalIntegrationUploadGlossaryStatusOptions) {
+    if (getSalIntegrationUploadGlossaryStatusOptions == null) {
+      getSalIntegrationUploadGlossaryStatusOptions = new GetSalIntegrationUploadGlossaryStatusOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/sal_integrations/upload_glossary_status"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSalIntegrationUploadGlossaryStatus");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSalIntegrationUploadGlossaryStatusOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSalIntegrationUploadGlossaryStatusOptions.authInstanceId());
+    }
+    if (getSalIntegrationUploadGlossaryStatusOptions.processId() != null) {
+      builder.query("process_id", String.valueOf(getSalIntegrationUploadGlossaryStatusOptions.processId()));
+    }
+    ResponseConverter<SalIntegrationUploadGlossaryStatus> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SalIntegrationUploadGlossaryStatus>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get status of upload glossary job.
+   *
+   * Get status of upload glossary job.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SalIntegrationUploadGlossaryStatus}
+   */
+  public ServiceCall<SalIntegrationUploadGlossaryStatus> getSalIntegrationUploadGlossaryStatus() {
+    return getSalIntegrationUploadGlossaryStatus(null);
   }
 
   /**
@@ -2162,7 +3058,9 @@ public class WatsonxData extends BaseService {
     }
     final JsonObject contentJson = new JsonObject();
     contentJson.addProperty("origin", createSparkEngineOptions.origin());
-    contentJson.addProperty("type", createSparkEngineOptions.type());
+    if (createSparkEngineOptions.associatedCatalogs() != null) {
+      contentJson.add("associated_catalogs", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSparkEngineOptions.associatedCatalogs()));
+    }
     if (createSparkEngineOptions.description() != null) {
       contentJson.addProperty("description", createSparkEngineOptions.description());
     }
@@ -2172,10 +3070,40 @@ public class WatsonxData extends BaseService {
     if (createSparkEngineOptions.engineDisplayName() != null) {
       contentJson.addProperty("engine_display_name", createSparkEngineOptions.engineDisplayName());
     }
+    if (createSparkEngineOptions.status() != null) {
+      contentJson.addProperty("status", createSparkEngineOptions.status());
+    }
     if (createSparkEngineOptions.tags() != null) {
       contentJson.add("tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSparkEngineOptions.tags()));
     }
     builder.bodyJson(contentJson);
+    ResponseConverter<SparkEngine> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SparkEngine>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get spark engine.
+   *
+   * Get spark engine by ID.
+   *
+   * @param getSparkEngineOptions the {@link GetSparkEngineOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SparkEngine}
+   */
+  public ServiceCall<SparkEngine> getSparkEngine(GetSparkEngineOptions getSparkEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSparkEngineOptions,
+      "getSparkEngineOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", getSparkEngineOptions.engineId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSparkEngine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSparkEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSparkEngineOptions.authInstanceId());
+    }
     ResponseConverter<SparkEngine> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SparkEngine>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2228,7 +3156,7 @@ public class WatsonxData extends BaseService {
     if (updateSparkEngineOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", updateSparkEngineOptions.authInstanceId());
     }
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSparkEngineOptions.body()), "application/json-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSparkEngineOptions.body()), "application/merge-patch+json");
     ResponseConverter<SparkEngine> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SparkEngine>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2255,6 +3183,9 @@ public class WatsonxData extends BaseService {
     builder.header("Accept", "application/json");
     if (listSparkEngineApplicationsOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", listSparkEngineApplicationsOptions.authInstanceId());
+    }
+    if (listSparkEngineApplicationsOptions.state() != null) {
+      builder.query("state", RequestUtils.join(listSparkEngineApplicationsOptions.state(), ","));
     }
     ResponseConverter<SparkEngineApplicationStatusCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SparkEngineApplicationStatusCollection>() { }.getType());
@@ -2283,6 +3214,9 @@ public class WatsonxData extends BaseService {
     if (createSparkEngineApplicationOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", createSparkEngineApplicationOptions.authInstanceId());
     }
+    if (createSparkEngineApplicationOptions.state() != null) {
+      builder.query("state", RequestUtils.join(createSparkEngineApplicationOptions.state(), ","));
+    }
     final JsonObject contentJson = new JsonObject();
     contentJson.add("application_details", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSparkEngineApplicationOptions.applicationDetails()));
     if (createSparkEngineApplicationOptions.jobEndpoint() != null) {
@@ -2293,6 +3227,9 @@ public class WatsonxData extends BaseService {
     }
     if (createSparkEngineApplicationOptions.type() != null) {
       contentJson.addProperty("type", createSparkEngineApplicationOptions.type());
+    }
+    if (createSparkEngineApplicationOptions.volumes() != null) {
+      contentJson.add("volumes", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSparkEngineApplicationOptions.volumes()));
     }
     builder.bodyJson(contentJson);
     ResponseConverter<SparkEngineApplicationStatus> responseConverter =
@@ -2322,6 +3259,9 @@ public class WatsonxData extends BaseService {
       builder.header("AuthInstanceId", deleteSparkEngineApplicationsOptions.authInstanceId());
     }
     builder.query("application_id", String.valueOf(deleteSparkEngineApplicationsOptions.applicationId()));
+    if (deleteSparkEngineApplicationsOptions.state() != null) {
+      builder.query("state", RequestUtils.join(deleteSparkEngineApplicationsOptions.state(), ","));
+    }
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
@@ -2355,34 +3295,331 @@ public class WatsonxData extends BaseService {
   }
 
   /**
-   * Readiness API.
+   * Get spark engine catalogs.
    *
-   * Verify lhconsole server is up and running.
+   * Get list of all catalogs attached to a spark engine.
    *
-   * @param testLhConsoleOptions the {@link TestLHConsoleOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
+   * @param listSparkEngineCatalogsOptions the {@link ListSparkEngineCatalogsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link CatalogCollection}
    */
-  public ServiceCall<SuccessResponse> testLHConsole(TestLHConsoleOptions testLhConsoleOptions) {
-    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ready"));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "testLHConsole");
+  public ServiceCall<CatalogCollection> listSparkEngineCatalogs(ListSparkEngineCatalogsOptions listSparkEngineCatalogsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listSparkEngineCatalogsOptions,
+      "listSparkEngineCatalogsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", listSparkEngineCatalogsOptions.engineId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/catalogs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listSparkEngineCatalogs");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
+    if (listSparkEngineCatalogsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", listSparkEngineCatalogsOptions.authInstanceId());
+    }
+    ResponseConverter<CatalogCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CatalogCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Associate catalogs to spark engine.
+   *
+   * Associate one or more catalogs to a spark engine.
+   *
+   * @param createSparkEngineCatalogsOptions the {@link CreateSparkEngineCatalogsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Catalog}
+   */
+  public ServiceCall<Catalog> createSparkEngineCatalogs(CreateSparkEngineCatalogsOptions createSparkEngineCatalogsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createSparkEngineCatalogsOptions,
+      "createSparkEngineCatalogsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", createSparkEngineCatalogsOptions.engineId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/catalogs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createSparkEngineCatalogs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createSparkEngineCatalogsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createSparkEngineCatalogsOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (createSparkEngineCatalogsOptions.catalogNames() != null) {
+      contentJson.addProperty("catalog_names", createSparkEngineCatalogsOptions.catalogNames());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<Catalog> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Catalog>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Disassociate catalogs from a spark engine.
+   *
+   * Disassociate one or more catalogs from a spark engine.
+   *
+   * @param deleteSparkEngineCatalogsOptions the {@link DeleteSparkEngineCatalogsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteSparkEngineCatalogs(DeleteSparkEngineCatalogsOptions deleteSparkEngineCatalogsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSparkEngineCatalogsOptions,
+      "deleteSparkEngineCatalogsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", deleteSparkEngineCatalogsOptions.engineId());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/catalogs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "deleteSparkEngineCatalogs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    if (deleteSparkEngineCatalogsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", deleteSparkEngineCatalogsOptions.authInstanceId());
+    }
+    builder.query("catalog_names", String.valueOf(deleteSparkEngineCatalogsOptions.catalogNames()));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get spark engine catalog.
+   *
+   * Get catalog attached to spark engine.
+   *
+   * @param getSparkEngineCatalogOptions the {@link GetSparkEngineCatalogOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link Catalog}
+   */
+  public ServiceCall<Catalog> getSparkEngineCatalog(GetSparkEngineCatalogOptions getSparkEngineCatalogOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSparkEngineCatalogOptions,
+      "getSparkEngineCatalogOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", getSparkEngineCatalogOptions.engineId());
+    pathParamsMap.put("catalog_id", getSparkEngineCatalogOptions.catalogId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/catalogs/{catalog_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSparkEngineCatalog");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSparkEngineCatalogOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSparkEngineCatalogOptions.authInstanceId());
+    }
+    ResponseConverter<Catalog> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Catalog>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get spark history server.
+   *
+   * Get spark history server.
+   *
+   * @param getSparkEngineHistoryServerOptions the {@link GetSparkEngineHistoryServerOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SparkHistoryServer}
+   */
+  public ServiceCall<SparkHistoryServer> getSparkEngineHistoryServer(GetSparkEngineHistoryServerOptions getSparkEngineHistoryServerOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSparkEngineHistoryServerOptions,
+      "getSparkEngineHistoryServerOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", getSparkEngineHistoryServerOptions.engineId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/history_server", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSparkEngineHistoryServer");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSparkEngineHistoryServerOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSparkEngineHistoryServerOptions.authInstanceId());
+    }
+    ResponseConverter<SparkHistoryServer> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SparkHistoryServer>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Start spark history server.
+   *
+   * Start spark history server.
+   *
+   * @param startSparkEngineHistoryServerOptions the {@link StartSparkEngineHistoryServerOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SparkHistoryServer}
+   */
+  public ServiceCall<SparkHistoryServer> startSparkEngineHistoryServer(StartSparkEngineHistoryServerOptions startSparkEngineHistoryServerOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(startSparkEngineHistoryServerOptions,
+      "startSparkEngineHistoryServerOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", startSparkEngineHistoryServerOptions.engineId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/history_server", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "startSparkEngineHistoryServer");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (startSparkEngineHistoryServerOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", startSparkEngineHistoryServerOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (startSparkEngineHistoryServerOptions.cores() != null) {
+      contentJson.addProperty("cores", startSparkEngineHistoryServerOptions.cores());
+    }
+    if (startSparkEngineHistoryServerOptions.memory() != null) {
+      contentJson.addProperty("memory", startSparkEngineHistoryServerOptions.memory());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<SparkHistoryServer> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SparkHistoryServer>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Stop spark history server.
+   *
+   * Stop spark history server.
+   *
+   * @param deleteSparkEngineHistoryServerOptions the {@link DeleteSparkEngineHistoryServerOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteSparkEngineHistoryServer(DeleteSparkEngineHistoryServerOptions deleteSparkEngineHistoryServerOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSparkEngineHistoryServerOptions,
+      "deleteSparkEngineHistoryServerOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", deleteSparkEngineHistoryServerOptions.engineId());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/history_server", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "deleteSparkEngineHistoryServer");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    if (deleteSparkEngineHistoryServerOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", deleteSparkEngineHistoryServerOptions.authInstanceId());
+    }
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Pause engine.
+   *
+   * Pause engine.
+   *
+   * @param pauseSparkEngineOptions the {@link PauseSparkEngineOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
+   */
+  public ServiceCall<SuccessResponse> pauseSparkEngine(PauseSparkEngineOptions pauseSparkEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(pauseSparkEngineOptions,
+      "pauseSparkEngineOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", pauseSparkEngineOptions.engineId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/pause", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "pauseSparkEngine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (pauseSparkEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", pauseSparkEngineOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (pauseSparkEngineOptions.force() != null) {
+      contentJson.addProperty("force", pauseSparkEngineOptions.force());
+    }
+    builder.bodyJson(contentJson);
     ResponseConverter<SuccessResponse> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * Readiness API.
+   * Resume engine.
    *
-   * Verify lhconsole server is up and running.
+   * Resume engine.
    *
+   * @param resumeSparkEngineOptions the {@link ResumeSparkEngineOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
    */
-  public ServiceCall<SuccessResponse> testLHConsole() {
-    return testLHConsole(null);
+  public ServiceCall<SuccessResponse> resumeSparkEngine(ResumeSparkEngineOptions resumeSparkEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(resumeSparkEngineOptions,
+      "resumeSparkEngineOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", resumeSparkEngineOptions.engineId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/resume", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "resumeSparkEngine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (resumeSparkEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", resumeSparkEngineOptions.authInstanceId());
+    }
+    ResponseConverter<SuccessResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Scale Spark engine.
+   *
+   * Scale Saprk engine.
+   *
+   * @param scaleSparkEngineOptions the {@link ScaleSparkEngineOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
+   */
+  public ServiceCall<SuccessResponse> scaleSparkEngine(ScaleSparkEngineOptions scaleSparkEngineOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(scaleSparkEngineOptions,
+      "scaleSparkEngineOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("engine_id", scaleSparkEngineOptions.engineId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_engines/{engine_id}/scale", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "scaleSparkEngine");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (scaleSparkEngineOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", scaleSparkEngineOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (scaleSparkEngineOptions.numberOfNodes() != null) {
+      contentJson.addProperty("number_of_nodes", scaleSparkEngineOptions.numberOfNodes());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<SuccessResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List spark version.
+   *
+   * List spark version.
+   *
+   * @param listSparkVersionsOptions the {@link ListSparkVersionsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ListSparkVersionsOKBody}
+   */
+  public ServiceCall<ListSparkVersionsOKBody> listSparkVersions(ListSparkVersionsOptions listSparkVersionsOptions) {
+    if (listSparkVersionsOptions == null) {
+      listSparkVersionsOptions = new ListSparkVersionsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/spark_versions"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listSparkVersions");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (listSparkVersionsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", listSparkVersionsOptions.authInstanceId());
+    }
+    ResponseConverter<ListSparkVersionsOKBody> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ListSparkVersionsOKBody>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List spark version.
+   *
+   * List spark version.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link ListSparkVersionsOKBody}
+   */
+  public ServiceCall<ListSparkVersionsOKBody> listSparkVersions() {
+    return listSparkVersions(null);
   }
 
   /**
@@ -2506,6 +3743,12 @@ public class WatsonxData extends BaseService {
     if (createSchemaOptions.bucketName() != null) {
       contentJson.addProperty("bucket_name", createSchemaOptions.bucketName());
     }
+    if (createSchemaOptions.hostname() != null) {
+      contentJson.addProperty("hostname", createSchemaOptions.hostname());
+    }
+    if (createSchemaOptions.port() != null) {
+      contentJson.addProperty("port", createSchemaOptions.port());
+    }
     builder.bodyJson(contentJson);
     ResponseConverter<CreateSchemaCreatedBody> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CreateSchemaCreatedBody>() { }.getType());
@@ -2593,6 +3836,9 @@ public class WatsonxData extends BaseService {
       builder.header("AuthInstanceId", getTableOptions.authInstanceId());
     }
     builder.query("engine_id", String.valueOf(getTableOptions.engineId()));
+    if (getTableOptions.type() != null) {
+      builder.query("type", String.valueOf(getTableOptions.type()));
+    }
     ResponseConverter<Table> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Table>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2622,12 +3868,15 @@ public class WatsonxData extends BaseService {
       builder.header("AuthInstanceId", deleteTableOptions.authInstanceId());
     }
     builder.query("engine_id", String.valueOf(deleteTableOptions.engineId()));
+    if (deleteTableOptions.type() != null) {
+      builder.query("type", String.valueOf(deleteTableOptions.type()));
+    }
     ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
-   * Alter table.
+   * Rename table.
    *
    * Rename table.
    *
@@ -2651,7 +3900,10 @@ public class WatsonxData extends BaseService {
       builder.header("AuthInstanceId", updateTableOptions.authInstanceId());
     }
     builder.query("engine_id", String.valueOf(updateTableOptions.engineId()));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateTableOptions.body()), "application/json-patch+json");
+    if (updateTableOptions.type() != null) {
+      builder.query("type", String.valueOf(updateTableOptions.type()));
+    }
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateTableOptions.body()), "application/merge-patch+json");
     ResponseConverter<Table> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Table>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2777,7 +4029,7 @@ public class WatsonxData extends BaseService {
       builder.header("AuthInstanceId", updateColumnOptions.authInstanceId());
     }
     builder.query("engine_id", String.valueOf(updateColumnOptions.engineId()));
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateColumnOptions.body()), "application/json-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateColumnOptions.body()), "application/merge-patch+json");
     ResponseConverter<Column> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Column>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2814,31 +4066,35 @@ public class WatsonxData extends BaseService {
   }
 
   /**
-   * Rollback snapshot.
+   * Rollback table to snapshot.
    *
-   * Rollback to a table snapshot.
+   * Rollback table to a snapshot.
    *
-   * @param replaceSnapshotOptions the {@link ReplaceSnapshotOptions} containing the options for the call
+   * @param rollbackTableOptions the {@link RollbackTableOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReplaceSnapshotCreatedBody}
    */
-  public ServiceCall<ReplaceSnapshotCreatedBody> replaceSnapshot(ReplaceSnapshotOptions replaceSnapshotOptions) {
-    com.ibm.cloud.sdk.core.util.Validator.notNull(replaceSnapshotOptions,
-      "replaceSnapshotOptions cannot be null");
+  public ServiceCall<ReplaceSnapshotCreatedBody> rollbackTable(RollbackTableOptions rollbackTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(rollbackTableOptions,
+      "rollbackTableOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
-    pathParamsMap.put("catalog_id", replaceSnapshotOptions.catalogId());
-    pathParamsMap.put("schema_id", replaceSnapshotOptions.schemaId());
-    pathParamsMap.put("table_id", replaceSnapshotOptions.tableId());
-    pathParamsMap.put("snapshot_id", replaceSnapshotOptions.snapshotId());
-    RequestBuilder builder = RequestBuilder.put(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/snapshots/{snapshot_id}", pathParamsMap));
-    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "replaceSnapshot");
+    pathParamsMap.put("catalog_id", rollbackTableOptions.catalogId());
+    pathParamsMap.put("schema_id", rollbackTableOptions.schemaId());
+    pathParamsMap.put("table_id", rollbackTableOptions.tableId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/rollback", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "rollbackTable");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
-    if (replaceSnapshotOptions.authInstanceId() != null) {
-      builder.header("AuthInstanceId", replaceSnapshotOptions.authInstanceId());
+    if (rollbackTableOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", rollbackTableOptions.authInstanceId());
     }
-    builder.query("engine_id", String.valueOf(replaceSnapshotOptions.engineId()));
+    builder.query("engine_id", String.valueOf(rollbackTableOptions.engineId()));
+    final JsonObject contentJson = new JsonObject();
+    if (rollbackTableOptions.snapshotId() != null) {
+      contentJson.addProperty("snapshot_id", rollbackTableOptions.snapshotId());
+    }
+    builder.bodyJson(contentJson);
     ResponseConverter<ReplaceSnapshotCreatedBody> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ReplaceSnapshotCreatedBody>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2866,7 +4122,7 @@ public class WatsonxData extends BaseService {
     if (updateSyncCatalogOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", updateSyncCatalogOptions.authInstanceId());
     }
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSyncCatalogOptions.body()), "application/json-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateSyncCatalogOptions.body()), "application/merge-patch+json");
     ResponseConverter<UpdateSyncCatalogOKBody> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<UpdateSyncCatalogOKBody>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -2930,16 +4186,21 @@ public class WatsonxData extends BaseService {
       builder.header("AuthInstanceId", createMilvusServiceOptions.authInstanceId());
     }
     final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("bucket_name", createMilvusServiceOptions.bucketName());
     contentJson.addProperty("origin", createMilvusServiceOptions.origin());
-    contentJson.addProperty("type", createMilvusServiceOptions.type());
+    contentJson.addProperty("root_path", createMilvusServiceOptions.rootPath());
+    contentJson.addProperty("service_display_name", createMilvusServiceOptions.serviceDisplayName());
+    if (createMilvusServiceOptions.bucketType() != null) {
+      contentJson.addProperty("bucket_type", createMilvusServiceOptions.bucketType());
+    }
     if (createMilvusServiceOptions.description() != null) {
       contentJson.addProperty("description", createMilvusServiceOptions.description());
     }
-    if (createMilvusServiceOptions.serviceDisplayName() != null) {
-      contentJson.addProperty("service_display_name", createMilvusServiceOptions.serviceDisplayName());
-    }
     if (createMilvusServiceOptions.tags() != null) {
       contentJson.add("tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createMilvusServiceOptions.tags()));
+    }
+    if (createMilvusServiceOptions.tshirtSize() != null) {
+      contentJson.addProperty("tshirt_size", createMilvusServiceOptions.tshirtSize());
     }
     builder.bodyJson(contentJson);
     ResponseConverter<MilvusService> responseConverter =
@@ -3021,9 +4282,590 @@ public class WatsonxData extends BaseService {
     if (updateMilvusServiceOptions.authInstanceId() != null) {
       builder.header("AuthInstanceId", updateMilvusServiceOptions.authInstanceId());
     }
-    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateMilvusServiceOptions.body()), "application/json-patch+json");
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(updateMilvusServiceOptions.body()), "application/merge-patch+json");
     ResponseConverter<MilvusService> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<MilvusService>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get milvus service databases.
+   *
+   * Get milvus service databases.
+   *
+   * @param listMilvusServiceDatabasesOptions the {@link ListMilvusServiceDatabasesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link MilvusServiceDatabases}
+   */
+  public ServiceCall<MilvusServiceDatabases> listMilvusServiceDatabases(ListMilvusServiceDatabasesOptions listMilvusServiceDatabasesOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listMilvusServiceDatabasesOptions,
+      "listMilvusServiceDatabasesOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("service_id", listMilvusServiceDatabasesOptions.serviceId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/milvus_services/{service_id}/databases", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listMilvusServiceDatabases");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (listMilvusServiceDatabasesOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", listMilvusServiceDatabasesOptions.authInstanceId());
+    }
+    ResponseConverter<MilvusServiceDatabases> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<MilvusServiceDatabases>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get milvus database collections.
+   *
+   * Get milvus database collections.
+   *
+   * @param listMilvusDatabaseCollectionsOptions the {@link ListMilvusDatabaseCollectionsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link MilvusDatabaseCollections}
+   */
+  public ServiceCall<MilvusDatabaseCollections> listMilvusDatabaseCollections(ListMilvusDatabaseCollectionsOptions listMilvusDatabaseCollectionsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listMilvusDatabaseCollectionsOptions,
+      "listMilvusDatabaseCollectionsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("service_id", listMilvusDatabaseCollectionsOptions.serviceId());
+    pathParamsMap.put("database_id", listMilvusDatabaseCollectionsOptions.databaseId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/milvus_services/{service_id}/databases/{database_id}/collections", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listMilvusDatabaseCollections");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (listMilvusDatabaseCollectionsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", listMilvusDatabaseCollectionsOptions.authInstanceId());
+    }
+    ResponseConverter<MilvusDatabaseCollections> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<MilvusDatabaseCollections>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Pause milvus service.
+   *
+   * Pause a running milvus service.
+   *
+   * @param createMilvusServicePauseOptions the {@link CreateMilvusServicePauseOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
+   */
+  public ServiceCall<SuccessResponse> createMilvusServicePause(CreateMilvusServicePauseOptions createMilvusServicePauseOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createMilvusServicePauseOptions,
+      "createMilvusServicePauseOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("service_id", createMilvusServicePauseOptions.serviceId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/milvus_services/{service_id}/pause", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createMilvusServicePause");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createMilvusServicePauseOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createMilvusServicePauseOptions.authInstanceId());
+    }
+    ResponseConverter<SuccessResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Resume milvus service.
+   *
+   * Resume a paused milvus service.
+   *
+   * @param createMilvusServiceResumeOptions the {@link CreateMilvusServiceResumeOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
+   */
+  public ServiceCall<SuccessResponse> createMilvusServiceResume(CreateMilvusServiceResumeOptions createMilvusServiceResumeOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createMilvusServiceResumeOptions,
+      "createMilvusServiceResumeOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("service_id", createMilvusServiceResumeOptions.serviceId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/milvus_services/{service_id}/resume", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createMilvusServiceResume");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createMilvusServiceResumeOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createMilvusServiceResumeOptions.authInstanceId());
+    }
+    ResponseConverter<SuccessResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Scale a milvus service.
+   *
+   * Scale an existing milvus service.
+   *
+   * @param createMilvusServiceScaleOptions the {@link CreateMilvusServiceScaleOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
+   */
+  public ServiceCall<SuccessResponse> createMilvusServiceScale(CreateMilvusServiceScaleOptions createMilvusServiceScaleOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createMilvusServiceScaleOptions,
+      "createMilvusServiceScaleOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("service_id", createMilvusServiceScaleOptions.serviceId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/milvus_services/{service_id}/scale", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createMilvusServiceScale");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (createMilvusServiceScaleOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", createMilvusServiceScaleOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (createMilvusServiceScaleOptions.tshirtSize() != null) {
+      contentJson.addProperty("tshirt_size", createMilvusServiceScaleOptions.tshirtSize());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<SuccessResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get ingestion jobs.
+   *
+   * Get list of ingestion jobs.
+   *
+   * @param listIngestionJobsOptions the {@link ListIngestionJobsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link IngestionJobCollection}
+   */
+  public ServiceCall<IngestionJobCollection> listIngestionJobs(ListIngestionJobsOptions listIngestionJobsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listIngestionJobsOptions,
+      "listIngestionJobsOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ingestion_jobs"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listIngestionJobs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.header("AuthInstanceId", listIngestionJobsOptions.authInstanceId());
+    if (listIngestionJobsOptions.start() != null) {
+      builder.query("start", String.valueOf(listIngestionJobsOptions.start()));
+    }
+    if (listIngestionJobsOptions.jobsPerPage() != null) {
+      builder.query("jobs_per_page", String.valueOf(listIngestionJobsOptions.jobsPerPage()));
+    }
+    ResponseConverter<IngestionJobCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IngestionJobCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create an ingestion job.
+   *
+   * Create an ingestion job.
+   *
+   * @param createIngestionJobsOptions the {@link CreateIngestionJobsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link IngestionJob}
+   */
+  public ServiceCall<IngestionJob> createIngestionJobs(CreateIngestionJobsOptions createIngestionJobsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createIngestionJobsOptions,
+      "createIngestionJobsOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ingestion_jobs"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createIngestionJobs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.header("AuthInstanceId", createIngestionJobsOptions.authInstanceId());
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("job_id", createIngestionJobsOptions.jobId());
+    contentJson.addProperty("source_data_files", createIngestionJobsOptions.sourceDataFiles());
+    contentJson.addProperty("target_table", createIngestionJobsOptions.targetTable());
+    contentJson.addProperty("username", createIngestionJobsOptions.username());
+    if (createIngestionJobsOptions.createIfNotExist() != null) {
+      contentJson.addProperty("create_if_not_exist", createIngestionJobsOptions.createIfNotExist());
+    }
+    if (createIngestionJobsOptions.csvProperty() != null) {
+      contentJson.add("csv_property", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIngestionJobsOptions.csvProperty()));
+    }
+    if (createIngestionJobsOptions.engineId() != null) {
+      contentJson.addProperty("engine_id", createIngestionJobsOptions.engineId());
+    }
+    if (createIngestionJobsOptions.executeConfig() != null) {
+      contentJson.add("execute_config", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIngestionJobsOptions.executeConfig()));
+    }
+    if (createIngestionJobsOptions.partitionBy() != null) {
+      contentJson.addProperty("partition_by", createIngestionJobsOptions.partitionBy());
+    }
+    if (createIngestionJobsOptions.schema() != null) {
+      contentJson.addProperty("schema", createIngestionJobsOptions.schema());
+    }
+    if (createIngestionJobsOptions.sourceFileType() != null) {
+      contentJson.addProperty("source_file_type", createIngestionJobsOptions.sourceFileType());
+    }
+    if (createIngestionJobsOptions.validateCsvHeader() != null) {
+      contentJson.addProperty("validate_csv_header", createIngestionJobsOptions.validateCsvHeader());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<IngestionJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IngestionJob>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create an ingestion job for user local files.
+   *
+   * Create an ingestion job for user local files.
+   *
+   * @param createIngestionJobsLocalFilesOptions the {@link CreateIngestionJobsLocalFilesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link IngestionJob}
+   */
+  public ServiceCall<IngestionJob> createIngestionJobsLocalFiles(CreateIngestionJobsLocalFilesOptions createIngestionJobsLocalFilesOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createIngestionJobsLocalFilesOptions,
+      "createIngestionJobsLocalFilesOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ingestion_jobs_local_files"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createIngestionJobsLocalFiles");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.header("AuthInstanceId", createIngestionJobsLocalFilesOptions.authInstanceId());
+    MultipartBody.Builder multipartBuilder = new MultipartBody.Builder();
+    multipartBuilder.setType(MultipartBody.FORM);
+    okhttp3.RequestBody sourceDataFileBody = RequestUtils.inputStreamBody(createIngestionJobsLocalFilesOptions.sourceDataFile(), createIngestionJobsLocalFilesOptions.sourceDataFileContentType());
+    multipartBuilder.addFormDataPart("source_data_file", "filename", sourceDataFileBody);
+    multipartBuilder.addFormDataPart("target_table", createIngestionJobsLocalFilesOptions.targetTable());
+    multipartBuilder.addFormDataPart("job_id", createIngestionJobsLocalFilesOptions.jobId());
+    multipartBuilder.addFormDataPart("username", createIngestionJobsLocalFilesOptions.username());
+    if (createIngestionJobsLocalFilesOptions.sourceFileType() != null) {
+      multipartBuilder.addFormDataPart("source_file_type", createIngestionJobsLocalFilesOptions.sourceFileType());
+    }
+    if (createIngestionJobsLocalFilesOptions.csvProperty() != null) {
+      multipartBuilder.addFormDataPart("csv_property", createIngestionJobsLocalFilesOptions.csvProperty());
+    }
+    if (createIngestionJobsLocalFilesOptions.createIfNotExist() != null) {
+      multipartBuilder.addFormDataPart("create_if_not_exist", String.valueOf(createIngestionJobsLocalFilesOptions.createIfNotExist()));
+    }
+    if (createIngestionJobsLocalFilesOptions.validateCsvHeader() != null) {
+      multipartBuilder.addFormDataPart("validate_csv_header", String.valueOf(createIngestionJobsLocalFilesOptions.validateCsvHeader()));
+    }
+    if (createIngestionJobsLocalFilesOptions.executeConfig() != null) {
+      multipartBuilder.addFormDataPart("execute_config", createIngestionJobsLocalFilesOptions.executeConfig());
+    }
+    if (createIngestionJobsLocalFilesOptions.engineId() != null) {
+      multipartBuilder.addFormDataPart("engine_id", createIngestionJobsLocalFilesOptions.engineId());
+    }
+    builder.body(multipartBuilder.build());
+    ResponseConverter<IngestionJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IngestionJob>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get ingestion job.
+   *
+   * Get a submitted ingestion job.
+   *
+   * @param getIngestionJobOptions the {@link GetIngestionJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link IngestionJob}
+   */
+  public ServiceCall<IngestionJob> getIngestionJob(GetIngestionJobOptions getIngestionJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getIngestionJobOptions,
+      "getIngestionJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("job_id", getIngestionJobOptions.jobId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ingestion_jobs/{job_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getIngestionJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.header("AuthInstanceId", getIngestionJobOptions.authInstanceId());
+    ResponseConverter<IngestionJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IngestionJob>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete an ingestion job.
+   *
+   * Delete an ingestion job.
+   *
+   * @param deleteIngestionJobsOptions the {@link DeleteIngestionJobsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteIngestionJobs(DeleteIngestionJobsOptions deleteIngestionJobsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteIngestionJobsOptions,
+      "deleteIngestionJobsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("job_id", deleteIngestionJobsOptions.jobId());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/ingestion_jobs/{job_id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "deleteIngestionJobs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("AuthInstanceId", deleteIngestionJobsOptions.authInstanceId());
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Generate a preview of source file(s).
+   *
+   * Generate a preview of source file(s).
+   *
+   * @param createPreviewIngestionFileOptions the {@link CreatePreviewIngestionFileOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PreviewIngestionFile}
+   */
+  public ServiceCall<PreviewIngestionFile> createPreviewIngestionFile(CreatePreviewIngestionFileOptions createPreviewIngestionFileOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createPreviewIngestionFileOptions,
+      "createPreviewIngestionFileOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/preview_ingestion_file"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "createPreviewIngestionFile");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.header("AuthInstanceId", createPreviewIngestionFileOptions.authInstanceId());
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("source_data_files", createPreviewIngestionFileOptions.sourceDataFiles());
+    if (createPreviewIngestionFileOptions.csvProperty() != null) {
+      contentJson.add("csv_property", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPreviewIngestionFileOptions.csvProperty()));
+    }
+    if (createPreviewIngestionFileOptions.sourceFileType() != null) {
+      contentJson.addProperty("source_file_type", createPreviewIngestionFileOptions.sourceFileType());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<PreviewIngestionFile> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PreviewIngestionFile>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get CPG and CAS endpoints.
+   *
+   * Get Common policy gateway (CPG) and  Data Access Service(CAS) endpoints.
+   *
+   * @param getEndpointsOptions the {@link GetEndpointsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link EndpointCollection}
+   */
+  public ServiceCall<EndpointCollection> getEndpoints(GetEndpointsOptions getEndpointsOptions) {
+    if (getEndpointsOptions == null) {
+      getEndpointsOptions = new GetEndpointsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/endpoints"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getEndpoints");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getEndpointsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getEndpointsOptions.authInstanceId());
+    }
+    ResponseConverter<EndpointCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<EndpointCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get CPG and CAS endpoints.
+   *
+   * Get Common policy gateway (CPG) and  Data Access Service(CAS) endpoints.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link EndpointCollection}
+   */
+  public ServiceCall<EndpointCollection> getEndpoints() {
+    return getEndpoints(null);
+  }
+
+  /**
+   * Get all columns.
+   *
+   * Get all columns.
+   *
+   * @param getAllColumnsOptions the {@link GetAllColumnsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link ColumnsResponse}
+   */
+  public ServiceCall<ColumnsResponse> getAllColumns(GetAllColumnsOptions getAllColumnsOptions) {
+    if (getAllColumnsOptions == null) {
+      getAllColumnsOptions = new GetAllColumnsOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/columns"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getAllColumns");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getAllColumnsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getAllColumnsOptions.authInstanceId());
+    }
+    if (getAllColumnsOptions.tableName() != null) {
+      builder.query("table_name", String.valueOf(getAllColumnsOptions.tableName()));
+    }
+    if (getAllColumnsOptions.catalogName() != null) {
+      builder.query("catalog_name", String.valueOf(getAllColumnsOptions.catalogName()));
+    }
+    if (getAllColumnsOptions.schemaName() != null) {
+      builder.query("schema_name", String.valueOf(getAllColumnsOptions.schemaName()));
+    }
+    ResponseConverter<ColumnsResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ColumnsResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get all columns.
+   *
+   * Get all columns.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link ColumnsResponse}
+   */
+  public ServiceCall<ColumnsResponse> getAllColumns() {
+    return getAllColumns(null);
+  }
+
+  /**
+   * Get all schemas for a given catalog.
+   *
+   * List Schemas for a catalog with the given catalog_name.
+   *
+   * @param listAllSchemasOptions the {@link ListAllSchemasOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SchemaResponseCollection}
+   */
+  public ServiceCall<SchemaResponseCollection> listAllSchemas(ListAllSchemasOptions listAllSchemasOptions) {
+    if (listAllSchemasOptions == null) {
+      listAllSchemasOptions = new ListAllSchemasOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/schemas"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listAllSchemas");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (listAllSchemasOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", listAllSchemasOptions.authInstanceId());
+    }
+    if (listAllSchemasOptions.catalogName() != null) {
+      builder.query("catalog_name", String.valueOf(listAllSchemasOptions.catalogName()));
+    }
+    ResponseConverter<SchemaResponseCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SchemaResponseCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get all schemas for a given catalog.
+   *
+   * List Schemas for a catalog with the given catalog_name.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link SchemaResponseCollection}
+   */
+  public ServiceCall<SchemaResponseCollection> listAllSchemas() {
+    return listAllSchemas(null);
+  }
+
+  /**
+   * Get schema details.
+   *
+   * Get schema details.
+   *
+   * @param getSchemaDetailsOptions the {@link GetSchemaDetailsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SchemaResponse}
+   */
+  public ServiceCall<SchemaResponse> getSchemaDetails(GetSchemaDetailsOptions getSchemaDetailsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getSchemaDetailsOptions,
+      "getSchemaDetailsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("schema_name", getSchemaDetailsOptions.schemaName());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/schemas/{schema_name}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getSchemaDetails");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getSchemaDetailsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getSchemaDetailsOptions.authInstanceId());
+    }
+    if (getSchemaDetailsOptions.catalogName() != null) {
+      builder.query("catalog_name", String.valueOf(getSchemaDetailsOptions.catalogName()));
+    }
+    ResponseConverter<SchemaResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SchemaResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get all tables.
+   *
+   * Get all tables.
+   *
+   * @param listAllTablesOptions the {@link ListAllTablesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link TableResponseCollection}
+   */
+  public ServiceCall<TableResponseCollection> listAllTables(ListAllTablesOptions listAllTablesOptions) {
+    if (listAllTablesOptions == null) {
+      listAllTablesOptions = new ListAllTablesOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/tables"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "listAllTables");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (listAllTablesOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", listAllTablesOptions.authInstanceId());
+    }
+    if (listAllTablesOptions.catalogName() != null) {
+      builder.query("catalog_name", String.valueOf(listAllTablesOptions.catalogName()));
+    }
+    if (listAllTablesOptions.schemaName() != null) {
+      builder.query("schema_name", String.valueOf(listAllTablesOptions.schemaName()));
+    }
+    ResponseConverter<TableResponseCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<TableResponseCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Get all tables.
+   *
+   * Get all tables.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link TableResponseCollection}
+   */
+  public ServiceCall<TableResponseCollection> listAllTables() {
+    return listAllTables(null);
+  }
+
+  /**
+   * Get table details.
+   *
+   * Get table details.
+   *
+   * @param getTableDetailsOptions the {@link GetTableDetailsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link TableResponse}
+   */
+  public ServiceCall<TableResponse> getTableDetails(GetTableDetailsOptions getTableDetailsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getTableDetailsOptions,
+      "getTableDetailsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("table_name", getTableDetailsOptions.tableName());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/tables/{table_name}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "getTableDetails");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (getTableDetailsOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", getTableDetailsOptions.authInstanceId());
+    }
+    if (getTableDetailsOptions.catalogName() != null) {
+      builder.query("catalog_name", String.valueOf(getTableDetailsOptions.catalogName()));
+    }
+    if (getTableDetailsOptions.schemaName() != null) {
+      builder.query("schema_name", String.valueOf(getTableDetailsOptions.schemaName()));
+    }
+    ResponseConverter<TableResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<TableResponse>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 

@@ -37,7 +37,7 @@ public class CatalogTest {
     assertNull(catalogModel.getAssociatedDatabases());
     assertNull(catalogModel.getAssociatedEngines());
     assertNull(catalogModel.getCatalogName());
-    assertNull(catalogModel.getCatalogType());
+    assertNull(catalogModel.getCatalogNames());
     assertNull(catalogModel.getCreatedBy());
     assertNull(catalogModel.getCreatedOn());
     assertNull(catalogModel.getDescription());

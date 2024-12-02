@@ -14,7 +14,6 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.JsonPatchOperation;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.UpdateMilvusServiceOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
@@ -32,24 +31,13 @@ public class UpdateMilvusServiceOptionsTest {
 
   @Test
   public void testUpdateMilvusServiceOptions() throws Throwable {
-    JsonPatchOperation jsonPatchOperationModel = new JsonPatchOperation.Builder()
-      .op("add")
-      .path("testString")
-      .from("testString")
-      .value("testString")
-      .build();
-    assertEquals(jsonPatchOperationModel.op(), "add");
-    assertEquals(jsonPatchOperationModel.path(), "testString");
-    assertEquals(jsonPatchOperationModel.from(), "testString");
-    assertEquals(jsonPatchOperationModel.value(), "testString");
-
     UpdateMilvusServiceOptions updateMilvusServiceOptionsModel = new UpdateMilvusServiceOptions.Builder()
       .serviceId("testString")
-      .body(java.util.Arrays.asList(jsonPatchOperationModel))
+      .body(java.util.Collections.singletonMap("anyKey", "anyValue"))
       .authInstanceId("testString")
       .build();
     assertEquals(updateMilvusServiceOptionsModel.serviceId(), "testString");
-    assertEquals(updateMilvusServiceOptionsModel.body(), java.util.Arrays.asList(jsonPatchOperationModel));
+    assertEquals(updateMilvusServiceOptionsModel.body(), java.util.Collections.singletonMap("anyKey", "anyValue"));
     assertEquals(updateMilvusServiceOptionsModel.authInstanceId(), "testString");
   }
 

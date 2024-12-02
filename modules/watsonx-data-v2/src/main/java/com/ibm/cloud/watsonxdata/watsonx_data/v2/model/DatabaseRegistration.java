@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.List;
@@ -41,8 +42,10 @@ public class DatabaseRegistration extends GenericModel {
   protected List<DatabaseRegistrationDatabasePropertiesItems> databaseProperties;
   @SerializedName("database_type")
   protected String databaseType;
+  protected List<DatabaseRegistrationPatchTablesItems> tables;
   protected String description;
   protected List<String> tags;
+  protected List<DatabaseRegistrationTopicsItems> topics;
 
   protected DatabaseRegistration() { }
 
@@ -157,6 +160,17 @@ public class DatabaseRegistration extends GenericModel {
   }
 
   /**
+   * Gets the tables.
+   *
+   * List of tables.
+   *
+   * @return the tables
+   */
+  public List<DatabaseRegistrationPatchTablesItems> getTables() {
+    return tables;
+  }
+
+  /**
    * Gets the description.
    *
    * Database description.
@@ -178,5 +192,15 @@ public class DatabaseRegistration extends GenericModel {
     return tags;
   }
 
+  /**
+   * Gets the topics.
+   *
+   * List of topics.
+   *
+   * @return the topics
+   */
+  public List<DatabaseRegistrationTopicsItems> getTopics() {
+    return topics;
+  }
 }
 

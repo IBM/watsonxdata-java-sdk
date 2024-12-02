@@ -39,7 +39,6 @@ public class CreateDb2EngineOptionsTest {
 
     CreateDb2EngineOptions createDb2EngineOptionsModel = new CreateDb2EngineOptions.Builder()
       .origin("external")
-      .type("db2")
       .description("db2 engine description")
       .engineDetails(db2EngineDetailsBodyModel)
       .engineDisplayName("sampleEngine")
@@ -47,7 +46,6 @@ public class CreateDb2EngineOptionsTest {
       .authInstanceId("testString")
       .build();
     assertEquals(createDb2EngineOptionsModel.origin(), "external");
-    assertEquals(createDb2EngineOptionsModel.type(), "db2");
     assertEquals(createDb2EngineOptionsModel.description(), "db2 engine description");
     assertEquals(createDb2EngineOptionsModel.engineDetails(), db2EngineDetailsBodyModel);
     assertEquals(createDb2EngineOptionsModel.engineDisplayName(), "sampleEngine");

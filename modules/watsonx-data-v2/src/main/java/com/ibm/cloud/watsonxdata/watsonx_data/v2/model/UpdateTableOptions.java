@@ -10,10 +10,10 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -26,7 +26,8 @@ public class UpdateTableOptions extends GenericModel {
   protected String schemaId;
   protected String tableId;
   protected String engineId;
-  protected List<JsonPatchOperation> body;
+  protected Map<String, Object> body;
+  protected String type;
   protected String authInstanceId;
 
   /**
@@ -37,7 +38,8 @@ public class UpdateTableOptions extends GenericModel {
     private String schemaId;
     private String tableId;
     private String engineId;
-    private List<JsonPatchOperation> body;
+    private Map<String, Object> body;
+    private String type;
     private String authInstanceId;
 
     /**
@@ -51,6 +53,7 @@ public class UpdateTableOptions extends GenericModel {
       this.tableId = updateTableOptions.tableId;
       this.engineId = updateTableOptions.engineId;
       this.body = updateTableOptions.body;
+      this.type = updateTableOptions.type;
       this.authInstanceId = updateTableOptions.authInstanceId;
     }
 
@@ -69,7 +72,7 @@ public class UpdateTableOptions extends GenericModel {
      * @param engineId the engineId
      * @param body the body
      */
-    public Builder(String catalogId, String schemaId, String tableId, String engineId, List<JsonPatchOperation> body) {
+    public Builder(String catalogId, String schemaId, String tableId, String engineId, Map<String, Object> body) {
       this.catalogId = catalogId;
       this.schemaId = schemaId;
       this.tableId = tableId;
@@ -84,22 +87,6 @@ public class UpdateTableOptions extends GenericModel {
      */
     public UpdateTableOptions build() {
       return new UpdateTableOptions(this);
-    }
-
-    /**
-     * Adds a new element to body.
-     *
-     * @param body the new element to be added
-     * @return the UpdateTableOptions builder
-     */
-    public Builder addBody(JsonPatchOperation body) {
-      com.ibm.cloud.sdk.core.util.Validator.notNull(body,
-        "body cannot be null");
-      if (this.body == null) {
-        this.body = new ArrayList<JsonPatchOperation>();
-      }
-      this.body.add(body);
-      return this;
     }
 
     /**
@@ -148,13 +135,23 @@ public class UpdateTableOptions extends GenericModel {
 
     /**
      * Set the body.
-     * Existing body will be replaced.
      *
      * @param body the body
      * @return the UpdateTableOptions builder
      */
-    public Builder body(List<JsonPatchOperation> body) {
+    public Builder body(Map<String, Object> body) {
       this.body = body;
+      return this;
+    }
+
+    /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the UpdateTableOptions builder
+     */
+    public Builder type(String type) {
+      this.type = type;
       return this;
     }
 
@@ -188,6 +185,7 @@ public class UpdateTableOptions extends GenericModel {
     tableId = builder.tableId;
     engineId = builder.engineId;
     body = builder.body;
+    type = builder.type;
     authInstanceId = builder.authInstanceId;
   }
 
@@ -251,14 +249,25 @@ public class UpdateTableOptions extends GenericModel {
    *
    * @return the body
    */
-  public List<JsonPatchOperation> body() {
+  public Map<String, Object> body() {
     return body;
+  }
+
+  /**
+   * Gets the type.
+   *
+   * URL encoded table type.
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
   }
 
   /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * CRN.
    *
    * @return the authInstanceId
    */
