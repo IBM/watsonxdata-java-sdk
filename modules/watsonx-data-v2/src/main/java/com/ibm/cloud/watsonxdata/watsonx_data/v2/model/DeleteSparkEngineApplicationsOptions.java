@@ -10,7 +10,11 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -22,6 +26,7 @@ public class DeleteSparkEngineApplicationsOptions extends GenericModel {
   protected String engineId;
   protected String applicationId;
   protected String authInstanceId;
+  protected List<String> state;
 
   /**
    * Builder.
@@ -30,6 +35,7 @@ public class DeleteSparkEngineApplicationsOptions extends GenericModel {
     private String engineId;
     private String applicationId;
     private String authInstanceId;
+    private List<String> state;
 
     /**
      * Instantiates a new Builder from an existing DeleteSparkEngineApplicationsOptions instance.
@@ -40,6 +46,7 @@ public class DeleteSparkEngineApplicationsOptions extends GenericModel {
       this.engineId = deleteSparkEngineApplicationsOptions.engineId;
       this.applicationId = deleteSparkEngineApplicationsOptions.applicationId;
       this.authInstanceId = deleteSparkEngineApplicationsOptions.authInstanceId;
+      this.state = deleteSparkEngineApplicationsOptions.state;
     }
 
     /**
@@ -66,6 +73,22 @@ public class DeleteSparkEngineApplicationsOptions extends GenericModel {
      */
     public DeleteSparkEngineApplicationsOptions build() {
       return new DeleteSparkEngineApplicationsOptions(this);
+    }
+
+    /**
+     * Adds a new element to state.
+     *
+     * @param state the new element to be added
+     * @return the DeleteSparkEngineApplicationsOptions builder
+     */
+    public Builder addState(String state) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(state,
+        "state cannot be null");
+      if (this.state == null) {
+        this.state = new ArrayList<String>();
+      }
+      this.state.add(state);
+      return this;
     }
 
     /**
@@ -100,6 +123,18 @@ public class DeleteSparkEngineApplicationsOptions extends GenericModel {
       this.authInstanceId = authInstanceId;
       return this;
     }
+
+    /**
+     * Set the state.
+     * Existing state will be replaced.
+     *
+     * @param state the state
+     * @return the DeleteSparkEngineApplicationsOptions builder
+     */
+    public Builder state(List<String> state) {
+      this.state = state;
+      return this;
+    }
   }
 
   protected DeleteSparkEngineApplicationsOptions() { }
@@ -112,6 +147,7 @@ public class DeleteSparkEngineApplicationsOptions extends GenericModel {
     engineId = builder.engineId;
     applicationId = builder.applicationId;
     authInstanceId = builder.authInstanceId;
+    state = builder.state;
   }
 
   /**
@@ -148,12 +184,23 @@ public class DeleteSparkEngineApplicationsOptions extends GenericModel {
   /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * CRN.
    *
    * @return the authInstanceId
    */
   public String authInstanceId() {
     return authInstanceId;
+  }
+
+  /**
+   * Gets the state.
+   *
+   * state.
+   *
+   * @return the state
+   */
+  public List<String> state() {
+    return state;
   }
 }
 

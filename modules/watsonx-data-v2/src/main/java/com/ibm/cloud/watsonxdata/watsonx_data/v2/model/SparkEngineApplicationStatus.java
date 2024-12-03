@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class SparkEngineApplicationStatus extends GenericModel {
   }
 
   @SerializedName("application_details")
-  protected SparkEngineApplicationStatusApplicationDetails applicationDetails;
+  protected SparkApplicationDetails applicationDetails;
   @SerializedName("application_id")
   protected String applicationId;
   @SerializedName("auto_termination_time")
@@ -60,6 +61,8 @@ public class SparkEngineApplicationStatus extends GenericModel {
   protected String sparkApplicationId;
   @SerializedName("spark_application_name")
   protected String sparkApplicationName;
+  @SerializedName("spark_version")
+  protected String sparkVersion;
   @SerializedName("start_time")
   protected String startTime;
   protected String state;
@@ -70,17 +73,20 @@ public class SparkEngineApplicationStatus extends GenericModel {
   @SerializedName("template_id")
   protected String templateId;
   protected String type;
+  protected List<SparkVolumeDetails> volumes;
+  @SerializedName("wxd_application_ui_endpoint")
+  protected String wxdApplicationUiEndpoint;
 
   protected SparkEngineApplicationStatus() { }
 
   /**
    * Gets the applicationDetails.
    *
-   * Application Details.
+   * Application details.
    *
    * @return the applicationDetails
    */
-  public SparkEngineApplicationStatusApplicationDetails getApplicationDetails() {
+  public SparkApplicationDetails getApplicationDetails() {
     return applicationDetails;
   }
 
@@ -239,6 +245,17 @@ public class SparkEngineApplicationStatus extends GenericModel {
   }
 
   /**
+   * Gets the sparkVersion.
+   *
+   * Spark Version.
+   *
+   * @return the sparkVersion
+   */
+  public String getSparkVersion() {
+    return sparkVersion;
+  }
+
+  /**
    * Gets the startTime.
    *
    * Start time.
@@ -302,6 +319,28 @@ public class SparkEngineApplicationStatus extends GenericModel {
    */
   public String getType() {
     return type;
+  }
+
+  /**
+   * Gets the volumes.
+   *
+   * Spark application volumes to mount.
+   *
+   * @return the volumes
+   */
+  public List<SparkVolumeDetails> getVolumes() {
+    return volumes;
+  }
+
+  /**
+   * Gets the wxdApplicationUiEndpoint.
+   *
+   * Wxd history_server endpoint.
+   *
+   * @return the wxdApplicationUiEndpoint
+   */
+  public String getWxdApplicationUiEndpoint() {
+    return wxdApplicationUiEndpoint;
   }
 }
 

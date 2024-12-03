@@ -18,6 +18,7 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketRegistration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketRegistrationCollection;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.StorageDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;

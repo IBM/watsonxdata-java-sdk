@@ -32,21 +32,28 @@ public class MilvusServiceTest {
   @Test
   public void testMilvusService() throws Throwable {
     MilvusService milvusServiceModel = new MilvusService();
+    assertNull(milvusServiceModel.getAccessKey());
     assertNull(milvusServiceModel.getActions());
+    assertNull(milvusServiceModel.getBucketName());
+    assertNull(milvusServiceModel.getBucketType());
     assertNull(milvusServiceModel.getCreatedBy());
     assertNull(milvusServiceModel.getCreatedOn());
     assertNull(milvusServiceModel.getDescription());
+    assertNull(milvusServiceModel.getEndpoint());
     assertNull(milvusServiceModel.getGrpcHost());
     assertNull(milvusServiceModel.getGrpcPort());
     assertNull(milvusServiceModel.getHostName());
     assertNull(milvusServiceModel.getHttpsHost());
     assertNull(milvusServiceModel.getHttpsPort());
     assertNull(milvusServiceModel.getOrigin());
+    assertNull(milvusServiceModel.getRootPath());
+    assertNull(milvusServiceModel.getSecretKey());
     assertNull(milvusServiceModel.getServiceDisplayName());
     assertNull(milvusServiceModel.getServiceId());
     assertNull(milvusServiceModel.getStatus());
     assertNull(milvusServiceModel.getStatusCode());
     assertNull(milvusServiceModel.getTags());
+    assertNull(milvusServiceModel.getTshirtSize());
     assertNull(milvusServiceModel.getType());
   }
 }

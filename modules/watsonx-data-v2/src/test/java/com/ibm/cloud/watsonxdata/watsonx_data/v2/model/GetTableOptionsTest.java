@@ -36,12 +36,14 @@ public class GetTableOptionsTest {
       .schemaId("testString")
       .tableId("testString")
       .engineId("testString")
+      .type("testString")
       .authInstanceId("testString")
       .build();
     assertEquals(getTableOptionsModel.catalogId(), "testString");
     assertEquals(getTableOptionsModel.schemaId(), "testString");
     assertEquals(getTableOptionsModel.tableId(), "testString");
     assertEquals(getTableOptionsModel.engineId(), "testString");
+    assertEquals(getTableOptionsModel.type(), "testString");
     assertEquals(getTableOptionsModel.authInstanceId(), "testString");
   }
 

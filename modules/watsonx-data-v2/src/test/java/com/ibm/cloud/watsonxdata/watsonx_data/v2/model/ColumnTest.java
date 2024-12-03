@@ -37,6 +37,7 @@ public class ColumnTest {
       .extra("varchar")
       .length("30")
       .scale("2")
+      .precision("10")
       .type("varchar")
       .build();
     assertEquals(columnModel.columnName(), "expenses");
@@ -44,6 +45,7 @@ public class ColumnTest {
     assertEquals(columnModel.extra(), "varchar");
     assertEquals(columnModel.length(), "30");
     assertEquals(columnModel.scale(), "2");
+    assertEquals(columnModel.precision(), "10");
     assertEquals(columnModel.type(), "varchar");
 
     String json = TestUtilities.serialize(columnModel);
@@ -55,6 +57,7 @@ public class ColumnTest {
     assertEquals(columnModelNew.extra(), "varchar");
     assertEquals(columnModelNew.length(), "30");
     assertEquals(columnModelNew.scale(), "2");
+    assertEquals(columnModelNew.precision(), "10");
     assertEquals(columnModelNew.type(), "varchar");
   }
 }

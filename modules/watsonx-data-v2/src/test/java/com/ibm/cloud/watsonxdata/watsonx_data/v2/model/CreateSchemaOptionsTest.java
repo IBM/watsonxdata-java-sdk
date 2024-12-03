@@ -37,6 +37,8 @@ public class CreateSchemaOptionsTest {
       .customPath("sample-path")
       .schemaName("SampleSchema1")
       .bucketName("sample-bucket")
+      .hostname("db2@hostname.com")
+      .port(Long.valueOf("4553"))
       .authInstanceId("testString")
       .build();
     assertEquals(createSchemaOptionsModel.engineId(), "testString");
@@ -44,6 +46,8 @@ public class CreateSchemaOptionsTest {
     assertEquals(createSchemaOptionsModel.customPath(), "sample-path");
     assertEquals(createSchemaOptionsModel.schemaName(), "SampleSchema1");
     assertEquals(createSchemaOptionsModel.bucketName(), "sample-bucket");
+    assertEquals(createSchemaOptionsModel.hostname(), "db2@hostname.com");
+    assertEquals(createSchemaOptionsModel.port(), Long.valueOf("4553"));
     assertEquals(createSchemaOptionsModel.authInstanceId(), "testString");
   }
 

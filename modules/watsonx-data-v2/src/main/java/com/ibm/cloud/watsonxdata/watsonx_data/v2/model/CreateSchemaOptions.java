@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
@@ -24,6 +25,8 @@ public class CreateSchemaOptions extends GenericModel {
   protected String customPath;
   protected String schemaName;
   protected String bucketName;
+  protected String hostname;
+  protected Long port;
   protected String authInstanceId;
 
   /**
@@ -35,6 +38,8 @@ public class CreateSchemaOptions extends GenericModel {
     private String customPath;
     private String schemaName;
     private String bucketName;
+    private String hostname;
+    private Long port;
     private String authInstanceId;
 
     /**
@@ -48,6 +53,8 @@ public class CreateSchemaOptions extends GenericModel {
       this.customPath = createSchemaOptions.customPath;
       this.schemaName = createSchemaOptions.schemaName;
       this.bucketName = createSchemaOptions.bucketName;
+      this.hostname = createSchemaOptions.hostname;
+      this.port = createSchemaOptions.port;
       this.authInstanceId = createSchemaOptions.authInstanceId;
     }
 
@@ -137,6 +144,28 @@ public class CreateSchemaOptions extends GenericModel {
     }
 
     /**
+     * Set the hostname.
+     *
+     * @param hostname the hostname
+     * @return the CreateSchemaOptions builder
+     */
+    public Builder hostname(String hostname) {
+      this.hostname = hostname;
+      return this;
+    }
+
+    /**
+     * Set the port.
+     *
+     * @param port the port
+     * @return the CreateSchemaOptions builder
+     */
+    public Builder port(long port) {
+      this.port = port;
+      return this;
+    }
+
+    /**
      * Set the authInstanceId.
      *
      * @param authInstanceId the authInstanceId
@@ -164,6 +193,8 @@ public class CreateSchemaOptions extends GenericModel {
     customPath = builder.customPath;
     schemaName = builder.schemaName;
     bucketName = builder.bucketName;
+    hostname = builder.hostname;
+    port = builder.port;
     authInstanceId = builder.authInstanceId;
   }
 
@@ -232,9 +263,31 @@ public class CreateSchemaOptions extends GenericModel {
   }
 
   /**
+   * Gets the hostname.
+   *
+   * Host name.
+   *
+   * @return the hostname
+   */
+  public String hostname() {
+    return hostname;
+  }
+
+  /**
+   * Gets the port.
+   *
+   * Port.
+   *
+   * @return the port
+   */
+  public Long port() {
+    return port;
+  }
+
+  /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * watsonx.data instance ID.
    *
    * @return the authInstanceId
    */

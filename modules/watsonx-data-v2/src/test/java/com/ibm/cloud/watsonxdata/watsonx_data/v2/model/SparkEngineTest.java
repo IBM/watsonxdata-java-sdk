@@ -14,9 +14,11 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkDefaultConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEndpoints;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkScaleConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -35,6 +37,7 @@ public class SparkEngineTest {
   public void testSparkEngine() throws Throwable {
     SparkEngine sparkEngineModel = new SparkEngine();
     assertNull(sparkEngineModel.getActions());
+    assertNull(sparkEngineModel.getAssociatedCatalogs());
     assertNull(sparkEngineModel.getBuildVersion());
     assertNull(sparkEngineModel.getCreatedBy());
     assertNull(sparkEngineModel.getCreatedOn());

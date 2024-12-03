@@ -45,7 +45,6 @@ public class CreateOtherEngineOptionsTest {
       .description("external engine description")
       .origin("external")
       .tags(java.util.Arrays.asList("tag1", "tag2"))
-      .type("netezza")
       .authInstanceId("testString")
       .build();
     assertEquals(createOtherEngineOptionsModel.engineDetails(), otherEngineDetailsBodyModel);
@@ -53,7 +52,6 @@ public class CreateOtherEngineOptionsTest {
     assertEquals(createOtherEngineOptionsModel.description(), "external engine description");
     assertEquals(createOtherEngineOptionsModel.origin(), "external");
     assertEquals(createOtherEngineOptionsModel.tags(), java.util.Arrays.asList("tag1", "tag2"));
-    assertEquals(createOtherEngineOptionsModel.type(), "netezza");
     assertEquals(createOtherEngineOptionsModel.authInstanceId(), "testString");
   }
 

@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.google.gson.annotations.SerializedName;
@@ -25,6 +26,10 @@ public class BucketDetails extends GenericModel {
   @SerializedName("bucket_name")
   protected String bucketName;
   protected String endpoint;
+  @SerializedName("key_file")
+  protected String keyFile;
+  protected String provider;
+  protected String region;
   @SerializedName("secret_key")
   protected String secretKey;
 
@@ -35,6 +40,9 @@ public class BucketDetails extends GenericModel {
     private String accessKey;
     private String bucketName;
     private String endpoint;
+    private String keyFile;
+    private String provider;
+    private String region;
     private String secretKey;
 
     /**
@@ -46,6 +54,9 @@ public class BucketDetails extends GenericModel {
       this.accessKey = bucketDetails.accessKey;
       this.bucketName = bucketDetails.bucketName;
       this.endpoint = bucketDetails.endpoint;
+      this.keyFile = bucketDetails.keyFile;
+      this.provider = bucketDetails.provider;
+      this.region = bucketDetails.region;
       this.secretKey = bucketDetails.secretKey;
     }
 
@@ -107,6 +118,39 @@ public class BucketDetails extends GenericModel {
     }
 
     /**
+     * Set the keyFile.
+     *
+     * @param keyFile the keyFile
+     * @return the BucketDetails builder
+     */
+    public Builder keyFile(String keyFile) {
+      this.keyFile = keyFile;
+      return this;
+    }
+
+    /**
+     * Set the provider.
+     *
+     * @param provider the provider
+     * @return the BucketDetails builder
+     */
+    public Builder provider(String provider) {
+      this.provider = provider;
+      return this;
+    }
+
+    /**
+     * Set the region.
+     *
+     * @param region the region
+     * @return the BucketDetails builder
+     */
+    public Builder region(String region) {
+      this.region = region;
+      return this;
+    }
+
+    /**
      * Set the secretKey.
      *
      * @param secretKey the secretKey
@@ -126,6 +170,9 @@ public class BucketDetails extends GenericModel {
     accessKey = builder.accessKey;
     bucketName = builder.bucketName;
     endpoint = builder.endpoint;
+    keyFile = builder.keyFile;
+    provider = builder.provider;
+    region = builder.region;
     secretKey = builder.secretKey;
   }
 
@@ -169,6 +216,39 @@ public class BucketDetails extends GenericModel {
    */
   public String endpoint() {
     return endpoint;
+  }
+
+  /**
+   * Gets the keyFile.
+   *
+   * Key file, encrypted during bucket registration.
+   *
+   * @return the keyFile
+   */
+  public String keyFile() {
+    return keyFile;
+  }
+
+  /**
+   * Gets the provider.
+   *
+   * bucket provider.
+   *
+   * @return the provider
+   */
+  public String provider() {
+    return provider;
+  }
+
+  /**
+   * Gets the region.
+   *
+   * Region where the bucket is located.
+   *
+   * @return the region
+   */
+  public String region() {
+    return region;
   }
 
   /**

@@ -81,7 +81,6 @@ public class CreatePrestissimoEngineOptionsTest {
 
     CreatePrestissimoEngineOptions createPrestissimoEngineOptionsModel = new CreatePrestissimoEngineOptions.Builder()
       .origin("native")
-      .type("prestissimo")
       .associatedCatalogs(java.util.Arrays.asList("hive_data"))
       .description("prestissimo engine description")
       .engineDetails(prestissimoEngineDetailsModel)
@@ -92,7 +91,6 @@ public class CreatePrestissimoEngineOptionsTest {
       .authInstanceId("testString")
       .build();
     assertEquals(createPrestissimoEngineOptionsModel.origin(), "native");
-    assertEquals(createPrestissimoEngineOptionsModel.type(), "prestissimo");
     assertEquals(createPrestissimoEngineOptionsModel.associatedCatalogs(), java.util.Arrays.asList("hive_data"));
     assertEquals(createPrestissimoEngineOptionsModel.description(), "prestissimo engine description");
     assertEquals(createPrestissimoEngineOptionsModel.engineDetails(), prestissimoEngineDetailsModel);

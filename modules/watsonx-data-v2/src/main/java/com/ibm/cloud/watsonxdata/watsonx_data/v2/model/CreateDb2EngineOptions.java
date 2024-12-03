@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.ArrayList;
@@ -35,7 +36,6 @@ public class CreateDb2EngineOptions extends GenericModel {
   }
 
   protected String origin;
-  protected String type;
   protected String description;
   protected Db2EngineDetailsBody engineDetails;
   protected String engineDisplayName;
@@ -47,7 +47,6 @@ public class CreateDb2EngineOptions extends GenericModel {
    */
   public static class Builder {
     private String origin;
-    private String type;
     private String description;
     private Db2EngineDetailsBody engineDetails;
     private String engineDisplayName;
@@ -61,7 +60,6 @@ public class CreateDb2EngineOptions extends GenericModel {
      */
     private Builder(CreateDb2EngineOptions createDb2EngineOptions) {
       this.origin = createDb2EngineOptions.origin;
-      this.type = createDb2EngineOptions.type;
       this.description = createDb2EngineOptions.description;
       this.engineDetails = createDb2EngineOptions.engineDetails;
       this.engineDisplayName = createDb2EngineOptions.engineDisplayName;
@@ -79,11 +77,9 @@ public class CreateDb2EngineOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param origin the origin
-     * @param type the type
      */
-    public Builder(String origin, String type) {
+    public Builder(String origin) {
       this.origin = origin;
-      this.type = type;
     }
 
     /**
@@ -119,17 +115,6 @@ public class CreateDb2EngineOptions extends GenericModel {
      */
     public Builder origin(String origin) {
       this.origin = origin;
-      return this;
-    }
-
-    /**
-     * Set the type.
-     *
-     * @param type the type
-     * @return the CreateDb2EngineOptions builder
-     */
-    public Builder type(String type) {
-      this.type = type;
       return this;
     }
 
@@ -195,10 +180,7 @@ public class CreateDb2EngineOptions extends GenericModel {
   protected CreateDb2EngineOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.origin,
       "origin cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.type,
-      "type cannot be null");
     origin = builder.origin;
-    type = builder.type;
     description = builder.description;
     engineDetails = builder.engineDetails;
     engineDisplayName = builder.engineDisplayName;
@@ -224,17 +206,6 @@ public class CreateDb2EngineOptions extends GenericModel {
    */
   public String origin() {
     return origin;
-  }
-
-  /**
-   * Gets the type.
-   *
-   * Engine type.
-   *
-   * @return the type
-   */
-  public String type() {
-    return type;
   }
 
   /**
@@ -284,7 +255,7 @@ public class CreateDb2EngineOptions extends GenericModel {
   /**
    * Gets the authInstanceId.
    *
-   * Instance ID.
+   * CRN.
    *
    * @return the authInstanceId
    */

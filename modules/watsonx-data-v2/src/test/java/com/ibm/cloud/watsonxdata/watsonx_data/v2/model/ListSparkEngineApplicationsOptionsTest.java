@@ -34,9 +34,11 @@ public class ListSparkEngineApplicationsOptionsTest {
     ListSparkEngineApplicationsOptions listSparkEngineApplicationsOptionsModel = new ListSparkEngineApplicationsOptions.Builder()
       .engineId("testString")
       .authInstanceId("testString")
+      .state(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(listSparkEngineApplicationsOptionsModel.engineId(), "testString");
     assertEquals(listSparkEngineApplicationsOptionsModel.authInstanceId(), "testString");
+    assertEquals(listSparkEngineApplicationsOptionsModel.state(), java.util.Arrays.asList("testString"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

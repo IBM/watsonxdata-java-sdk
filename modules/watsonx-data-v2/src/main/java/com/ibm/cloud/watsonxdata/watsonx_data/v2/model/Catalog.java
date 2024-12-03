@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.List;
@@ -41,8 +42,8 @@ public class Catalog extends GenericModel {
   protected List<String> associatedEngines;
   @SerializedName("catalog_name")
   protected String catalogName;
-  @SerializedName("catalog_type")
-  protected String catalogType;
+  @SerializedName("catalog_names")
+  protected String catalogNames;
   @SerializedName("created_by")
   protected String createdBy;
   @SerializedName("created_on")
@@ -124,14 +125,14 @@ public class Catalog extends GenericModel {
   }
 
   /**
-   * Gets the catalogType.
+   * Gets the catalogNames.
    *
-   * Table type.
+   * catalog names.
    *
-   * @return the catalogType
+   * @return the catalogNames
    */
-  public String getCatalogType() {
-    return catalogType;
+  public String getCatalogNames() {
+    return catalogNames;
   }
 
   /**

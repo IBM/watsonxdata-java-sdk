@@ -59,7 +59,6 @@ public class CreatePrestoEngineOptionsTest {
 
     CreatePrestoEngineOptions createPrestoEngineOptionsModel = new CreatePrestoEngineOptions.Builder()
       .origin("native")
-      .type("presto")
       .associatedCatalogs(java.util.Arrays.asList("iceberg_data", "hive_data"))
       .description("presto engine for running sql queries")
       .engineDetails(engineDetailsBodyModel)
@@ -70,7 +69,6 @@ public class CreatePrestoEngineOptionsTest {
       .authInstanceId("testString")
       .build();
     assertEquals(createPrestoEngineOptionsModel.origin(), "native");
-    assertEquals(createPrestoEngineOptionsModel.type(), "presto");
     assertEquals(createPrestoEngineOptionsModel.associatedCatalogs(), java.util.Arrays.asList("iceberg_data", "hive_data"));
     assertEquals(createPrestoEngineOptionsModel.description(), "presto engine for running sql queries");
     assertEquals(createPrestoEngineOptionsModel.engineDetails(), engineDetailsBodyModel);

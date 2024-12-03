@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import java.util.List;
@@ -21,6 +22,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * EngineDetail.
  */
 public class PrestoEngine extends GenericModel {
+
+  /**
+   * Triggers engine restart if value is force.
+   */
+  public interface EngineRestart {
+    /** force. */
+    String FORCE = "force";
+    /** false. */
+    String X_FALSE = "false";
+  }
 
   /**
    * Origin - created or registered.
@@ -57,12 +68,17 @@ public class PrestoEngine extends GenericModel {
   @SerializedName("created_on")
   protected Long createdOn;
   protected String description;
+  protected List<Driver> drivers;
   @SerializedName("engine_details")
   protected EngineDetailsBody engineDetails;
   @SerializedName("engine_display_name")
   protected String engineDisplayName;
   @SerializedName("engine_id")
   protected String engineId;
+  @SerializedName("engine_properties")
+  protected PrestoEngineEngineProperties engineProperties;
+  @SerializedName("engine_restart")
+  protected String engineRestart;
   @SerializedName("external_host_name")
   protected String externalHostName;
   @SerializedName("group_id")
@@ -72,6 +88,8 @@ public class PrestoEngine extends GenericModel {
   protected String origin;
   protected Long port;
   protected String region;
+  @SerializedName("remove_engine_properties")
+  protected PrestoEnginePatchRemoveEngineProperties removeEngineProperties;
   @SerializedName("size_config")
   protected String sizeConfig;
   protected String status;
@@ -162,6 +180,17 @@ public class PrestoEngine extends GenericModel {
   }
 
   /**
+   * Gets the drivers.
+   *
+   * Driver details.
+   *
+   * @return the drivers
+   */
+  public List<Driver> getDrivers() {
+    return drivers;
+  }
+
+  /**
    * Gets the engineDetails.
    *
    * Node details.
@@ -192,6 +221,28 @@ public class PrestoEngine extends GenericModel {
    */
   public String getEngineId() {
     return engineId;
+  }
+
+  /**
+   * Gets the engineProperties.
+   *
+   * Engine properties.
+   *
+   * @return the engineProperties
+   */
+  public PrestoEngineEngineProperties getEngineProperties() {
+    return engineProperties;
+  }
+
+  /**
+   * Gets the engineRestart.
+   *
+   * Triggers engine restart if value is force.
+   *
+   * @return the engineRestart
+   */
+  public String getEngineRestart() {
+    return engineRestart;
   }
 
   /**
@@ -258,6 +309,17 @@ public class PrestoEngine extends GenericModel {
    */
   public String getRegion() {
     return region;
+  }
+
+  /**
+   * Gets the removeEngineProperties.
+   *
+   * RemoveEngine properties.
+   *
+   * @return the removeEngineProperties
+   */
+  public PrestoEnginePatchRemoveEngineProperties getRemoveEngineProperties() {
+    return removeEngineProperties;
   }
 
   /**
@@ -336,6 +398,5 @@ public class PrestoEngine extends GenericModel {
   public NodeDescription getWorker() {
     return worker;
   }
-
 }
 

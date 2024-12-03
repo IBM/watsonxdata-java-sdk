@@ -39,7 +39,6 @@ public class CreateNetezzaEngineOptionsTest {
 
     CreateNetezzaEngineOptions createNetezzaEngineOptionsModel = new CreateNetezzaEngineOptions.Builder()
       .origin("external")
-      .type("netezza")
       .description("netezza engine description")
       .engineDetails(netezzaEngineDetailsBodyModel)
       .engineDisplayName("sampleEngine")
@@ -47,7 +46,6 @@ public class CreateNetezzaEngineOptionsTest {
       .authInstanceId("testString")
       .build();
     assertEquals(createNetezzaEngineOptionsModel.origin(), "external");
-    assertEquals(createNetezzaEngineOptionsModel.type(), "netezza");
     assertEquals(createNetezzaEngineOptionsModel.description(), "netezza engine description");
     assertEquals(createNetezzaEngineOptionsModel.engineDetails(), netezzaEngineDetailsBodyModel);
     assertEquals(createNetezzaEngineOptionsModel.engineDisplayName(), "sampleEngine");

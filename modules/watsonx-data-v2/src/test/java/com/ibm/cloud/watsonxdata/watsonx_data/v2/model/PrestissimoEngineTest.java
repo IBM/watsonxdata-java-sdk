@@ -14,10 +14,20 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGenConfiguration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.NodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEndpoints;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEngineDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEngineEngineProperties;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesCatalog;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesGlobal;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesOaiGen1Jvm;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesVelox;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoNodeDescriptionBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEngineProperties;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesConfiguration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesPrestissimoOaiGenJvm;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -45,12 +55,15 @@ public class PrestissimoEngineTest {
     assertNull(prestissimoEngineModel.getEngineDetails());
     assertNull(prestissimoEngineModel.getEngineDisplayName());
     assertNull(prestissimoEngineModel.getEngineId());
+    assertNull(prestissimoEngineModel.getEngineProperties());
+    assertNull(prestissimoEngineModel.getEngineRestart());
     assertNull(prestissimoEngineModel.getExternalHostName());
     assertNull(prestissimoEngineModel.getGroupId());
     assertNull(prestissimoEngineModel.getHostName());
     assertNull(prestissimoEngineModel.getOrigin());
     assertNull(prestissimoEngineModel.getPort());
     assertNull(prestissimoEngineModel.getRegion());
+    assertNull(prestissimoEngineModel.getRemoveEngineProperties());
     assertNull(prestissimoEngineModel.getSizeConfig());
     assertNull(prestissimoEngineModel.getStatus());
     assertNull(prestissimoEngineModel.getStatusCode());

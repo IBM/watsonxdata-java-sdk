@@ -14,8 +14,10 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkDefaultConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEndpoints;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkEngineDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.SparkScaleConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -33,7 +35,22 @@ public class SparkEngineDetailsTest {
   @Test
   public void testSparkEngineDetails() throws Throwable {
     SparkEngineDetails sparkEngineDetailsModel = new SparkEngineDetails();
+    assertNull(sparkEngineDetailsModel.getApiKey());
     assertNull(sparkEngineDetailsModel.getConnectionString());
+    assertNull(sparkEngineDetailsModel.getDefaultConfig());
+    assertNull(sparkEngineDetailsModel.getDefaultVersion());
     assertNull(sparkEngineDetailsModel.getEndpoints());
+    assertNull(sparkEngineDetailsModel.getEngineHomeBucketDisplayName());
+    assertNull(sparkEngineDetailsModel.getEngineHomeBucketName());
+    assertNull(sparkEngineDetailsModel.getEngineHomePath());
+    assertNull(sparkEngineDetailsModel.getEngineHomeVolume());
+    assertNull(sparkEngineDetailsModel.getEngineHomeVolumeId());
+    assertNull(sparkEngineDetailsModel.getEngineHomeVolumeName());
+    assertNull(sparkEngineDetailsModel.getEngineHomeVolumeStorageClass());
+    assertNull(sparkEngineDetailsModel.getEngineHomeVolumeStorageSize());
+    assertNull(sparkEngineDetailsModel.getEngineSubType());
+    assertNull(sparkEngineDetailsModel.getInstanceId());
+    assertNull(sparkEngineDetailsModel.getManagedBy());
+    assertNull(sparkEngineDetailsModel.getScaleConfig());
   }
 }
