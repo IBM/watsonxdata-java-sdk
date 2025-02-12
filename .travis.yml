@@ -1,6 +1,6 @@
 ---
 language: java
-dist: Ubuntu 18.04 LTS
+dist: focal
 
 jdk:
 - openjdk11
@@ -31,9 +31,16 @@ stages:
 
 before_install:
   - sudo apt-get update
+  - sudo apt-get install -y openjdk-8-jdk python3.8 python3-pip
+  - sudo rm -rf /opt/pyenv  # Cleanup any existing pyenv installation
+  - curl https://pyenv.run | bash  # Install pyenv
+  - export PATH="$HOME/.pyenv/bin:$PATH"
+  - eval "$(pyenv init --path)"
+  - eval "$(pyenv init -)"
+  - sudo update-alternatives --set java /usr/lib/jvm/java-11-openjdk-amd64/bin/java  # Set Java 11 explicitly
   - env | grep TRAVIS
   - pyenv install 3.8.12  # Install Python 3.8
-  - pyenv global 3.8.12   # Set the installed Python version as global
+  - pyenv global 3.8.12   # Set Python 3.8 globally
 
 jobs:
   include:
