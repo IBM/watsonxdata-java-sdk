@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/IBM/watsonxdata-java-sdk.svg?&branch=main)](https://travis-ci.com/IBM/watsonxdata-java-sdk)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-# IBM Cloud Watsonx.data Java SDK Version 0.3.0
+# IBM Cloud Watsonx.data Java SDK Version 0.4.0
 Java client library to interact with various [IBM Cloud Watsonx-data](https://cloud.ibm.com/apidocs?category=watsonxdata).
 
 Disclaimer: this SDK is being released initially as a **pre-release** version.
@@ -52,7 +52,7 @@ Service Name | Artifact Coordinates
 * Java 8 or above.
 
 ## Installation
-The current version of this SDK is: 0.3.0
+The current version of this SDK is: 0.4.0
 
 Each service's artifact coordinates are listed in the table above.
 
@@ -71,13 +71,13 @@ Here are examples for maven and gradle:
 <dependency>
     <groupId>com.ibm.cloud</groupId>
     <artifactId>watsonx-data</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
 ### Gradle
 ```gradle
-compile 'com.ibm.cloud:watsonx-data:0.3.0'
+compile 'com.ibm.cloud:watsonx-data:0.4.0'
 ```
 
 ## Using the SDK
