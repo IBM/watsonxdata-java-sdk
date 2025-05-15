@@ -22,8 +22,6 @@ env:
 
 stages:
   - name: Build-Test
-  
-# Uncomment these stages when you're ready to use them.
   - name: Semantic-Release
     if: (branch = main) AND (type IN (push, api)) AND (fork = false)
   - name: Publish-Release
@@ -56,7 +54,6 @@ jobs:
       script:
         - mvn verify -fae -DskipITs $MVN_ARGS
 
-# Uncomment these stages when you're ready to use them.
     - stage: Semantic-Release
       install:
         - nvm install 14
