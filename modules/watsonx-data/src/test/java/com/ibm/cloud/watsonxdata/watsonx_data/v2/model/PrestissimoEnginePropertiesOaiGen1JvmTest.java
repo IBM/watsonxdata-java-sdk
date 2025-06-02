@@ -14,7 +14,6 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.NodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesOaiGen1Jvm;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
@@ -32,22 +31,14 @@ public class PrestissimoEnginePropertiesOaiGen1JvmTest {
 
   @Test
   public void testPrestissimoEnginePropertiesOaiGen1Jvm() throws Throwable {
-    NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-      .nodeType("worker")
-      .quantity(Long.valueOf("26"))
-      .build();
-    assertEquals(nodeDescriptionBodyModel.nodeType(), "worker");
-    assertEquals(nodeDescriptionBodyModel.quantity(), Long.valueOf("26"));
-
     PrestissimoEnginePropertiesOaiGen1Jvm prestissimoEnginePropertiesOaiGen1JvmModel = new PrestissimoEnginePropertiesOaiGen1Jvm.Builder()
-      .coordinator(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(prestissimoEnginePropertiesOaiGen1JvmModel.coordinator(), nodeDescriptionBodyModel);
+    assertEquals(prestissimoEnginePropertiesOaiGen1JvmModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
 
     String json = TestUtilities.serialize(prestissimoEnginePropertiesOaiGen1JvmModel);
 
     PrestissimoEnginePropertiesOaiGen1Jvm prestissimoEnginePropertiesOaiGen1JvmModelNew = TestUtilities.deserialize(json, PrestissimoEnginePropertiesOaiGen1Jvm.class);
     assertTrue(prestissimoEnginePropertiesOaiGen1JvmModelNew instanceof PrestissimoEnginePropertiesOaiGen1Jvm);
-    assertEquals(prestissimoEnginePropertiesOaiGen1JvmModelNew.coordinator().toString(), nodeDescriptionBodyModel.toString());
   }
 }

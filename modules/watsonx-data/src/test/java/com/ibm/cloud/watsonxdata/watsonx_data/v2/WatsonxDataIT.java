@@ -18,6 +18,7 @@ import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;
 import com.ibm.cloud.watsonxdata.test.SdkIntegrationTestBase;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.AddBucketCatalogOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketObjectProperties;
@@ -120,6 +121,7 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DriverRegistrationEngineP
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.Endpoint;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EndpointCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EngineDetailsBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesLogConfiguration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Configuration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Jvm;
@@ -210,6 +212,8 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkVersionsOKBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkVersionsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListTableSnapshotsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListTablesOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.LoadTableOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.LoadTableResponse;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusDatabaseCollections;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusService;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusServiceBucketPatch;
@@ -242,6 +246,7 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEngineProperti
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesOaiGen1Jvm;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesVelox;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoNodeDescriptionBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoPropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngineCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngineEngineProperties;
@@ -254,6 +259,8 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePropertiesJMX
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PreviewIngestionFile;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PreviewIngestionFilePrototypeCsvProperty;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PreviewIngestionFileRows;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RegisterTableCreatedBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RegisterTableOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEngineProperties;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesConfiguration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesLogConfig;
@@ -431,6 +438,7 @@ public class WatsonxDataIT extends SdkIntegrationTestBase {
   public void testCreateBucketRegistration() throws Exception {
     try {
       BucketCatalog bucketCatalogModel = new BucketCatalog.Builder()
+        .basePath("/abc/def")
         .catalogName("sampleCatalog")
         .catalogTags(java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"))
         .catalogType("iceberg")
@@ -575,6 +583,33 @@ public class WatsonxDataIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testCreateActivateBucket" })
+  public void testAddBucketCatalog() throws Exception {
+    try {
+      AddBucketCatalogOptions addBucketCatalogOptions = new AddBucketCatalogOptions.Builder()
+        .bucketId("testString")
+        .basePath("/abc/def")
+        .catalogName("sampleCatalog")
+        .catalogTags(java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"))
+        .catalogType("iceberg")
+        .authInstanceId("testString")
+        .build();
+
+      // Invoke operation
+      Response<SuccessResponse> response = service.addBucketCatalog(addBucketCatalogOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      SuccessResponse successResponseResult = response.getResult();
+      assertNotNull(successResponseResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testAddBucketCatalog" })
   public void testListBucketObjects() throws Exception {
     try {
       ListBucketObjectsOptions listBucketObjectsOptions = new ListBucketObjectsOptions.Builder()
@@ -1488,8 +1523,13 @@ public class WatsonxDataIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetPrestissimoEngine" })
   public void testUpdatePrestissimoEngine() throws Exception {
     try {
-      PrestissimoEnginePropertiesCatalog prestissimoEnginePropertiesCatalogModel = new PrestissimoEnginePropertiesCatalog.Builder()
-        .catalogName(java.util.Arrays.asList("testString"))
+      EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
+        .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+        .worker(java.util.Collections.singletonMap("key1", "testString"))
+        .build();
+
+      PrestissimoPropertiesCatalog prestissimoPropertiesCatalogModel = new PrestissimoPropertiesCatalog.Builder()
+        .catalogName(enginePropertiesCatalogModel)
         .build();
 
       PrestissimoNodeDescriptionBody prestissimoNodeDescriptionBodyModel = new PrestissimoNodeDescriptionBody.Builder()
@@ -1506,20 +1546,19 @@ public class WatsonxDataIT extends SdkIntegrationTestBase {
         .veloxProperty(java.util.Arrays.asList("testString"))
         .build();
 
-      NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-        .nodeType("worker")
-        .quantity(Long.valueOf("26"))
-        .build();
-
       PrestissimoEnginePropertiesOaiGen1Jvm prestissimoEnginePropertiesOaiGen1JvmModel = new PrestissimoEnginePropertiesOaiGen1Jvm.Builder()
-        .coordinator(nodeDescriptionBodyModel)
+        .coordinator(java.util.Collections.singletonMap("key1", "testString"))
         .build();
 
       PrestissimoEngineEngineProperties prestissimoEngineEnginePropertiesModel = new PrestissimoEngineEngineProperties.Builder()
-        .catalog(prestissimoEnginePropertiesCatalogModel)
+        .catalog(prestissimoPropertiesCatalogModel)
         .configuration(enginePropertiesOaiGenConfigurationModel)
         .velox(prestissimoEnginePropertiesVeloxModel)
         .jvm(prestissimoEnginePropertiesOaiGen1JvmModel)
+        .build();
+
+      PrestissimoEnginePropertiesCatalog prestissimoEnginePropertiesCatalogModel = new PrestissimoEnginePropertiesCatalog.Builder()
+        .catalogName(java.util.Arrays.asList("testString"))
         .build();
 
       RemoveEnginePropertiesConfiguration removeEnginePropertiesConfigurationModel = new RemoveEnginePropertiesConfiguration.Builder()
@@ -1883,18 +1922,18 @@ public class WatsonxDataIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetPrestoEngine" })
   public void testUpdatePrestoEngine() throws Exception {
     try {
-      PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
-        .catalogName("testString")
+      EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
+        .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+        .worker(java.util.Collections.singletonMap("key1", "testString"))
         .build();
 
-      NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-        .nodeType("worker")
-        .quantity(Long.valueOf("26"))
+      PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
+        .catalogName(enginePropertiesCatalogModel)
         .build();
 
       EnginePropertiesOaiGen1Configuration enginePropertiesOaiGen1ConfigurationModel = new EnginePropertiesOaiGen1Configuration.Builder()
-        .coordinator(nodeDescriptionBodyModel)
-        .worker(nodeDescriptionBodyModel)
+        .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+        .worker(java.util.Collections.singletonMap("key1", "testString"))
         .build();
 
       PrestoEnginePropertiesEventListener prestoEnginePropertiesEventListenerModel = new PrestoEnginePropertiesEventListener.Builder()
@@ -1906,8 +1945,8 @@ public class WatsonxDataIT extends SdkIntegrationTestBase {
         .build();
 
       EnginePropertiesOaiGen1Jvm enginePropertiesOaiGen1JvmModel = new EnginePropertiesOaiGen1Jvm.Builder()
-        .coordinator(nodeDescriptionBodyModel)
-        .worker(nodeDescriptionBodyModel)
+        .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+        .worker(java.util.Collections.singletonMap("key1", "testString"))
         .build();
 
       PrestoEnginePropertiesJMX prestoEnginePropertiesJmxModel = new PrestoEnginePropertiesJMX.Builder()
@@ -1915,8 +1954,8 @@ public class WatsonxDataIT extends SdkIntegrationTestBase {
         .build();
 
       EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModel = new EnginePropertiesLogConfiguration.Builder()
-        .coordinator(nodeDescriptionBodyModel)
-        .worker(nodeDescriptionBodyModel)
+        .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+        .worker(java.util.Collections.singletonMap("key1", "testString"))
         .build();
 
       PrestoEngineEngineProperties prestoEngineEnginePropertiesModel = new PrestoEngineEngineProperties.Builder()
@@ -2735,6 +2774,7 @@ public class WatsonxDataIT extends SdkIntegrationTestBase {
         .engineDisplayName("test-native")
         .status("testString")
         .tags(java.util.Arrays.asList("testString"))
+        .type("spark")
         .authInstanceId("testString")
         .build();
 
@@ -3974,6 +4014,57 @@ public class WatsonxDataIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testGetEndpoints" })
+  public void testRegisterTable() throws Exception {
+    try {
+      RegisterTableOptions registerTableOptions = new RegisterTableOptions.Builder()
+        .catalogId("testString")
+        .schemaId("testString")
+        .metadataLocation("s3a://bucketname/path/to/table/metadata_location/_delta_log")
+        .tableName("table1")
+        .authInstanceId("testString")
+        .build();
+
+      // Invoke operation
+      Response<RegisterTableCreatedBody> response = service.registerTable(registerTableOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      RegisterTableCreatedBody registerTableCreatedBodyResult = response.getResult();
+      assertNotNull(registerTableCreatedBodyResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testRegisterTable" })
+  public void testLoadTable() throws Exception {
+    try {
+      LoadTableOptions loadTableOptions = new LoadTableOptions.Builder()
+        .catalogId("testString")
+        .schemaId("testString")
+        .tableId("testString")
+        .authInstanceId("testString")
+        .build();
+
+      // Invoke operation
+      Response<LoadTableResponse> response = service.loadTable(loadTableOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      LoadTableResponse loadTableResponseResult = response.getResult();
+      assertNotNull(loadTableResponseResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testLoadTable" })
   public void testGetAllColumns() throws Exception {
     try {
       GetAllColumnsOptions getAllColumnsOptions = new GetAllColumnsOptions.Builder()

@@ -14,6 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePatchRemoveEngineProperties;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesLogConfig;
@@ -35,10 +36,17 @@ public class PrestoEnginePatchRemoveEnginePropertiesTest {
 
   @Test
   public void testPrestoEnginePatchRemoveEngineProperties() throws Throwable {
-    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
-      .catalogName("testString")
+    EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(prestoEnginePropertiesCatalogModel.catalogName(), "testString");
+    assertEquals(enginePropertiesCatalogModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(enginePropertiesCatalogModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
+
+    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
+      .catalogName(enginePropertiesCatalogModel)
+      .build();
+    assertEquals(prestoEnginePropertiesCatalogModel.catalogName(), enginePropertiesCatalogModel);
 
     RemoveEnginePropertiesOaiGenConfiguration removeEnginePropertiesOaiGenConfigurationModel = new RemoveEnginePropertiesOaiGenConfiguration.Builder()
       .coordinator(java.util.Arrays.asList("testString"))

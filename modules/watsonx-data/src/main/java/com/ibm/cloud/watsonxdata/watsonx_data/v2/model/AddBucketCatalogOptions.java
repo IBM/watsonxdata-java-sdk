@@ -16,42 +16,43 @@ package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * bucket catalog.
+ * The addBucketCatalog options.
  */
-public class BucketCatalog extends GenericModel {
+public class AddBucketCatalogOptions extends GenericModel {
 
-  @SerializedName("base_path")
+  protected String bucketId;
   protected String basePath;
-  @SerializedName("catalog_name")
   protected String catalogName;
-  @SerializedName("catalog_tags")
   protected List<String> catalogTags;
-  @SerializedName("catalog_type")
   protected String catalogType;
+  protected String authInstanceId;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private String bucketId;
     private String basePath;
     private String catalogName;
     private List<String> catalogTags;
     private String catalogType;
+    private String authInstanceId;
 
     /**
-     * Instantiates a new Builder from an existing BucketCatalog instance.
+     * Instantiates a new Builder from an existing AddBucketCatalogOptions instance.
      *
-     * @param bucketCatalog the instance to initialize the Builder with
+     * @param addBucketCatalogOptions the instance to initialize the Builder with
      */
-    private Builder(BucketCatalog bucketCatalog) {
-      this.basePath = bucketCatalog.basePath;
-      this.catalogName = bucketCatalog.catalogName;
-      this.catalogTags = bucketCatalog.catalogTags;
-      this.catalogType = bucketCatalog.catalogType;
+    private Builder(AddBucketCatalogOptions addBucketCatalogOptions) {
+      this.bucketId = addBucketCatalogOptions.bucketId;
+      this.basePath = addBucketCatalogOptions.basePath;
+      this.catalogName = addBucketCatalogOptions.catalogName;
+      this.catalogTags = addBucketCatalogOptions.catalogTags;
+      this.catalogType = addBucketCatalogOptions.catalogType;
+      this.authInstanceId = addBucketCatalogOptions.authInstanceId;
     }
 
     /**
@@ -61,19 +62,28 @@ public class BucketCatalog extends GenericModel {
     }
 
     /**
-     * Builds a BucketCatalog.
+     * Instantiates a new builder with required properties.
      *
-     * @return the new BucketCatalog instance
+     * @param bucketId the bucketId
      */
-    public BucketCatalog build() {
-      return new BucketCatalog(this);
+    public Builder(String bucketId) {
+      this.bucketId = bucketId;
+    }
+
+    /**
+     * Builds a AddBucketCatalogOptions.
+     *
+     * @return the new AddBucketCatalogOptions instance
+     */
+    public AddBucketCatalogOptions build() {
+      return new AddBucketCatalogOptions(this);
     }
 
     /**
      * Adds a new element to catalogTags.
      *
      * @param catalogTags the new element to be added
-     * @return the BucketCatalog builder
+     * @return the AddBucketCatalogOptions builder
      */
     public Builder addCatalogTags(String catalogTags) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(catalogTags,
@@ -86,10 +96,21 @@ public class BucketCatalog extends GenericModel {
     }
 
     /**
+     * Set the bucketId.
+     *
+     * @param bucketId the bucketId
+     * @return the AddBucketCatalogOptions builder
+     */
+    public Builder bucketId(String bucketId) {
+      this.bucketId = bucketId;
+      return this;
+    }
+
+    /**
      * Set the basePath.
      *
      * @param basePath the basePath
-     * @return the BucketCatalog builder
+     * @return the AddBucketCatalogOptions builder
      */
     public Builder basePath(String basePath) {
       this.basePath = basePath;
@@ -100,7 +121,7 @@ public class BucketCatalog extends GenericModel {
      * Set the catalogName.
      *
      * @param catalogName the catalogName
-     * @return the BucketCatalog builder
+     * @return the AddBucketCatalogOptions builder
      */
     public Builder catalogName(String catalogName) {
       this.catalogName = catalogName;
@@ -112,7 +133,7 @@ public class BucketCatalog extends GenericModel {
      * Existing catalogTags will be replaced.
      *
      * @param catalogTags the catalogTags
-     * @return the BucketCatalog builder
+     * @return the AddBucketCatalogOptions builder
      */
     public Builder catalogTags(List<String> catalogTags) {
       this.catalogTags = catalogTags;
@@ -123,30 +144,70 @@ public class BucketCatalog extends GenericModel {
      * Set the catalogType.
      *
      * @param catalogType the catalogType
-     * @return the BucketCatalog builder
+     * @return the AddBucketCatalogOptions builder
      */
     public Builder catalogType(String catalogType) {
       this.catalogType = catalogType;
       return this;
     }
+
+    /**
+     * Set the authInstanceId.
+     *
+     * @param authInstanceId the authInstanceId
+     * @return the AddBucketCatalogOptions builder
+     */
+    public Builder authInstanceId(String authInstanceId) {
+      this.authInstanceId = authInstanceId;
+      return this;
+    }
+
+    /**
+     * Set the bucketCatalog.
+     *
+     * @param bucketCatalog the bucketCatalog
+     * @return the AddBucketCatalogOptions builder
+     */
+    public Builder bucketCatalog(BucketCatalog bucketCatalog) {
+      this.basePath = bucketCatalog.basePath();
+      this.catalogName = bucketCatalog.catalogName();
+      this.catalogTags = bucketCatalog.catalogTags();
+      this.catalogType = bucketCatalog.catalogType();
+      return this;
+    }
   }
 
-  protected BucketCatalog() { }
+  protected AddBucketCatalogOptions() { }
 
-  protected BucketCatalog(Builder builder) {
+  protected AddBucketCatalogOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.bucketId,
+      "bucketId cannot be empty");
+    bucketId = builder.bucketId;
     basePath = builder.basePath;
     catalogName = builder.catalogName;
     catalogTags = builder.catalogTags;
     catalogType = builder.catalogType;
+    authInstanceId = builder.authInstanceId;
   }
 
   /**
    * New builder.
    *
-   * @return a BucketCatalog builder
+   * @return a AddBucketCatalogOptions builder
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the bucketId.
+   *
+   * bucket id.
+   *
+   * @return the bucketId
+   */
+  public String bucketId() {
+    return bucketId;
   }
 
   /**
@@ -191,6 +252,17 @@ public class BucketCatalog extends GenericModel {
    */
   public String catalogType() {
     return catalogType;
+  }
+
+  /**
+   * Gets the authInstanceId.
+   *
+   * watsonx.data instance ID.
+   *
+   * @return the authInstanceId
+   */
+  public String authInstanceId() {
+    return authInstanceId;
   }
 }
 

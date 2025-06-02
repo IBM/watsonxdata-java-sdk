@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,15 +22,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class EnginePropertiesOaiGen1Configuration extends GenericModel {
 
-  protected NodeDescriptionBody coordinator;
-  protected NodeDescriptionBody worker;
+  protected Map<String, String> coordinator;
+  protected Map<String, String> worker;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private NodeDescriptionBody coordinator;
-    private NodeDescriptionBody worker;
+    private Map<String, String> coordinator;
+    private Map<String, String> worker;
 
     /**
      * Instantiates a new Builder from an existing EnginePropertiesOaiGen1Configuration instance.
@@ -61,7 +63,7 @@ public class EnginePropertiesOaiGen1Configuration extends GenericModel {
      * @param coordinator the coordinator
      * @return the EnginePropertiesOaiGen1Configuration builder
      */
-    public Builder coordinator(NodeDescriptionBody coordinator) {
+    public Builder coordinator(Map<String, String> coordinator) {
       this.coordinator = coordinator;
       return this;
     }
@@ -72,7 +74,7 @@ public class EnginePropertiesOaiGen1Configuration extends GenericModel {
      * @param worker the worker
      * @return the EnginePropertiesOaiGen1Configuration builder
      */
-    public Builder worker(NodeDescriptionBody worker) {
+    public Builder worker(Map<String, String> worker) {
       this.worker = worker;
       return this;
     }
@@ -101,7 +103,7 @@ public class EnginePropertiesOaiGen1Configuration extends GenericModel {
    *
    * @return the coordinator
    */
-  public NodeDescriptionBody coordinator() {
+  public Map<String, String> coordinator() {
     return coordinator;
   }
 
@@ -112,7 +114,7 @@ public class EnginePropertiesOaiGen1Configuration extends GenericModel {
    *
    * @return the worker
    */
-  public NodeDescriptionBody worker() {
+  public Map<String, String> worker() {
     return worker;
   }
 }

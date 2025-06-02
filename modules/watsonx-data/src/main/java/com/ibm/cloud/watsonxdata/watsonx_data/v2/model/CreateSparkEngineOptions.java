@@ -35,6 +35,16 @@ public class CreateSparkEngineOptions extends GenericModel {
     String X_NATIVE = "native";
   }
 
+  /**
+   * spark type.
+   */
+  public interface Type {
+    /** spark. */
+    String SPARK = "spark";
+    /** gluten. */
+    String GLUTEN = "gluten";
+  }
+
   protected String origin;
   protected List<String> associatedCatalogs;
   protected String description;
@@ -42,6 +52,7 @@ public class CreateSparkEngineOptions extends GenericModel {
   protected String engineDisplayName;
   protected String status;
   protected List<String> tags;
+  protected String type;
   protected String authInstanceId;
 
   /**
@@ -55,6 +66,7 @@ public class CreateSparkEngineOptions extends GenericModel {
     private String engineDisplayName;
     private String status;
     private List<String> tags;
+    private String type;
     private String authInstanceId;
 
     /**
@@ -70,6 +82,7 @@ public class CreateSparkEngineOptions extends GenericModel {
       this.engineDisplayName = createSparkEngineOptions.engineDisplayName;
       this.status = createSparkEngineOptions.status;
       this.tags = createSparkEngineOptions.tags;
+      this.type = createSparkEngineOptions.type;
       this.authInstanceId = createSparkEngineOptions.authInstanceId;
     }
 
@@ -209,6 +222,17 @@ public class CreateSparkEngineOptions extends GenericModel {
     }
 
     /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the CreateSparkEngineOptions builder
+     */
+    public Builder type(String type) {
+      this.type = type;
+      return this;
+    }
+
+    /**
      * Set the authInstanceId.
      *
      * @param authInstanceId the authInstanceId
@@ -232,6 +256,7 @@ public class CreateSparkEngineOptions extends GenericModel {
     engineDisplayName = builder.engineDisplayName;
     status = builder.status;
     tags = builder.tags;
+    type = builder.type;
     authInstanceId = builder.authInstanceId;
   }
 
@@ -319,6 +344,17 @@ public class CreateSparkEngineOptions extends GenericModel {
    */
   public List<String> tags() {
     return tags;
+  }
+
+  /**
+   * Gets the type.
+   *
+   * spark type.
+   *
+   * @return the type
+   */
+  public String type() {
+    return type;
   }
 
   /**

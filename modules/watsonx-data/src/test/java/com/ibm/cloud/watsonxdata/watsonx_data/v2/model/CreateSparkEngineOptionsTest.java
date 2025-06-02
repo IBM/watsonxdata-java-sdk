@@ -91,21 +91,23 @@ public class CreateSparkEngineOptionsTest {
 
     CreateSparkEngineOptions createSparkEngineOptionsModel = new CreateSparkEngineOptions.Builder()
       .origin("external")
-      .associatedCatalogs(java.util.Arrays.asList("iceberg-data", "hive-data"))
+      .associatedCatalogs(java.util.Arrays.asList("iceberg_data", "hive_data"))
       .description("spark engine description")
       .engineDetails(sparkEngineDetailsPrototypeModel)
       .engineDisplayName("sampleEngine")
       .status("provisioning")
       .tags(java.util.Arrays.asList("tag1", "tag2"))
+      .type("spark")
       .authInstanceId("testString")
       .build();
     assertEquals(createSparkEngineOptionsModel.origin(), "external");
-    assertEquals(createSparkEngineOptionsModel.associatedCatalogs(), java.util.Arrays.asList("iceberg-data", "hive-data"));
+    assertEquals(createSparkEngineOptionsModel.associatedCatalogs(), java.util.Arrays.asList("iceberg_data", "hive_data"));
     assertEquals(createSparkEngineOptionsModel.description(), "spark engine description");
     assertEquals(createSparkEngineOptionsModel.engineDetails(), sparkEngineDetailsPrototypeModel);
     assertEquals(createSparkEngineOptionsModel.engineDisplayName(), "sampleEngine");
     assertEquals(createSparkEngineOptionsModel.status(), "provisioning");
     assertEquals(createSparkEngineOptionsModel.tags(), java.util.Arrays.asList("tag1", "tag2"));
+    assertEquals(createSparkEngineOptionsModel.type(), "spark");
     assertEquals(createSparkEngineOptionsModel.authInstanceId(), "testString");
   }
 

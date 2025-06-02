@@ -35,10 +35,12 @@ public class CreateBucketRegistrationOptionsTest {
   @Test
   public void testCreateBucketRegistrationOptions() throws Throwable {
     BucketCatalog bucketCatalogModel = new BucketCatalog.Builder()
+      .basePath("/abc/def")
       .catalogName("sampleCatalog")
       .catalogTags(java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"))
       .catalogType("iceberg")
       .build();
+    assertEquals(bucketCatalogModel.basePath(), "/abc/def");
     assertEquals(bucketCatalogModel.catalogName(), "sampleCatalog");
     assertEquals(bucketCatalogModel.catalogTags(), java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"));
     assertEquals(bucketCatalogModel.catalogType(), "iceberg");

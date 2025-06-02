@@ -14,10 +14,10 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesLogConfiguration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Configuration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Jvm;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.NodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngineEngineProperties;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePatch;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePatchRemoveEngineProperties;
@@ -45,24 +45,24 @@ public class PrestoEnginePatchTest {
 
   @Test
   public void testPrestoEnginePatch() throws Throwable {
-    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
-      .catalogName("testString")
+    EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(prestoEnginePropertiesCatalogModel.catalogName(), "testString");
+    assertEquals(enginePropertiesCatalogModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(enginePropertiesCatalogModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
 
-    NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-      .nodeType("worker")
-      .quantity(Long.valueOf("26"))
+    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
+      .catalogName(enginePropertiesCatalogModel)
       .build();
-    assertEquals(nodeDescriptionBodyModel.nodeType(), "worker");
-    assertEquals(nodeDescriptionBodyModel.quantity(), Long.valueOf("26"));
+    assertEquals(prestoEnginePropertiesCatalogModel.catalogName(), enginePropertiesCatalogModel);
 
     EnginePropertiesOaiGen1Configuration enginePropertiesOaiGen1ConfigurationModel = new EnginePropertiesOaiGen1Configuration.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(enginePropertiesOaiGen1ConfigurationModel.coordinator(), nodeDescriptionBodyModel);
-    assertEquals(enginePropertiesOaiGen1ConfigurationModel.worker(), nodeDescriptionBodyModel);
+    assertEquals(enginePropertiesOaiGen1ConfigurationModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(enginePropertiesOaiGen1ConfigurationModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
 
     PrestoEnginePropertiesEventListener prestoEnginePropertiesEventListenerModel = new PrestoEnginePropertiesEventListener.Builder()
       .eventListenerProperty("testString")
@@ -75,11 +75,11 @@ public class PrestoEnginePatchTest {
     assertEquals(prestoEnginePropertiesGlobalModel.globalProperty(), "enable-mixed-case-support:true");
 
     EnginePropertiesOaiGen1Jvm enginePropertiesOaiGen1JvmModel = new EnginePropertiesOaiGen1Jvm.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(enginePropertiesOaiGen1JvmModel.coordinator(), nodeDescriptionBodyModel);
-    assertEquals(enginePropertiesOaiGen1JvmModel.worker(), nodeDescriptionBodyModel);
+    assertEquals(enginePropertiesOaiGen1JvmModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(enginePropertiesOaiGen1JvmModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
 
     PrestoEnginePropertiesJMX prestoEnginePropertiesJmxModel = new PrestoEnginePropertiesJMX.Builder()
       .globalProperty("watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes")
@@ -87,11 +87,11 @@ public class PrestoEnginePatchTest {
     assertEquals(prestoEnginePropertiesJmxModel.globalProperty(), "watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes");
 
     EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModel = new EnginePropertiesLogConfiguration.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(enginePropertiesLogConfigurationModel.coordinator(), nodeDescriptionBodyModel);
-    assertEquals(enginePropertiesLogConfigurationModel.worker(), nodeDescriptionBodyModel);
+    assertEquals(enginePropertiesLogConfigurationModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(enginePropertiesLogConfigurationModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
 
     PrestoEngineEngineProperties prestoEngineEnginePropertiesModel = new PrestoEngineEngineProperties.Builder()
       .catalog(prestoEnginePropertiesCatalogModel)
@@ -175,18 +175,18 @@ public class PrestoEnginePatchTest {
   }
   @Test
   public void testPrestoEnginePatchAsPatch() throws Throwable {
-    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
-      .catalogName("testString")
+    EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
-    NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-      .nodeType("worker")
-      .quantity(Long.valueOf("26"))
+    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
+      .catalogName(enginePropertiesCatalogModel)
       .build();
 
     EnginePropertiesOaiGen1Configuration enginePropertiesOaiGen1ConfigurationModel = new EnginePropertiesOaiGen1Configuration.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     PrestoEnginePropertiesEventListener prestoEnginePropertiesEventListenerModel = new PrestoEnginePropertiesEventListener.Builder()
@@ -198,8 +198,8 @@ public class PrestoEnginePatchTest {
       .build();
 
     EnginePropertiesOaiGen1Jvm enginePropertiesOaiGen1JvmModel = new EnginePropertiesOaiGen1Jvm.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     PrestoEnginePropertiesJMX prestoEnginePropertiesJmxModel = new PrestoEnginePropertiesJMX.Builder()
@@ -207,8 +207,8 @@ public class PrestoEnginePatchTest {
       .build();
 
     EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModel = new EnginePropertiesLogConfiguration.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     PrestoEngineEngineProperties prestoEngineEnginePropertiesModel = new PrestoEngineEngineProperties.Builder()

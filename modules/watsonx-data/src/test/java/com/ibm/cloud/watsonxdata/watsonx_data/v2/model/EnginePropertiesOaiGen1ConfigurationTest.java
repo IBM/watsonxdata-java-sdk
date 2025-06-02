@@ -15,7 +15,6 @@ package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Configuration;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.NodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -32,25 +31,16 @@ public class EnginePropertiesOaiGen1ConfigurationTest {
 
   @Test
   public void testEnginePropertiesOaiGen1Configuration() throws Throwable {
-    NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-      .nodeType("worker")
-      .quantity(Long.valueOf("26"))
-      .build();
-    assertEquals(nodeDescriptionBodyModel.nodeType(), "worker");
-    assertEquals(nodeDescriptionBodyModel.quantity(), Long.valueOf("26"));
-
     EnginePropertiesOaiGen1Configuration enginePropertiesOaiGen1ConfigurationModel = new EnginePropertiesOaiGen1Configuration.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(enginePropertiesOaiGen1ConfigurationModel.coordinator(), nodeDescriptionBodyModel);
-    assertEquals(enginePropertiesOaiGen1ConfigurationModel.worker(), nodeDescriptionBodyModel);
+    assertEquals(enginePropertiesOaiGen1ConfigurationModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(enginePropertiesOaiGen1ConfigurationModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
 
     String json = TestUtilities.serialize(enginePropertiesOaiGen1ConfigurationModel);
 
     EnginePropertiesOaiGen1Configuration enginePropertiesOaiGen1ConfigurationModelNew = TestUtilities.deserialize(json, EnginePropertiesOaiGen1Configuration.class);
     assertTrue(enginePropertiesOaiGen1ConfigurationModelNew instanceof EnginePropertiesOaiGen1Configuration);
-    assertEquals(enginePropertiesOaiGen1ConfigurationModelNew.coordinator().toString(), nodeDescriptionBodyModel.toString());
-    assertEquals(enginePropertiesOaiGen1ConfigurationModelNew.worker().toString(), nodeDescriptionBodyModel.toString());
   }
 }

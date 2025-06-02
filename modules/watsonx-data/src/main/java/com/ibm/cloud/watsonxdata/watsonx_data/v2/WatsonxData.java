@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.97.0-0e90eab1-20241120-170029
+ * IBM OpenAPI SDK Code Generator Version: 3.104.0-b4a47c49-20250418-184351
  */
 
 package com.ibm.cloud.watsonxdata.watsonx_data.v2;
@@ -27,6 +27,7 @@ import com.ibm.cloud.sdk.core.service.BaseService;
 import com.ibm.cloud.sdk.core.util.RequestUtils;
 import com.ibm.cloud.sdk.core.util.ResponseConverterUtils;
 import com.ibm.cloud.watsonxdata.common.SdkCommon;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.AddBucketCatalogOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketObjectProperties;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketRegistration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketRegistrationCollection;
@@ -176,6 +177,8 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkVersionsOKBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkVersionsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListTableSnapshotsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListTablesOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.LoadTableOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.LoadTableResponse;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusDatabaseCollections;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusService;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusServiceCollection;
@@ -192,6 +195,8 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEngineCollecti
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngineCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PreviewIngestionFile;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RegisterTableCreatedBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RegisterTableOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ReplaceSnapshotCreatedBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RestartPrestissimoEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RestartPrestoEngineOptions;
@@ -500,6 +505,47 @@ public class WatsonxData extends BaseService {
     }
     ResponseConverter<CreateActivateBucketCreatedBody> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<CreateActivateBucketCreatedBody>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Add bucket catalog.
+   *
+   * Add bucket catalog.
+   *
+   * @param addBucketCatalogOptions the {@link AddBucketCatalogOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link SuccessResponse}
+   */
+  public ServiceCall<SuccessResponse> addBucketCatalog(AddBucketCatalogOptions addBucketCatalogOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(addBucketCatalogOptions,
+      "addBucketCatalogOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("bucket_id", addBucketCatalogOptions.bucketId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/bucket_registrations/{bucket_id}/catalogs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "addBucketCatalog");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (addBucketCatalogOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", addBucketCatalogOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    if (addBucketCatalogOptions.basePath() != null) {
+      contentJson.addProperty("base_path", addBucketCatalogOptions.basePath());
+    }
+    if (addBucketCatalogOptions.catalogName() != null) {
+      contentJson.addProperty("catalog_name", addBucketCatalogOptions.catalogName());
+    }
+    if (addBucketCatalogOptions.catalogTags() != null) {
+      contentJson.add("catalog_tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(addBucketCatalogOptions.catalogTags()));
+    }
+    if (addBucketCatalogOptions.catalogType() != null) {
+      contentJson.addProperty("catalog_type", addBucketCatalogOptions.catalogType());
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<SuccessResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SuccessResponse>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -3385,6 +3431,9 @@ public class WatsonxData extends BaseService {
     if (createSparkEngineOptions.tags() != null) {
       contentJson.add("tags", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createSparkEngineOptions.tags()));
     }
+    if (createSparkEngineOptions.type() != null) {
+      contentJson.addProperty("type", createSparkEngineOptions.type());
+    }
     builder.bodyJson(contentJson);
     ResponseConverter<SparkEngine> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SparkEngine>() { }.getType());
@@ -5012,6 +5061,67 @@ public class WatsonxData extends BaseService {
    */
   public ServiceCall<EndpointCollection> getEndpoints() {
     return getEndpoints(null);
+  }
+
+  /**
+   * Register table.
+   *
+   * Register table.
+   *
+   * @param registerTableOptions the {@link RegisterTableOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link RegisterTableCreatedBody}
+   */
+  public ServiceCall<RegisterTableCreatedBody> registerTable(RegisterTableOptions registerTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(registerTableOptions,
+      "registerTableOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("catalog_id", registerTableOptions.catalogId());
+    pathParamsMap.put("schema_id", registerTableOptions.schemaId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/catalogs/{catalog_id}/schemas/{schema_id}/register", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "registerTable");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (registerTableOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", registerTableOptions.authInstanceId());
+    }
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("metadata_location", registerTableOptions.metadataLocation());
+    contentJson.addProperty("table_name", registerTableOptions.tableName());
+    builder.bodyJson(contentJson);
+    ResponseConverter<RegisterTableCreatedBody> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<RegisterTableCreatedBody>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Load table metadata.
+   *
+   * Load table metadata.
+   *
+   * @param loadTableOptions the {@link LoadTableOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link LoadTableResponse}
+   */
+  public ServiceCall<LoadTableResponse> loadTable(LoadTableOptions loadTableOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(loadTableOptions,
+      "loadTableOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("catalog_id", loadTableOptions.catalogId());
+    pathParamsMap.put("schema_id", loadTableOptions.schemaId());
+    pathParamsMap.put("table_id", loadTableOptions.tableId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/catalogs/{catalog_id}/schemas/{schema_id}/tables/{table_id}/metadata", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("watsonx_data", "v2", "loadTable");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    if (loadTableOptions.authInstanceId() != null) {
+      builder.header("AuthInstanceId", loadTableOptions.authInstanceId());
+    }
+    ResponseConverter<LoadTableResponse> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<LoadTableResponse>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
   }
 
   /**
