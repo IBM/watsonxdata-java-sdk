@@ -20,7 +20,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PrestissimoEngineEngineProperties extends GenericModel {
 
-  protected PrestissimoEnginePropertiesCatalog catalog;
+  protected PrestissimoPropertiesCatalog catalog;
   protected EnginePropertiesOaiGenConfiguration configuration;
   protected PrestissimoEnginePropertiesVelox velox;
   protected PrestissimoEnginePropertiesOaiGen1Jvm jvm;
@@ -29,7 +29,7 @@ public class PrestissimoEngineEngineProperties extends GenericModel {
    * Builder.
    */
   public static class Builder {
-    private PrestissimoEnginePropertiesCatalog catalog;
+    private PrestissimoPropertiesCatalog catalog;
     private EnginePropertiesOaiGenConfiguration configuration;
     private PrestissimoEnginePropertiesVelox velox;
     private PrestissimoEnginePropertiesOaiGen1Jvm jvm;
@@ -67,7 +67,7 @@ public class PrestissimoEngineEngineProperties extends GenericModel {
      * @param catalog the catalog
      * @return the PrestissimoEngineEngineProperties builder
      */
-    public Builder catalog(PrestissimoEnginePropertiesCatalog catalog) {
+    public Builder catalog(PrestissimoPropertiesCatalog catalog) {
       this.catalog = catalog;
       return this;
     }
@@ -131,7 +131,7 @@ public class PrestissimoEngineEngineProperties extends GenericModel {
    *
    * @return the catalog
    */
-  public PrestissimoEnginePropertiesCatalog catalog() {
+  public PrestissimoPropertiesCatalog catalog() {
     return catalog;
   }
 

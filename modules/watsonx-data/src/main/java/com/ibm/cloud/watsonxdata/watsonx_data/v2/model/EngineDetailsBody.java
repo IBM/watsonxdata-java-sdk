@@ -222,7 +222,7 @@ public class EngineDetailsBody extends GenericModel {
   /**
    * Gets the coordinator.
    *
-   * Coordinator/ worker properties.
+   * coordinator/worker property settings.
    *
    * @return the coordinator
    */
@@ -268,7 +268,7 @@ public class EngineDetailsBody extends GenericModel {
   /**
    * Gets the worker.
    *
-   * Coordinator/ worker properties.
+   * coordinator/worker property settings.
    *
    * @return the worker
    */

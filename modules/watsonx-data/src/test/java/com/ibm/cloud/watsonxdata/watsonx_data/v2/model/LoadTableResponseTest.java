@@ -14,7 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Jvm;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.LoadTableResponse;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -23,24 +23,16 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the EnginePropertiesOaiGen1Jvm model.
+ * Unit test class for the LoadTableResponse model.
  */
-public class EnginePropertiesOaiGen1JvmTest {
+public class LoadTableResponseTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testEnginePropertiesOaiGen1Jvm() throws Throwable {
-    EnginePropertiesOaiGen1Jvm enginePropertiesOaiGen1JvmModel = new EnginePropertiesOaiGen1Jvm.Builder()
-      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
-      .worker(java.util.Collections.singletonMap("key1", "testString"))
-      .build();
-    assertEquals(enginePropertiesOaiGen1JvmModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
-    assertEquals(enginePropertiesOaiGen1JvmModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
-
-    String json = TestUtilities.serialize(enginePropertiesOaiGen1JvmModel);
-
-    EnginePropertiesOaiGen1Jvm enginePropertiesOaiGen1JvmModelNew = TestUtilities.deserialize(json, EnginePropertiesOaiGen1Jvm.class);
-    assertTrue(enginePropertiesOaiGen1JvmModelNew instanceof EnginePropertiesOaiGen1Jvm);
+  public void testLoadTableResponse() throws Throwable {
+    LoadTableResponse loadTableResponseModel = new LoadTableResponse();
+    assertNull(loadTableResponseModel.getMetadataLocation());
+    assertNull(loadTableResponseModel.getTablePath());
   }
 }

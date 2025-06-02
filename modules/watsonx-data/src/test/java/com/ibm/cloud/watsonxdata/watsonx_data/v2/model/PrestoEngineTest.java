@@ -16,6 +16,7 @@ package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.Driver;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EngineDetailsBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesLogConfiguration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Configuration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Jvm;

@@ -19,6 +19,7 @@ import com.ibm.cloud.sdk.core.security.NoAuthAuthenticator;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.RequestUtils;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.WatsonxData;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.AddBucketCatalogOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketObjectProperties;
@@ -121,6 +122,7 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.DriverRegistrationEngineP
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.Endpoint;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EndpointCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EngineDetailsBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesLogConfiguration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Configuration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGen1Jvm;
@@ -211,6 +213,8 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkVersionsOKBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListSparkVersionsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListTableSnapshotsOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.ListTablesOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.LoadTableOptions;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.LoadTableResponse;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusDatabaseCollections;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusService;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.MilvusServiceBucketPatch;
@@ -243,6 +247,7 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEngineProperti
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesOaiGen1Jvm;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesVelox;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoNodeDescriptionBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoPropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngineCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEngineEngineProperties;
@@ -255,6 +260,8 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePropertiesJMX
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PreviewIngestionFile;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PreviewIngestionFilePrototypeCsvProperty;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PreviewIngestionFileRows;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RegisterTableCreatedBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RegisterTableOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEngineProperties;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesConfiguration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesLogConfig;
@@ -394,7 +401,7 @@ public class WatsonxDataTest {
   @Test
   public void testListBucketRegistrationsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"bucket_registrations\": [{\"actions\": [\"actions\"], \"associated_catalog\": {\"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_details\": {\"access_key\": \"b9cbf248ea5c4c96947e64407108559j\", \"bucket_name\": \"sample-bucket\", \"endpoint\": \"https://s3.<region>.cloud-object-storage.appdomain.cloud/\", \"key_file\": \"key_file\", \"provider\": \"ibm_cos\", \"region\": \"us-south\", \"secret_key\": \"13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87\"}, \"bucket_display_name\": \"sample-bucket-displayname\", \"bucket_id\": \"samplebucket123\", \"bucket_type\": \"ibm_cos\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"COS bucket for customer data\", \"managed_by\": \"ibm\", \"region\": \"us-south\", \"state\": \"active\", \"storage_details\": {\"access_key\": \"<access_key>\", \"application_id\": \"<application_id>\", \"auth_mode\": \"<account_key/sas/service_principle>\", \"container_name\": \"sample-container\", \"directory_id\": \"<directory_id>\", \"endpoint\": \"abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/\", \"sas_token\": \"<sas_token>\", \"secret_key\": \"secret_key\", \"storage_account_name\": \"sample-storage\"}, \"tags\": [\"tags\"]}]}";
+    String mockResponseBody = "{\"bucket_registrations\": [{\"actions\": [\"actions\"], \"associated_catalog\": {\"base_path\": \"/abc/def\", \"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_details\": {\"access_key\": \"b9cbf248ea5c4c96947e64407108559j\", \"bucket_name\": \"sample-bucket\", \"endpoint\": \"https://s3.<region>.cloud-object-storage.appdomain.cloud/\", \"key_file\": \"key_file\", \"provider\": \"ibm_cos\", \"region\": \"us-south\", \"secret_key\": \"13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87\"}, \"bucket_display_name\": \"sample-bucket-displayname\", \"bucket_id\": \"samplebucket123\", \"bucket_type\": \"ibm_cos\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"COS bucket for customer data\", \"managed_by\": \"ibm\", \"region\": \"us-south\", \"state\": \"active\", \"storage_details\": {\"access_key\": \"<access_key>\", \"application_id\": \"<application_id>\", \"auth_mode\": \"<account_key/sas/service_principle>\", \"container_name\": \"sample-container\", \"directory_id\": \"<directory_id>\", \"endpoint\": \"abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/\", \"sas_token\": \"<sas_token>\", \"secret_key\": \"secret_key\", \"storage_account_name\": \"sample-storage\"}, \"tags\": [\"tags\"]}]}";
     String listBucketRegistrationsPath = "/bucket_registrations";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -438,7 +445,7 @@ public class WatsonxDataTest {
   @Test
   public void testCreateBucketRegistrationWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalog\": {\"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_details\": {\"access_key\": \"b9cbf248ea5c4c96947e64407108559j\", \"bucket_name\": \"sample-bucket\", \"endpoint\": \"https://s3.<region>.cloud-object-storage.appdomain.cloud/\", \"key_file\": \"key_file\", \"provider\": \"ibm_cos\", \"region\": \"us-south\", \"secret_key\": \"13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87\"}, \"bucket_display_name\": \"sample-bucket-displayname\", \"bucket_id\": \"samplebucket123\", \"bucket_type\": \"ibm_cos\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"COS bucket for customer data\", \"managed_by\": \"ibm\", \"region\": \"us-south\", \"state\": \"active\", \"storage_details\": {\"access_key\": \"<access_key>\", \"application_id\": \"<application_id>\", \"auth_mode\": \"<account_key/sas/service_principle>\", \"container_name\": \"sample-container\", \"directory_id\": \"<directory_id>\", \"endpoint\": \"abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/\", \"sas_token\": \"<sas_token>\", \"secret_key\": \"secret_key\", \"storage_account_name\": \"sample-storage\"}, \"tags\": [\"tags\"]}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalog\": {\"base_path\": \"/abc/def\", \"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_details\": {\"access_key\": \"b9cbf248ea5c4c96947e64407108559j\", \"bucket_name\": \"sample-bucket\", \"endpoint\": \"https://s3.<region>.cloud-object-storage.appdomain.cloud/\", \"key_file\": \"key_file\", \"provider\": \"ibm_cos\", \"region\": \"us-south\", \"secret_key\": \"13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87\"}, \"bucket_display_name\": \"sample-bucket-displayname\", \"bucket_id\": \"samplebucket123\", \"bucket_type\": \"ibm_cos\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"COS bucket for customer data\", \"managed_by\": \"ibm\", \"region\": \"us-south\", \"state\": \"active\", \"storage_details\": {\"access_key\": \"<access_key>\", \"application_id\": \"<application_id>\", \"auth_mode\": \"<account_key/sas/service_principle>\", \"container_name\": \"sample-container\", \"directory_id\": \"<directory_id>\", \"endpoint\": \"abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/\", \"sas_token\": \"<sas_token>\", \"secret_key\": \"secret_key\", \"storage_account_name\": \"sample-storage\"}, \"tags\": [\"tags\"]}";
     String createBucketRegistrationPath = "/bucket_registrations";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -447,6 +454,7 @@ public class WatsonxDataTest {
 
     // Construct an instance of the BucketCatalog model
     BucketCatalog bucketCatalogModel = new BucketCatalog.Builder()
+      .basePath("/abc/def")
       .catalogName("sampleCatalog")
       .catalogTags(java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"))
       .catalogType("iceberg")
@@ -529,7 +537,7 @@ public class WatsonxDataTest {
   @Test
   public void testGetBucketRegistrationWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalog\": {\"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_details\": {\"access_key\": \"b9cbf248ea5c4c96947e64407108559j\", \"bucket_name\": \"sample-bucket\", \"endpoint\": \"https://s3.<region>.cloud-object-storage.appdomain.cloud/\", \"key_file\": \"key_file\", \"provider\": \"ibm_cos\", \"region\": \"us-south\", \"secret_key\": \"13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87\"}, \"bucket_display_name\": \"sample-bucket-displayname\", \"bucket_id\": \"samplebucket123\", \"bucket_type\": \"ibm_cos\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"COS bucket for customer data\", \"managed_by\": \"ibm\", \"region\": \"us-south\", \"state\": \"active\", \"storage_details\": {\"access_key\": \"<access_key>\", \"application_id\": \"<application_id>\", \"auth_mode\": \"<account_key/sas/service_principle>\", \"container_name\": \"sample-container\", \"directory_id\": \"<directory_id>\", \"endpoint\": \"abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/\", \"sas_token\": \"<sas_token>\", \"secret_key\": \"secret_key\", \"storage_account_name\": \"sample-storage\"}, \"tags\": [\"tags\"]}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalog\": {\"base_path\": \"/abc/def\", \"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_details\": {\"access_key\": \"b9cbf248ea5c4c96947e64407108559j\", \"bucket_name\": \"sample-bucket\", \"endpoint\": \"https://s3.<region>.cloud-object-storage.appdomain.cloud/\", \"key_file\": \"key_file\", \"provider\": \"ibm_cos\", \"region\": \"us-south\", \"secret_key\": \"13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87\"}, \"bucket_display_name\": \"sample-bucket-displayname\", \"bucket_id\": \"samplebucket123\", \"bucket_type\": \"ibm_cos\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"COS bucket for customer data\", \"managed_by\": \"ibm\", \"region\": \"us-south\", \"state\": \"active\", \"storage_details\": {\"access_key\": \"<access_key>\", \"application_id\": \"<application_id>\", \"auth_mode\": \"<account_key/sas/service_principle>\", \"container_name\": \"sample-container\", \"directory_id\": \"<directory_id>\", \"endpoint\": \"abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/\", \"sas_token\": \"<sas_token>\", \"secret_key\": \"secret_key\", \"storage_account_name\": \"sample-storage\"}, \"tags\": [\"tags\"]}";
     String getBucketRegistrationPath = "/bucket_registrations/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -632,7 +640,7 @@ public class WatsonxDataTest {
   @Test
   public void testUpdateBucketRegistrationWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalog\": {\"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_details\": {\"access_key\": \"b9cbf248ea5c4c96947e64407108559j\", \"bucket_name\": \"sample-bucket\", \"endpoint\": \"https://s3.<region>.cloud-object-storage.appdomain.cloud/\", \"key_file\": \"key_file\", \"provider\": \"ibm_cos\", \"region\": \"us-south\", \"secret_key\": \"13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87\"}, \"bucket_display_name\": \"sample-bucket-displayname\", \"bucket_id\": \"samplebucket123\", \"bucket_type\": \"ibm_cos\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"COS bucket for customer data\", \"managed_by\": \"ibm\", \"region\": \"us-south\", \"state\": \"active\", \"storage_details\": {\"access_key\": \"<access_key>\", \"application_id\": \"<application_id>\", \"auth_mode\": \"<account_key/sas/service_principle>\", \"container_name\": \"sample-container\", \"directory_id\": \"<directory_id>\", \"endpoint\": \"abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/\", \"sas_token\": \"<sas_token>\", \"secret_key\": \"secret_key\", \"storage_account_name\": \"sample-storage\"}, \"tags\": [\"tags\"]}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalog\": {\"base_path\": \"/abc/def\", \"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_details\": {\"access_key\": \"b9cbf248ea5c4c96947e64407108559j\", \"bucket_name\": \"sample-bucket\", \"endpoint\": \"https://s3.<region>.cloud-object-storage.appdomain.cloud/\", \"key_file\": \"key_file\", \"provider\": \"ibm_cos\", \"region\": \"us-south\", \"secret_key\": \"13b4045cac1a0be54c9fjbe53cb22df5fn397cd2c45b66c87\"}, \"bucket_display_name\": \"sample-bucket-displayname\", \"bucket_id\": \"samplebucket123\", \"bucket_type\": \"ibm_cos\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"COS bucket for customer data\", \"managed_by\": \"ibm\", \"region\": \"us-south\", \"state\": \"active\", \"storage_details\": {\"access_key\": \"<access_key>\", \"application_id\": \"<application_id>\", \"auth_mode\": \"<account_key/sas/service_principle>\", \"container_name\": \"sample-container\", \"directory_id\": \"<directory_id>\", \"endpoint\": \"abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/\", \"sas_token\": \"<sas_token>\", \"secret_key\": \"secret_key\", \"storage_account_name\": \"sample-storage\"}, \"tags\": [\"tags\"]}";
     String updateBucketRegistrationPath = "/bucket_registrations/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -751,6 +759,62 @@ public class WatsonxDataTest {
   public void testCreateActivateBucketNoOptions() throws Throwable {
     server.enqueue(new MockResponse());
     watsonxDataService.createActivateBucket(null).execute();
+  }
+
+  // Test the addBucketCatalog operation with a valid options model parameter
+  @Test
+  public void testAddBucketCatalogWOptions() throws Throwable {
+    // Register a mock response
+    String mockResponseBody = "{\"message\": \"message\", \"message_code\": \"messageCode\"}";
+    String addBucketCatalogPath = "/bucket_registrations/testString/catalogs";
+    server.enqueue(new MockResponse()
+      .setHeader("Content-type", "application/json")
+      .setResponseCode(201)
+      .setBody(mockResponseBody));
+
+    // Construct an instance of the AddBucketCatalogOptions model
+    AddBucketCatalogOptions addBucketCatalogOptionsModel = new AddBucketCatalogOptions.Builder()
+      .bucketId("testString")
+      .basePath("/abc/def")
+      .catalogName("sampleCatalog")
+      .catalogTags(java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"))
+      .catalogType("iceberg")
+      .authInstanceId("testString")
+      .build();
+
+    // Invoke addBucketCatalog() with a valid options model and verify the result
+    Response<SuccessResponse> response = watsonxDataService.addBucketCatalog(addBucketCatalogOptionsModel).execute();
+    assertNotNull(response);
+    SuccessResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request sent to the mock server
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+    // Verify request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, addBucketCatalogPath);
+    // Verify that there is no query string
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNull(query);
+  }
+
+  // Test the addBucketCatalog operation with and without retries enabled
+  @Test
+  public void testAddBucketCatalogWRetries() throws Throwable {
+    watsonxDataService.enableRetries(4, 30);
+    testAddBucketCatalogWOptions();
+
+    watsonxDataService.disableRetries();
+    testAddBucketCatalogWOptions();
+  }
+
+  // Test the addBucketCatalog operation with a null options model (negative test)
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testAddBucketCatalogNoOptions() throws Throwable {
+    server.enqueue(new MockResponse());
+    watsonxDataService.addBucketCatalog(null).execute();
   }
 
   // Test the deleteDeactivateBucket operation with a valid options model parameter
@@ -920,7 +984,7 @@ public class WatsonxDataTest {
   @Test
   public void testCreateHdfsStorageWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalog\": {\"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_display_name\": \"sample hdfs displayname\", \"bucket_id\": \"hdfs123\", \"bucket_type\": \"hdfs\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"HDFS description for storage\", \"managed_by\": \"customer\", \"state\": \"active\", \"tags\": [\"tags\"]}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalog\": {\"base_path\": \"/abc/def\", \"catalog_name\": \"sampleCatalog\", \"catalog_tags\": [\"catalogTags\"], \"catalog_type\": \"iceberg\"}, \"bucket_display_name\": \"sample hdfs displayname\", \"bucket_id\": \"hdfs123\", \"bucket_type\": \"hdfs\", \"created_by\": \"<username>@<domain>.com\", \"created_on\": \"1686120645\", \"description\": \"HDFS description for storage\", \"managed_by\": \"customer\", \"state\": \"active\", \"tags\": [\"tags\"]}";
     String createHdfsStoragePath = "/storage_hdfs_registrations";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2727,7 +2791,7 @@ public class WatsonxDataTest {
   @Test
   public void testListPrestissimoEnginesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"prestissimo_engines\": [{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"prestissimo engine for running sql queries\", \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"endpoints\": {\"applications_api\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>\", \"history_server_endpoint\": \"$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server\", \"spark_access_endpoint\": \"$HOST/analytics-engine/details/spark-<instance_id>\", \"spark_jobs_v4_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications\", \"spark_kernel_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels\", \"view_history_server\": \"viewHistoryServer\", \"wxd_application_endpoint\": \"$HOST/v1/1698311655308796/engines/spark817/applications\"}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"metastore_host\": \"1.2.3.4\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"velox\": {\"velox_property\": [\"veloxProperty\"]}, \"jvm\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"xyz-prestissimo-01-prestissimo-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"]}, \"velox\": [\"velox\"]}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"prestissimo\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}]}";
+    String mockResponseBody = "{\"prestissimo_engines\": [{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"prestissimo engine for running sql queries\", \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"endpoints\": {\"applications_api\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>\", \"history_server_endpoint\": \"$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server\", \"spark_access_endpoint\": \"$HOST/analytics-engine/details/spark-<instance_id>\", \"spark_jobs_v4_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications\", \"spark_kernel_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels\", \"view_history_server\": \"viewHistoryServer\", \"wxd_application_endpoint\": \"$HOST/v1/1698311655308796/engines/spark817/applications\"}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"metastore_host\": \"1.2.3.4\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"velox\": {\"velox_property\": [\"veloxProperty\"]}, \"jvm\": {\"coordinator\": {\"mapKey\": \"inner\"}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"xyz-prestissimo-01-prestissimo-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"]}, \"velox\": [\"velox\"]}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"prestissimo\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}]}";
     String listPrestissimoEnginesPath = "/prestissimo_engines";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2771,7 +2835,7 @@ public class WatsonxDataTest {
   @Test
   public void testCreatePrestissimoEngineWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"prestissimo engine for running sql queries\", \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"endpoints\": {\"applications_api\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>\", \"history_server_endpoint\": \"$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server\", \"spark_access_endpoint\": \"$HOST/analytics-engine/details/spark-<instance_id>\", \"spark_jobs_v4_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications\", \"spark_kernel_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels\", \"view_history_server\": \"viewHistoryServer\", \"wxd_application_endpoint\": \"$HOST/v1/1698311655308796/engines/spark817/applications\"}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"metastore_host\": \"1.2.3.4\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"velox\": {\"velox_property\": [\"veloxProperty\"]}, \"jvm\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"xyz-prestissimo-01-prestissimo-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"]}, \"velox\": [\"velox\"]}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"prestissimo\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"prestissimo engine for running sql queries\", \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"endpoints\": {\"applications_api\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>\", \"history_server_endpoint\": \"$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server\", \"spark_access_endpoint\": \"$HOST/analytics-engine/details/spark-<instance_id>\", \"spark_jobs_v4_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications\", \"spark_kernel_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels\", \"view_history_server\": \"viewHistoryServer\", \"wxd_application_endpoint\": \"$HOST/v1/1698311655308796/engines/spark817/applications\"}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"metastore_host\": \"1.2.3.4\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"velox\": {\"velox_property\": [\"veloxProperty\"]}, \"jvm\": {\"coordinator\": {\"mapKey\": \"inner\"}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"xyz-prestissimo-01-prestissimo-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"]}, \"velox\": [\"velox\"]}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"prestissimo\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}";
     String createPrestissimoEnginePath = "/prestissimo_engines";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2860,7 +2924,7 @@ public class WatsonxDataTest {
   @Test
   public void testGetPrestissimoEngineWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"prestissimo engine for running sql queries\", \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"endpoints\": {\"applications_api\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>\", \"history_server_endpoint\": \"$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server\", \"spark_access_endpoint\": \"$HOST/analytics-engine/details/spark-<instance_id>\", \"spark_jobs_v4_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications\", \"spark_kernel_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels\", \"view_history_server\": \"viewHistoryServer\", \"wxd_application_endpoint\": \"$HOST/v1/1698311655308796/engines/spark817/applications\"}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"metastore_host\": \"1.2.3.4\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"velox\": {\"velox_property\": [\"veloxProperty\"]}, \"jvm\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"xyz-prestissimo-01-prestissimo-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"]}, \"velox\": [\"velox\"]}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"prestissimo\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"prestissimo engine for running sql queries\", \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"endpoints\": {\"applications_api\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>\", \"history_server_endpoint\": \"$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server\", \"spark_access_endpoint\": \"$HOST/analytics-engine/details/spark-<instance_id>\", \"spark_jobs_v4_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications\", \"spark_kernel_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels\", \"view_history_server\": \"viewHistoryServer\", \"wxd_application_endpoint\": \"$HOST/v1/1698311655308796/engines/spark817/applications\"}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"metastore_host\": \"1.2.3.4\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"velox\": {\"velox_property\": [\"veloxProperty\"]}, \"jvm\": {\"coordinator\": {\"mapKey\": \"inner\"}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"xyz-prestissimo-01-prestissimo-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"]}, \"velox\": [\"velox\"]}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"prestissimo\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}";
     String getPrestissimoEnginePath = "/prestissimo_engines/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2963,16 +3027,22 @@ public class WatsonxDataTest {
   @Test
   public void testUpdatePrestissimoEngineWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"prestissimo engine for running sql queries\", \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"endpoints\": {\"applications_api\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>\", \"history_server_endpoint\": \"$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server\", \"spark_access_endpoint\": \"$HOST/analytics-engine/details/spark-<instance_id>\", \"spark_jobs_v4_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications\", \"spark_kernel_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels\", \"view_history_server\": \"viewHistoryServer\", \"wxd_application_endpoint\": \"$HOST/v1/1698311655308796/engines/spark817/applications\"}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"metastore_host\": \"1.2.3.4\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"velox\": {\"velox_property\": [\"veloxProperty\"]}, \"jvm\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"xyz-prestissimo-01-prestissimo-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"]}, \"velox\": [\"velox\"]}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"prestissimo\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"prestissimo engine for running sql queries\", \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"endpoints\": {\"applications_api\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications/<application_id>\", \"history_server_endpoint\": \"$HOST/v2/spark/v3/instances/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_history_server\", \"spark_access_endpoint\": \"$HOST/analytics-engine/details/spark-<instance_id>\", \"spark_jobs_v4_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/spark_applications\", \"spark_kernel_endpoint\": \"$HOST/v4/analytics_engines/c7b3fccf-badb-46b0-b1ef-9b3154424021/jkg/api/kernels\", \"view_history_server\": \"viewHistoryServer\", \"wxd_application_endpoint\": \"$HOST/v1/1698311655308796/engines/spark817/applications\"}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"metastore_host\": \"1.2.3.4\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"velox\": {\"velox_property\": [\"veloxProperty\"]}, \"jvm\": {\"coordinator\": {\"mapKey\": \"inner\"}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"xyz-prestissimo-01-prestissimo-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": [\"catalogName\"]}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"]}, \"velox\": [\"velox\"]}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"prestissimo\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}";
     String updatePrestissimoEnginePath = "/prestissimo_engines/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
       .setBody(mockResponseBody));
 
-    // Construct an instance of the PrestissimoEnginePropertiesCatalog model
-    PrestissimoEnginePropertiesCatalog prestissimoEnginePropertiesCatalogModel = new PrestissimoEnginePropertiesCatalog.Builder()
-      .catalogName(java.util.Arrays.asList("testString"))
+    // Construct an instance of the EnginePropertiesCatalog model
+    EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
+      .build();
+
+    // Construct an instance of the PrestissimoPropertiesCatalog model
+    PrestissimoPropertiesCatalog prestissimoPropertiesCatalogModel = new PrestissimoPropertiesCatalog.Builder()
+      .catalogName(enginePropertiesCatalogModel)
       .build();
 
     // Construct an instance of the PrestissimoNodeDescriptionBody model
@@ -2992,23 +3062,22 @@ public class WatsonxDataTest {
       .veloxProperty(java.util.Arrays.asList("testString"))
       .build();
 
-    // Construct an instance of the NodeDescriptionBody model
-    NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-      .nodeType("worker")
-      .quantity(Long.valueOf("26"))
-      .build();
-
     // Construct an instance of the PrestissimoEnginePropertiesOaiGen1Jvm model
     PrestissimoEnginePropertiesOaiGen1Jvm prestissimoEnginePropertiesOaiGen1JvmModel = new PrestissimoEnginePropertiesOaiGen1Jvm.Builder()
-      .coordinator(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     // Construct an instance of the PrestissimoEngineEngineProperties model
     PrestissimoEngineEngineProperties prestissimoEngineEnginePropertiesModel = new PrestissimoEngineEngineProperties.Builder()
-      .catalog(prestissimoEnginePropertiesCatalogModel)
+      .catalog(prestissimoPropertiesCatalogModel)
       .configuration(enginePropertiesOaiGenConfigurationModel)
       .velox(prestissimoEnginePropertiesVeloxModel)
       .jvm(prestissimoEnginePropertiesOaiGen1JvmModel)
+      .build();
+
+    // Construct an instance of the PrestissimoEnginePropertiesCatalog model
+    PrestissimoEnginePropertiesCatalog prestissimoEnginePropertiesCatalogModel = new PrestissimoEnginePropertiesCatalog.Builder()
+      .catalogName(java.util.Arrays.asList("testString"))
       .build();
 
     // Construct an instance of the RemoveEnginePropertiesConfiguration model
@@ -3623,7 +3692,7 @@ public class WatsonxDataTest {
   @Test
   public void testListPrestoEnginesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"presto_engines\": [{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"starter\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"presto engine for running sql queries\", \"drivers\": [{\"connection_type\": \"saphana\", \"driver_id\": \"saphanadriver123\", \"driver_name\": \"saphanadriver-1.2.3\", \"driver_version\": \"1.2.3\"}], \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": \"catalogName\"}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"event_listener\": {\"event_listener_property\": \"eventListenerProperty\"}, \"global\": {\"global_property\": \"enable-mixed-case-support:true\"}, \"jvm\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"jmx_exporter_config\": {\"global_property\": \"watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes\"}, \"log_config\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"ibm-lh-lakehouse-presto-01-presto-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": \"catalogName\"}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"event_listener\": [\"eventListener\"], \"global\": [\"global\"], \"jmx_exporter_config\": [\"jmxExporterConfig\"], \"log_config\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"presto\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"starter\", \"quantity\": 8}}]}";
+    String mockResponseBody = "{\"presto_engines\": [{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"starter\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"presto engine for running sql queries\", \"drivers\": [{\"connection_type\": \"saphana\", \"driver_id\": \"saphanadriver123\", \"driver_name\": \"saphanadriver-1.2.3\", \"driver_version\": \"1.2.3\"}], \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}, \"event_listener\": {\"event_listener_property\": \"eventListenerProperty\"}, \"global\": {\"global_property\": \"enable-mixed-case-support:true\"}, \"jvm\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}, \"jmx_exporter_config\": {\"global_property\": \"watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes\"}, \"log_config\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"ibm-lh-lakehouse-presto-01-presto-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"event_listener\": [\"eventListener\"], \"global\": [\"global\"], \"jmx_exporter_config\": [\"jmxExporterConfig\"], \"log_config\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"presto\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"starter\", \"quantity\": 8}}]}";
     String listPrestoEnginesPath = "/presto_engines";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -3667,7 +3736,7 @@ public class WatsonxDataTest {
   @Test
   public void testCreatePrestoEngineWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"starter\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"presto engine for running sql queries\", \"drivers\": [{\"connection_type\": \"saphana\", \"driver_id\": \"saphanadriver123\", \"driver_name\": \"saphanadriver-1.2.3\", \"driver_version\": \"1.2.3\"}], \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": \"catalogName\"}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"event_listener\": {\"event_listener_property\": \"eventListenerProperty\"}, \"global\": {\"global_property\": \"enable-mixed-case-support:true\"}, \"jvm\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"jmx_exporter_config\": {\"global_property\": \"watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes\"}, \"log_config\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"ibm-lh-lakehouse-presto-01-presto-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": \"catalogName\"}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"event_listener\": [\"eventListener\"], \"global\": [\"global\"], \"jmx_exporter_config\": [\"jmxExporterConfig\"], \"log_config\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"presto\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"starter\", \"quantity\": 8}}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"starter\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"presto engine for running sql queries\", \"drivers\": [{\"connection_type\": \"saphana\", \"driver_id\": \"saphanadriver123\", \"driver_name\": \"saphanadriver-1.2.3\", \"driver_version\": \"1.2.3\"}], \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}, \"event_listener\": {\"event_listener_property\": \"eventListenerProperty\"}, \"global\": {\"global_property\": \"enable-mixed-case-support:true\"}, \"jvm\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}, \"jmx_exporter_config\": {\"global_property\": \"watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes\"}, \"log_config\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"ibm-lh-lakehouse-presto-01-presto-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"event_listener\": [\"eventListener\"], \"global\": [\"global\"], \"jmx_exporter_config\": [\"jmxExporterConfig\"], \"log_config\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"presto\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"starter\", \"quantity\": 8}}";
     String createPrestoEnginePath = "/presto_engines";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -3743,7 +3812,7 @@ public class WatsonxDataTest {
   @Test
   public void testGetPrestoEngineWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"starter\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"presto engine for running sql queries\", \"drivers\": [{\"connection_type\": \"saphana\", \"driver_id\": \"saphanadriver123\", \"driver_name\": \"saphanadriver-1.2.3\", \"driver_version\": \"1.2.3\"}], \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": \"catalogName\"}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"event_listener\": {\"event_listener_property\": \"eventListenerProperty\"}, \"global\": {\"global_property\": \"enable-mixed-case-support:true\"}, \"jvm\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"jmx_exporter_config\": {\"global_property\": \"watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes\"}, \"log_config\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"ibm-lh-lakehouse-presto-01-presto-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": \"catalogName\"}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"event_listener\": [\"eventListener\"], \"global\": [\"global\"], \"jmx_exporter_config\": [\"jmxExporterConfig\"], \"log_config\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"presto\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"starter\", \"quantity\": 8}}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"starter\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"presto engine for running sql queries\", \"drivers\": [{\"connection_type\": \"saphana\", \"driver_id\": \"saphanadriver123\", \"driver_name\": \"saphanadriver-1.2.3\", \"driver_version\": \"1.2.3\"}], \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}, \"event_listener\": {\"event_listener_property\": \"eventListenerProperty\"}, \"global\": {\"global_property\": \"enable-mixed-case-support:true\"}, \"jvm\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}, \"jmx_exporter_config\": {\"global_property\": \"watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes\"}, \"log_config\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"ibm-lh-lakehouse-presto-01-presto-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"event_listener\": [\"eventListener\"], \"global\": [\"global\"], \"jmx_exporter_config\": [\"jmxExporterConfig\"], \"log_config\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"presto\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"starter\", \"quantity\": 8}}";
     String getPrestoEnginePath = "/presto_engines/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -3846,28 +3915,28 @@ public class WatsonxDataTest {
   @Test
   public void testUpdatePrestoEngineWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"starter\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"presto engine for running sql queries\", \"drivers\": [{\"connection_type\": \"saphana\", \"driver_id\": \"saphanadriver123\", \"driver_name\": \"saphanadriver-1.2.3\", \"driver_version\": \"1.2.3\"}], \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": \"catalogName\"}, \"configuration\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"event_listener\": {\"event_listener_property\": \"eventListenerProperty\"}, \"global\": {\"global_property\": \"enable-mixed-case-support:true\"}, \"jvm\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"jmx_exporter_config\": {\"global_property\": \"watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes\"}, \"log_config\": {\"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"ibm-lh-lakehouse-presto-01-presto-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": \"catalogName\"}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"event_listener\": [\"eventListener\"], \"global\": [\"global\"], \"jmx_exporter_config\": [\"jmxExporterConfig\"], \"log_config\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"presto\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"starter\", \"quantity\": 8}}";
+    String mockResponseBody = "{\"actions\": [\"actions\"], \"associated_catalogs\": [\"associatedCatalogs\"], \"build_version\": \"1.0.3.0.0\", \"coordinator\": {\"node_type\": \"starter\", \"quantity\": 8}, \"created_by\": \"<username>@<domain>.com\", \"created_on\": 9, \"description\": \"presto engine for running sql queries\", \"drivers\": [{\"connection_type\": \"saphana\", \"driver_id\": \"saphanadriver123\", \"driver_name\": \"saphanadriver-1.2.3\", \"driver_version\": \"1.2.3\"}], \"engine_details\": {\"api_key\": \"<api_key>\", \"connection_string\": \"1.2.3.4\", \"coordinator\": {\"node_type\": \"worker\", \"quantity\": 8}, \"instance_id\": \"instance_id\", \"managed_by\": \"fully/self\", \"size_config\": \"starter\", \"worker\": {\"node_type\": \"worker\", \"quantity\": 8}}, \"engine_display_name\": \"sampleEngine\", \"engine_id\": \"sampleEngine123\", \"engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}, \"event_listener\": {\"event_listener_property\": \"eventListenerProperty\"}, \"global\": {\"global_property\": \"enable-mixed-case-support:true\"}, \"jvm\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}, \"jmx_exporter_config\": {\"global_property\": \"watsonx_data_presto_cluster_memory_manager_cluster_memory_bytes:presto.memory<name=ClusterMemoryManager><>ClusterMemoryBytes\"}, \"log_config\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"engine_restart\": \"force\", \"external_host_name\": \"your-hostname.apps.your-domain.com\", \"group_id\": \"new_group_id\", \"host_name\": \"ibm-lh-lakehouse-presto-01-presto-svc\", \"origin\": \"native\", \"port\": 4, \"region\": \"us-south\", \"remove_engine_properties\": {\"catalog\": {\"catalog_name\": {\"coordinator\": {\"mapKey\": \"inner\"}, \"worker\": {\"mapKey\": \"inner\"}}}, \"configuration\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"jvm\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}, \"event_listener\": [\"eventListener\"], \"global\": [\"global\"], \"jmx_exporter_config\": [\"jmxExporterConfig\"], \"log_config\": {\"coordinator\": [\"coordinator\"], \"worker\": [\"worker\"]}}, \"size_config\": \"starter\", \"status\": \"running\", \"status_code\": 10, \"tags\": [\"tags\"], \"type\": \"presto\", \"version\": \"1.2.0\", \"worker\": {\"node_type\": \"starter\", \"quantity\": 8}}";
     String updatePrestoEnginePath = "/presto_engines/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
       .setBody(mockResponseBody));
 
-    // Construct an instance of the PrestoEnginePropertiesCatalog model
-    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
-      .catalogName("testString")
+    // Construct an instance of the EnginePropertiesCatalog model
+    EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
-    // Construct an instance of the NodeDescriptionBody model
-    NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-      .nodeType("worker")
-      .quantity(Long.valueOf("26"))
+    // Construct an instance of the PrestoEnginePropertiesCatalog model
+    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
+      .catalogName(enginePropertiesCatalogModel)
       .build();
 
     // Construct an instance of the EnginePropertiesOaiGen1Configuration model
     EnginePropertiesOaiGen1Configuration enginePropertiesOaiGen1ConfigurationModel = new EnginePropertiesOaiGen1Configuration.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     // Construct an instance of the PrestoEnginePropertiesEventListener model
@@ -3882,8 +3951,8 @@ public class WatsonxDataTest {
 
     // Construct an instance of the EnginePropertiesOaiGen1Jvm model
     EnginePropertiesOaiGen1Jvm enginePropertiesOaiGen1JvmModel = new EnginePropertiesOaiGen1Jvm.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     // Construct an instance of the PrestoEnginePropertiesJMX model
@@ -3893,8 +3962,8 @@ public class WatsonxDataTest {
 
     // Construct an instance of the EnginePropertiesLogConfiguration model
     EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModel = new EnginePropertiesLogConfiguration.Builder()
-      .coordinator(nodeDescriptionBodyModel)
-      .worker(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     // Construct an instance of the PrestoEngineEngineProperties model
@@ -5562,6 +5631,7 @@ public class WatsonxDataTest {
       .engineDisplayName("test-native")
       .status("testString")
       .tags(java.util.Arrays.asList("testString"))
+      .type("spark")
       .authInstanceId("testString")
       .build();
 
@@ -8592,6 +8662,115 @@ public class WatsonxDataTest {
 
     watsonxDataService.disableRetries();
     testGetEndpointsWOptions();
+  }
+
+  // Test the registerTable operation with a valid options model parameter
+  @Test
+  public void testRegisterTableWOptions() throws Throwable {
+    // Register a mock response
+    String mockResponseBody = "{\"response\": {\"message\": \"message\", \"message_code\": \"messageCode\"}}";
+    String registerTablePath = "/catalogs/testString/schemas/testString/register";
+    server.enqueue(new MockResponse()
+      .setHeader("Content-type", "application/json")
+      .setResponseCode(201)
+      .setBody(mockResponseBody));
+
+    // Construct an instance of the RegisterTableOptions model
+    RegisterTableOptions registerTableOptionsModel = new RegisterTableOptions.Builder()
+      .catalogId("testString")
+      .schemaId("testString")
+      .metadataLocation("s3a://bucketname/path/to/table/metadata_location/_delta_log")
+      .tableName("table1")
+      .authInstanceId("testString")
+      .build();
+
+    // Invoke registerTable() with a valid options model and verify the result
+    Response<RegisterTableCreatedBody> response = watsonxDataService.registerTable(registerTableOptionsModel).execute();
+    assertNotNull(response);
+    RegisterTableCreatedBody responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request sent to the mock server
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "POST");
+    // Verify request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, registerTablePath);
+    // Verify that there is no query string
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNull(query);
+  }
+
+  // Test the registerTable operation with and without retries enabled
+  @Test
+  public void testRegisterTableWRetries() throws Throwable {
+    watsonxDataService.enableRetries(4, 30);
+    testRegisterTableWOptions();
+
+    watsonxDataService.disableRetries();
+    testRegisterTableWOptions();
+  }
+
+  // Test the registerTable operation with a null options model (negative test)
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRegisterTableNoOptions() throws Throwable {
+    server.enqueue(new MockResponse());
+    watsonxDataService.registerTable(null).execute();
+  }
+
+  // Test the loadTable operation with a valid options model parameter
+  @Test
+  public void testLoadTableWOptions() throws Throwable {
+    // Register a mock response
+    String mockResponseBody = "{\"metadata_location\": \"s3a://bucketname/path/to/table/metadata_location/_delta_log\", \"table_path\": \"s3a://bucketname/path/to/table\"}";
+    String loadTablePath = "/catalogs/testString/schemas/testString/tables/testString/metadata";
+    server.enqueue(new MockResponse()
+      .setHeader("Content-type", "application/json")
+      .setResponseCode(200)
+      .setBody(mockResponseBody));
+
+    // Construct an instance of the LoadTableOptions model
+    LoadTableOptions loadTableOptionsModel = new LoadTableOptions.Builder()
+      .catalogId("testString")
+      .schemaId("testString")
+      .tableId("testString")
+      .authInstanceId("testString")
+      .build();
+
+    // Invoke loadTable() with a valid options model and verify the result
+    Response<LoadTableResponse> response = watsonxDataService.loadTable(loadTableOptionsModel).execute();
+    assertNotNull(response);
+    LoadTableResponse responseObj = response.getResult();
+    assertNotNull(responseObj);
+
+    // Verify the contents of the request sent to the mock server
+    RecordedRequest request = server.takeRequest();
+    assertNotNull(request);
+    assertEquals(request.getMethod(), "GET");
+    // Verify request path
+    String parsedPath = TestUtilities.parseReqPath(request);
+    assertEquals(parsedPath, loadTablePath);
+    // Verify that there is no query string
+    Map<String, String> query = TestUtilities.parseQueryString(request);
+    assertNull(query);
+  }
+
+  // Test the loadTable operation with and without retries enabled
+  @Test
+  public void testLoadTableWRetries() throws Throwable {
+    watsonxDataService.enableRetries(4, 30);
+    testLoadTableWOptions();
+
+    watsonxDataService.disableRetries();
+    testLoadTableWOptions();
+  }
+
+  // Test the loadTable operation with a null options model (negative test)
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testLoadTableNoOptions() throws Throwable {
+    server.enqueue(new MockResponse());
+    watsonxDataService.loadTable(null).execute();
   }
 
   // Test the getAllColumns operation with a valid options model parameter

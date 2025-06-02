@@ -18,9 +18,9 @@ import java.util.Map;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Log Configuration settings.
+ * Catalog settings.
  */
-public class EnginePropertiesLogConfiguration extends GenericModel {
+public class EnginePropertiesCatalog extends GenericModel {
 
   protected Map<String, String> coordinator;
   protected Map<String, String> worker;
@@ -33,13 +33,13 @@ public class EnginePropertiesLogConfiguration extends GenericModel {
     private Map<String, String> worker;
 
     /**
-     * Instantiates a new Builder from an existing EnginePropertiesLogConfiguration instance.
+     * Instantiates a new Builder from an existing EnginePropertiesCatalog instance.
      *
-     * @param enginePropertiesLogConfiguration the instance to initialize the Builder with
+     * @param enginePropertiesCatalog the instance to initialize the Builder with
      */
-    private Builder(EnginePropertiesLogConfiguration enginePropertiesLogConfiguration) {
-      this.coordinator = enginePropertiesLogConfiguration.coordinator;
-      this.worker = enginePropertiesLogConfiguration.worker;
+    private Builder(EnginePropertiesCatalog enginePropertiesCatalog) {
+      this.coordinator = enginePropertiesCatalog.coordinator;
+      this.worker = enginePropertiesCatalog.worker;
     }
 
     /**
@@ -49,19 +49,19 @@ public class EnginePropertiesLogConfiguration extends GenericModel {
     }
 
     /**
-     * Builds a EnginePropertiesLogConfiguration.
+     * Builds a EnginePropertiesCatalog.
      *
-     * @return the new EnginePropertiesLogConfiguration instance
+     * @return the new EnginePropertiesCatalog instance
      */
-    public EnginePropertiesLogConfiguration build() {
-      return new EnginePropertiesLogConfiguration(this);
+    public EnginePropertiesCatalog build() {
+      return new EnginePropertiesCatalog(this);
     }
 
     /**
      * Set the coordinator.
      *
      * @param coordinator the coordinator
-     * @return the EnginePropertiesLogConfiguration builder
+     * @return the EnginePropertiesCatalog builder
      */
     public Builder coordinator(Map<String, String> coordinator) {
       this.coordinator = coordinator;
@@ -72,7 +72,7 @@ public class EnginePropertiesLogConfiguration extends GenericModel {
      * Set the worker.
      *
      * @param worker the worker
-     * @return the EnginePropertiesLogConfiguration builder
+     * @return the EnginePropertiesCatalog builder
      */
     public Builder worker(Map<String, String> worker) {
       this.worker = worker;
@@ -80,9 +80,9 @@ public class EnginePropertiesLogConfiguration extends GenericModel {
     }
   }
 
-  protected EnginePropertiesLogConfiguration() { }
+  protected EnginePropertiesCatalog() { }
 
-  protected EnginePropertiesLogConfiguration(Builder builder) {
+  protected EnginePropertiesCatalog(Builder builder) {
     coordinator = builder.coordinator;
     worker = builder.worker;
   }
@@ -90,7 +90,7 @@ public class EnginePropertiesLogConfiguration extends GenericModel {
   /**
    * New builder.
    *
-   * @return a EnginePropertiesLogConfiguration builder
+   * @return a EnginePropertiesCatalog builder
    */
   public Builder newBuilder() {
     return new Builder(this);

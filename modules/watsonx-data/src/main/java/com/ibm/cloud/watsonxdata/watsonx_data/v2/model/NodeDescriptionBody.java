@@ -17,7 +17,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * Coordinator/ worker properties.
+ * coordinator/worker property settings.
  */
 public class NodeDescriptionBody extends GenericModel {
 

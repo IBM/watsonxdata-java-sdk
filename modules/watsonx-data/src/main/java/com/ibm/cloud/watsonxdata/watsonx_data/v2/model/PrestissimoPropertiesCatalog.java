@@ -19,7 +19,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 /**
  * Catalog settings.
  */
-public class PrestoEnginePropertiesCatalog extends GenericModel {
+public class PrestissimoPropertiesCatalog extends GenericModel {
 
   @SerializedName("catalog_name")
   protected EnginePropertiesCatalog catalogName;
@@ -31,12 +31,12 @@ public class PrestoEnginePropertiesCatalog extends GenericModel {
     private EnginePropertiesCatalog catalogName;
 
     /**
-     * Instantiates a new Builder from an existing PrestoEnginePropertiesCatalog instance.
+     * Instantiates a new Builder from an existing PrestissimoPropertiesCatalog instance.
      *
-     * @param prestoEnginePropertiesCatalog the instance to initialize the Builder with
+     * @param prestissimoPropertiesCatalog the instance to initialize the Builder with
      */
-    private Builder(PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalog) {
-      this.catalogName = prestoEnginePropertiesCatalog.catalogName;
+    private Builder(PrestissimoPropertiesCatalog prestissimoPropertiesCatalog) {
+      this.catalogName = prestissimoPropertiesCatalog.catalogName;
     }
 
     /**
@@ -46,19 +46,19 @@ public class PrestoEnginePropertiesCatalog extends GenericModel {
     }
 
     /**
-     * Builds a PrestoEnginePropertiesCatalog.
+     * Builds a PrestissimoPropertiesCatalog.
      *
-     * @return the new PrestoEnginePropertiesCatalog instance
+     * @return the new PrestissimoPropertiesCatalog instance
      */
-    public PrestoEnginePropertiesCatalog build() {
-      return new PrestoEnginePropertiesCatalog(this);
+    public PrestissimoPropertiesCatalog build() {
+      return new PrestissimoPropertiesCatalog(this);
     }
 
     /**
      * Set the catalogName.
      *
      * @param catalogName the catalogName
-     * @return the PrestoEnginePropertiesCatalog builder
+     * @return the PrestissimoPropertiesCatalog builder
      */
     public Builder catalogName(EnginePropertiesCatalog catalogName) {
       this.catalogName = catalogName;
@@ -66,16 +66,16 @@ public class PrestoEnginePropertiesCatalog extends GenericModel {
     }
   }
 
-  protected PrestoEnginePropertiesCatalog() { }
+  protected PrestissimoPropertiesCatalog() { }
 
-  protected PrestoEnginePropertiesCatalog(Builder builder) {
+  protected PrestissimoPropertiesCatalog(Builder builder) {
     catalogName = builder.catalogName;
   }
 
   /**
    * New builder.
    *
-   * @return a PrestoEnginePropertiesCatalog builder
+   * @return a PrestissimoPropertiesCatalog builder
    */
   public Builder newBuilder() {
     return new Builder(this);

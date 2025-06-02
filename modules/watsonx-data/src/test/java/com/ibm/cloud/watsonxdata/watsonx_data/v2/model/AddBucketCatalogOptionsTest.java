@@ -14,7 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.BucketCatalog;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.AddBucketCatalogOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -23,31 +23,33 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the BucketCatalog model.
+ * Unit test class for the AddBucketCatalogOptions model.
  */
-public class BucketCatalogTest {
+public class AddBucketCatalogOptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testBucketCatalog() throws Throwable {
-    BucketCatalog bucketCatalogModel = new BucketCatalog.Builder()
+  public void testAddBucketCatalogOptions() throws Throwable {
+    AddBucketCatalogOptions addBucketCatalogOptionsModel = new AddBucketCatalogOptions.Builder()
+      .bucketId("testString")
       .basePath("/abc/def")
       .catalogName("sampleCatalog")
       .catalogTags(java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"))
       .catalogType("iceberg")
+      .authInstanceId("testString")
       .build();
-    assertEquals(bucketCatalogModel.basePath(), "/abc/def");
-    assertEquals(bucketCatalogModel.catalogName(), "sampleCatalog");
-    assertEquals(bucketCatalogModel.catalogTags(), java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"));
-    assertEquals(bucketCatalogModel.catalogType(), "iceberg");
-
-    String json = TestUtilities.serialize(bucketCatalogModel);
-
-    BucketCatalog bucketCatalogModelNew = TestUtilities.deserialize(json, BucketCatalog.class);
-    assertTrue(bucketCatalogModelNew instanceof BucketCatalog);
-    assertEquals(bucketCatalogModelNew.basePath(), "/abc/def");
-    assertEquals(bucketCatalogModelNew.catalogName(), "sampleCatalog");
-    assertEquals(bucketCatalogModelNew.catalogType(), "iceberg");
+    assertEquals(addBucketCatalogOptionsModel.bucketId(), "testString");
+    assertEquals(addBucketCatalogOptionsModel.basePath(), "/abc/def");
+    assertEquals(addBucketCatalogOptionsModel.catalogName(), "sampleCatalog");
+    assertEquals(addBucketCatalogOptionsModel.catalogTags(), java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"));
+    assertEquals(addBucketCatalogOptionsModel.catalogType(), "iceberg");
+    assertEquals(addBucketCatalogOptionsModel.authInstanceId(), "testString");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testAddBucketCatalogOptionsError() throws Throwable {
+    new AddBucketCatalogOptions.Builder().build();
+  }
+
 }

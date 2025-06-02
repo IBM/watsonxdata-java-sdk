@@ -14,7 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesLogConfiguration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -23,24 +23,24 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the EnginePropertiesLogConfiguration model.
+ * Unit test class for the EnginePropertiesCatalog model.
  */
-public class EnginePropertiesLogConfigurationTest {
+public class EnginePropertiesCatalogTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testEnginePropertiesLogConfiguration() throws Throwable {
-    EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModel = new EnginePropertiesLogConfiguration.Builder()
+  public void testEnginePropertiesCatalog() throws Throwable {
+    EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
       .coordinator(java.util.Collections.singletonMap("key1", "testString"))
       .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(enginePropertiesLogConfigurationModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
-    assertEquals(enginePropertiesLogConfigurationModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(enginePropertiesCatalogModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(enginePropertiesCatalogModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
 
-    String json = TestUtilities.serialize(enginePropertiesLogConfigurationModel);
+    String json = TestUtilities.serialize(enginePropertiesCatalogModel);
 
-    EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModelNew = TestUtilities.deserialize(json, EnginePropertiesLogConfiguration.class);
-    assertTrue(enginePropertiesLogConfigurationModelNew instanceof EnginePropertiesLogConfiguration);
+    EnginePropertiesCatalog enginePropertiesCatalogModelNew = TestUtilities.deserialize(json, EnginePropertiesCatalog.class);
+    assertTrue(enginePropertiesCatalogModelNew instanceof EnginePropertiesCatalog);
   }
 }

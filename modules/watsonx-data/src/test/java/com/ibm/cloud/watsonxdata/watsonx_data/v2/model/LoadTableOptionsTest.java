@@ -14,7 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesLogConfiguration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.LoadTableOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -23,24 +23,29 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the EnginePropertiesLogConfiguration model.
+ * Unit test class for the LoadTableOptions model.
  */
-public class EnginePropertiesLogConfigurationTest {
+public class LoadTableOptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testEnginePropertiesLogConfiguration() throws Throwable {
-    EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModel = new EnginePropertiesLogConfiguration.Builder()
-      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
-      .worker(java.util.Collections.singletonMap("key1", "testString"))
+  public void testLoadTableOptions() throws Throwable {
+    LoadTableOptions loadTableOptionsModel = new LoadTableOptions.Builder()
+      .catalogId("testString")
+      .schemaId("testString")
+      .tableId("testString")
+      .authInstanceId("testString")
       .build();
-    assertEquals(enginePropertiesLogConfigurationModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
-    assertEquals(enginePropertiesLogConfigurationModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
-
-    String json = TestUtilities.serialize(enginePropertiesLogConfigurationModel);
-
-    EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModelNew = TestUtilities.deserialize(json, EnginePropertiesLogConfiguration.class);
-    assertTrue(enginePropertiesLogConfigurationModelNew instanceof EnginePropertiesLogConfiguration);
+    assertEquals(loadTableOptionsModel.catalogId(), "testString");
+    assertEquals(loadTableOptionsModel.schemaId(), "testString");
+    assertEquals(loadTableOptionsModel.tableId(), "testString");
+    assertEquals(loadTableOptionsModel.authInstanceId(), "testString");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testLoadTableOptionsError() throws Throwable {
+    new LoadTableOptions.Builder().build();
+  }
+
 }

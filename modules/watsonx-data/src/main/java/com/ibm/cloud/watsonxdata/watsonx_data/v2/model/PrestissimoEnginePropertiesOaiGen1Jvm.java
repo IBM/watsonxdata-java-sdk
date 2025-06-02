@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
+import java.util.Map;
+
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
@@ -20,13 +22,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class PrestissimoEnginePropertiesOaiGen1Jvm extends GenericModel {
 
-  protected NodeDescriptionBody coordinator;
+  protected Map<String, String> coordinator;
 
   /**
    * Builder.
    */
   public static class Builder {
-    private NodeDescriptionBody coordinator;
+    private Map<String, String> coordinator;
 
     /**
      * Instantiates a new Builder from an existing PrestissimoEnginePropertiesOaiGen1Jvm instance.
@@ -58,7 +60,7 @@ public class PrestissimoEnginePropertiesOaiGen1Jvm extends GenericModel {
      * @param coordinator the coordinator
      * @return the PrestissimoEnginePropertiesOaiGen1Jvm builder
      */
-    public Builder coordinator(NodeDescriptionBody coordinator) {
+    public Builder coordinator(Map<String, String> coordinator) {
       this.coordinator = coordinator;
       return this;
     }
@@ -86,7 +88,7 @@ public class PrestissimoEnginePropertiesOaiGen1Jvm extends GenericModel {
    *
    * @return the coordinator
    */
-  public NodeDescriptionBody coordinator() {
+  public Map<String, String> coordinator() {
     return coordinator;
   }
 }

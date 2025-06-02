@@ -14,7 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesLogConfiguration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RegisterTableOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -23,24 +23,31 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the EnginePropertiesLogConfiguration model.
+ * Unit test class for the RegisterTableOptions model.
  */
-public class EnginePropertiesLogConfigurationTest {
+public class RegisterTableOptionsTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testEnginePropertiesLogConfiguration() throws Throwable {
-    EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModel = new EnginePropertiesLogConfiguration.Builder()
-      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
-      .worker(java.util.Collections.singletonMap("key1", "testString"))
+  public void testRegisterTableOptions() throws Throwable {
+    RegisterTableOptions registerTableOptionsModel = new RegisterTableOptions.Builder()
+      .catalogId("testString")
+      .schemaId("testString")
+      .metadataLocation("s3a://bucketname/path/to/table/metadata_location/_delta_log")
+      .tableName("table1")
+      .authInstanceId("testString")
       .build();
-    assertEquals(enginePropertiesLogConfigurationModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
-    assertEquals(enginePropertiesLogConfigurationModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
-
-    String json = TestUtilities.serialize(enginePropertiesLogConfigurationModel);
-
-    EnginePropertiesLogConfiguration enginePropertiesLogConfigurationModelNew = TestUtilities.deserialize(json, EnginePropertiesLogConfiguration.class);
-    assertTrue(enginePropertiesLogConfigurationModelNew instanceof EnginePropertiesLogConfiguration);
+    assertEquals(registerTableOptionsModel.catalogId(), "testString");
+    assertEquals(registerTableOptionsModel.schemaId(), "testString");
+    assertEquals(registerTableOptionsModel.metadataLocation(), "s3a://bucketname/path/to/table/metadata_location/_delta_log");
+    assertEquals(registerTableOptionsModel.tableName(), "table1");
+    assertEquals(registerTableOptionsModel.authInstanceId(), "testString");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRegisterTableOptionsError() throws Throwable {
+    new RegisterTableOptions.Builder().build();
+  }
+
 }

@@ -15,7 +15,7 @@ package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesCatalog;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestoEnginePropertiesCatalog;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoPropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -24,14 +24,14 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the PrestoEnginePropertiesCatalog model.
+ * Unit test class for the PrestissimoPropertiesCatalog model.
  */
-public class PrestoEnginePropertiesCatalogTest {
+public class PrestissimoPropertiesCatalogTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testPrestoEnginePropertiesCatalog() throws Throwable {
+  public void testPrestissimoPropertiesCatalog() throws Throwable {
     EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
       .coordinator(java.util.Collections.singletonMap("key1", "testString"))
       .worker(java.util.Collections.singletonMap("key1", "testString"))
@@ -39,15 +39,15 @@ public class PrestoEnginePropertiesCatalogTest {
     assertEquals(enginePropertiesCatalogModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
     assertEquals(enginePropertiesCatalogModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
 
-    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModel = new PrestoEnginePropertiesCatalog.Builder()
+    PrestissimoPropertiesCatalog prestissimoPropertiesCatalogModel = new PrestissimoPropertiesCatalog.Builder()
       .catalogName(enginePropertiesCatalogModel)
       .build();
-    assertEquals(prestoEnginePropertiesCatalogModel.catalogName(), enginePropertiesCatalogModel);
+    assertEquals(prestissimoPropertiesCatalogModel.catalogName(), enginePropertiesCatalogModel);
 
-    String json = TestUtilities.serialize(prestoEnginePropertiesCatalogModel);
+    String json = TestUtilities.serialize(prestissimoPropertiesCatalogModel);
 
-    PrestoEnginePropertiesCatalog prestoEnginePropertiesCatalogModelNew = TestUtilities.deserialize(json, PrestoEnginePropertiesCatalog.class);
-    assertTrue(prestoEnginePropertiesCatalogModelNew instanceof PrestoEnginePropertiesCatalog);
-    assertEquals(prestoEnginePropertiesCatalogModelNew.catalogName().toString(), enginePropertiesCatalogModel.toString());
+    PrestissimoPropertiesCatalog prestissimoPropertiesCatalogModelNew = TestUtilities.deserialize(json, PrestissimoPropertiesCatalog.class);
+    assertTrue(prestissimoPropertiesCatalogModelNew instanceof PrestissimoPropertiesCatalog);
+    assertEquals(prestissimoPropertiesCatalogModelNew.catalogName().toString(), enginePropertiesCatalogModel.toString());
   }
 }

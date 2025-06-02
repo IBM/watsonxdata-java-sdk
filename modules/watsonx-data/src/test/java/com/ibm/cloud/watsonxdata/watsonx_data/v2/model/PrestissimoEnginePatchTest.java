@@ -14,14 +14,15 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v2.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.EnginePropertiesOaiGenConfiguration;
-import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.NodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEngineEngineProperties;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePatch;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesOaiGen1Jvm;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoEnginePropertiesVelox;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoNodeDescriptionBody;
+import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.PrestissimoPropertiesCatalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEngineProperties;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesConfiguration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v2.model.RemoveEnginePropertiesPrestissimoOaiGenJvm;
@@ -42,10 +43,17 @@ public class PrestissimoEnginePatchTest {
 
   @Test
   public void testPrestissimoEnginePatch() throws Throwable {
-    PrestissimoEnginePropertiesCatalog prestissimoEnginePropertiesCatalogModel = new PrestissimoEnginePropertiesCatalog.Builder()
-      .catalogName(java.util.Arrays.asList("testString"))
+    EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(prestissimoEnginePropertiesCatalogModel.catalogName(), java.util.Arrays.asList("testString"));
+    assertEquals(enginePropertiesCatalogModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
+    assertEquals(enginePropertiesCatalogModel.worker(), java.util.Collections.singletonMap("key1", "testString"));
+
+    PrestissimoPropertiesCatalog prestissimoPropertiesCatalogModel = new PrestissimoPropertiesCatalog.Builder()
+      .catalogName(enginePropertiesCatalogModel)
+      .build();
+    assertEquals(prestissimoPropertiesCatalogModel.catalogName(), enginePropertiesCatalogModel);
 
     PrestissimoNodeDescriptionBody prestissimoNodeDescriptionBodyModel = new PrestissimoNodeDescriptionBody.Builder()
       .nodeType("worker")
@@ -66,28 +74,26 @@ public class PrestissimoEnginePatchTest {
       .build();
     assertEquals(prestissimoEnginePropertiesVeloxModel.veloxProperty(), java.util.Arrays.asList("testString"));
 
-    NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-      .nodeType("worker")
-      .quantity(Long.valueOf("26"))
-      .build();
-    assertEquals(nodeDescriptionBodyModel.nodeType(), "worker");
-    assertEquals(nodeDescriptionBodyModel.quantity(), Long.valueOf("26"));
-
     PrestissimoEnginePropertiesOaiGen1Jvm prestissimoEnginePropertiesOaiGen1JvmModel = new PrestissimoEnginePropertiesOaiGen1Jvm.Builder()
-      .coordinator(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
       .build();
-    assertEquals(prestissimoEnginePropertiesOaiGen1JvmModel.coordinator(), nodeDescriptionBodyModel);
+    assertEquals(prestissimoEnginePropertiesOaiGen1JvmModel.coordinator(), java.util.Collections.singletonMap("key1", "testString"));
 
     PrestissimoEngineEngineProperties prestissimoEngineEnginePropertiesModel = new PrestissimoEngineEngineProperties.Builder()
-      .catalog(prestissimoEnginePropertiesCatalogModel)
+      .catalog(prestissimoPropertiesCatalogModel)
       .configuration(enginePropertiesOaiGenConfigurationModel)
       .velox(prestissimoEnginePropertiesVeloxModel)
       .jvm(prestissimoEnginePropertiesOaiGen1JvmModel)
       .build();
-    assertEquals(prestissimoEngineEnginePropertiesModel.catalog(), prestissimoEnginePropertiesCatalogModel);
+    assertEquals(prestissimoEngineEnginePropertiesModel.catalog(), prestissimoPropertiesCatalogModel);
     assertEquals(prestissimoEngineEnginePropertiesModel.configuration(), enginePropertiesOaiGenConfigurationModel);
     assertEquals(prestissimoEngineEnginePropertiesModel.velox(), prestissimoEnginePropertiesVeloxModel);
     assertEquals(prestissimoEngineEnginePropertiesModel.jvm(), prestissimoEnginePropertiesOaiGen1JvmModel);
+
+    PrestissimoEnginePropertiesCatalog prestissimoEnginePropertiesCatalogModel = new PrestissimoEnginePropertiesCatalog.Builder()
+      .catalogName(java.util.Arrays.asList("testString"))
+      .build();
+    assertEquals(prestissimoEnginePropertiesCatalogModel.catalogName(), java.util.Arrays.asList("testString"));
 
     RemoveEnginePropertiesConfiguration removeEnginePropertiesConfigurationModel = new RemoveEnginePropertiesConfiguration.Builder()
       .coordinator(java.util.Arrays.asList("testString"))
@@ -139,8 +145,13 @@ public class PrestissimoEnginePatchTest {
   }
   @Test
   public void testPrestissimoEnginePatchAsPatch() throws Throwable {
-    PrestissimoEnginePropertiesCatalog prestissimoEnginePropertiesCatalogModel = new PrestissimoEnginePropertiesCatalog.Builder()
-      .catalogName(java.util.Arrays.asList("testString"))
+    EnginePropertiesCatalog enginePropertiesCatalogModel = new EnginePropertiesCatalog.Builder()
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
+      .worker(java.util.Collections.singletonMap("key1", "testString"))
+      .build();
+
+    PrestissimoPropertiesCatalog prestissimoPropertiesCatalogModel = new PrestissimoPropertiesCatalog.Builder()
+      .catalogName(enginePropertiesCatalogModel)
       .build();
 
     PrestissimoNodeDescriptionBody prestissimoNodeDescriptionBodyModel = new PrestissimoNodeDescriptionBody.Builder()
@@ -157,20 +168,19 @@ public class PrestissimoEnginePatchTest {
       .veloxProperty(java.util.Arrays.asList("testString"))
       .build();
 
-    NodeDescriptionBody nodeDescriptionBodyModel = new NodeDescriptionBody.Builder()
-      .nodeType("worker")
-      .quantity(Long.valueOf("26"))
-      .build();
-
     PrestissimoEnginePropertiesOaiGen1Jvm prestissimoEnginePropertiesOaiGen1JvmModel = new PrestissimoEnginePropertiesOaiGen1Jvm.Builder()
-      .coordinator(nodeDescriptionBodyModel)
+      .coordinator(java.util.Collections.singletonMap("key1", "testString"))
       .build();
 
     PrestissimoEngineEngineProperties prestissimoEngineEnginePropertiesModel = new PrestissimoEngineEngineProperties.Builder()
-      .catalog(prestissimoEnginePropertiesCatalogModel)
+      .catalog(prestissimoPropertiesCatalogModel)
       .configuration(enginePropertiesOaiGenConfigurationModel)
       .velox(prestissimoEnginePropertiesVeloxModel)
       .jvm(prestissimoEnginePropertiesOaiGen1JvmModel)
+      .build();
+
+    PrestissimoEnginePropertiesCatalog prestissimoEnginePropertiesCatalogModel = new PrestissimoEnginePropertiesCatalog.Builder()
+      .catalogName(java.util.Arrays.asList("testString"))
       .build();
 
     RemoveEnginePropertiesConfiguration removeEnginePropertiesConfigurationModel = new RemoveEnginePropertiesConfiguration.Builder()
