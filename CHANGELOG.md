@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/IBM/watsonxdata-java-sdk/compare/0.6.0...0.7.0) (2025-09-19)
+
+
+### Features
+
+* **sdk:** update SDK to include 2.2.0 SaaS changes ([#15](https://github.com/IBM/watsonxdata-java-sdk/issues/15)) ([390dd27](https://github.com/IBM/watsonxdata-java-sdk/commit/390dd27c132b2c855bce262e2c18f8d676833807))
+
 # [0.6.0](https://github.com/IBM/watsonxdata-java-sdk/compare/0.5.0...0.6.0) (2025-09-18)
 
 
