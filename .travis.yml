@@ -22,12 +22,10 @@ env:
 
 stages:
   - name: Build-Test
-  
-# Uncomment these stages when you're ready to use them.
   - name: Semantic-Release
-    if: (branch = main) AND (type IN (push, api)) AND (fork = false)
+    # if: (branch = main) AND (type IN (push, api)) AND (fork = false)
   - name: Publish-Release
-    if: (tag IS present) AND (fork = false)
+    # if: (tag IS present) AND (fork = false)
 
 before_install:
   - sudo mkdir -p /usr/share/man/man1
@@ -57,7 +55,6 @@ jobs:
       script:
         - mvn verify -fae -DskipITs $MVN_ARGS
 
-# Uncomment these stages when you're ready to use them.
     - stage: Semantic-Release
       install:
         - nvm install 14
@@ -75,7 +72,7 @@ jobs:
         - mvn clean javadoc:aggregate $MVN_ARGS
         - build/publishJavadoc.sh
       after_success:
-        - echo "Javadocs successfully published to gh-pages!"
+        - echo "Javadocs successfully published to gh-pages !"
 
     - jdk: openjdk11
       name: Publish-To-Maven-Central
