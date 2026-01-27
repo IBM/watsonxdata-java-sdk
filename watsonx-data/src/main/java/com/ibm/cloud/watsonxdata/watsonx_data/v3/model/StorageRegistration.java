@@ -174,7 +174,6 @@ public class StorageRegistration extends GenericModel {
   public String getDisplayName() {
     return displayName;
   }
-
   /**
    * Gets the id.
    *
