@@ -25,7 +25,7 @@ import com.ibm.cloud.sdk.core.security.Authenticator;
 import com.ibm.cloud.sdk.core.security.ConfigBasedAuthenticatorFactory;
 import com.ibm.cloud.sdk.core.service.BaseService;
 import com.ibm.cloud.sdk.core.util.ResponseConverterUtils;
-import com.ibm.cloud.watsonxdata.common.SdkCommon;
+import com.ibm.cloud.watsonx_data.common.SdkCommon;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.Catalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.CatalogCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.CatalogEngineResponse;
