@@ -1,3 +1,10 @@
+# [0.8.0](https://github.com/IBM/watsonxdata-java-sdk/compare/0.7.0...0.8.0) (2026-01-28)
+
+
+### Features
+
+* Add V3 SDK ([#17](https://github.com/IBM/watsonxdata-java-sdk/issues/17)) ([1cd8a67](https://github.com/IBM/watsonxdata-java-sdk/commit/1cd8a67c57c2004a127e57862a1fb1dab78df754))
+
 # [0.7.0](https://github.com/IBM/watsonxdata-java-sdk/compare/0.6.0...0.7.0) (2025-09-19)
 
 
