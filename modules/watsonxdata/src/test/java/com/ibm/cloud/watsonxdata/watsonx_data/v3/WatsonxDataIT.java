@@ -17,7 +17,7 @@ import com.ibm.cloud.sdk.core.http.Response;
 import com.ibm.cloud.sdk.core.service.exception.ServiceResponseException;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.CredentialUtils;
-import com.ibm.cloud.watsonxdata.test.SdkIntegrationTestBase;
+import com.ibm.cloud.watsonx_data.test.SdkIntegrationTestBase;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.Catalog;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.CatalogCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.CatalogEngineResponse;
