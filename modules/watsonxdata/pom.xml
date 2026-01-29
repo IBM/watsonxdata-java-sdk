@@ -24,10 +24,10 @@
             <groupId>com.ibm.cloud</groupId>
         </dependency>
         <dependency>
-            <artifactId>watsonx-data-common</artifactId>
             <groupId>com.ibm.cloud</groupId>
+            <artifactId>watsonx-data-common</artifactId>
+            <version>${project.version}</version>
             <type>test-jar</type>
-            <classifier>tests</classifier>
             <scope>test</scope>
         </dependency>
         <dependency>
