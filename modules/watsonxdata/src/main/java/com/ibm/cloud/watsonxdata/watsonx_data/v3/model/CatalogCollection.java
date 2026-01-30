@@ -14,9 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import java.util.List;
-
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
-
 /**
  * Collection of catalogs.
  */
