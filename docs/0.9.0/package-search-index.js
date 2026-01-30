@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.ibm.cloud.watsonx_data.common"},{"l":"com.ibm.cloud.watsonxdata.watsonx_data.v3"},{"l":"com.ibm.cloud.watsonxdata.watsonx_data.v3.model"}]
