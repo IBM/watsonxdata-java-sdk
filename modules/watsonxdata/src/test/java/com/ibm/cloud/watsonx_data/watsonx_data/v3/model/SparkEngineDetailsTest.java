@@ -1,0 +1,56 @@
+/*
+ * (C) Copyright IBM Corp. 2026.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+
+package com.ibm.cloud.watsonx_data.watsonx_data.v3.model;
+
+import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonx_data.watsonx_data.v3.model.SparkEndpoints;
+import com.ibm.cloud.watsonx_data.watsonx_data.v3.model.SparkEngineDetails;
+import com.ibm.cloud.watsonx_data.watsonx_data.v3.model.SparkEngineHome;
+import com.ibm.cloud.watsonx_data.watsonx_data.v3.model.SparkEngineResourceLimit;
+import com.ibm.cloud.watsonx_data.watsonx_data.v3.model.SparkEngineResourceUtilisation;
+import com.ibm.cloud.watsonx_data.watsonx_data.v3.model.SparkScaleConfig;
+import com.ibm.cloud.watsonx_data.watsonx_data.v3.model.SparkVscodeConfig;
+import com.ibm.cloud.watsonx_data.watsonx_data.v3.utils.TestUtilities;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import org.testng.annotations.Test;
+import static org.testng.Assert.*;
+
+/**
+ * Unit test class for the SparkEngineDetails model.
+ */
+public class SparkEngineDetailsTest {
+  final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
+  final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
+
+  @Test
+  public void testSparkEngineDetails() throws Throwable {
+    SparkEngineDetails sparkEngineDetailsModel = new SparkEngineDetails();
+    assertNull(sparkEngineDetailsModel.getApiKey());
+    assertNull(sparkEngineDetailsModel.getConnectionString());
+    assertNull(sparkEngineDetailsModel.getDefaultConfig());
+    assertNull(sparkEngineDetailsModel.getDefaultVersion());
+    assertNull(sparkEngineDetailsModel.getEndpoints());
+    assertNull(sparkEngineDetailsModel.getEngineHome());
+    assertNull(sparkEngineDetailsModel.getEngineSubType());
+    assertNull(sparkEngineDetailsModel.getInstanceId());
+    assertNull(sparkEngineDetailsModel.getManagedBy());
+    assertNull(sparkEngineDetailsModel.isResourceLimitEnabled());
+    assertNull(sparkEngineDetailsModel.getResourceLimits());
+    assertNull(sparkEngineDetailsModel.getResourceUtilisation());
+    assertNull(sparkEngineDetailsModel.getScaleConfig());
+    assertNull(sparkEngineDetailsModel.getVscodeConfig());
+  }
+}
