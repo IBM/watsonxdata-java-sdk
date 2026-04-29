@@ -47,6 +47,15 @@ public class RemovePrestissimoEnginePropertiesJvm extends GenericModel {
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param coordinator the coordinator
+     */
+    public Builder(List<String> coordinator) {
+      this.coordinator = coordinator;
+    }
+
+    /**
      * Builds a RemovePrestissimoEnginePropertiesJvm.
      *
      * @return the new RemovePrestissimoEnginePropertiesJvm instance
@@ -87,6 +96,8 @@ public class RemovePrestissimoEnginePropertiesJvm extends GenericModel {
   protected RemovePrestissimoEnginePropertiesJvm() { }
 
   protected RemovePrestissimoEnginePropertiesJvm(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.coordinator,
+      "coordinator cannot be null");
     coordinator = builder.coordinator;
   }
 

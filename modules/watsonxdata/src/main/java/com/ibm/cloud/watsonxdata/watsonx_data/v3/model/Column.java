@@ -28,7 +28,146 @@ public class Column extends GenericModel {
   protected String scale;
   protected String type;
 
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String comment;
+    private String extra;
+    private String length;
+    private String name;
+    private String precision;
+    private String scale;
+    private String type;
+
+    /**
+     * Instantiates a new Builder from an existing Column instance.
+     *
+     * @param column the instance to initialize the Builder with
+     */
+    private Builder(Column column) {
+      this.comment = column.comment;
+      this.extra = column.extra;
+      this.length = column.length;
+      this.name = column.name;
+      this.precision = column.precision;
+      this.scale = column.scale;
+      this.type = column.type;
+    }
+
+    /**
+     * Instantiates a new builder.
+     */
+    public Builder() {
+    }
+
+    /**
+     * Builds a Column.
+     *
+     * @return the new Column instance
+     */
+    public Column build() {
+      return new Column(this);
+    }
+
+    /**
+     * Set the comment.
+     *
+     * @param comment the comment
+     * @return the Column builder
+     */
+    public Builder comment(String comment) {
+      this.comment = comment;
+      return this;
+    }
+
+    /**
+     * Set the extra.
+     *
+     * @param extra the extra
+     * @return the Column builder
+     */
+    public Builder extra(String extra) {
+      this.extra = extra;
+      return this;
+    }
+
+    /**
+     * Set the length.
+     *
+     * @param length the length
+     * @return the Column builder
+     */
+    public Builder length(String length) {
+      this.length = length;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the Column builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the precision.
+     *
+     * @param precision the precision
+     * @return the Column builder
+     */
+    public Builder precision(String precision) {
+      this.precision = precision;
+      return this;
+    }
+
+    /**
+     * Set the scale.
+     *
+     * @param scale the scale
+     * @return the Column builder
+     */
+    public Builder scale(String scale) {
+      this.scale = scale;
+      return this;
+    }
+
+    /**
+     * Set the type.
+     *
+     * @param type the type
+     * @return the Column builder
+     */
+    public Builder type(String type) {
+      this.type = type;
+      return this;
+    }
+  }
+
   protected Column() { }
+
+  protected Column(Builder builder) {
+    comment = builder.comment;
+    extra = builder.extra;
+    length = builder.length;
+    name = builder.name;
+    precision = builder.precision;
+    scale = builder.scale;
+    type = builder.type;
+  }
+
+  /**
+   * New builder.
+   *
+   * @return a Column builder
+   */
+  public Builder newBuilder() {
+    return new Builder(this);
+  }
 
   /**
    * Gets the comment.
@@ -37,7 +176,7 @@ public class Column extends GenericModel {
    *
    * @return the comment
    */
-  public String getComment() {
+  public String comment() {
     return comment;
   }
 
@@ -48,7 +187,7 @@ public class Column extends GenericModel {
    *
    * @return the extra
    */
-  public String getExtra() {
+  public String extra() {
     return extra;
   }
 
@@ -59,7 +198,7 @@ public class Column extends GenericModel {
    *
    * @return the length
    */
-  public String getLength() {
+  public String length() {
     return length;
   }
 
@@ -70,7 +209,7 @@ public class Column extends GenericModel {
    *
    * @return the name
    */
-  public String getName() {
+  public String name() {
     return name;
   }
 
@@ -81,7 +220,7 @@ public class Column extends GenericModel {
    *
    * @return the precision
    */
-  public String getPrecision() {
+  public String precision() {
     return precision;
   }
 
@@ -92,7 +231,7 @@ public class Column extends GenericModel {
    *
    * @return the scale
    */
-  public String getScale() {
+  public String scale() {
     return scale;
   }
 
@@ -103,7 +242,7 @@ public class Column extends GenericModel {
    *
    * @return the type
    */
-  public String getType() {
+  public String type() {
     return type;
   }
 }

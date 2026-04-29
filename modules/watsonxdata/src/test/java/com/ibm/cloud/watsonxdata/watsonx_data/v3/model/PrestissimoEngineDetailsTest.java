@@ -14,9 +14,8 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoCoordinatorNodeDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.NodeDescription;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoEngineDetails;
-import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoWorkerNodeDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -33,36 +32,29 @@ public class PrestissimoEngineDetailsTest {
 
   @Test
   public void testPrestissimoEngineDetails() throws Throwable {
-    PrestissimoCoordinatorNodeDetails prestissimoCoordinatorNodeDetailsModel = new PrestissimoCoordinatorNodeDetails.Builder()
-      .nodeType("starter")
-      .quantity(Long.valueOf("1"))
-      .build();
-    assertEquals(prestissimoCoordinatorNodeDetailsModel.nodeType(), "starter");
-    assertEquals(prestissimoCoordinatorNodeDetailsModel.quantity(), Long.valueOf("1"));
-
-    PrestissimoWorkerNodeDetails prestissimoWorkerNodeDetailsModel = new PrestissimoWorkerNodeDetails.Builder()
+    NodeDescription nodeDescriptionModel = new NodeDescription.Builder()
       .nodeType("worker")
       .quantity(Long.valueOf("1"))
       .build();
-    assertEquals(prestissimoWorkerNodeDetailsModel.nodeType(), "worker");
-    assertEquals(prestissimoWorkerNodeDetailsModel.quantity(), Long.valueOf("1"));
+    assertEquals(nodeDescriptionModel.nodeType(), "worker");
+    assertEquals(nodeDescriptionModel.quantity(), Long.valueOf("1"));
 
     PrestissimoEngineDetails prestissimoEngineDetailsModel = new PrestissimoEngineDetails.Builder()
-      .coordinator(prestissimoCoordinatorNodeDetailsModel)
+      .coordinator(nodeDescriptionModel)
       .sizeConfig("starter")
-      .worker(prestissimoWorkerNodeDetailsModel)
+      .worker(nodeDescriptionModel)
       .build();
-    assertEquals(prestissimoEngineDetailsModel.coordinator(), prestissimoCoordinatorNodeDetailsModel);
+    assertEquals(prestissimoEngineDetailsModel.coordinator(), nodeDescriptionModel);
     assertEquals(prestissimoEngineDetailsModel.sizeConfig(), "starter");
-    assertEquals(prestissimoEngineDetailsModel.worker(), prestissimoWorkerNodeDetailsModel);
+    assertEquals(prestissimoEngineDetailsModel.worker(), nodeDescriptionModel);
 
     String json = TestUtilities.serialize(prestissimoEngineDetailsModel);
 
     PrestissimoEngineDetails prestissimoEngineDetailsModelNew = TestUtilities.deserialize(json, PrestissimoEngineDetails.class);
     assertTrue(prestissimoEngineDetailsModelNew instanceof PrestissimoEngineDetails);
-    assertEquals(prestissimoEngineDetailsModelNew.coordinator().toString(), prestissimoCoordinatorNodeDetailsModel.toString());
+    assertEquals(prestissimoEngineDetailsModelNew.coordinator().toString(), nodeDescriptionModel.toString());
     assertEquals(prestissimoEngineDetailsModelNew.sizeConfig(), "starter");
-    assertEquals(prestissimoEngineDetailsModelNew.worker().toString(), prestissimoWorkerNodeDetailsModel.toString());
+    assertEquals(prestissimoEngineDetailsModelNew.worker().toString(), nodeDescriptionModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

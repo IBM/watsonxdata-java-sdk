@@ -14,8 +14,8 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.SecretDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageDetailsAccesskeyVault;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -32,18 +32,18 @@ public class StorageDetailsTest {
 
   @Test
   public void testStorageDetails() throws Throwable {
-    SecretDetails secretDetailsModel = new SecretDetails.Builder()
+    StorageDetailsAccesskeyVault storageDetailsAccesskeyVaultModel = new StorageDetailsAccesskeyVault.Builder()
       .key("secret key")
       .secretName("secret name")
       .secretUrn("secret urn")
       .build();
-    assertEquals(secretDetailsModel.key(), "secret key");
-    assertEquals(secretDetailsModel.secretName(), "secret name");
-    assertEquals(secretDetailsModel.secretUrn(), "secret urn");
+    assertEquals(storageDetailsAccesskeyVaultModel.key(), "secret key");
+    assertEquals(storageDetailsAccesskeyVaultModel.secretName(), "secret name");
+    assertEquals(storageDetailsAccesskeyVaultModel.secretUrn(), "secret urn");
 
     StorageDetails storageDetailsModel = new StorageDetails.Builder()
       .accessKey("<access_key>")
-      .accessKeyVault(secretDetailsModel)
+      .accessKeyVault(storageDetailsAccesskeyVaultModel)
       .accountName("sample-storage")
       .applicationId("application-id")
       .authMode("iam")
@@ -51,18 +51,17 @@ public class StorageDetailsTest {
       .directoryId("directory-id")
       .endpoint("https://s3.us-south.cloud-object-storage.appdomain.cloud/")
       .keyFile("key_file")
-      .mrapArn("arn:aws:s3::123456789012:accesspoint/mrap/mrapName")
       .name("sample-storage")
       .provider("ibm-cos")
       .region("us-south")
       .roleArn("arn:aws:iam::5ssdd5467-002c-a4f8cac3f3f9")
       .sasToken("<sas-token>")
       .secretKey("secret_key")
-      .secretKeyVault(secretDetailsModel)
+      .secretKeyVault(storageDetailsAccesskeyVaultModel)
       .vaultEnabled(true)
       .build();
     assertEquals(storageDetailsModel.accessKey(), "<access_key>");
-    assertEquals(storageDetailsModel.accessKeyVault(), secretDetailsModel);
+    assertEquals(storageDetailsModel.accessKeyVault(), storageDetailsAccesskeyVaultModel);
     assertEquals(storageDetailsModel.accountName(), "sample-storage");
     assertEquals(storageDetailsModel.applicationId(), "application-id");
     assertEquals(storageDetailsModel.authMode(), "iam");
@@ -70,14 +69,13 @@ public class StorageDetailsTest {
     assertEquals(storageDetailsModel.directoryId(), "directory-id");
     assertEquals(storageDetailsModel.endpoint(), "https://s3.us-south.cloud-object-storage.appdomain.cloud/");
     assertEquals(storageDetailsModel.keyFile(), "key_file");
-    assertEquals(storageDetailsModel.mrapArn(), "arn:aws:s3::123456789012:accesspoint/mrap/mrapName");
     assertEquals(storageDetailsModel.name(), "sample-storage");
     assertEquals(storageDetailsModel.provider(), "ibm-cos");
     assertEquals(storageDetailsModel.region(), "us-south");
     assertEquals(storageDetailsModel.roleArn(), "arn:aws:iam::5ssdd5467-002c-a4f8cac3f3f9");
     assertEquals(storageDetailsModel.sasToken(), "<sas-token>");
     assertEquals(storageDetailsModel.secretKey(), "secret_key");
-    assertEquals(storageDetailsModel.secretKeyVault(), secretDetailsModel);
+    assertEquals(storageDetailsModel.secretKeyVault(), storageDetailsAccesskeyVaultModel);
     assertEquals(storageDetailsModel.vaultEnabled(), Boolean.valueOf(true));
 
     String json = TestUtilities.serialize(storageDetailsModel);
@@ -85,7 +83,7 @@ public class StorageDetailsTest {
     StorageDetails storageDetailsModelNew = TestUtilities.deserialize(json, StorageDetails.class);
     assertTrue(storageDetailsModelNew instanceof StorageDetails);
     assertEquals(storageDetailsModelNew.accessKey(), "<access_key>");
-    assertEquals(storageDetailsModelNew.accessKeyVault().toString(), secretDetailsModel.toString());
+    assertEquals(storageDetailsModelNew.accessKeyVault().toString(), storageDetailsAccesskeyVaultModel.toString());
     assertEquals(storageDetailsModelNew.accountName(), "sample-storage");
     assertEquals(storageDetailsModelNew.applicationId(), "application-id");
     assertEquals(storageDetailsModelNew.authMode(), "iam");
@@ -93,14 +91,13 @@ public class StorageDetailsTest {
     assertEquals(storageDetailsModelNew.directoryId(), "directory-id");
     assertEquals(storageDetailsModelNew.endpoint(), "https://s3.us-south.cloud-object-storage.appdomain.cloud/");
     assertEquals(storageDetailsModelNew.keyFile(), "key_file");
-    assertEquals(storageDetailsModelNew.mrapArn(), "arn:aws:s3::123456789012:accesspoint/mrap/mrapName");
     assertEquals(storageDetailsModelNew.name(), "sample-storage");
     assertEquals(storageDetailsModelNew.provider(), "ibm-cos");
     assertEquals(storageDetailsModelNew.region(), "us-south");
     assertEquals(storageDetailsModelNew.roleArn(), "arn:aws:iam::5ssdd5467-002c-a4f8cac3f3f9");
     assertEquals(storageDetailsModelNew.sasToken(), "<sas-token>");
     assertEquals(storageDetailsModelNew.secretKey(), "secret_key");
-    assertEquals(storageDetailsModelNew.secretKeyVault().toString(), secretDetailsModel.toString());
+    assertEquals(storageDetailsModelNew.secretKeyVault().toString(), storageDetailsAccesskeyVaultModel.toString());
     assertEquals(storageDetailsModelNew.vaultEnabled(), Boolean.valueOf(true));
   }
 }

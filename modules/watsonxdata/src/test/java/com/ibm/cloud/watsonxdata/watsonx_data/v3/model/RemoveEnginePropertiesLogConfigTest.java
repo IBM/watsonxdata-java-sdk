@@ -43,4 +43,10 @@ public class RemoveEnginePropertiesLogConfigTest {
     RemoveEnginePropertiesLogConfig removeEnginePropertiesLogConfigModelNew = TestUtilities.deserialize(json, RemoveEnginePropertiesLogConfig.class);
     assertTrue(removeEnginePropertiesLogConfigModelNew instanceof RemoveEnginePropertiesLogConfig);
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRemoveEnginePropertiesLogConfigError() throws Throwable {
+    new RemoveEnginePropertiesLogConfig.Builder().build();
+  }
+
 }

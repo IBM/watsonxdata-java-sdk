@@ -14,6 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -84,8 +85,6 @@ public class Catalog extends GenericModel {
   @SerializedName("days_left")
   protected String daysLeft;
   protected String description;
-  @SerializedName("is_gfs")
-  protected Boolean isGfs;
   @SerializedName("location_uri")
   protected String locationUri;
   @SerializedName("managed_by")
@@ -96,6 +95,8 @@ public class Catalog extends GenericModel {
   protected String name;
   protected String status;
   protected List<String> tags;
+  @SerializedName("catalog_names")
+  protected List<String> catalogNames;
   protected String type;
 
   protected Catalog() { }
@@ -211,17 +212,6 @@ public class Catalog extends GenericModel {
   }
 
   /**
-   * Gets the isGfs.
-   *
-   * Flag to check if catalog is federated or not.
-   *
-   * @return the isGfs
-   */
-  public Boolean isIsGfs() {
-    return isGfs;
-  }
-
-  /**
    * Gets the locationUri.
    *
    * catalog location uri.
@@ -297,6 +287,17 @@ public class Catalog extends GenericModel {
    */
   public List<String> getTags() {
     return tags;
+  }
+
+  /**
+   * Gets the catalogNames.
+   *
+   * Catalog names.
+   *
+   * @return the catalogNames
+   */
+  public List<String> getCatalogNames() {
+    return catalogNames;
   }
 
   /**

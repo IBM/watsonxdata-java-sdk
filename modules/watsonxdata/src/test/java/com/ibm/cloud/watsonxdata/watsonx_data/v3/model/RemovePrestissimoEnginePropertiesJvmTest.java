@@ -41,4 +41,10 @@ public class RemovePrestissimoEnginePropertiesJvmTest {
     RemovePrestissimoEnginePropertiesJvm removePrestissimoEnginePropertiesJvmModelNew = TestUtilities.deserialize(json, RemovePrestissimoEnginePropertiesJvm.class);
     assertTrue(removePrestissimoEnginePropertiesJvmModelNew instanceof RemovePrestissimoEnginePropertiesJvm);
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRemovePrestissimoEnginePropertiesJvmError() throws Throwable {
+    new RemovePrestissimoEnginePropertiesJvm.Builder().build();
+  }
+
 }

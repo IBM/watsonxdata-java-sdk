@@ -31,13 +31,33 @@ public class ColumnTest {
 
   @Test
   public void testColumn() throws Throwable {
-    Column columnModel = new Column();
-    assertNull(columnModel.getComment());
-    assertNull(columnModel.getExtra());
-    assertNull(columnModel.getLength());
-    assertNull(columnModel.getName());
-    assertNull(columnModel.getPrecision());
-    assertNull(columnModel.getScale());
-    assertNull(columnModel.getType());
+    Column columnModel = new Column.Builder()
+      .comment("Expenses column for each department")
+      .extra("AUTO_INCREMENT")
+      .length("30")
+      .name("expenses")
+      .precision("10")
+      .scale("2")
+      .type("varchar")
+      .build();
+    assertEquals(columnModel.comment(), "Expenses column for each department");
+    assertEquals(columnModel.extra(), "AUTO_INCREMENT");
+    assertEquals(columnModel.length(), "30");
+    assertEquals(columnModel.name(), "expenses");
+    assertEquals(columnModel.precision(), "10");
+    assertEquals(columnModel.scale(), "2");
+    assertEquals(columnModel.type(), "varchar");
+
+    String json = TestUtilities.serialize(columnModel);
+
+    Column columnModelNew = TestUtilities.deserialize(json, Column.class);
+    assertTrue(columnModelNew instanceof Column);
+    assertEquals(columnModelNew.comment(), "Expenses column for each department");
+    assertEquals(columnModelNew.extra(), "AUTO_INCREMENT");
+    assertEquals(columnModelNew.length(), "30");
+    assertEquals(columnModelNew.name(), "expenses");
+    assertEquals(columnModelNew.precision(), "10");
+    assertEquals(columnModelNew.scale(), "2");
+    assertEquals(columnModelNew.type(), "varchar");
   }
 }

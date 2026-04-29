@@ -14,6 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.AutoScalingConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.CoordinatorNodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.EngineDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.WorkerNodeDescriptionBody;
@@ -47,14 +48,35 @@ public class EngineDetailsTest {
     assertEquals(workerNodeDescriptionBodyModel.nodeType(), "starter");
     assertEquals(workerNodeDescriptionBodyModel.quantity(), Long.valueOf("1"));
 
+    AutoScalingConfig autoscalingConfigModel = new AutoScalingConfig.Builder()
+      .type("cpu")
+      .target(Long.valueOf("40"))
+      .minWorkerQuantity(Long.valueOf("1"))
+      .maxWorkerQuantity(Long.valueOf("18"))
+      .queryTerminationGracePeriodMin(Long.valueOf("1"))
+      .scaleInStabilizationWindowMin(Long.valueOf("5"))
+      .scalingStepSize(Long.valueOf("1"))
+      .build();
+    assertEquals(autoscalingConfigModel.type(), "cpu");
+    assertEquals(autoscalingConfigModel.target(), Long.valueOf("40"));
+    assertEquals(autoscalingConfigModel.minWorkerQuantity(), Long.valueOf("1"));
+    assertEquals(autoscalingConfigModel.maxWorkerQuantity(), Long.valueOf("18"));
+    assertEquals(autoscalingConfigModel.queryTerminationGracePeriodMin(), Long.valueOf("1"));
+    assertEquals(autoscalingConfigModel.scaleInStabilizationWindowMin(), Long.valueOf("5"));
+    assertEquals(autoscalingConfigModel.scalingStepSize(), Long.valueOf("1"));
+
     EngineDetails engineDetailsModel = new EngineDetails.Builder()
       .coordinator(coordinatorNodeDescriptionBodyModel)
       .sizeConfig("starter")
       .worker(workerNodeDescriptionBodyModel)
+      .autoscalingEnabled(true)
+      .autoscalingConfig(autoscalingConfigModel)
       .build();
     assertEquals(engineDetailsModel.coordinator(), coordinatorNodeDescriptionBodyModel);
     assertEquals(engineDetailsModel.sizeConfig(), "starter");
     assertEquals(engineDetailsModel.worker(), workerNodeDescriptionBodyModel);
+    assertEquals(engineDetailsModel.autoscalingEnabled(), Boolean.valueOf(true));
+    assertEquals(engineDetailsModel.autoscalingConfig(), autoscalingConfigModel);
 
     String json = TestUtilities.serialize(engineDetailsModel);
 
@@ -63,6 +85,8 @@ public class EngineDetailsTest {
     assertEquals(engineDetailsModelNew.coordinator().toString(), coordinatorNodeDescriptionBodyModel.toString());
     assertEquals(engineDetailsModelNew.sizeConfig(), "starter");
     assertEquals(engineDetailsModelNew.worker().toString(), workerNodeDescriptionBodyModel.toString());
+    assertEquals(engineDetailsModelNew.autoscalingEnabled(), Boolean.valueOf(true));
+    assertEquals(engineDetailsModelNew.autoscalingConfig().toString(), autoscalingConfigModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

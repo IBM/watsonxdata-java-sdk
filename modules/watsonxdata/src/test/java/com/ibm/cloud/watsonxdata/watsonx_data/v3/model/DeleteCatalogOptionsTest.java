@@ -33,12 +33,12 @@ public class DeleteCatalogOptionsTest {
   public void testDeleteCatalogOptions() throws Throwable {
     DeleteCatalogOptions deleteCatalogOptionsModel = new DeleteCatalogOptions.Builder()
       .name("testString")
-      .skipMdsCall(false)
       .authInstanceId("testString")
+      .skipMdsCall(false)
       .build();
     assertEquals(deleteCatalogOptionsModel.name(), "testString");
-    assertEquals(deleteCatalogOptionsModel.skipMdsCall(), Boolean.valueOf(false));
     assertEquals(deleteCatalogOptionsModel.authInstanceId(), "testString");
+    assertEquals(deleteCatalogOptionsModel.skipMdsCall(), Boolean.valueOf(false));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

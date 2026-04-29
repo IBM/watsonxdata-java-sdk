@@ -14,6 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.AutoScalingConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.CoordinatorNodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.CreatePrestoEngineOptions;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.EngineDetails;
@@ -48,14 +49,35 @@ public class CreatePrestoEngineOptionsTest {
     assertEquals(workerNodeDescriptionBodyModel.nodeType(), "starter");
     assertEquals(workerNodeDescriptionBodyModel.quantity(), Long.valueOf("1"));
 
+    AutoScalingConfig autoscalingConfigModel = new AutoScalingConfig.Builder()
+      .type("cpu")
+      .target(Long.valueOf("40"))
+      .minWorkerQuantity(Long.valueOf("1"))
+      .maxWorkerQuantity(Long.valueOf("18"))
+      .queryTerminationGracePeriodMin(Long.valueOf("1"))
+      .scaleInStabilizationWindowMin(Long.valueOf("5"))
+      .scalingStepSize(Long.valueOf("1"))
+      .build();
+    assertEquals(autoscalingConfigModel.type(), "cpu");
+    assertEquals(autoscalingConfigModel.target(), Long.valueOf("40"));
+    assertEquals(autoscalingConfigModel.minWorkerQuantity(), Long.valueOf("1"));
+    assertEquals(autoscalingConfigModel.maxWorkerQuantity(), Long.valueOf("18"));
+    assertEquals(autoscalingConfigModel.queryTerminationGracePeriodMin(), Long.valueOf("1"));
+    assertEquals(autoscalingConfigModel.scaleInStabilizationWindowMin(), Long.valueOf("5"));
+    assertEquals(autoscalingConfigModel.scalingStepSize(), Long.valueOf("1"));
+
     EngineDetails engineDetailsModel = new EngineDetails.Builder()
       .coordinator(coordinatorNodeDescriptionBodyModel)
       .sizeConfig("starter")
       .worker(workerNodeDescriptionBodyModel)
+      .autoscalingEnabled(true)
+      .autoscalingConfig(autoscalingConfigModel)
       .build();
     assertEquals(engineDetailsModel.coordinator(), coordinatorNodeDescriptionBodyModel);
     assertEquals(engineDetailsModel.sizeConfig(), "starter");
     assertEquals(engineDetailsModel.worker(), workerNodeDescriptionBodyModel);
+    assertEquals(engineDetailsModel.autoscalingEnabled(), Boolean.valueOf(true));
+    assertEquals(engineDetailsModel.autoscalingConfig(), autoscalingConfigModel);
 
     CreatePrestoEngineOptions createPrestoEngineOptionsModel = new CreatePrestoEngineOptions.Builder()
       .configuration(engineDetailsModel)
@@ -63,7 +85,7 @@ public class CreatePrestoEngineOptionsTest {
       .origin("native")
       .associatedCatalogs(java.util.Arrays.asList("iceberg_data", "hive_data"))
       .description("presto engine for running sql queries")
-      .id("sampleEngine123")
+      .id("presto123")
       .tags(java.util.Arrays.asList("tag1", "tag2"))
       .authInstanceId("testString")
       .build();
@@ -72,7 +94,7 @@ public class CreatePrestoEngineOptionsTest {
     assertEquals(createPrestoEngineOptionsModel.origin(), "native");
     assertEquals(createPrestoEngineOptionsModel.associatedCatalogs(), java.util.Arrays.asList("iceberg_data", "hive_data"));
     assertEquals(createPrestoEngineOptionsModel.description(), "presto engine for running sql queries");
-    assertEquals(createPrestoEngineOptionsModel.id(), "sampleEngine123");
+    assertEquals(createPrestoEngineOptionsModel.id(), "presto123");
     assertEquals(createPrestoEngineOptionsModel.tags(), java.util.Arrays.asList("tag1", "tag2"));
     assertEquals(createPrestoEngineOptionsModel.authInstanceId(), "testString");
   }

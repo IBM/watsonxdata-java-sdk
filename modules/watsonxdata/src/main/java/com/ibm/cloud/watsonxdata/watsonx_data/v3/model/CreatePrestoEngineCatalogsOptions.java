@@ -56,9 +56,11 @@ public class CreatePrestoEngineCatalogsOptions extends GenericModel {
      * Instantiates a new builder with required properties.
      *
      * @param engineId the engineId
+     * @param catalogNames the catalogNames
      */
-    public Builder(String engineId) {
+    public Builder(String engineId, List<String> catalogNames) {
       this.engineId = engineId;
+      this.catalogNames = catalogNames;
     }
 
     /**
@@ -126,6 +128,8 @@ public class CreatePrestoEngineCatalogsOptions extends GenericModel {
   protected CreatePrestoEngineCatalogsOptions(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.engineId,
       "engineId cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.catalogNames,
+      "catalogNames cannot be null");
     engineId = builder.engineId;
     catalogNames = builder.catalogNames;
     authInstanceId = builder.authInstanceId;
@@ -165,7 +169,7 @@ public class CreatePrestoEngineCatalogsOptions extends GenericModel {
   /**
    * Gets the authInstanceId.
    *
-   * watsonx.data instance ID.
+   * watsonx.data instance ID for software , CRN for SAAS.
    *
    * @return the authInstanceId
    */

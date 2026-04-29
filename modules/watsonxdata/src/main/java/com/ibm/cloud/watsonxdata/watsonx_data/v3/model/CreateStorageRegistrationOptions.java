@@ -59,16 +59,6 @@ public class CreateStorageRegistrationOptions extends GenericModel {
     String S3 = "s3";
   }
 
-  /**
-   * bucket use to define whether the bucket is for query monitoring or acl.
-   */
-  public interface StorageUse {
-    /** qhmm. */
-    String QHMM = "qhmm";
-    /** acl. */
-    String ACL = "acl";
-  }
-
   protected String description;
   protected String displayName;
   protected String managedBy;
@@ -383,7 +373,7 @@ public class CreateStorageRegistrationOptions extends GenericModel {
   /**
    * Gets the storageUse.
    *
-   * bucket use to define whether the bucket is for query monitoring or acl.
+   * parameter to show whether the bucket is of acl or qhmm use. Allowed values are qhmm or acl.
    *
    * @return the storageUse
    */
@@ -405,7 +395,7 @@ public class CreateStorageRegistrationOptions extends GenericModel {
   /**
    * Gets the authInstanceId.
    *
-   * watsonx.data instance ID.
+   * watsonx.data instance ID for software , CRN for SAAS.
    *
    * @return the authInstanceId
    */

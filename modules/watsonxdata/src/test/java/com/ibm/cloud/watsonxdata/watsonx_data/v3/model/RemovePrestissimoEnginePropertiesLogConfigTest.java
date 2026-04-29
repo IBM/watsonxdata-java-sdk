@@ -43,4 +43,10 @@ public class RemovePrestissimoEnginePropertiesLogConfigTest {
     RemovePrestissimoEnginePropertiesLogConfig removePrestissimoEnginePropertiesLogConfigModelNew = TestUtilities.deserialize(json, RemovePrestissimoEnginePropertiesLogConfig.class);
     assertTrue(removePrestissimoEnginePropertiesLogConfigModelNew instanceof RemovePrestissimoEnginePropertiesLogConfig);
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRemovePrestissimoEnginePropertiesLogConfigError() throws Throwable {
+    new RemovePrestissimoEnginePropertiesLogConfig.Builder().build();
+  }
+
 }

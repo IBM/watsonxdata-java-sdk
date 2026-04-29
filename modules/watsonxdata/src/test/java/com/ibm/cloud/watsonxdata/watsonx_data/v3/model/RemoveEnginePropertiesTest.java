@@ -88,4 +88,10 @@ public class RemoveEnginePropertiesTest {
     assertEquals(removeEnginePropertiesModelNew.jvm().toString(), removeEnginePropertiesJvmModel.toString());
     assertEquals(removeEnginePropertiesModelNew.logConfig().toString(), removeEnginePropertiesLogConfigModel.toString());
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRemoveEnginePropertiesError() throws Throwable {
+    new RemoveEngineProperties.Builder().build();
+  }
+
 }

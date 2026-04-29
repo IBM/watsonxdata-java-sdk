@@ -50,6 +50,17 @@ public class RemoveEnginePropertiesLogConfig extends GenericModel {
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param coordinator the coordinator
+     * @param worker the worker
+     */
+    public Builder(List<String> coordinator, List<String> worker) {
+      this.coordinator = coordinator;
+      this.worker = worker;
+    }
+
+    /**
      * Builds a RemoveEnginePropertiesLogConfig.
      *
      * @return the new RemoveEnginePropertiesLogConfig instance
@@ -118,6 +129,10 @@ public class RemoveEnginePropertiesLogConfig extends GenericModel {
   protected RemoveEnginePropertiesLogConfig() { }
 
   protected RemoveEnginePropertiesLogConfig(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.coordinator,
+      "coordinator cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.worker,
+      "worker cannot be null");
     coordinator = builder.coordinator;
     worker = builder.worker;
   }

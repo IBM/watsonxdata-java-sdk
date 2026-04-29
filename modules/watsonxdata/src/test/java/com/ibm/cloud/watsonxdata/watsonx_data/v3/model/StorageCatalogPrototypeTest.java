@@ -50,4 +50,10 @@ public class StorageCatalogPrototypeTest {
     assertEquals(storageCatalogPrototypeModelNew.catalogName(), "sampleCatalog");
     assertEquals(storageCatalogPrototypeModelNew.catalogType(), "iceberg");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testStorageCatalogPrototypeError() throws Throwable {
+    new StorageCatalogPrototype.Builder().build();
+  }
+
 }

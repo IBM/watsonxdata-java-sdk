@@ -43,4 +43,10 @@ public class RemoveEnginePropertiesCatalogAdditionalPropertiesTest {
     RemoveEnginePropertiesCatalogAdditionalProperties removeEnginePropertiesCatalogAdditionalPropertiesModelNew = TestUtilities.deserialize(json, RemoveEnginePropertiesCatalogAdditionalProperties.class);
     assertTrue(removeEnginePropertiesCatalogAdditionalPropertiesModelNew instanceof RemoveEnginePropertiesCatalogAdditionalProperties);
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRemoveEnginePropertiesCatalogAdditionalPropertiesError() throws Throwable {
+    new RemoveEnginePropertiesCatalogAdditionalProperties.Builder().build();
+  }
+
 }

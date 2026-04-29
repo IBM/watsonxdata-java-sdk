@@ -92,6 +92,8 @@ public class StorageRegistration extends GenericModel {
   @SerializedName("system_storage_update_credentials")
   protected Boolean systemStorageUpdateCredentials;
   protected List<String> tags;
+  @SerializedName("associated_catalog")
+  protected StorageCatalogPrototype associatedCatalog;
   protected String type;
   @SerializedName("vault_enabled")
   protected Boolean vaultEnabled;
@@ -174,6 +176,7 @@ public class StorageRegistration extends GenericModel {
   public String getDisplayName() {
     return displayName;
   }
+
   /**
    * Gets the id.
    *
@@ -249,6 +252,17 @@ public class StorageRegistration extends GenericModel {
    */
   public List<String> getTags() {
     return tags;
+  }
+
+  /**
+   * Gets the associatedCatalog.
+   *
+   * storage catalog.
+   *
+   * @return the associatedCatalog
+   */
+  public StorageCatalogPrototype getAssociatedCatalog() {
+    return associatedCatalog;
   }
 
   /**

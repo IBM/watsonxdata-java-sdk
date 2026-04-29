@@ -14,9 +14,10 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.SecretDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageCatalog;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageCatalogPrototype;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageDetailsAccesskeyVault;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageRegistration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.utils.TestUtilities;
 import java.io.InputStream;
@@ -49,6 +50,7 @@ public class StorageRegistrationTest {
     assertNull(storageRegistrationModel.getStorageUse());
     assertNull(storageRegistrationModel.isSystemStorageUpdateCredentials());
     assertNull(storageRegistrationModel.getTags());
+    assertNull(storageRegistrationModel.getAssociatedCatalog());
     assertNull(storageRegistrationModel.getType());
     assertNull(storageRegistrationModel.isVaultEnabled());
   }

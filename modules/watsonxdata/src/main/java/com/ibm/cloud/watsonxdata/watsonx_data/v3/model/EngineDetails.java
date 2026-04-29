@@ -21,37 +21,14 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class EngineDetails extends GenericModel {
 
-  /**
-   * CPD supported sizes are: custom, starter, small, medium, large, xlarge, and xxlarge. IBM cloud supported sizes are:
-   * custom, starter, small, medium, large, cache_optimized, compute_optimized and lite.
-   */
-  public interface SizeConfig {
-    /** starter. */
-    String STARTER = "starter";
-    /** cache_optimized. */
-    String CACHE_OPTIMIZED = "cache_optimized";
-    /** compute_optimized. */
-    String COMPUTE_OPTIMIZED = "compute_optimized";
-    /** small. */
-    String SMALL = "small";
-    /** medium. */
-    String MEDIUM = "medium";
-    /** large. */
-    String LARGE = "large";
-    /** custom. */
-    String CUSTOM = "custom";
-    /** lite. */
-    String LITE = "lite";
-    /** xlarge. */
-    String XLARGE = "xlarge";
-    /** xxlarge. */
-    String XXLARGE = "xxlarge";
-  }
-
   protected CoordinatorNodeDescriptionBody coordinator;
   @SerializedName("size_config")
   protected String sizeConfig;
   protected WorkerNodeDescriptionBody worker;
+  @SerializedName("autoscaling_enabled")
+  protected Boolean autoscalingEnabled;
+  @SerializedName("autoscaling_config")
+  protected AutoScalingConfig autoscalingConfig;
 
   /**
    * Builder.
@@ -60,6 +37,8 @@ public class EngineDetails extends GenericModel {
     private CoordinatorNodeDescriptionBody coordinator;
     private String sizeConfig;
     private WorkerNodeDescriptionBody worker;
+    private Boolean autoscalingEnabled;
+    private AutoScalingConfig autoscalingConfig;
 
     /**
      * Instantiates a new Builder from an existing EngineDetails instance.
@@ -70,6 +49,8 @@ public class EngineDetails extends GenericModel {
       this.coordinator = engineDetails.coordinator;
       this.sizeConfig = engineDetails.sizeConfig;
       this.worker = engineDetails.worker;
+      this.autoscalingEnabled = engineDetails.autoscalingEnabled;
+      this.autoscalingConfig = engineDetails.autoscalingConfig;
     }
 
     /**
@@ -132,6 +113,28 @@ public class EngineDetails extends GenericModel {
       this.worker = worker;
       return this;
     }
+
+    /**
+     * Set the autoscalingEnabled.
+     *
+     * @param autoscalingEnabled the autoscalingEnabled
+     * @return the EngineDetails builder
+     */
+    public Builder autoscalingEnabled(Boolean autoscalingEnabled) {
+      this.autoscalingEnabled = autoscalingEnabled;
+      return this;
+    }
+
+    /**
+     * Set the autoscalingConfig.
+     *
+     * @param autoscalingConfig the autoscalingConfig
+     * @return the EngineDetails builder
+     */
+    public Builder autoscalingConfig(AutoScalingConfig autoscalingConfig) {
+      this.autoscalingConfig = autoscalingConfig;
+      return this;
+    }
   }
 
   protected EngineDetails() { }
@@ -146,6 +149,8 @@ public class EngineDetails extends GenericModel {
     coordinator = builder.coordinator;
     sizeConfig = builder.sizeConfig;
     worker = builder.worker;
+    autoscalingEnabled = builder.autoscalingEnabled;
+    autoscalingConfig = builder.autoscalingConfig;
   }
 
   /**
@@ -189,6 +194,28 @@ public class EngineDetails extends GenericModel {
    */
   public WorkerNodeDescriptionBody worker() {
     return worker;
+  }
+
+  /**
+   * Gets the autoscalingEnabled.
+   *
+   * Enable autoscaling for the engine.
+   *
+   * @return the autoscalingEnabled
+   */
+  public Boolean autoscalingEnabled() {
+    return autoscalingEnabled;
+  }
+
+  /**
+   * Gets the autoscalingConfig.
+   *
+   * Autoscaling configuration for the engine.
+   *
+   * @return the autoscalingConfig
+   */
+  public AutoScalingConfig autoscalingConfig() {
+    return autoscalingConfig;
   }
 }
 
