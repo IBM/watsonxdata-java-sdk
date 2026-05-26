@@ -21,16 +21,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class DeleteCatalogOptions extends GenericModel {
 
   protected String name;
-  protected Boolean skipMdsCall;
   protected String authInstanceId;
+  protected Boolean skipMdsCall;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String name;
-    private Boolean skipMdsCall;
     private String authInstanceId;
+    private Boolean skipMdsCall;
 
     /**
      * Instantiates a new Builder from an existing DeleteCatalogOptions instance.
@@ -39,8 +39,8 @@ public class DeleteCatalogOptions extends GenericModel {
      */
     private Builder(DeleteCatalogOptions deleteCatalogOptions) {
       this.name = deleteCatalogOptions.name;
-      this.skipMdsCall = deleteCatalogOptions.skipMdsCall;
       this.authInstanceId = deleteCatalogOptions.authInstanceId;
+      this.skipMdsCall = deleteCatalogOptions.skipMdsCall;
     }
 
     /**
@@ -79,17 +79,6 @@ public class DeleteCatalogOptions extends GenericModel {
     }
 
     /**
-     * Set the skipMdsCall.
-     *
-     * @param skipMdsCall the skipMdsCall
-     * @return the DeleteCatalogOptions builder
-     */
-    public Builder skipMdsCall(Boolean skipMdsCall) {
-      this.skipMdsCall = skipMdsCall;
-      return this;
-    }
-
-    /**
      * Set the authInstanceId.
      *
      * @param authInstanceId the authInstanceId
@@ -97,6 +86,17 @@ public class DeleteCatalogOptions extends GenericModel {
      */
     public Builder authInstanceId(String authInstanceId) {
       this.authInstanceId = authInstanceId;
+      return this;
+    }
+
+    /**
+     * Set the skipMdsCall.
+     *
+     * @param skipMdsCall the skipMdsCall
+     * @return the DeleteCatalogOptions builder
+     */
+    public Builder skipMdsCall(Boolean skipMdsCall) {
+      this.skipMdsCall = skipMdsCall;
       return this;
     }
   }
@@ -107,8 +107,8 @@ public class DeleteCatalogOptions extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.name,
       "name cannot be empty");
     name = builder.name;
-    skipMdsCall = builder.skipMdsCall;
     authInstanceId = builder.authInstanceId;
+    skipMdsCall = builder.skipMdsCall;
   }
 
   /**
@@ -123,12 +123,23 @@ public class DeleteCatalogOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * catalog id.
+   * catalog name.
    *
    * @return the name
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the authInstanceId.
+   *
+   * watsonx.data instance ID for software , CRN for SAAS.
+   *
+   * @return the authInstanceId
+   */
+  public String authInstanceId() {
+    return authInstanceId;
   }
 
   /**
@@ -140,17 +151,6 @@ public class DeleteCatalogOptions extends GenericModel {
    */
   public Boolean skipMdsCall() {
     return skipMdsCall;
-  }
-
-  /**
-   * Gets the authInstanceId.
-   *
-   * watsonx.data instance ID.
-   *
-   * @return the authInstanceId
-   */
-  public String authInstanceId() {
-    return authInstanceId;
   }
 }
 

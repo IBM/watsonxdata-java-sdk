@@ -127,7 +127,7 @@ public class ListCatalogsOptions extends GenericModel {
   /**
    * Gets the authInstanceId.
    *
-   * watsonx.data instance ID.
+   * watsonx.data instance ID for software , CRN for SAAS or CRN for SAAS.
    *
    * @return the authInstanceId
    */

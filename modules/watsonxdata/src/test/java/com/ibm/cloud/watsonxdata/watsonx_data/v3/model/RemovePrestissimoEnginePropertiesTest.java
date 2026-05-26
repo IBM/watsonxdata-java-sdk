@@ -86,4 +86,10 @@ public class RemovePrestissimoEnginePropertiesTest {
     assertEquals(removePrestissimoEnginePropertiesModelNew.jvm().toString(), removePrestissimoEnginePropertiesJvmModel.toString());
     assertEquals(removePrestissimoEnginePropertiesModelNew.logConfig().toString(), removePrestissimoEnginePropertiesLogConfigModel.toString());
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testRemovePrestissimoEnginePropertiesError() throws Throwable {
+    new RemovePrestissimoEngineProperties.Builder().build();
+  }
+
 }

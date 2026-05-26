@@ -62,8 +62,12 @@ public class PrestoEngine extends GenericModel {
   @SerializedName("display_name")
   protected String displayName;
   protected List<Driver> drivers;
-  @SerializedName("engine_properties")
-  protected EngineProperties engineProperties;
+  @SerializedName("properties")
+  protected EngineProperties xProperties;
+  @SerializedName("remove_engine_properties")
+  protected RemoveEngineProperties removeEngineProperties;
+  @SerializedName("restart_type")
+  protected String restartType;
   @SerializedName("external_host_name")
   protected String externalHostName;
   @SerializedName("failure_message")
@@ -90,6 +94,10 @@ public class PrestoEngine extends GenericModel {
   protected String type;
   protected String version;
   protected NodeDescription worker;
+  @SerializedName("autoscaling_enabled")
+  protected Boolean autoscalingEnabled;
+  @SerializedName("autoscaling_config")
+  protected AutoScalingConfig autoscalingConfig;
 
   protected PrestoEngine() { }
 
@@ -204,14 +212,36 @@ public class PrestoEngine extends GenericModel {
   }
 
   /**
-   * Gets the engineProperties.
+   * Gets the xProperties.
    *
    * Engine properties.
    *
-   * @return the engineProperties
+   * @return the xProperties
    */
-  public EngineProperties getEngineProperties() {
-    return engineProperties;
+  public EngineProperties getXProperties() {
+    return xProperties;
+  }
+
+  /**
+   * Gets the removeEngineProperties.
+   *
+   * The engine properties to be removed which was added through api customisation.
+   *
+   * @return the removeEngineProperties
+   */
+  public RemoveEngineProperties getRemoveEngineProperties() {
+    return removeEngineProperties;
+  }
+
+  /**
+   * Gets the restartType.
+   *
+   * The type of engine restart . The value can be set to forcefully restart an engine.
+   *
+   * @return the restartType
+   */
+  public String getRestartType() {
+    return restartType;
   }
 
   /**
@@ -400,6 +430,28 @@ public class PrestoEngine extends GenericModel {
    */
   public NodeDescription getWorker() {
     return worker;
+  }
+
+  /**
+   * Gets the autoscalingEnabled.
+   *
+   * Enable autoscaling for the engine.
+   *
+   * @return the autoscalingEnabled
+   */
+  public Boolean isAutoscalingEnabled() {
+    return autoscalingEnabled;
+  }
+
+  /**
+   * Gets the autoscalingConfig.
+   *
+   * Autoscaling configuration for the engine.
+   *
+   * @return the autoscalingConfig
+   */
+  public AutoScalingConfig getAutoscalingConfig() {
+    return autoscalingConfig;
   }
 }
 

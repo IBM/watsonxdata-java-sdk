@@ -14,7 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoCoordinatorNodeDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.NodeDescription;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoEngineCollection;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoEngineDetails;
@@ -23,7 +23,11 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoEngineProperti
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoEnginePropertiesConfiguration;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoEnginePropertiesJvm;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoEnginePropertiesLogConfig;
-import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestissimoWorkerNodeDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemovePrestissimoEngineProperties;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemovePrestissimoEnginePropertiesCatalogAdditionalProperties;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemovePrestissimoEnginePropertiesConfiguration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemovePrestissimoEnginePropertiesJvm;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemovePrestissimoEnginePropertiesLogConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;

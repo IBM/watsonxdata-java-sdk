@@ -31,8 +31,18 @@ public class NodeDescriptionTest {
 
   @Test
   public void testNodeDescription() throws Throwable {
-    NodeDescription nodeDescriptionModel = new NodeDescription();
-    assertNull(nodeDescriptionModel.getNodeType());
-    assertNull(nodeDescriptionModel.getQuantity());
+    NodeDescription nodeDescriptionModel = new NodeDescription.Builder()
+      .nodeType("worker")
+      .quantity(Long.valueOf("1"))
+      .build();
+    assertEquals(nodeDescriptionModel.nodeType(), "worker");
+    assertEquals(nodeDescriptionModel.quantity(), Long.valueOf("1"));
+
+    String json = TestUtilities.serialize(nodeDescriptionModel);
+
+    NodeDescription nodeDescriptionModelNew = TestUtilities.deserialize(json, NodeDescription.class);
+    assertTrue(nodeDescriptionModelNew instanceof NodeDescription);
+    assertEquals(nodeDescriptionModelNew.nodeType(), "worker");
+    assertEquals(nodeDescriptionModelNew.quantity(), Long.valueOf("1"));
   }
 }

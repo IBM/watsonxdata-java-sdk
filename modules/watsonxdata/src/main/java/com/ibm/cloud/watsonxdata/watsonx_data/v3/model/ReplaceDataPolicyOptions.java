@@ -1,0 +1,376 @@
+/*
+ * (C) Copyright IBM Corp. 2026.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+
+package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
+/**
+ * The replaceDataPolicy options.
+ */
+public class ReplaceDataPolicyOptions extends GenericModel {
+
+  /**
+   * status of data policy. Values can be active or inactive.
+   */
+  public interface Status {
+    /** active. */
+    String ACTIVE = "active";
+    /** inactive. */
+    String INACTIVE = "inactive";
+  }
+
+  protected String name;
+  protected String dataArtifact;
+  protected List<RuleV2> rules;
+  protected String catalogName;
+  protected String catalogType;
+  protected String description;
+  protected String policyName;
+  protected String resourceId;
+  protected String status;
+  protected String authInstanceId;
+
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String name;
+    private String dataArtifact;
+    private List<RuleV2> rules;
+    private String catalogName;
+    private String catalogType;
+    private String description;
+    private String policyName;
+    private String resourceId;
+    private String status;
+    private String authInstanceId;
+
+    /**
+     * Instantiates a new Builder from an existing ReplaceDataPolicyOptions instance.
+     *
+     * @param replaceDataPolicyOptions the instance to initialize the Builder with
+     */
+    private Builder(ReplaceDataPolicyOptions replaceDataPolicyOptions) {
+      this.name = replaceDataPolicyOptions.name;
+      this.dataArtifact = replaceDataPolicyOptions.dataArtifact;
+      this.rules = replaceDataPolicyOptions.rules;
+      this.catalogName = replaceDataPolicyOptions.catalogName;
+      this.catalogType = replaceDataPolicyOptions.catalogType;
+      this.description = replaceDataPolicyOptions.description;
+      this.policyName = replaceDataPolicyOptions.policyName;
+      this.resourceId = replaceDataPolicyOptions.resourceId;
+      this.status = replaceDataPolicyOptions.status;
+      this.authInstanceId = replaceDataPolicyOptions.authInstanceId;
+    }
+
+    /**
+     * Instantiates a new builder.
+     */
+    public Builder() {
+    }
+
+    /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param name the name
+     * @param dataArtifact the dataArtifact
+     * @param rules the rules
+     */
+    public Builder(String name, String dataArtifact, List<RuleV2> rules) {
+      this.name = name;
+      this.dataArtifact = dataArtifact;
+      this.rules = rules;
+    }
+
+    /**
+     * Builds a ReplaceDataPolicyOptions.
+     *
+     * @return the new ReplaceDataPolicyOptions instance
+     */
+    public ReplaceDataPolicyOptions build() {
+      return new ReplaceDataPolicyOptions(this);
+    }
+
+    /**
+     * Adds a new element to rules.
+     *
+     * @param rules the new element to be added
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder addRules(RuleV2 rules) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(rules,
+        "rules cannot be null");
+      if (this.rules == null) {
+        this.rules = new ArrayList<RuleV2>();
+      }
+      this.rules.add(rules);
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the dataArtifact.
+     *
+     * @param dataArtifact the dataArtifact
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder dataArtifact(String dataArtifact) {
+      this.dataArtifact = dataArtifact;
+      return this;
+    }
+
+    /**
+     * Set the rules.
+     * Existing rules will be replaced.
+     *
+     * @param rules the rules
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder rules(List<RuleV2> rules) {
+      this.rules = rules;
+      return this;
+    }
+
+    /**
+     * Set the catalogName.
+     *
+     * @param catalogName the catalogName
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder catalogName(String catalogName) {
+      this.catalogName = catalogName;
+      return this;
+    }
+
+    /**
+     * Set the catalogType.
+     *
+     * @param catalogType the catalogType
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder catalogType(String catalogType) {
+      this.catalogType = catalogType;
+      return this;
+    }
+
+    /**
+     * Set the description.
+     *
+     * @param description the description
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+
+    /**
+     * Set the policyName.
+     *
+     * @param policyName the policyName
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder policyName(String policyName) {
+      this.policyName = policyName;
+      return this;
+    }
+
+    /**
+     * Set the resourceId.
+     *
+     * @param resourceId the resourceId
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder resourceId(String resourceId) {
+      this.resourceId = resourceId;
+      return this;
+    }
+
+    /**
+     * Set the status.
+     *
+     * @param status the status
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder status(String status) {
+      this.status = status;
+      return this;
+    }
+
+    /**
+     * Set the authInstanceId.
+     *
+     * @param authInstanceId the authInstanceId
+     * @return the ReplaceDataPolicyOptions builder
+     */
+    public Builder authInstanceId(String authInstanceId) {
+      this.authInstanceId = authInstanceId;
+      return this;
+    }
+  }
+
+  protected ReplaceDataPolicyOptions() { }
+
+  protected ReplaceDataPolicyOptions(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notEmpty(builder.name,
+      "name cannot be empty");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.dataArtifact,
+      "dataArtifact cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.rules,
+      "rules cannot be null");
+    name = builder.name;
+    dataArtifact = builder.dataArtifact;
+    rules = builder.rules;
+    catalogName = builder.catalogName;
+    catalogType = builder.catalogType;
+    description = builder.description;
+    policyName = builder.policyName;
+    resourceId = builder.resourceId;
+    status = builder.status;
+    authInstanceId = builder.authInstanceId;
+  }
+
+  /**
+   * New builder.
+   *
+   * @return a ReplaceDataPolicyOptions builder
+   */
+  public Builder newBuilder() {
+    return new Builder(this);
+  }
+
+  /**
+   * Gets the name.
+   *
+   * Name of data policy as path param which needs to be updated.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
+  }
+
+  /**
+   * Gets the dataArtifact.
+   *
+   * The data artifact provides the full path of the resource to which the data policy applies.
+   *
+   * @return the dataArtifact
+   */
+  public String dataArtifact() {
+    return dataArtifact;
+  }
+
+  /**
+   * Gets the rules.
+   *
+   * rules is the array RuleV2. RuleV2 contains the effect, actions and grantees.
+   *
+   * @return the rules
+   */
+  public List<RuleV2> rules() {
+    return rules;
+  }
+
+  /**
+   * Gets the catalogName.
+   *
+   * name of the catalog in which the data policy resource is residing.
+   *
+   * @return the catalogName
+   */
+  public String catalogName() {
+    return catalogName;
+  }
+
+  /**
+   * Gets the catalogType.
+   *
+   * type of the catalog in which the data policy resource is residing.
+   *
+   * @return the catalogType
+   */
+  public String catalogType() {
+    return catalogType;
+  }
+
+  /**
+   * Gets the description.
+   *
+   * a more detailed description of the policy.
+   *
+   * @return the description
+   */
+  public String description() {
+    return description;
+  }
+
+  /**
+   * Gets the policyName.
+   *
+   * The unique name of the data policy.It should be in a given pattern.
+   *
+   * @return the policyName
+   */
+  public String policyName() {
+    return policyName;
+  }
+
+  /**
+   * Gets the resourceId.
+   *
+   * identifier of the resource on which the data policy is created on.
+   *
+   * @return the resourceId
+   */
+  public String resourceId() {
+    return resourceId;
+  }
+
+  /**
+   * Gets the status.
+   *
+   * status of data policy. Values can be active or inactive.
+   *
+   * @return the status
+   */
+  public String status() {
+    return status;
+  }
+
+  /**
+   * Gets the authInstanceId.
+   *
+   * Unique identifier assigned to a specific watsonx.data instance.
+   *
+   * @return the authInstanceId
+   */
+  public String authInstanceId() {
+    return authInstanceId;
+  }
+}
+

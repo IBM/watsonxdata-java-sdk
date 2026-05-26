@@ -14,6 +14,7 @@
 package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.AutoScalingConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.CoordinatorNodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.Driver;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.EngineDetails;
@@ -24,6 +25,11 @@ import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.EnginePropertiesJvm;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.EnginePropertiesLogConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.NodeDescription;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.PrestoEngine;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemoveEngineProperties;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemoveEnginePropertiesCatalogAdditionalProperties;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemoveEnginePropertiesConfiguration;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemoveEnginePropertiesJvm;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.RemoveEnginePropertiesLogConfig;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.ResourceGroupForEngine;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.WorkerNodeDescriptionBody;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.utils.TestUtilities;
@@ -53,7 +59,9 @@ public class PrestoEngineTest {
     assertNull(prestoEngineModel.getDescription());
     assertNull(prestoEngineModel.getDisplayName());
     assertNull(prestoEngineModel.getDrivers());
-    assertNull(prestoEngineModel.getEngineProperties());
+    assertNull(prestoEngineModel.getXProperties());
+    assertNull(prestoEngineModel.getRemoveEngineProperties());
+    assertNull(prestoEngineModel.getRestartType());
     assertNull(prestoEngineModel.getExternalHostName());
     assertNull(prestoEngineModel.getFailureMessage());
     assertNull(prestoEngineModel.getGroupId());
@@ -71,5 +79,7 @@ public class PrestoEngineTest {
     assertNull(prestoEngineModel.getType());
     assertNull(prestoEngineModel.getVersion());
     assertNull(prestoEngineModel.getWorker());
+    assertNull(prestoEngineModel.isAutoscalingEnabled());
+    assertNull(prestoEngineModel.getAutoscalingConfig());
   }
 }

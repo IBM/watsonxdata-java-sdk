@@ -36,33 +36,6 @@ public class PrestissimoEngine extends GenericModel {
   }
 
   /**
-   * CPD supported sizes are: custom, starter, small, medium, large, xlarge, and xxlarge. IBM cloud supported sizes are:
-   * custom, starter, small, medium, large, cache_optimized, compute_optimized and lite.
-   */
-  public interface SizeConfig {
-    /** starter. */
-    String STARTER = "starter";
-    /** cache_optimized. */
-    String CACHE_OPTIMIZED = "cache_optimized";
-    /** compute_optimized. */
-    String COMPUTE_OPTIMIZED = "compute_optimized";
-    /** small. */
-    String SMALL = "small";
-    /** medium. */
-    String MEDIUM = "medium";
-    /** large. */
-    String LARGE = "large";
-    /** custom. */
-    String CUSTOM = "custom";
-    /** lite. */
-    String LITE = "lite";
-    /** xlarge. */
-    String XLARGE = "xlarge";
-    /** xxlarge. */
-    String XXLARGE = "xxlarge";
-  }
-
-  /**
    * Engine status.
    */
   public interface Status {
@@ -82,7 +55,7 @@ public class PrestissimoEngine extends GenericModel {
   @SerializedName("build_version")
   protected String buildVersion;
   protected PrestissimoEngineDetails configuration;
-  protected PrestissimoCoordinatorNodeDetails coordinator;
+  protected NodeDescription coordinator;
   @SerializedName("created_at")
   protected Long createdAt;
   @SerializedName("created_by")
@@ -118,9 +91,13 @@ public class PrestissimoEngine extends GenericModel {
   @SerializedName("status_code")
   protected Long statusCode;
   protected List<String> tags;
+  @SerializedName("remove_engine_properties")
+  protected RemovePrestissimoEngineProperties removeEngineProperties;
+  @SerializedName("restart_type")
+  protected String restartType;
   protected String type;
   protected String version;
-  protected PrestissimoWorkerNodeDetails worker;
+  protected NodeDescription worker;
 
   protected PrestissimoEngine() { }
 
@@ -186,7 +163,7 @@ public class PrestissimoEngine extends GenericModel {
    *
    * @return the coordinator
    */
-  public PrestissimoCoordinatorNodeDetails getCoordinator() {
+  public NodeDescription getCoordinator() {
     return coordinator;
   }
 
@@ -423,6 +400,28 @@ public class PrestissimoEngine extends GenericModel {
   }
 
   /**
+   * Gets the removeEngineProperties.
+   *
+   * RemoveEngine properties.
+   *
+   * @return the removeEngineProperties
+   */
+  public RemovePrestissimoEngineProperties getRemoveEngineProperties() {
+    return removeEngineProperties;
+  }
+
+  /**
+   * Gets the restartType.
+   *
+   * engine will restart accordingily.
+   *
+   * @return the restartType
+   */
+  public String getRestartType() {
+    return restartType;
+  }
+
+  /**
    * Gets the type.
    *
    * Engine type.
@@ -451,7 +450,7 @@ public class PrestissimoEngine extends GenericModel {
    *
    * @return the worker
    */
-  public PrestissimoWorkerNodeDetails getWorker() {
+  public NodeDescription getWorker() {
     return worker;
   }
 }

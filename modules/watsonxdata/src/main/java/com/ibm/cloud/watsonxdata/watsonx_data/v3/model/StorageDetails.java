@@ -24,7 +24,7 @@ public class StorageDetails extends GenericModel {
   @SerializedName("access_key")
   protected String accessKey;
   @SerializedName("access_key_vault")
-  protected SecretDetails accessKeyVault;
+  protected StorageDetailsAccesskeyVault accessKeyVault;
   @SerializedName("account_name")
   protected String accountName;
   @SerializedName("application_id")
@@ -38,8 +38,6 @@ public class StorageDetails extends GenericModel {
   protected String endpoint;
   @SerializedName("key_file")
   protected String keyFile;
-  @SerializedName("mrap_arn")
-  protected String mrapArn;
   protected String name;
   protected String provider;
   protected String region;
@@ -50,7 +48,7 @@ public class StorageDetails extends GenericModel {
   @SerializedName("secret_key")
   protected String secretKey;
   @SerializedName("secret_key_vault")
-  protected SecretDetails secretKeyVault;
+  protected StorageDetailsAccesskeyVault secretKeyVault;
   @SerializedName("vault_enabled")
   protected Boolean vaultEnabled;
 
@@ -59,7 +57,7 @@ public class StorageDetails extends GenericModel {
    */
   public static class Builder {
     private String accessKey;
-    private SecretDetails accessKeyVault;
+    private StorageDetailsAccesskeyVault accessKeyVault;
     private String accountName;
     private String applicationId;
     private String authMode;
@@ -67,14 +65,13 @@ public class StorageDetails extends GenericModel {
     private String directoryId;
     private String endpoint;
     private String keyFile;
-    private String mrapArn;
     private String name;
     private String provider;
     private String region;
     private String roleArn;
     private String sasToken;
     private String secretKey;
-    private SecretDetails secretKeyVault;
+    private StorageDetailsAccesskeyVault secretKeyVault;
     private Boolean vaultEnabled;
 
     /**
@@ -92,7 +89,6 @@ public class StorageDetails extends GenericModel {
       this.directoryId = storageDetails.directoryId;
       this.endpoint = storageDetails.endpoint;
       this.keyFile = storageDetails.keyFile;
-      this.mrapArn = storageDetails.mrapArn;
       this.name = storageDetails.name;
       this.provider = storageDetails.provider;
       this.region = storageDetails.region;
@@ -135,7 +131,7 @@ public class StorageDetails extends GenericModel {
      * @param accessKeyVault the accessKeyVault
      * @return the StorageDetails builder
      */
-    public Builder accessKeyVault(SecretDetails accessKeyVault) {
+    public Builder accessKeyVault(StorageDetailsAccesskeyVault accessKeyVault) {
       this.accessKeyVault = accessKeyVault;
       return this;
     }
@@ -218,17 +214,6 @@ public class StorageDetails extends GenericModel {
     }
 
     /**
-     * Set the mrapArn.
-     *
-     * @param mrapArn the mrapArn
-     * @return the StorageDetails builder
-     */
-    public Builder mrapArn(String mrapArn) {
-      this.mrapArn = mrapArn;
-      return this;
-    }
-
-    /**
      * Set the name.
      *
      * @param name the name
@@ -300,7 +285,7 @@ public class StorageDetails extends GenericModel {
      * @param secretKeyVault the secretKeyVault
      * @return the StorageDetails builder
      */
-    public Builder secretKeyVault(SecretDetails secretKeyVault) {
+    public Builder secretKeyVault(StorageDetailsAccesskeyVault secretKeyVault) {
       this.secretKeyVault = secretKeyVault;
       return this;
     }
@@ -329,7 +314,6 @@ public class StorageDetails extends GenericModel {
     directoryId = builder.directoryId;
     endpoint = builder.endpoint;
     keyFile = builder.keyFile;
-    mrapArn = builder.mrapArn;
     name = builder.name;
     provider = builder.provider;
     region = builder.region;
@@ -367,7 +351,7 @@ public class StorageDetails extends GenericModel {
    *
    * @return the accessKeyVault
    */
-  public SecretDetails accessKeyVault() {
+  public StorageDetailsAccesskeyVault accessKeyVault() {
     return accessKeyVault;
   }
 
@@ -449,17 +433,6 @@ public class StorageDetails extends GenericModel {
   }
 
   /**
-   * Gets the mrapArn.
-   *
-   * arn role.
-   *
-   * @return the mrapArn
-   */
-  public String mrapArn() {
-    return mrapArn;
-  }
-
-  /**
    * Gets the name.
    *
    * actual storage name.
@@ -532,7 +505,7 @@ public class StorageDetails extends GenericModel {
    *
    * @return the secretKeyVault
    */
-  public SecretDetails secretKeyVault() {
+  public StorageDetailsAccesskeyVault secretKeyVault() {
     return secretKeyVault;
   }
 

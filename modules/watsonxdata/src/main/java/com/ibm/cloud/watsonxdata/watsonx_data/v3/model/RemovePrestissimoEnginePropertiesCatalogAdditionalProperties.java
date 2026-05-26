@@ -50,6 +50,17 @@ public class RemovePrestissimoEnginePropertiesCatalogAdditionalProperties extend
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param coordinator the coordinator
+     * @param worker the worker
+     */
+    public Builder(List<String> coordinator, List<String> worker) {
+      this.coordinator = coordinator;
+      this.worker = worker;
+    }
+
+    /**
      * Builds a RemovePrestissimoEnginePropertiesCatalogAdditionalProperties.
      *
      * @return the new RemovePrestissimoEnginePropertiesCatalogAdditionalProperties instance
@@ -118,6 +129,10 @@ public class RemovePrestissimoEnginePropertiesCatalogAdditionalProperties extend
   protected RemovePrestissimoEnginePropertiesCatalogAdditionalProperties() { }
 
   protected RemovePrestissimoEnginePropertiesCatalogAdditionalProperties(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.coordinator,
+      "coordinator cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.worker,
+      "worker cannot be null");
     coordinator = builder.coordinator;
     worker = builder.worker;
   }

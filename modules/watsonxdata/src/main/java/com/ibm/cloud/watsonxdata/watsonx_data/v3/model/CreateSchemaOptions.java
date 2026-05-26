@@ -302,7 +302,7 @@ public class CreateSchemaOptions extends GenericModel {
   /**
    * Gets the authInstanceId.
    *
-   * watsonx.data instance ID.
+   * watsonx.data instance ID for software , CRN for SAAS.
    *
    * @return the authInstanceId
    */

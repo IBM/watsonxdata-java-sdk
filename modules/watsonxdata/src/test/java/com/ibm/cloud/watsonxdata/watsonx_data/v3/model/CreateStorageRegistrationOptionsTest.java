@@ -15,9 +15,9 @@ package com.ibm.cloud.watsonxdata.watsonx_data.v3.model;
 
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.CreateStorageRegistrationOptions;
-import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.SecretDetails;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageCatalogPrototype;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageDetails;
+import com.ibm.cloud.watsonxdata.watsonx_data.v3.model.StorageDetailsAccesskeyVault;
 import com.ibm.cloud.watsonxdata.watsonx_data.v3.utils.TestUtilities;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -45,18 +45,18 @@ public class CreateStorageRegistrationOptionsTest {
     assertEquals(storageCatalogPrototypeModel.catalogTags(), java.util.Arrays.asList("catalog_tag_1", "catalog_tag_2"));
     assertEquals(storageCatalogPrototypeModel.catalogType(), "iceberg");
 
-    SecretDetails secretDetailsModel = new SecretDetails.Builder()
+    StorageDetailsAccesskeyVault storageDetailsAccesskeyVaultModel = new StorageDetailsAccesskeyVault.Builder()
       .key("secret key")
       .secretName("secret name")
       .secretUrn("secret urn")
       .build();
-    assertEquals(secretDetailsModel.key(), "secret key");
-    assertEquals(secretDetailsModel.secretName(), "secret name");
-    assertEquals(secretDetailsModel.secretUrn(), "secret urn");
+    assertEquals(storageDetailsAccesskeyVaultModel.key(), "secret key");
+    assertEquals(storageDetailsAccesskeyVaultModel.secretName(), "secret name");
+    assertEquals(storageDetailsAccesskeyVaultModel.secretUrn(), "secret urn");
 
     StorageDetails storageDetailsModel = new StorageDetails.Builder()
       .accessKey("<access_key>")
-      .accessKeyVault(secretDetailsModel)
+      .accessKeyVault(storageDetailsAccesskeyVaultModel)
       .accountName("sample-storage")
       .applicationId("application-id")
       .authMode("iam")
@@ -64,18 +64,17 @@ public class CreateStorageRegistrationOptionsTest {
       .directoryId("directory-id")
       .endpoint("https://s3.us-south.cloud-object-storage.appdomain.cloud/")
       .keyFile("key_file")
-      .mrapArn("arn:aws:s3::123456789012:accesspoint/mrap/mrapName")
       .name("sample-storage")
       .provider("ibm-cos")
       .region("us-south")
       .roleArn("arn:aws:iam::5ssdd5467-002c-a4f8cac3f3f9")
       .sasToken("<sas-token>")
       .secretKey("secret_key")
-      .secretKeyVault(secretDetailsModel)
+      .secretKeyVault(storageDetailsAccesskeyVaultModel)
       .vaultEnabled(true)
       .build();
     assertEquals(storageDetailsModel.accessKey(), "<access_key>");
-    assertEquals(storageDetailsModel.accessKeyVault(), secretDetailsModel);
+    assertEquals(storageDetailsModel.accessKeyVault(), storageDetailsAccesskeyVaultModel);
     assertEquals(storageDetailsModel.accountName(), "sample-storage");
     assertEquals(storageDetailsModel.applicationId(), "application-id");
     assertEquals(storageDetailsModel.authMode(), "iam");
@@ -83,14 +82,13 @@ public class CreateStorageRegistrationOptionsTest {
     assertEquals(storageDetailsModel.directoryId(), "directory-id");
     assertEquals(storageDetailsModel.endpoint(), "https://s3.us-south.cloud-object-storage.appdomain.cloud/");
     assertEquals(storageDetailsModel.keyFile(), "key_file");
-    assertEquals(storageDetailsModel.mrapArn(), "arn:aws:s3::123456789012:accesspoint/mrap/mrapName");
     assertEquals(storageDetailsModel.name(), "sample-storage");
     assertEquals(storageDetailsModel.provider(), "ibm-cos");
     assertEquals(storageDetailsModel.region(), "us-south");
     assertEquals(storageDetailsModel.roleArn(), "arn:aws:iam::5ssdd5467-002c-a4f8cac3f3f9");
     assertEquals(storageDetailsModel.sasToken(), "<sas-token>");
     assertEquals(storageDetailsModel.secretKey(), "secret_key");
-    assertEquals(storageDetailsModel.secretKeyVault(), secretDetailsModel);
+    assertEquals(storageDetailsModel.secretKeyVault(), storageDetailsAccesskeyVaultModel);
     assertEquals(storageDetailsModel.vaultEnabled(), Boolean.valueOf(true));
 
     CreateStorageRegistrationOptions createStorageRegistrationOptionsModel = new CreateStorageRegistrationOptions.Builder()
@@ -101,7 +99,7 @@ public class CreateStorageRegistrationOptionsTest {
       .associatedCatalog(storageCatalogPrototypeModel)
       .connection(storageDetailsModel)
       .region("us-south")
-      .storageUse("qhmm")
+      .storageUse("acl")
       .tags(java.util.Arrays.asList("storage-tag1", "storage-tag2"))
       .authInstanceId("testString")
       .build();
@@ -112,7 +110,7 @@ public class CreateStorageRegistrationOptionsTest {
     assertEquals(createStorageRegistrationOptionsModel.associatedCatalog(), storageCatalogPrototypeModel);
     assertEquals(createStorageRegistrationOptionsModel.connection(), storageDetailsModel);
     assertEquals(createStorageRegistrationOptionsModel.region(), "us-south");
-    assertEquals(createStorageRegistrationOptionsModel.storageUse(), "qhmm");
+    assertEquals(createStorageRegistrationOptionsModel.storageUse(), "acl");
     assertEquals(createStorageRegistrationOptionsModel.tags(), java.util.Arrays.asList("storage-tag1", "storage-tag2"));
     assertEquals(createStorageRegistrationOptionsModel.authInstanceId(), "testString");
   }

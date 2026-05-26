@@ -25,7 +25,76 @@ public class NodeDescription extends GenericModel {
   protected String nodeType;
   protected Long quantity;
 
+  /**
+   * Builder.
+   */
+  public static class Builder {
+    private String nodeType;
+    private Long quantity;
+
+    /**
+     * Instantiates a new Builder from an existing NodeDescription instance.
+     *
+     * @param nodeDescription the instance to initialize the Builder with
+     */
+    private Builder(NodeDescription nodeDescription) {
+      this.nodeType = nodeDescription.nodeType;
+      this.quantity = nodeDescription.quantity;
+    }
+
+    /**
+     * Instantiates a new builder.
+     */
+    public Builder() {
+    }
+
+    /**
+     * Builds a NodeDescription.
+     *
+     * @return the new NodeDescription instance
+     */
+    public NodeDescription build() {
+      return new NodeDescription(this);
+    }
+
+    /**
+     * Set the nodeType.
+     *
+     * @param nodeType the nodeType
+     * @return the NodeDescription builder
+     */
+    public Builder nodeType(String nodeType) {
+      this.nodeType = nodeType;
+      return this;
+    }
+
+    /**
+     * Set the quantity.
+     *
+     * @param quantity the quantity
+     * @return the NodeDescription builder
+     */
+    public Builder quantity(long quantity) {
+      this.quantity = quantity;
+      return this;
+    }
+  }
+
   protected NodeDescription() { }
+
+  protected NodeDescription(Builder builder) {
+    nodeType = builder.nodeType;
+    quantity = builder.quantity;
+  }
+
+  /**
+   * New builder.
+   *
+   * @return a NodeDescription builder
+   */
+  public Builder newBuilder() {
+    return new Builder(this);
+  }
 
   /**
    * Gets the nodeType.
@@ -34,7 +103,7 @@ public class NodeDescription extends GenericModel {
    *
    * @return the nodeType
    */
-  public String getNodeType() {
+  public String nodeType() {
     return nodeType;
   }
 
@@ -45,7 +114,7 @@ public class NodeDescription extends GenericModel {
    *
    * @return the quantity
    */
-  public Long getQuantity() {
+  public Long quantity() {
     return quantity;
   }
 }

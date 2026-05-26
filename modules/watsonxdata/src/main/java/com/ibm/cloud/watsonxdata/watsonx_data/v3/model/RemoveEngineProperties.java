@@ -70,6 +70,27 @@ public class RemoveEngineProperties extends GenericModel {
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param catalog the catalog
+     * @param configuration the configuration
+     * @param eventListener the eventListener
+     * @param global the global
+     * @param jmxExporterConfig the jmxExporterConfig
+     * @param jvm the jvm
+     * @param logConfig the logConfig
+     */
+    public Builder(Map<String, RemoveEnginePropertiesCatalogAdditionalProperties> catalog, RemoveEnginePropertiesConfiguration configuration, List<String> eventListener, List<String> global, List<String> jmxExporterConfig, RemoveEnginePropertiesJvm jvm, RemoveEnginePropertiesLogConfig logConfig) {
+      this.catalog = catalog;
+      this.configuration = configuration;
+      this.eventListener = eventListener;
+      this.global = global;
+      this.jmxExporterConfig = jmxExporterConfig;
+      this.jvm = jvm;
+      this.logConfig = logConfig;
+    }
+
+    /**
      * Builds a RemoveEngineProperties.
      *
      * @return the new RemoveEngineProperties instance
@@ -210,6 +231,20 @@ public class RemoveEngineProperties extends GenericModel {
   protected RemoveEngineProperties() { }
 
   protected RemoveEngineProperties(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.catalog,
+      "catalog cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.configuration,
+      "configuration cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.eventListener,
+      "eventListener cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.global,
+      "global cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.jmxExporterConfig,
+      "jmxExporterConfig cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.jvm,
+      "jvm cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.logConfig,
+      "logConfig cannot be null");
     catalog = builder.catalog;
     configuration = builder.configuration;
     eventListener = builder.eventListener;

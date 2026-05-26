@@ -69,6 +69,27 @@ public class RemovePrestissimoEngineProperties extends GenericModel {
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param catalog the catalog
+     * @param configuration the configuration
+     * @param global the global
+     * @param jvm the jvm
+     * @param logConfig the logConfig
+     * @param optimizerProperties the optimizerProperties
+     * @param velox the velox
+     */
+    public Builder(Map<String, RemovePrestissimoEnginePropertiesCatalogAdditionalProperties> catalog, RemovePrestissimoEnginePropertiesConfiguration configuration, List<String> global, RemovePrestissimoEnginePropertiesJvm jvm, RemovePrestissimoEnginePropertiesLogConfig logConfig, List<String> optimizerProperties, List<String> velox) {
+      this.catalog = catalog;
+      this.configuration = configuration;
+      this.global = global;
+      this.jvm = jvm;
+      this.logConfig = logConfig;
+      this.optimizerProperties = optimizerProperties;
+      this.velox = velox;
+    }
+
+    /**
      * Builds a RemovePrestissimoEngineProperties.
      *
      * @return the new RemovePrestissimoEngineProperties instance
@@ -209,6 +230,20 @@ public class RemovePrestissimoEngineProperties extends GenericModel {
   protected RemovePrestissimoEngineProperties() { }
 
   protected RemovePrestissimoEngineProperties(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.catalog,
+      "catalog cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.configuration,
+      "configuration cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.global,
+      "global cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.jvm,
+      "jvm cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.logConfig,
+      "logConfig cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.optimizerProperties,
+      "optimizerProperties cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.velox,
+      "velox cannot be null");
     catalog = builder.catalog;
     configuration = builder.configuration;
     global = builder.global;

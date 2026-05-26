@@ -44,7 +44,6 @@ public class CatalogTest {
     assertNull(catalogModel.getCreatedBy());
     assertNull(catalogModel.getDaysLeft());
     assertNull(catalogModel.getDescription());
-    assertNull(catalogModel.isIsGfs());
     assertNull(catalogModel.getLocationUri());
     assertNull(catalogModel.getManagedBy());
     assertNull(catalogModel.getMdsConnectionInformation());
@@ -52,6 +51,7 @@ public class CatalogTest {
     assertNull(catalogModel.getName());
     assertNull(catalogModel.getStatus());
     assertNull(catalogModel.getTags());
+    assertNull(catalogModel.getCatalogNames());
     assertNull(catalogModel.getType());
   }
 }

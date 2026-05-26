@@ -61,6 +61,15 @@ public class StorageCatalogPrototype extends GenericModel {
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param catalogTags the catalogTags
+     */
+    public Builder(List<String> catalogTags) {
+      this.catalogTags = catalogTags;
+    }
+
+    /**
      * Builds a StorageCatalogPrototype.
      *
      * @return the new StorageCatalogPrototype instance
@@ -134,6 +143,8 @@ public class StorageCatalogPrototype extends GenericModel {
   protected StorageCatalogPrototype() { }
 
   protected StorageCatalogPrototype(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.catalogTags,
+      "catalogTags cannot be null");
     basePath = builder.basePath;
     catalogName = builder.catalogName;
     catalogTags = builder.catalogTags;
